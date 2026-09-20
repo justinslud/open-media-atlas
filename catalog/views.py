@@ -1,10 +1,15 @@
 from django.db.models import Count, Prefetch, Q
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from .models import Work, WorkRelationship, WorkType
 
 
 def public_works():
     return Work.objects.filter(visibility=Work.Visibility.PUBLIC)
+
+
+def health(request):
+    return HttpResponse("ok", content_type="text/plain")
 
 
 def home(request):

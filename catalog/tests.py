@@ -16,6 +16,11 @@ class CatalogTests(TestCase):
         call_command("load_demo_catalog", verbosity=0)
         self.assertEqual(before, tuple(model.objects.count() for model in models))
 
+    def test_health_check(self):
+        response = self.client.get(reverse("health"))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b"ok")
+
     def test_search_and_media_filter(self):
         response = self.client.get(reverse("discover"), {"q": "Glass", "type": "novel"})
         self.assertEqual(response.status_code, 200)
