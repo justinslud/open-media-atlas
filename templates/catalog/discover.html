@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Browse · Open Media Atlas{% endblock %}
+{% block content %}
+<header class="page-title"><p class="eyebrow">CATALOG</p><h1>Browse works</h1><p>Search public catalog records by title and medium.</p></header>
+<form class="filter-bar" method="get" action="{% url 'discover' %}" hx-get="{% url 'discover' %}" hx-target="#search-results" hx-push-url="true" hx-trigger="submit, input changed delay:300ms from:#id-q, change from:#id-type">
+  <div><label for="id-q">Title</label><input id="id-q" name="q" type="search" value="{{ query }}" placeholder="Search titles"></div>
+  <div><label for="id-type">Media type</label><select id="id-type" name="type"><option value="">All media types</option>{% for type in work_types %}<option value="{{ type.pk }}" {% if selected_type == type.pk %}selected{% endif %}>{{ type.label }}</option>{% endfor %}</select></div>
+  <button type="submit">Apply</button>
+</form>
+<div id="search-results" aria-live="polite">{% include "catalog/_results.html" %}</div>
+{% endblock %}
+
