@@ -1,0 +1,765 @@
+// OpenMediaAtlas -- discussion model v0.1
+// Paste this entire file into https://dbdiagram.io . No database connection needed.
+// This is a design artifact, NOT a production migration or a copy of OL's SQL schema.
+// Kinds and roles below are suggested seed values, not settled product policy.
+//
+// Reviewed OL source commit: 9827e3bb53ba712fe86324014d4424a5f7a701ca
+// https://github.com/internetarchive/openlibrary/tree/9827e3bb53ba712fe86324014d4424a5f7a701ca/openlibrary/schemata
+// Reviewed: work.schema.json, edition.schema.json, author.schema.json,
+// shared_definitions.json. These JSON schemas are not an exhaustive inventory
+// of every historical field found in live OL records. Raw imports are retained.
+// DBML syntax reference: https://dbml.dbdiagram.io/docs/
+//
+// READING THE MODEL
+// Work = a distinct creation; adaptation/remake/continuation = another work.
+// Version = a particular translation, cut, revision, dub, or original expression.
+// Release = publication/distribution of a version (OL book editions go here).
+// Multiple paperback/ebook releases can share the SAME translation version.
+// A version or release does NOT require a separate public page: show inline.
+// Work alone is enough for an initial catalog entry. Do not invent known versions.
+// Creating a release requires a version; use an explicitly unresolved version
+// when an import cannot identify the translation/cut. Reconcile it later.
+//
+// EXAMPLES (illustrative modeling choices, not seeded bibliographic facts)
+// Dune novel WORK <- adapted_from - Dune film WORK.
+// A sequel film WORK - sequel_to -> prior film WORK.
+// A translator is credited on a VERSION; a publisher on a RELEASE.
+// A film's director is credited on the WORK; dubbing actors on a VERSION.
+// A story WORK is a component of an anthology WORK; it can have adaptations.
+// An anthology RELEASE lists the exact story VERSIONS and page spans it contains.
+// A TV SERIES work contains SEASON works which contain EPISODE works.
+// A trailer can be a WORK - trailer_for -> film WORK. It is not an adaptation
+// of the novel merely because it advertises a film adapted from that novel.
+//
+// IMPORTANT IMPLEMENTATION RULES (not all expressible as ordinary foreign keys)
+// 1. catalog_records is a shared identity/revision anchor, NOT an EAV database.
+//    Every record has exactly one matching typed row. Enforce kind/subtype
+//    consistency in transactions and constraint triggers before production.
+// 2. Citation/credit/tag targets must be of allowed kinds. Keep private proposal,
+//    claim, import, and user fields OUT of public catalog/API export serializers.
+// 3. Work containment and version derivation must be acyclic. Adaptation ancestry
+//    should be cycle-checked separately; not every relationship type is ancestry.
+// 4. A version's based_on_version must belong to the same work. A relationship's
+//    optional source_version must belong to its to_work (the source work).
+// 5. Apply accepted proposals atomically after comparing base_revision_no.
+//    Revision snapshots include owned child rows, identifiers, and evidence refs.
+//    Restoring means a new revision, not deletion of intervening history.
+// 6. Reimports are repeatable: source+external_key identifies the source record;
+//    a changed payload updates the source snapshot, NOT protected human fields.
+//    Conflicts become proposals. Import runs identify the raw batch/archive.
+// 7. Redirects must be same-kind, acyclic, and resolve to a canonical record.
+//    A merge reconciles inbound references transactionally and keeps old IDs.
+// 8. Source URLs may be reused for evidence. Citation verification means someone
+//    checked what the source says; it is not a guarantee of truth or legal rights.
+// 9. Comments must belong to the same thread as their parent. Lists with private
+//    visibility, saved searches, and shelf state need owner-based access checks.
+// 10. Use ISO/BCP-47 language normalization; map OL MARC language and country codes
+//     explicitly. Preserve original codes in raw_payload. Do not silently truncate.
+// 11. Date text preserves year-only, uncertain, and historical dates. Parsed years
+//     are optional search aids, not invented exact dates.
+// 12. Add role-specific authorization, rate limits, search indexes, robust backups,
+//     and audit protections in implementation. This file does not supply those.
+//
+// DEFERRED: payment/royalty contracts, crowdfunding, notifications, AI embeddings,
+// recommendation telemetry, franchises/characters as independent entities,
+// awards, detailed production budgets, genealogy of organizations, and full auth
+// internals. Do not treat a creator project declaration as a reservation of IP.
+
+Project OpenMediaAtlas_v01 {
+  database_type: 'PostgreSQL'
+  Note: 'OL-informed cross-media catalog. Discussion schema, not deployment SQL. Read file comments and table notes. Public pages center on works; versions/releases can remain embedded.'
+}
+
+Enum record_kind {
+  work
+  version
+  release
+  agent
+  credit
+  relationship
+  rights_statement
+}
+
+Enum review_status {
+  unreviewed
+  accepted
+  disputed
+  rejected
+}
+
+Enum proposal_status {
+  draft
+  pending
+  accepted
+  rejected
+  needs_changes
+  superseded
+}
+
+Table catalog_records {
+  id bigint [pk, increment]
+  kind record_kind [not null]
+  slug varchar [unique, note: 'Stable ID is canonical; slug may change.']
+  visibility varchar [not null, default: 'public', note: 'public, draft, suppressed']
+  depth varchar [not null, default: 'index', note: 'index or editorial; not a quality guarantee']
+  revision_no int [not null, default: 1]
+  redirect_to_id bigint [ref: > catalog_records.id]
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  // Production CHECK: redirect_to_id IS NULL OR redirect_to_id <> id
+  Note: '''Shared identity lets citations, imports, and history point to real foreign keys. Typed rows hold actual fields. Records are soft-deleted/suppressed; do not cascade-delete cultural history.'''
+}
+
+Table work_types {
+  code varchar [pk]
+  label varchar [not null]
+  medium varchar [not null, note: 'text, screen, audio, stage, interactive, visual, mixed']
+  is_container boolean [not null, default: false]
+  Note: '''Suggested codes: novel, novella, short_story, nonfiction_book, reference_book, poetry_collection, story_collection, film, short_film, tv_series, tv_season, tv_episode, comic_series, comic_issue, audio_drama, podcast_series, podcast_episode, stage_play, video_game, web_video, trailer, immersive_work. Anime is a technique/origin classification, not a competing medium.'''
+}
+
+Table works {
+  id bigint [pk, ref: - catalog_records.id]
+  work_type_code varchar [not null, ref: > work_types.code]
+  title varchar [not null]
+  subtitle varchar
+  sort_title varchar
+  description text
+  notes text
+  first_publication_date_text varchar
+  first_publication_year int
+  completion_status varchar [not null, default: 'unknown', note: 'planned, in_progress, released, ongoing, completed, cancelled, abandoned, unknown']
+  creation_method varchar [not null, default: 'unknown', note: 'human, ai_assisted, ai_generated, mixed, unknown; source the claim']
+  word_count int
+  estimated_minutes int [note: 'Editorial estimate; exact runtime belongs to version.']
+  production_scale varchar [note: 'Editorial: small, medium, large; nullable.']
+  adaptation_notes text
+  indexes { (work_type_code, first_publication_year) }
+  // Production CHECK: word_count IS NULL OR word_count >= 0
+  // Production CHECK: estimated_minutes IS NULL OR estimated_minutes >= 0
+  Note: '''Distinct creation, including a short story or episode. Original language, subjects, aliases, images, credits and external IDs are linked records. Unknown dates and production characteristics remain null.'''
+}
+
+Table versions {
+  id bigint [pk, ref: - catalog_records.id]
+  work_id bigint [not null, ref: > works.id]
+  label varchar [not null, note: 'Original text, Smith translation, theatrical cut, unresolved imported version.']
+  version_kind varchar [not null, note: 'original, translation, revision, cut, dub, restoration, unresolved']
+  based_on_version_id bigint [ref: > versions.id]
+  title varchar
+  subtitle varchar
+  description text
+  notes text
+  first_available_date_text varchar
+  first_available_year int
+  runtime_seconds int
+  is_abridged boolean [note: 'NULL means unknown, not false.']
+  translation_of_title varchar [note: 'OL translation_of verbatim, not a foreign key.']
+  version_statement text
+  indexes { work_id }
+  // Production CHECK: based_on_version_id IS NULL OR based_on_version_id <> id
+  // Production CHECK: runtime_seconds IS NULL OR runtime_seconds > 0
+  Note: '''Optional intermediate expression layer added to OL. A different publisher does not automatically create a new version. An adaptation is a new WORK. Version identity is a catalog decision, never inferred from title alone.'''
+}
+
+Table releases {
+  id bigint [pk, ref: - catalog_records.id]
+  version_id bigint [not null, ref: > versions.id]
+  title varchar [not null]
+  subtitle varchar
+  edition_name varchar
+  format varchar [note: 'hardcover, paperback, ebook, theatrical, streaming, bluray, vinyl, app, etc.']
+  publication_date_text varchar
+  publication_year int
+  country_code varchar [note: 'Normalized ISO code when resolvable; raw MARC code remains in source snapshot.']
+  publication_places jsonb [note: 'Array of original place labels; separate places authority is deferred.']
+  by_statement text
+  copyright_date_text varchar
+  description text
+  notes text
+  publisher_statement text [note: 'Verbatim imprint; resolved publishers also get credits.']
+  contributions_statement text [note: 'Unparsed OL contributions; do not pretend all names are resolved.']
+  series_statement text [note: 'Printed bibliographic series; not automatically a franchise.']
+  indexes { version_id }
+  Note: '''Maps OL editions into publications/distributions. Translators attach to version; publishers/distributors can attach here via credits. Territorial releases differ from current availability links.'''
+}
+
+Table book_release_details {
+  release_id bigint [pk, ref: - releases.id]
+  number_of_pages int
+  pagination varchar
+  physical_dimensions varchar
+  weight varchar
+  first_sentence text
+  table_of_contents_raw jsonb
+  work_titles_raw jsonb
+  // Production CHECK: number_of_pages IS NULL OR number_of_pages > 0
+  Note: '''Retains OL-specific bibliographic detail without giving every film a page count. Raw TOC preserves headings that are not independent works; resolved entries go in release_contents.'''
+}
+
+Table work_components {
+  id bigint [pk, increment]
+  container_work_id bigint [not null, ref: > works.id]
+  component_work_id bigint [not null, ref: > works.id]
+  component_role varchar [not null, note: 'story, episode, season, volume, issue, chapter, etc.']
+  sequence_label varchar [note: '1, 1.5, Special, unnumbered; preserve source wording.']
+  sort_order decimal(12,4)
+  source_id bigint [ref: > sources.id]
+  indexes { (container_work_id, component_work_id, component_role) [unique] }
+  // Production CHECK: container_work_id <> component_work_id
+  Note: '''Membership is not adaptation. A story can occur in several collections. Edition-specific contents belong in release_contents rather than forcing all editions to have identical contents.'''
+}
+
+Table release_contents {
+  id bigint [pk, increment]
+  release_id bigint [not null, ref: > releases.id]
+  contained_version_id bigint [not null, ref: > versions.id]
+  title_as_printed varchar
+  sequence_no int [not null]
+  location_text varchar [note: 'Pages 13-27, disc 2, etc.']
+  source_id bigint [ref: > sources.id]
+  indexes { (release_id, sequence_no) [unique] }
+  Note: '''Exact contents of a particular anthology/omnibus release, including which translation of each story. Do not automatically split a whole TOC into independent works.'''
+}
+
+Table relationship_types {
+  code varchar [pk]
+  label varchar [not null]
+  inverse_label varchar [not null]
+  category varchar [not null, note: 'derivation, sequence, reference, promotion']
+  show_in_main_tree boolean [not null, default: false]
+  Note: '''Suggested codes: adapted_from, remake_of, sequel_to, prequel_to, spin_off_of, continuation_of, inspired_by, trailer_for, references. Direction is child/new work -> source/prior work. Main tree defaults to strong derivation; allusions/inspiration remain secondary. A graph can have multiple parents.'''
+}
+
+Table work_relationships {
+  id bigint [pk, ref: - catalog_records.id]
+  from_work_id bigint [not null, ref: > works.id]
+  to_work_id bigint [not null, ref: > works.id]
+  relationship_type_code varchar [not null, ref: > relationship_types.code]
+  source_version_id bigint [ref: > versions.id, note: 'Optional exact source translation/cut; must belong to to_work.']
+  scope_note text [note: 'Chapters 1-8, loose adaptation, several source stories, etc.']
+  authorization_status varchar [not null, default: 'unknown', note: 'authorized, unauthorized, disputed, unknown; cite evidence separately.']
+  review_status review_status [not null, default: 'unreviewed']
+  indexes { (from_work_id, to_work_id, relationship_type_code) [unique] }
+  // Production CHECK: from_work_id <> to_work_id
+  Note: '''A factual/claimed connection, not a declaration of canon or quality. Evidence attaches through citations to this record. Multiple source versions can be described in scope_note for v0.1; normalize them later if needed.'''
+}
+
+Table agents {
+  id bigint [pk, ref: - catalog_records.id]
+  agent_kind varchar [not null, note: 'person, organization, collective; unresolved OL event authors deferred.']
+  name varchar [not null]
+  sort_name varchar
+  fuller_name varchar
+  personal_name varchar
+  honorific_title varchar
+  biography text
+  birth_date_text varchar
+  death_date_text varchar
+  founded_date_text varchar
+  dissolved_date_text varchar
+  dates_statement varchar [note: 'Preserves OL author.date free text.']
+  Note: '''One public entity can author, translate, publish, produce, distribute or hold rights. These are credit/claim roles, not separate duplicate person tables. Agent is distinct from a login account.'''
+}
+
+Table credit_roles {
+  code varchar [pk]
+  label varchar [not null]
+  category varchar [not null, note: 'creative, performance, publishing, production, distribution, technology']
+  Note: '''Suggested: author, editor, translator, illustrator, director, screenwriter, actor, narrator, composer, publisher, producer, production_company, distributor, developer, ai_tool. A credit is not proof of rights ownership.'''
+}
+
+Table credits {
+  id bigint [pk, ref: - catalog_records.id]
+  target_record_id bigint [not null, ref: > catalog_records.id]
+  agent_id bigint [not null, ref: > agents.id]
+  role_code varchar [not null, ref: > credit_roles.code]
+  credited_as varchar
+  character_name varchar
+  billing_order int
+  notes text
+  indexes {
+    (target_record_id, role_code)
+    agent_id
+  }
+  Note: '''Target must be work, version, or release. Preserves OL author_role.role and author_role.as. Repeated roles/characters are possible, so no naive unique constraint on person+work alone. Cite significant credits through citations.'''
+}
+
+Table record_names {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  name varchar [not null]
+  name_kind varchar [not null, note: 'alternate, original, translated_title, pseudonym, former_name']
+  language_tag varchar [ref: > languages.tag]
+  country_code varchar
+  source_id bigint [ref: > sources.id]
+  indexes { record_id }
+  Note: '''Maps OL alternate_names and other_titles. A localized title is not by itself evidence of a distinct translation/version. Valid targets: work, version, release, agent.'''
+}
+
+Table languages {
+  tag varchar [pk, note: 'Normalized BCP-47 identifier, e.g. en, fr, zh-Hant.']
+  english_name varchar [not null]
+  native_name varchar
+  Note: '''Resolve imported MARC identifiers explicitly. Keep multiple languages; English discovery is a filter, not an ingestion assumption.'''
+}
+
+Table record_languages {
+  record_id bigint [not null, ref: > catalog_records.id]
+  language_tag varchar [not null, ref: > languages.tag]
+  role varchar [not null, note: 'original, text, spoken, subtitle, translated_from']
+  indexes { (record_id, language_tag, role) [pk] }
+  Note: '''Work original languages; version text/spoken/translation languages; release subtitle/packaging variants as needed. Does not infer original language from an arbitrary imported edition.'''
+}
+
+Table terms {
+  id bigint [pk, increment]
+  vocabulary varchar [not null, note: 'subject, genre, subgenre, tone, setting_place, setting_time, subject_person, audience, technique, lc_classification, dewey']
+  label varchar [not null]
+  normalized_label varchar [not null]
+  parent_id bigint [ref: > terms.id]
+  definition text
+  indexes { (vocabulary, normalized_label) [unique] }
+  Note: '''Classifications and editorial tags have different vocabularies. Animation/anime can be technique terms; do not conflate them with film/series forms. Hierarchy must be cycle-checked.'''
+}
+
+Table record_terms {
+  record_id bigint [not null, ref: > catalog_records.id]
+  term_id bigint [not null, ref: > terms.id]
+  source_id bigint [ref: > sources.id]
+  assignment_method varchar [not null, default: 'imported', note: 'imported, editorial, community, model_suggested']
+  review_status review_status [not null, default: 'unreviewed']
+  indexes { (record_id, term_id) [pk] }
+  Note: '''V0.1 one current assignment per target and term. Pending model suggestions should not automatically become public facts.'''
+}
+
+Table identifiers {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  scheme varchar [not null, note: 'ol_work, ol_edition, ol_author, isbn10, isbn13, oclc, lccn, ia, wikidata, viaf, imdb_title, imdb_name, tmdb_movie, etc.']
+  value varchar [not null]
+  normalized_value varchar [not null]
+  source_id bigint [ref: > sources.id]
+  review_status review_status [not null, default: 'unreviewed']
+  indexes {
+    (record_id, scheme, normalized_value) [unique]
+    (scheme, normalized_value)
+  }
+  Note: '''Do not assume every external identifier is globally clean/unique: reused ISBNs and bad imports exist. Validate scheme formats and target kinds; conflicting matches require reconciliation.'''
+}
+
+Table external_links {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  url text [not null]
+  label varchar
+  link_kind varchar [not null, note: 'official, read, watch, listen, buy, download, project, reference']
+  provider_name varchar
+  territory_code varchar [note: 'ISO country; NULL means unspecified, not worldwide.']
+  access_mode varchar [note: 'free, subscription, rental, purchase, library, unknown']
+  last_checked_at timestamptz
+  expires_at timestamptz
+  source_id bigint [ref: > sources.id]
+  Note: '''Outbound availability/catalog links, not permission to host the content. A watch link may be on a work when exact version/release is unknown.'''
+}
+
+Table media_assets {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  asset_kind varchar [not null, note: 'cover, poster, portrait, still, logo']
+  source_url text
+  storage_key varchar
+  external_asset_id varchar [note: 'Preserve OL cover/photo identifier.']
+  alt_text text
+  width int
+  height int
+  sort_order int [not null, default: 0]
+  attribution text
+  reuse_basis text [note: 'Image rights are separate from underlying work rights.']
+  license_url text
+  source_id bigint [ref: > sources.id]
+  // Production CHECK: source_url IS NOT NULL OR storage_key IS NOT NULL
+  Note: '''One asset association per row for this version. No assumption that covers/posters are public domain because the book is. Deduplicated blob storage is implementation detail.'''
+}
+
+Table sources {
+  id bigint [pk, increment]
+  source_kind varchar [not null, note: 'dataset, webpage, book, interview, legal_record, creator_submission']
+  title varchar [not null]
+  url text
+  publisher_name varchar
+  author_statement text
+  publication_date_text varchar
+  accessed_at timestamptz
+  license_statement text
+  notes text
+  Note: '''An evidence source or data supplier. Its existence does not authorize copying its descriptions/images. Books and interviews may be sources without a URL.'''
+}
+
+Table import_runs {
+  id bigint [pk, increment]
+  source_id bigint [not null, ref: > sources.id]
+  dataset_version varchar
+  raw_archive_location text
+  importer_version varchar [not null]
+  status varchar [not null, default: 'queued']
+  checkpoint jsonb
+  stats jsonb
+  started_at timestamptz
+  finished_at timestamptz
+  Note: '''Resumable batches; retain the raw archive or snapshots according to storage/rights policy. Secrets and signed URLs do not belong here. Imported rows may wait for matching before public pages exist.'''
+}
+
+Table source_records {
+  id bigint [pk, increment]
+  source_id bigint [not null, ref: > sources.id]
+  external_key varchar [not null]
+  last_import_run_id bigint [ref: > import_runs.id]
+  matched_record_id bigint [ref: > catalog_records.id]
+  upstream_revision varchar
+  upstream_updated_at timestamptz
+  payload_hash varchar [not null]
+  raw_payload jsonb [not null]
+  match_status varchar [not null, default: 'unmatched', note: 'unmatched, matched, ambiguous, excluded']
+  upstream_deleted boolean [not null, default: false]
+  field_mapping_version varchar
+  last_seen_at timestamptz [not null]
+  indexes { (source_id, external_key) [unique] }
+  Note: '''Current source snapshot, not exhaustive source-version history. Historical raw input is recoverable via import archives. One source record maps to its primary public record; citations can attach its fields to additional records, e.g. OL edition -> release and language -> version.'''
+}
+
+Table citations {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  source_id bigint [not null, ref: > sources.id]
+  source_record_id bigint [ref: > source_records.id]
+  field_path varchar [note: 'Optional field/owned-child path; e.g. first_publication_year or languages/en.']
+  locator text [note: 'Page, paragraph, timestamp, dataset field path.']
+  short_excerpt text
+  notes text
+  review_status review_status [not null, default: 'unreviewed']
+  checked_by_user_id bigint [ref: > users.id]
+  checked_at timestamptz
+  indexes { record_id }
+  Note: '''Multiple sources per assertion are possible. If source_record_id is set it must belong to source_id. Citation changes are captured in the target record revision; protect access to private evidence.'''
+}
+
+Table rights_statements {
+  id bigint [pk, ref: - catalog_records.id]
+  target_record_id bigint [not null, ref: > catalog_records.id]
+  rights_status varchar [not null, note: 'public_domain, licensed, copyrighted, disputed, unknown']
+  jurisdiction varchar [not null, note: 'US, GB, worldwide_claimed, unspecified; never silently global.']
+  component_scope varchar [not null, note: 'original_text, translation, illustrations, audiovisual, music, whole_item, etc.']
+  license_code varchar [note: 'Exact identifier/version where known, e.g. CC-BY-4.0.']
+  license_url text
+  stated_holder_agent_id bigint [ref: > agents.id]
+  permitted_uses jsonb [note: 'Source-stated terms; NULL unknown. Not machine authorization.']
+  valid_from date
+  valid_until date
+  basis text [not null]
+  reviewed_at timestamptz
+  review_status review_status [not null, default: 'unreviewed']
+  // Production CHECK: valid_until IS NULL OR valid_from IS NULL OR valid_until >= valid_from
+  Note: '''Attach to work/version/release. US public domain of the original does not propagate to translations, covers, music or every country. Store separately sourced statements, not a single safe-to-adapt boolean. No executable licensing or royalty contract in v0.1.'''
+}
+
+Table rights_claims {
+  id bigint [pk, increment]
+  target_record_id bigint [not null, ref: > catalog_records.id]
+  claimant_user_id bigint [not null, ref: > users.id]
+  represented_agent_id bigint [ref: > agents.id]
+  claimed_role varchar [not null, note: 'rights_holder, authorized_representative, creator; these differ.']
+  jurisdiction varchar
+  component_scope varchar
+  statement text [not null]
+  evidence_private jsonb
+  status proposal_status [not null, default: 'pending']
+  reviewer_user_id bigint [ref: > users.id]
+  submitted_at timestamptz [not null, default: `now()`]
+  reviewed_at timestamptz
+  review_note text
+  Note: '''Private review workflow. Accepting identity/representation does not prove every ownership claim and does not permit overwriting community facts. Public rights information goes into sourced rights_statements.'''
+}
+
+Table project_declarations {
+  id bigint [pk, increment]
+  user_id bigint [not null, ref: > users.id]
+  source_work_id bigint [not null, ref: > works.id]
+  resulting_work_id bigint [ref: > works.id]
+  title varchar [not null]
+  proposed_format varchar
+  status varchar [not null, default: 'idea', note: 'idea, developing, producing, released, paused, abandoned']
+  description text
+  project_url text
+  updated_at timestamptz [not null, default: `now()`]
+  Note: '''Opt-in I am working on this declaration, not an exclusive reservation, rights verification, or completed adaptation. Create a relationship only when enough evidence exists.'''
+}
+
+Table users {
+  id bigint [pk, increment]
+  username varchar [not null, unique]
+  display_name varchar
+  bio text
+  created_at timestamptz [not null, default: `now()`]
+  status varchar [not null, default: 'active', note: 'active, suspended, deleted']
+  Note: '''Public profile subset only. Use framework auth for email, credentials, sessions, MFA, and staff groups; those private auth tables are deliberately omitted. Do not equate a user profile with a creator identity.'''
+}
+
+Table lists {
+  id bigint [pk, increment]
+  owner_user_id bigint [not null, ref: > users.id]
+  title varchar [not null]
+  slug varchar [not null, unique]
+  description text
+  list_kind varchar [not null, default: 'personal', note: 'personal or editorial; editorial requires staff permission.']
+  visibility varchar [not null, default: 'private', note: 'public, unlisted, private']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  Note: '''Personal collections and editorial collections share one model. Collection pages are shareable according to visibility. Unlisted is not private access control.'''
+}
+
+Table list_items {
+  id bigint [pk, increment]
+  list_id bigint [not null, ref: > lists.id]
+  work_id bigint [not null, ref: > works.id]
+  position int [not null]
+  annotation text
+  added_at timestamptz [not null, default: `now()`]
+  indexes { (list_id, work_id) [unique] }
+  Note: '''Work-level lists for v0.1. Specific edition collecting can be added later without changing the public work model.'''
+}
+
+Table user_work_states {
+  user_id bigint [not null, ref: > users.id]
+  work_id bigint [not null, ref: > works.id]
+  saved boolean [not null, default: false]
+  wants_adaptation boolean [not null, default: false]
+  progress_status varchar [note: 'want, in_progress, finished, abandoned; labels depend on medium.']
+  rating smallint [note: 'Optional 1-10 overall score.']
+  private_note text
+  visibility varchar [not null, default: 'private']
+  updated_at timestamptz [not null, default: `now()`]
+  indexes { (user_id, work_id) [pk] }
+  // Production CHECK: rating IS NULL OR (rating >= 1 AND rating <= 10)
+  Note: '''Saves, adaptation demand, and basic consumption state. Aggregate counts are derived, not manually maintained copies. Private notes never become public just because rating visibility changes.'''
+}
+
+Table saved_searches {
+  id bigint [pk, increment]
+  user_id bigint [not null, ref: > users.id]
+  label varchar [not null]
+  query_text text
+  filters jsonb [not null]
+  filter_schema_version int [not null, default: 1]
+  created_at timestamptz [not null, default: `now()`]
+  Note: '''Owner-only saved searches. Version filters so changes to names or taxonomies can migrate rather than silently break old searches. Notifications deferred.'''
+}
+
+Table discussion_threads {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  author_user_id bigint [not null, ref: > users.id]
+  title varchar [not null]
+  thread_kind varchar [not null, default: 'discussion', note: 'discussion, review, question']
+  contains_spoilers boolean [not null, default: false]
+  status varchar [not null, default: 'open', note: 'open, locked, hidden']
+  created_at timestamptz [not null, default: `now()`]
+  Note: '''Conversations about a work, version, creator or relationship. Review text lives in the first comment; numeric overall rating lives in user_work_states. Multi-axis ratings deferred.'''
+}
+
+Table comments {
+  id bigint [pk, increment]
+  thread_id bigint [not null, ref: > discussion_threads.id]
+  author_user_id bigint [not null, ref: > users.id]
+  parent_comment_id bigint [ref: > comments.id]
+  body text [not null]
+  status varchar [not null, default: 'visible', note: 'visible, pending, hidden, deleted']
+  created_at timestamptz [not null, default: `now()`]
+  edited_at timestamptz
+  // Production CHECK: parent_comment_id IS NULL OR parent_comment_id <> id
+  Note: '''Parent must belong to the same thread; constrain reply depth and reject cycles. Sanitize rendered content. Reporting, moderator actions and comment history need implementation before broad public launch.'''
+}
+
+Table change_proposals {
+  id bigint [pk, increment]
+  target_record_id bigint [not null, ref: > catalog_records.id]
+  submitted_by_user_id bigint [ref: > users.id]
+  source_record_id bigint [ref: > source_records.id]
+  origin varchar [not null, note: 'human, import, model']
+  operation varchar [not null, default: 'edit', note: 'create, edit, merge, suppress, restore']
+  merge_into_record_id bigint [ref: > catalog_records.id]
+  base_revision_no int [not null]
+  proposed_patch jsonb [not null]
+  patch_schema_version int [not null, default: 1]
+  reason text
+  status proposal_status [not null, default: 'pending']
+  reviewer_user_id bigint [ref: > users.id]
+  review_note text
+  submitted_at timestamptz [not null, default: `now()`]
+  reviewed_at timestamptz
+  indexes { (status, submitted_at) }
+  Note: '''Create proposals target a draft record. Patch includes proposed sources and owned child changes. Validate against an allowlist; never execute arbitrary patch paths. Bulk changes can later use proposal bundles. Review before publishing; conflicts do not silently win.'''
+}
+
+Table record_revisions {
+  id bigint [pk, increment]
+  record_id bigint [not null, ref: > catalog_records.id]
+  revision_no int [not null]
+  proposal_id bigint [ref: > change_proposals.id]
+  actor_user_id bigint [ref: > users.id]
+  import_run_id bigint [ref: > import_runs.id]
+  change_summary text
+  snapshot jsonb [not null, note: 'Post-change canonical aggregate including owned children and citation refs.']
+  snapshot_schema_version int [not null, default: 1]
+  created_at timestamptz [not null, default: `now()`]
+  indexes { (record_id, revision_no) [unique] }
+  Note: '''Immutable accepted-state history. Initial revision is recorded too. Database transactions keep record revision counters and snapshots consistent. Snapshot private data redaction requires an explicit audited policy.'''
+}
+
+TableGroup Identity_and_history {
+  catalog_records
+  change_proposals
+  record_revisions
+}
+
+TableGroup Works_and_versions {
+  work_types
+  works
+  versions
+  releases
+  book_release_details
+}
+
+TableGroup Relationships {
+  work_components
+  release_contents
+  relationship_types
+  work_relationships
+}
+
+TableGroup People_and_organizations {
+  agents
+  credit_roles
+  credits
+}
+
+TableGroup Discovery_and_metadata {
+  record_names
+  languages
+  record_languages
+  terms
+  record_terms
+  identifiers
+  external_links
+  media_assets
+}
+
+TableGroup Evidence_and_imports {
+  sources
+  import_runs
+  source_records
+  citations
+}
+
+TableGroup Rights_and_participation {
+  rights_statements
+  rights_claims
+  project_declarations
+}
+
+TableGroup Community {
+  users
+  lists
+  list_items
+  user_work_states
+  saved_searches
+  discussion_threads
+  comments
+}
+
+// OPEN LIBRARY FIELD CROSSWALK -- each property in the reviewed JSON schemas
+// OL work.key -> identifiers (ol_work/ol_edition/ol_author); internal IDs in catalog_records
+// OL work.title -> matching typed record title
+// OL work.subtitle -> matching typed record subtitle
+// OL work.type -> typed row + record kind; not a direct copy of OL /type
+// OL work.authors -> credits + agents (role and credited_as preserved)
+// OL work.covers -> media_assets (external_asset_id, source URL and image rights)
+// OL work.links -> external_links
+// OL work.lc_classifications -> terms + record_terms, vocabulary=lc_classification
+// OL work.subjects -> terms + record_terms, vocabulary=subject
+// OL work.genres -> terms + record_terms, vocabulary=genre
+// OL work.subgenres -> terms vocabulary=subgenre
+// OL work.audiences -> terms vocabulary=audience
+// OL work.first_publish_date -> works.first_publication_date_text + optional parsed year
+// OL work.description -> matching typed record description
+// OL work.notes -> matching typed record notes
+// OL work.revision -> source_records.upstream_revision; independent local record_revisions
+// OL work.latest_revision -> raw_payload; source upstream revision, not local counter
+// OL work.created -> raw_payload for upstream timestamps; local catalog_records.created_at
+// OL work.last_modified -> source_records.upstream_updated_at; local updated_at separate
+// OL edition.key -> identifiers (ol_work/ol_edition/ol_author); internal IDs in catalog_records
+// OL edition.title -> matching typed record title
+// OL edition.subtitle -> matching typed record subtitle
+// OL edition.type -> typed row + record kind; not a direct copy of OL /type
+// OL edition.authors -> credits on release, reconciled with work/version credits; do not duplicate blindly
+// OL edition.works -> releases.version_id -> versions.work_id (OL schema currently allows exactly one work)
+// OL edition.identifiers -> identifiers with namespaced scheme
+// OL edition.isbn_10 -> identifiers scheme=isbn10
+// OL edition.isbn_13 -> identifiers scheme=isbn13
+// OL edition.lccn -> identifiers scheme=lccn
+// OL edition.ocaid -> identifiers scheme=ia
+// OL edition.oclc_numbers -> identifiers scheme=oclc
+// OL edition.local_id -> identifiers with supplier-specific namespace
+// OL edition.covers -> media_assets (external_asset_id, source URL and image rights)
+// OL edition.links -> external_links
+// OL edition.languages -> record_languages on version/release as appropriate
+// OL edition.translated_from -> record_languages role=translated_from on version
+// OL edition.translation_of -> versions.translation_of_title
+// OL edition.by_statement -> releases.by_statement
+// OL edition.weight -> book_release_details.weight
+// OL edition.edition_name -> releases.edition_name
+// OL edition.number_of_pages -> book_release_details.number_of_pages
+// OL edition.pagination -> book_release_details.pagination
+// OL edition.physical_dimensions -> book_release_details.physical_dimensions
+// OL edition.physical_format -> releases.format; original value in raw_payload
+// OL edition.copyright_date -> releases.copyright_date_text
+// OL edition.publish_country -> releases.country_code via explicit MARC mapping
+// OL edition.publish_date -> releases.publication_date_text + optional parsed year
+// OL edition.publish_places -> releases.publication_places
+// OL edition.publishers -> releases.publisher_statement + resolved agents/credits
+// OL edition.contributions -> releases.contributions_statement + reviewed credits
+// OL edition.dewey_decimal_class -> terms vocabulary=dewey
+// OL edition.genres -> terms + record_terms, vocabulary=genre
+// OL edition.lc_classifications -> terms + record_terms, vocabulary=lc_classification
+// OL edition.other_titles -> record_names
+// OL edition.series -> releases.series_statement; optionally reviewed work_components
+// OL edition.source_records -> raw_payload and resolved sources/citations where possible
+// OL edition.subjects -> terms + record_terms, vocabulary=subject
+// OL edition.work_titles -> book_release_details.work_titles_raw; reviewed aliases if appropriate
+// OL edition.table_of_contents -> book_release_details.table_of_contents_raw + resolved release_contents
+// OL edition.description -> matching typed record description
+// OL edition.first_sentence -> book_release_details.first_sentence
+// OL edition.notes -> matching typed record notes
+// OL edition.revision -> source_records.upstream_revision; independent local record_revisions
+// OL edition.latest_revision -> raw_payload; source upstream revision, not local counter
+// OL edition.created -> raw_payload for upstream timestamps; local catalog_records.created_at
+// OL edition.last_modified -> source_records.upstream_updated_at; local updated_at separate
+// OL author.key -> identifiers (ol_work/ol_edition/ol_author); internal IDs in catalog_records
+// OL author.name -> agents.name
+// OL author.type -> typed row + record kind; not a direct copy of OL /type
+// OL author.alternate_names -> record_names
+// OL author.bio -> agents.biography
+// OL author.birth_date -> agents.birth_date_text
+// OL author.death_date -> agents.death_date_text
+// OL author.date -> agents.dates_statement
+// OL author.entity_type -> agents.agent_kind; OL event authors kept unmatched/raw for later event model
+// OL author.fuller_name -> agents.fuller_name
+// OL author.personal_name -> agents.personal_name
+// OL author.title -> agents.honorific_title
+// OL author.photos -> media_assets asset_kind=portrait
+// OL author.links -> external_links
+// OL author.remote_ids -> identifiers (wikidata, viaf, etc.)
+// OL author.revision -> source_records.upstream_revision; independent local record_revisions
+// OL author.latest_revision -> raw_payload; source upstream revision, not local counter
+// OL author.created -> raw_payload for upstream timestamps; local catalog_records.created_at
+// OL author.last_modified -> source_records.upstream_updated_at; local updated_at separate
