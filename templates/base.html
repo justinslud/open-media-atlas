@@ -1,0 +1,26 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Open Media Atlas: discover works and their creative relationships.">
+  <title>{% block title %}Open Media Atlas{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/oma.css' %}">
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="{% url 'home' %}"><span aria-hidden="true">OMA</span><span class="brand-long">Open Media Atlas</span></a>
+      <form class="nav-search" action="{% url 'discover' %}" method="get" role="search">
+        <label class="sr-only" for="nav-q">Search titles</label>
+        <input id="nav-q" type="search" name="q" placeholder="Search titles…">
+      </form>
+      <nav aria-label="Main navigation"><a href="{% url 'discover' %}">Browse catalog</a><a href="/admin/">Admin</a></nav>
+    </div>
+  </header>
+  <main id="main" class="page-wrap">{% block content %}{% endblock %}</main>
+  <footer class="site-footer"><div class="page-wrap">Open Media Atlas · An evolving catalog of creative connections</div></footer>
+</body>
+</html>
