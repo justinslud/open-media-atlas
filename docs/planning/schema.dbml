@@ -101,7 +101,7 @@ Table catalog_records {
   kind record_kind [not null]
   slug varchar [unique, note: 'Stable ID is canonical; slug may change.']
   visibility varchar [not null, default: 'public', note: 'public, draft, suppressed']
-  depth varchar [not null, default: 'index', note: 'index or editorial; not a quality guarantee']
+  depth varchar [not null, default: 'index', note: 'index or editorial; not a quality guarantee. A qualifying index record may be public without editorial enrichment.']
   revision_no int [not null, default: 1]
   redirect_to_id bigint [ref: > catalog_records.id]
   created_at timestamptz [not null, default: `now()`]
@@ -156,6 +156,8 @@ Table versions {
   is_abridged boolean [note: 'NULL means unknown, not false.']
   translation_of_title varchar [note: 'OL translation_of verbatim, not a foreign key.']
   version_statement text
+  page_mode varchar [not null, default: 'embedded', note: 'embedded or standalone; presentation only and does not change version identity.']
+  page_mode_reason text [note: 'Reviewed reason for standalone presentation; decision history belongs in record revisions.']
   indexes { work_id }
   // Production CHECK: based_on_version_id IS NULL OR based_on_version_id <> id
   // Production CHECK: runtime_seconds IS NULL OR runtime_seconds > 0

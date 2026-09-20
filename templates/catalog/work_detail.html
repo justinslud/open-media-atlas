@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ work.title }} · Open Media Atlas{% endblock %}
+{% block content %}
+{% if work.is_demo %}<div class="demo-banner"><strong>Demonstration record</strong> — This work and all associated facts and sources are fictional.</div>{% endif %}
+<article>
+  <header class="work-header">
+    <div class="work-cover format-{{ work.work_type.medium }}"><span>{{ work.work_type.label }}</span><strong>{{ work.title }}</strong></div>
+    <div class="work-identity"><p class="eyebrow">{{ work.work_type.medium|upper }} · {{ work.work_type.label|upper }}</p><h1>{{ work.title }}</h1>
+      <p class="byline">{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.role|capfirst }} by <strong>{{ credit.agent.name }}</strong>{% endif %}{% empty %}Creator not yet recorded{% endfor %}</p>
+      <p class="lede">{{ work.description|default:"This index record currently has no description." }}</p>
+      <a class="primary-action" href="#relationships">Explore connections</a>
+    </div>
+  </header>
+  <div class="content-grid">
+    <div>
+      <section id="relationships" class="content-section"><p class="eyebrow">IMMEDIATE CONNECTIONS</p><h2>Relationships</h2>
+        {% if work.outgoing_relationships.all or work.incoming_relationships.all %}
+        <div class="relationship-list">
+          {% for rel in work.outgoing_relationships.all %}<div class="relationship-row"><span class="relation-label">{{ rel.relationship_type.label }}</span><a href="{{ rel.to_work.get_absolute_url }}"><strong>{{ rel.to_work.title }}</strong><small>{{ rel.to_work.work_type.label }} · {{ rel.to_work.first_publication_date_text|default:"Date unknown" }}</small></a><details><summary>Evidence</summary><p>{{ rel.scope_note|default:"Direct catalog relationship." }}</p><p>Source: {{ rel.source.title }}. Authorization status: {{ rel.authorization_status }}.</p></details></div>{% endfor %}
+          {% for rel in work.incoming_relationships.all %}<div class="relationship-row"><span class="relation-label">{{ rel.relationship_type.inverse_label }}</span><a href="{{ rel.from_work.get_absolute_url }}"><strong>{{ rel.from_work.title }}</strong><small>{{ rel.from_work.work_type.label }} · {{ rel.from_work.first_publication_date_text|default:"Date unknown" }}</small></a><details><summary>Evidence</summary><p>{{ rel.scope_note|default:"Direct catalog relationship." }}</p><p>Source: {{ rel.source.title }}. Authorization status: {{ rel.authorization_status }}.</p></details></div>{% endfor %}
+        </div>{% else %}<p class="empty">No accepted relationships are recorded for this work yet.</p>{% endif %}
+      </section>
+      <section class="content-section"><p class="eyebrow">ABOUT THIS WORK</p><h2>Description</h2><p class="prose">{{ work.description|default:"No description has been added. This thin index record remains public because it meets the minimum identity standard." }}</p></section>
+      {% if work.versions.all %}<section id="versions" class="content-section"><p class="eyebrow">VERSIONS &amp; EDITIONS</p><h2>Available forms</h2>
+        <div class="version-list">{% for version in work.versions.all %}<details class="version" id="version-{{ version.id }}" {% if forloop.first %}open{% endif %}><summary><span><strong>{{ version.label }}{% if version.title %} / {{ version.title }}{% endif %}</strong><small>{{ version.get_kind_display }}{% if version.language %} · {{ version.language }}{% endif %}{% if version.contributor_note %} · {{ version.contributor_note }}{% endif %}</small></span><span>{{ version.releases.all|length }} release{{ version.releases.all|length|pluralize }}</span></summary>
+          {% for release in version.releases.all %}<div class="release-row" id="release-{{ release.id }}"><span>{{ release.publication_date_text|default:"Date unknown" }}</span><span>{{ release.format|default:"Format unknown" }}</span><span><strong>{{ release.edition_name|default:release.title }}</strong>{% if release.publisher_statement %}<br><small>{{ release.publisher_statement }}</small>{% endif %}</span>{% if release.pages %}<span>{{ release.pages }} pages</span>{% endif %}</div>{% empty %}<p class="empty compact">No releases recorded for this version.</p>{% endfor %}
+        </details>{% endfor %}</div></section>{% endif %}
+    </div>
+    <aside class="sidebar" aria-label="Work details">
+      <section><h2>Details</h2><dl class="metadata"><dt>Form</dt><dd>{{ work.work_type.label }}</dd><dt>Original date</dt><dd>{{ work.first_publication_date_text|default:"Unknown" }}</dd><dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd><dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">An index record meets OMA’s identity standard but may not have full editorial detail.</p></section>
+      <section><h2>Creators</h2>{% for credit in work.credits.all %}<div class="credit-row"><span>{{ credit.role|capfirst }}</span><strong>{{ credit.agent.name }}</strong></div>{% empty %}<p class="empty compact">No creator credits recorded.</p>{% endfor %}</section>
+      <section><h2>Sources</h2><ul class="source-list">{% for link in work.source_links.all %}<li>{% if link.source.url %}<a href="{{ link.source.url }}">{{ link.source.title }}</a>{% else %}{{ link.source.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% empty %}<li>No public source references.</li>{% endfor %}</ul></section>
+    </aside>
+  </div>
+</article>
+<script>document.addEventListener("DOMContentLoaded",()=>{const target=document.querySelector(location.hash);if(target?.tagName==="DETAILS")target.open=true})</script>
+{% endblock %}
