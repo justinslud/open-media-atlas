@@ -225,3 +225,4 @@ class ExternalIdentifier(models.Model):
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=("work", "scheme", "value"), name="unique_external_identifier")]
+
