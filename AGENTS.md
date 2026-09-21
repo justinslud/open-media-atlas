@@ -10,6 +10,9 @@
 - Setup: `python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt`
 - Migrate: `python manage.py migrate`
 - Load/update demo fixtures: `python manage.py load_demo_catalog`
+- Dry-run curated import: `python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24 --dry-run`
+- Import curated records: `python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24`
+- Seed reviewed relationships: `python manage.py load_curated_relationships`
 - Run after setup: `DJANGO_DEBUG=true python manage.py runserver 0.0.0.0:8000`
 - Test: `DJANGO_DEBUG=true python manage.py test`
 - Migration check: `DJANGO_DEBUG=true python manage.py makemigrations --check --dry-run`
@@ -26,4 +29,5 @@
 - Versions stay embedded by default; standalone presentation never changes version identity. Never infer rights ownership from credits or representation claims.
 - Do not add bulk ingestion, AI enrichment, transactions/licensing, comments, recommendations, public editing, or new infrastructure without a scoped milestone.
 - Never commit secrets or portray fictional fixture facts as real.
+- Never run network imports during a web request, build, migration, or startup. Always use explicit IDs and a bounded `--limit`.
 

@@ -62,6 +62,7 @@ class Credit(models.Model):
     role = models.CharField(max_length=60)
     credited_as = models.CharField(max_length=200, blank=True)
     billing_order = models.PositiveIntegerField(default=0)
+    source = models.ForeignKey("Source", on_delete=models.PROTECT, null=True, blank=True, related_name="credits")
 
     class Meta:
         ordering = ("billing_order", "id")
@@ -109,6 +110,70 @@ class Source(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class SourceRecord(models.Model):
+    source = models.ForeignKey(Source, on_delete=models.PROTECT, related_name="records")
+    external_key = models.CharField(max_length=200)
+    matched_work = models.ForeignKey(Work, on_delete=models.SET_NULL, null=True, blank=True, related_name="source_records")
+    payload_hash = models.CharField(max_length=64)
+    raw_payload = models.JSONField()
+    retrieved_at = models.DateTimeField()
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("source", "external_key"), name="unique_source_external_key")]
+
+    def __str__(self):
+        return f"{self.source}: {self.external_key}"
+
+
+class ImportedWorkState(models.Model):
+    """Last accepted supplier values, used to avoid overwriting editorial changes."""
+
+    source_record = models.OneToOneField(SourceRecord, on_delete=models.CASCADE, related_name="work_state")
+    imported_title = models.CharField(max_length=300)
+    imported_date_text = models.CharField(max_length=80, blank=True)
+    imported_year = models.IntegerField(null=True, blank=True)
+
+
+class ImportRun(models.Model):
+    class Status(models.TextChoices):
+        RUNNING = "running", "Running"
+        COMPLETED = "completed", "Completed"
+        COMPLETED_WITH_ERRORS = "completed_with_errors", "Completed with errors"
+
+    source = models.ForeignKey(Source, on_delete=models.PROTECT, related_name="import_runs")
+    status = models.CharField(max_length=30, choices=Status.choices, default=Status.RUNNING)
+    requested_keys = models.JSONField(default=list)
+    stats = models.JSONField(default=dict)
+    started_at = models.DateTimeField(auto_now_add=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.source} import {self.pk} ({self.status})"
+
+
+class ImportItem(models.Model):
+    run = models.ForeignKey(ImportRun, on_delete=models.CASCADE, related_name="items")
+    external_key = models.CharField(max_length=200)
+    status = models.CharField(max_length=20, choices=[("created", "Created"), ("updated", "Updated"), ("skipped", "Skipped"), ("failed", "Failed")])
+    work = models.ForeignKey(Work, on_delete=models.SET_NULL, null=True, blank=True)
+    message = models.TextField(blank=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("run", "external_key"), name="unique_import_run_item")]
+
+
+class FeaturedWork(models.Model):
+    work = models.OneToOneField(Work, on_delete=models.CASCADE, related_name="featured")
+    position = models.PositiveSmallIntegerField(default=0)
+    note = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        ordering = ("position", "id")
+
+    def __str__(self):
+        return self.work.title
 
 
 class WorkSource(models.Model):
