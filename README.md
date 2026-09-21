@@ -63,6 +63,38 @@ No default administrator is created. To add one later, use the Render service's
 Shell tab and run `python manage.py createsuperuser`; enter a unique password in
 that private prompt. Never place admin credentials in Blueprint variables.
 
+### Load the real starter catalog
+
+Imports are deliberately **not** part of `build.sh`: a deploy never makes
+third-party requests or changes catalog content unexpectedly. After the new
+migration has deployed, open the web service's **Shell** tab and run:
+
+```bash
+python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24 --dry-run
+python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24
+python manage.py load_curated_relationships
+```
+
+The first command validates the bounded selection without writing. The second
+imports 24 selected Open Library works and records an inspectable import run;
+the third adds three reviewed film relationships and the initial editable
+homepage selection. Both writing commands are safe to repeat. Once any real
+public record exists, demonstration records remain in admin but are omitted
+from public pages.
+
+For an ad hoc bounded import, pass explicit IDs instead:
+
+```bash
+python manage.py import_openlibrary OL872932W OL39745868W --limit 2
+```
+
+Inspect runs and per-item created/updated/skipped/failed results under **Import
+runs** in Django admin. Imported source snapshots remain distinct from accepted
+catalog fields; reimports update an unchanged imported value but preserve a
+manual editorial override. No rights status or generated description is added.
+To retry only failures from a run, use
+`python manage.py import_openlibrary --retry-run RUN_ID --limit 24`.
+
 To avoid charges, do not apply the Blueprint. If staging is no longer needed,
 delete both the web service and database in Render; suspending only the web
 service does not necessarily stop database billing. Render displays the exact
