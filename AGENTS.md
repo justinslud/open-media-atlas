@@ -30,3 +30,4 @@
 - Do not add bulk ingestion, AI enrichment, transactions/licensing, comments, recommendations, public editing, or new infrastructure without a scoped milestone.
 - Never commit secrets or portray fictional fixture facts as real.
 - Never run network imports during a web request, build, migration, or startup. Always use explicit IDs and a bounded `--limit`.
+

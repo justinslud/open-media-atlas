@@ -9,6 +9,11 @@ def public_works():
     if works.filter(is_demo=False).exists():
         works = works.filter(is_demo=False)
     return works
+from .models import Work, WorkRelationship, WorkType
+
+
+def public_works():
+    return Work.objects.filter(visibility=Work.Visibility.PUBLIC)
 
 
 def health(request):
@@ -21,6 +26,7 @@ def home(request):
     featured = public.filter(pk__in=selected_ids).select_related("work_type").prefetch_related("credits__agent").order_by("featured__position")[:6]
     if not featured:
         featured = public.select_related("work_type").prefetch_related("credits__agent")[:6]
+    featured = public_works().select_related("work_type").prefetch_related("credits__agent")[:4]
     return render(request, "catalog/home.html", {"featured": featured})
 
 
@@ -47,6 +53,7 @@ def work_detail(request, pk, slug):
     work = get_object_or_404(
         public_works().select_related("work_type").prefetch_related(
             "credits__agent", "versions__releases", "source_links__source", "identifiers",
+            "credits__agent", "versions__releases", "source_links__source",
             Prefetch("outgoing_relationships", queryset=accepted), Prefetch("incoming_relationships", queryset=accepted),
         ), pk=pk,
     )

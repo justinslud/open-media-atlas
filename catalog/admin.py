@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import (Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
     ImportItem, ImportRun, Release, RelationshipType, Source, SourceRecord, Version,
     Work, WorkRelationship, WorkSource, WorkType)
+from .models import Agent, Credit, ExternalIdentifier, Release, RelationshipType, Source, Version, Work, WorkRelationship, WorkSource, WorkType
 
 
 class CreditInline(admin.TabularInline):
@@ -70,3 +71,6 @@ class ImportedWorkStateAdmin(admin.ModelAdmin):
 admin.site.register(FeaturedWork)
 admin.site.site_header = "Open Media Atlas administration"
 admin.site.site_title = "OMA admin"
+admin.site.site_header = "Open Media Atlas administration"
+admin.site.site_title = "OMA admin"
+

@@ -26,6 +26,7 @@ def fake_open(payloads):
         return JsonResponse(json.dumps(next(responses)).encode())
 
     return opener
+from .models import Credit, ExternalIdentifier, Release, Version, Work, WorkRelationship, WorkSource
 
 
 class CatalogTests(TestCase):
