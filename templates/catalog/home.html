@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="intro" aria-labelledby="intro-title">
+  <p class="eyebrow">OPEN MEDIA ATLAS</p>
+  <h1 id="intro-title">Follow stories across forms.</h1>
+  <p>Discover books, films, and other works—and see the translations, editions, adaptations, and creative relationships that connect them.</p>
+  <form class="home-search" action="{% url 'discover' %}" method="get" role="search">
+    <label for="home-q">Search the catalog</label>
+    <div class="search-line"><input id="home-q" name="q" type="search" placeholder="Try “Glass Orchard”"><button type="submit">Search</button></div>
+  </form>
+</section>
+<section class="section-rule" aria-labelledby="featured-title">
+  <div class="section-heading"><div><p class="eyebrow">A SMALL START</p><h2 id="featured-title">Explore the demonstration catalog</h2></div><a href="{% url 'discover' %}">Browse all works →</a></div>
+  <p class="notice"><strong>Demonstration data:</strong> Every title, creator, date, and source in this initial catalog is fictional.</p>
+  <div class="featured-grid">
+    {% for work in featured %}<a class="featured-work" href="{{ work.get_absolute_url }}">
+      <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</span>
+      <span><strong>{{ work.title }}</strong><small>{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</small></span>
+    </a>{% empty %}<p class="empty">No public works yet. Run the demonstration fixture command to begin.</p>{% endfor %}
+  </div>
+</section>
+{% endblock %}
+
