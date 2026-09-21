@@ -1,0 +1,49 @@
+# Verified against Open Library search and work records on 2026-09-21.
+# Siddhartha — Hermann Hesse
+OL872932W
+# Spiritual Enlightenment: The Damnedest Thing — Jed McKenna
+OL39745868W
+# Pride and Prejudice — Jane Austen
+OL66554W
+# Frankenstein; or, The Modern Prometheus — Mary Shelley
+OL450063W
+# Dracula — Bram Stoker
+OL85892W
+# Jane Eyre — Charlotte Brontë
+OL1095427W
+# Wuthering Heights — Emily Brontë
+OL21177W
+# Moby Dick — Herman Melville
+OL102749W
+# The Great Gatsby — F. Scott Fitzgerald
+OL468431W
+# Nineteen Eighty-Four — George Orwell
+OL1168083W
+# Animal Farm — George Orwell
+OL1168007W
+# Brave New World — Aldous Huxley
+OL64365W
+# To Kill a Mockingbird — Harper Lee
+OL3140822W
+# Beloved — Toni Morrison
+OL50548W
+# The Color Purple — Alice Walker
+OL273644W
+# The Handmaid's Tale — Margaret Atwood
+OL675783W
+# Fahrenheit 451 — Ray Bradbury
+OL103123W
+# Dune — Frank Herbert
+OL893414W
+# The Hobbit — J. R. R. Tolkien
+OL27482W
+# The Lord of the Rings — J. R. R. Tolkien
+OL27448W
+# Rebecca — Daphne du Maurier
+OL36633W
+# A Room with a View — E. M. Forster
+OL88813W
+# The Remains of the Day — Kazuo Ishiguro
+OL59048W
+# Never Let Me Go — Kazuo Ishiguro
+OL59038W
