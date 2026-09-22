@@ -19,7 +19,9 @@
       </form>
       <nav aria-label="Main navigation">
         <a href="{% url 'discover' %}">Browse catalog</a>
+        <a href="{% url 'public-lists' %}">Public lists</a>
         {% if user.is_authenticated %}
+          <a href="{% url 'my-lists' %}">My lists</a>
           <a href="{% url 'accounts:account' %}">Account</a>
           <form class="nav-action" action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}<button type="submit">Log out</button></form>
         {% else %}
