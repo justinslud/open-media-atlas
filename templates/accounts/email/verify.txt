@@ -1,0 +1,6 @@
+Hello {{ username }},
+
+Verify your Open Media Atlas email address:
+{{ verify_url }}
+
+If you did not create this account, you can ignore this message.

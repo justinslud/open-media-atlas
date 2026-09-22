@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Log in · Open Media Atlas{% endblock %}{% block content %}
+<section class="account-panel"><p class="eyebrow">ACCOUNT</p><h1>Log in</h1><form method="post">{% include "accounts/_form.html" %}<button type="submit">Log in</button></form>
+<p class="account-links"><a href="{% url 'accounts:password_reset' %}">Forgot your password?</a> · <a href="{% url 'accounts:signup' %}">Create an account</a></p></section>{% endblock %}
