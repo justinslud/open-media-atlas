@@ -25,15 +25,17 @@ For PostgreSQL, set `DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DBNAME`. 
 
 Local development uses Django's console email backend by default, so verification
 and reset links appear in the developer terminal. Automated tests explicitly use
-the in-memory test backend. Production never falls back to console email: startup
-fails with a clear configuration error when an SMTP host is missing.
+the in-memory test backend. Production uses SMTP and defaults to `localhost` when
+an SMTP host has not been configured. This keeps build and administrative commands
+usable before optional mail credentials are supplied; delivery attempts fail
+honestly in the account UI until a reachable SMTP provider is configured.
 
 Configure an SMTP provider with credentials obtained from that provider (OMA does
 not provision or require a paid service):
 
 | Variable | Required production value |
 | --- | --- |
-| `EMAIL_HOST` | SMTP hostname (required) |
+| `EMAIL_HOST` | SMTP hostname; defaults to `localhost` |
 | `EMAIL_PORT` | SMTP port; defaults to `587` |
 | `EMAIL_HOST_USER` | SMTP username, if the provider requires one |
 | `EMAIL_HOST_PASSWORD` | SMTP password or API credential, stored as a secret |
