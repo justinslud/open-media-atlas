@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Your account · Open Media Atlas{% endblock %}{% block content %}
+<section class="account-panel"><p class="eyebrow">ACCOUNT</p><h1>Your account</h1><dl class="metadata"><dt>Username</dt><dd>{{ user.username }}</dd><dt>Email</dt><dd>{{ user.email }}</dd><dt>Status</dt><dd>{% if verification.is_verified %}<span class="status-good">Verified</span>{% else %}Not verified{% endif %}</dd></dl>
+{% if not verification.is_verified %}<p class="helper">Verify your email before future member-only features become available.</p><form method="post" action="{% url 'accounts:resend_verification' %}">{% csrf_token %}<button type="submit">Send verification email</button></form>{% endif %}</section>{% endblock %}

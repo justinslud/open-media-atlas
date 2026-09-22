@@ -17,10 +17,22 @@
         <label class="sr-only" for="nav-q">Search titles</label>
         <input id="nav-q" type="search" name="q" placeholder="Search titles…">
       </form>
-      <nav aria-label="Main navigation"><a href="{% url 'discover' %}">Browse catalog</a><a href="/admin/">Admin</a></nav>
+      <nav aria-label="Main navigation">
+        <a href="{% url 'discover' %}">Browse catalog</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'accounts:account' %}">Account</a>
+          <form class="nav-action" action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}<button type="submit">Log out</button></form>
+        {% else %}
+          <a href="{% url 'accounts:login' %}?next={{ request.get_full_path|urlencode }}">Log in</a>
+          <a href="{% url 'accounts:signup' %}">Sign up</a>
+        {% endif %}
+      </nav>
     </div>
   </header>
-  <main id="main" class="page-wrap">{% block content %}{% endblock %}</main>
+  <main id="main" class="page-wrap">
+    {% if messages %}<div class="messages" aria-live="polite">{% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
   <footer class="site-footer"><div class="page-wrap">Open Media Atlas · An evolving catalog of creative connections</div></footer>
 </body>
 </html>

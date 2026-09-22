@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Verify email · Open Media Atlas{% endblock %}{% block content %}
+<section class="account-panel"><h1>Verify your email</h1>{% if valid %}<p>Confirm that this email address belongs to you.</p><form method="post">{% csrf_token %}<button type="submit">Verify email</button></form>{% else %}<p>This verification link is invalid, expired, or has already been used.</p>{% if user.is_authenticated %}<p><a href="{% url 'accounts:account' %}">Return to your account</a> to request another.</p>{% endif %}{% endif %}</section>{% endblock %}
