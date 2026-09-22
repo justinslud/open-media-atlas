@@ -7,12 +7,17 @@ from pathlib import Path
 from unittest.mock import patch
 
 from django.core.management import call_command
+from django.contrib.auth import get_user_model
+from django.db import IntegrityError, transaction
 from django.test import TestCase
 from django.urls import reverse
+from django.utils import timezone
+
+from accounts.models import EmailVerification
 
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
 from .models import (Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ImportItem, ImportRun, Release, Version, Work, WorkRelationship, WorkSource,
+    ImportItem, ImportRun, MediaList, MediaListEntry, Release, Version, Work, WorkRelationship, WorkSource,
     WorkType)
 
 
@@ -212,3 +217,75 @@ class OpenLibraryImportTests(TestCase):
         self.assertContains(self.client.get(book.get_absolute_url()), film.get_absolute_url())
         self.assertContains(self.client.get(film.get_absolute_url()), book.get_absolute_url())
         self.assertEqual(WorkRelationship.objects.filter(from_work=film, to_work=book).count(), 1)
+
+
+class MediaListTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.owner = get_user_model().objects.create_user("curator", "curator@example.test", "password123")
+        cls.other = get_user_model().objects.create_user("stranger", "stranger@example.test", "password123")
+        cls.book = WorkType.objects.create(code="test-book", label="Novel", medium="text")
+        cls.film = WorkType.objects.create(code="test-film", label="Film", medium="screen")
+        cls.work_a = Work.objects.create(title="Published book", slug="published-book", work_type=cls.book, visibility="public")
+        cls.work_b = Work.objects.create(title="Published film", slug="published-film", work_type=cls.film, visibility="public")
+
+    def test_private_list_is_hidden_by_direct_url_and_mutations_are_owner_only(self):
+        item = MediaList.objects.create(owner=self.owner, title="Private picks")
+        self.assertEqual(self.client.get(item.get_absolute_url()).status_code, 404)
+        self.client.force_login(self.other)
+        self.assertEqual(self.client.get(item.get_absolute_url()).status_code, 404)
+        self.assertEqual(self.client.get(reverse("list-edit", args=[item.pk])).status_code, 404)
+        self.assertEqual(self.client.post(reverse("list-add-work", args=[item.pk, self.work_a.pk])).status_code, 404)
+        self.client.force_login(self.owner)
+        self.assertContains(self.client.get(item.get_absolute_url()), "Private picks")
+
+    def test_publishing_requires_verified_email_but_private_creation_does_not(self):
+        self.client.force_login(self.owner)
+        response = self.client.post(reverse("list-create"), {"title": "Unverified", "description": "", "visibility": "public"})
+        self.assertContains(response, "Verify your email address")
+        self.assertFalse(MediaList.objects.exists())
+        response = self.client.post(reverse("list-create"), {"title": "Private okay", "description": "", "visibility": "private"})
+        self.assertEqual(response.status_code, 302)
+        EmailVerification.objects.create(user=self.owner, verified_at=timezone.now())
+        item = MediaList.objects.get()
+        response = self.client.post(reverse("list-edit", args=[item.pk]), {"title": item.title, "description": "", "visibility": "public"})
+        self.assertEqual(response.status_code, 302)
+        item.refresh_from_db()
+        self.assertEqual(item.visibility, "public")
+
+    def test_mixed_media_duplicates_ordering_and_deletion(self):
+        item = MediaList.objects.create(owner=self.owner, title="Mixed")
+        self.client.force_login(self.owner)
+        self.client.post(reverse("list-add-work", args=[item.pk, self.work_a.pk]))
+        self.client.post(reverse("list-add-work", args=[item.pk, self.work_b.pk]))
+        self.client.post(reverse("list-add-work", args=[item.pk, self.work_a.pk]))
+        self.assertEqual(item.entries.count(), 2)
+        second = item.entries.get(work=self.work_b)
+        self.client.post(reverse("list-entry-move", args=[item.pk, second.pk, "up"]))
+        self.assertEqual(list(item.entries.values_list("work_id", flat=True)), [self.work_b.pk, self.work_a.pk])
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            MediaListEntry.objects.create(media_list=item, work=self.work_a, position=3)
+        self.client.post(reverse("list-delete", args=[item.pk]))
+        self.assertFalse(MediaList.objects.filter(pk=item.pk).exists())
+
+    def test_unpublished_work_details_hidden_publicly_but_owner_warned(self):
+        item = MediaList.objects.create(owner=self.owner, title="Public", visibility="public")
+        MediaListEntry.objects.create(media_list=item, work=self.work_a, commentary="My private-ish note", position=1)
+        self.work_a.visibility = Work.Visibility.DRAFT
+        self.work_a.save()
+        response = self.client.get(item.get_absolute_url())
+        self.assertNotContains(response, self.work_a.title)
+        self.assertNotContains(response, "My private-ish note")
+        self.client.force_login(self.owner)
+        response = self.client.get(item.get_absolute_url())
+        self.assertContains(response, "Unavailable work")
+        self.assertNotContains(response, self.work_a.title)
+
+    def test_discovery_only_contains_public_lists_and_search_is_owner_scoped(self):
+        MediaList.objects.create(owner=self.owner, title="Private secret")
+        public = MediaList.objects.create(owner=self.owner, title="Shared", visibility="public")
+        response = self.client.get(reverse("public-lists"))
+        self.assertContains(response, "Shared")
+        self.assertNotContains(response, "Private secret")
+        self.client.force_login(self.other)
+        self.assertEqual(self.client.get(reverse("list-work-search", args=[public.pk]), {"q": "Published"}).status_code, 404)

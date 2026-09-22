@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -46,6 +47,54 @@ class Work(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.first_publication_date_text or 'date unknown'})"
+
+
+class MediaList(models.Model):
+    """A member-curated, ordered collection (separate from homepage curation)."""
+
+    class Visibility(models.TextChoices):
+        PRIVATE = "private", "Private"
+        PUBLIC = "public", "Public"
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="media_lists")
+    title = models.CharField(max_length=120)
+    slug = models.SlugField(max_length=140, blank=True)
+    description = models.TextField(blank=True, max_length=1000)
+    visibility = models.CharField(max_length=10, choices=Visibility.choices, default=Visibility.PRIVATE, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-updated_at", "-id")
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)[:140] or "list"
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("list-detail", kwargs={"pk": self.pk, "slug": self.slug})
+
+    def __str__(self):
+        return self.title
+
+
+class MediaListEntry(models.Model):
+    media_list = models.ForeignKey(MediaList, on_delete=models.CASCADE, related_name="entries")
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name="list_entries")
+    commentary = models.TextField(blank=True, max_length=1000)
+    position = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("position", "id")
+        constraints = [
+            models.UniqueConstraint(fields=("media_list", "work"), name="unique_work_per_media_list"),
+            models.UniqueConstraint(fields=("media_list", "position"), name="unique_position_per_media_list"),
+        ]
+
+    def __str__(self):
+        return f"{self.media_list}: {self.work}"
 
 
 class Agent(models.Model):
@@ -225,4 +274,3 @@ class ExternalIdentifier(models.Model):
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=("work", "scheme", "value"), name="unique_external_identifier")]
-
