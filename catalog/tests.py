@@ -7,8 +7,9 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
-from .models import (Credit, ExternalIdentifier, ImportedWorkState, ImportItem,
-    ImportRun, Release, Version, Work, WorkRelationship, WorkSource, WorkType)
+from .models import (Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
+    ImportItem, ImportRun, Release, Version, Work, WorkRelationship, WorkSource,
+    WorkType)
 
 
 class JsonResponse(io.BytesIO):
@@ -26,9 +27,6 @@ def fake_open(payloads):
         return JsonResponse(json.dumps(next(responses)).encode())
 
     return opener
-from .models import Credit, ExternalIdentifier, Release, Version, Work, WorkRelationship, WorkSource
-
-
 class CatalogTests(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -81,6 +79,47 @@ class CatalogTests(TestCase):
         relationship.save()
         response = self.client.get(relationship.from_work.get_absolute_url())
         self.assertNotContains(response, relationship.to_work.get_absolute_url())
+
+    def test_homepage_uses_editorial_selection_order_and_notes(self):
+        later = Work.objects.get(pk=1003)
+        first = Work.objects.get(pk=1001)
+        FeaturedWork.objects.create(work=later, position=20, note="A later selection")
+        FeaturedWork.objects.create(work=first, position=10, note="Start here")
+        response = self.client.get(reverse("home"))
+        self.assertContains(response, "EDITOR’S SELECTION")
+        self.assertContains(response, "Start here")
+        self.assertLess(
+            response.content.index(first.get_absolute_url().encode()),
+            response.content.index(later.get_absolute_url().encode()),
+        )
+
+    def test_homepage_relationships_only_use_public_accepted_records(self):
+        relationship = WorkRelationship.objects.first()
+        hidden = relationship.from_work
+        hidden.visibility = Work.Visibility.DRAFT
+        hidden.save()
+        response = self.client.get(reverse("home"))
+        self.assertNotContains(response, hidden.get_absolute_url())
+
+    def test_detail_does_not_expose_relationship_to_unpublished_work(self):
+        relationship = WorkRelationship.objects.first()
+        hidden = relationship.to_work
+        visible = relationship.from_work
+        hidden.visibility = Work.Visibility.DRAFT
+        hidden.save()
+        response = self.client.get(visible.get_absolute_url())
+        self.assertNotContains(response, hidden.get_absolute_url())
+        self.assertNotContains(response, 'href="#relationships"')
+
+    def test_detail_jump_links_only_target_populated_sections(self):
+        work = Work.objects.create(
+            title="Sparse work", slug="sparse-work", work_type_id="novel",
+            visibility=Work.Visibility.PUBLIC,
+        )
+        response = self.client.get(work.get_absolute_url())
+        self.assertNotContains(response, 'href="#relationships"')
+        self.assertNotContains(response, 'href="#versions"')
+        self.assertNotContains(response, 'href="#sources"')
 
 
 class OpenLibraryImportTests(TestCase):

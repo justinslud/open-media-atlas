@@ -1,23 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="intro" aria-labelledby="intro-title">
-  <p class="eyebrow">OPEN MEDIA ATLAS</p>
-  <h1 id="intro-title">Follow stories across forms.</h1>
-  <p>Discover books, films, and other works—and see the translations, editions, adaptations, and creative relationships that connect them.</p>
+<section class="home-intro" aria-labelledby="intro-title">
+  <div>
+    <p class="eyebrow">OPEN MEDIA ATLAS</p>
+    <h1 id="intro-title">Find a work. Follow its connections.</h1>
+    <p>A public catalog for exploring books, films, recordings, and the creative relationships between them.</p>
+  </div>
   <form class="home-search" action="{% url 'discover' %}" method="get" role="search">
-    <label for="home-q">Search the catalog</label>
-    <div class="search-line"><input id="home-q" name="q" type="search" placeholder="Try “Glass Orchard”"><button type="submit">Search</button></div>
+    <label for="home-q">Search works or creators</label>
+    <div class="search-line"><input id="home-q" name="q" type="search" placeholder="Title or creator" required><button type="submit">Search</button></div>
   </form>
 </section>
-<section class="section-rule" aria-labelledby="featured-title">
-  <div class="section-heading"><div><p class="eyebrow">A SMALL START</p><h2 id="featured-title">Explore the demonstration catalog</h2></div><a href="{% url 'discover' %}">Browse all works →</a></div>
-  <p class="notice"><strong>Demonstration data:</strong> Every title, creator, date, and source in this initial catalog is fictional.</p>
+
+<section class="home-section" aria-labelledby="featured-title">
+  <div class="section-heading">
+    <div><p class="eyebrow">{% if featured_is_fallback %}FROM THE CATALOG{% else %}EDITOR’S SELECTION{% endif %}</p><h2 id="featured-title">Works to begin with</h2></div>
+    <a href="{% url 'discover' %}">Browse all works <span aria-hidden="true">→</span></a>
+  </div>
   <div class="featured-grid">
-    {% for work in featured %}<a class="featured-work" href="{{ work.get_absolute_url }}">
-      <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</span>
-      <span><strong>{{ work.title }}</strong><small>{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</small></span>
-    </a>{% empty %}<p class="empty">No public works yet. Run the demonstration fixture command to begin.</p>{% endfor %}
+    {% for selection in featured_selections %}{% with work=selection.work %}
+      <a class="featured-work" href="{{ work.get_absolute_url }}">
+        <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</span>
+        <span><strong>{{ work.title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</small>{% if selection.note %}<em>{{ selection.note }}</em>{% endif %}</span>
+      </a>
+    {% endwith %}{% empty %}
+      {% for work in fallback_works %}<a class="featured-work" href="{{ work.get_absolute_url }}">
+        <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</span>
+        <span><strong>{{ work.title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</small></span>
+      </a>{% empty %}<div class="empty"><strong>The catalog is being prepared.</strong><p>There are no published works to show yet. Please check back soon.</p></div>{% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section connections-section" aria-labelledby="connections-title">
+  <div class="section-heading"><div><p class="eyebrow">CONNECTED WORKS</p><h2 id="connections-title">Stories take new forms</h2></div></div>
+  <p class="section-deck">Explore reviewed relationships between published works.</p>
+  <div class="connection-pairs">
+    {% for relationship in relationships %}<article class="connection-pair">
+      <a href="{{ relationship.to_work.get_absolute_url }}"><strong>{{ relationship.to_work.title }}</strong><small>{{ relationship.to_work.work_type.label }}{% if relationship.to_work.first_publication_date_text %} · {{ relationship.to_work.first_publication_date_text }}{% endif %}</small></a>
+      <div class="connection-label"><span aria-hidden="true">→</span> {{ relationship.relationship_type.inverse_label }}</div>
+      <a href="{{ relationship.from_work.get_absolute_url }}"><strong>{{ relationship.from_work.title }}</strong><small>{{ relationship.from_work.work_type.label }}{% if relationship.from_work.first_publication_date_text %} · {{ relationship.from_work.first_publication_date_text }}{% endif %}</small></a>
+    </article>{% empty %}<div class="empty"><strong>Connections are coming into focus.</strong><p>No reviewed relationships between published works are available yet. Browse the catalog in the meantime.</p></div>{% endfor %}
   </div>
 </section>
 {% endblock %}
-
