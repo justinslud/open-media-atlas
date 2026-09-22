@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import (Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ImportItem, ImportRun, Release, RelationshipType, Source, SourceRecord, Version,
-    Work, WorkRelationship, WorkSource, WorkType)
-from .models import Agent, Credit, ExternalIdentifier, Release, RelationshipType, Source, Version, Work, WorkRelationship, WorkSource, WorkType
+
+from .models import (
+    Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
+    ImportItem, ImportRun, Release, RelationshipType, Source, SourceRecord,
+    Version, Work, WorkRelationship, WorkSource, WorkType,
+)
 
 
 class CreditInline(admin.TabularInline):
@@ -29,14 +31,24 @@ class WorkAdmin(admin.ModelAdmin):
     inlines = (CreditInline, VersionInline, WorkSourceInline)
 
 
+@admin.register(FeaturedWork)
+class FeaturedWorkAdmin(admin.ModelAdmin):
+    list_display = ("work", "position", "note")
+    list_editable = ("position",)
+    ordering = ("position", "id")
+    autocomplete_fields = ("work",)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "work":
+            kwargs["queryset"] = Work.objects.filter(visibility=Work.Visibility.PUBLIC)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 @admin.register(WorkRelationship)
 class RelationshipAdmin(admin.ModelAdmin):
     list_display = ("from_work", "relationship_type", "to_work", "review_status", "authorization_status")
     list_filter = ("relationship_type", "review_status")
     autocomplete_fields = ("from_work", "to_work")
-
-
-admin.site.register([Agent, Credit, ExternalIdentifier, Release, RelationshipType, Source, Version, WorkSource, WorkType])
 
 
 class ImportItemInline(admin.TabularInline):
@@ -68,9 +80,6 @@ class ImportedWorkStateAdmin(admin.ModelAdmin):
     readonly_fields = ("source_record", "imported_title", "imported_date_text", "imported_year")
 
 
-admin.site.register(FeaturedWork)
+admin.site.register([Agent, Credit, ExternalIdentifier, Release, RelationshipType, Source, Version, WorkSource, WorkType])
 admin.site.site_header = "Open Media Atlas administration"
 admin.site.site_title = "OMA admin"
-admin.site.site_header = "Open Media Atlas administration"
-admin.site.site_title = "OMA admin"
-
