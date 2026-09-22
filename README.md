@@ -1,6 +1,6 @@
 # Open Media Atlas
 
-Open Media Atlas (OMA) is a compact, cross-media reference catalog for discovering works and following adaptations and other creative relationships. This milestone implements public home, discovery, and work-detail pages plus Django administration using deliberately fictional demonstration data.
+Open Media Atlas (OMA) is a compact, cross-media reference catalog for discovering works and following adaptations and other creative relationships. Public browsing needs no account; visitors may also create an unprivileged account with a public username and private, verified email address.
 
 ## Setup and preview
 
@@ -21,12 +21,42 @@ After setup, the single startup command is `DJANGO_DEBUG=true python manage.py r
 
 For PostgreSQL, set `DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DBNAME`. In production, set a strong `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS`, and HTTPS origins in `DJANGO_CSRF_TRUSTED_ORIGINS`; leave `DJANGO_DEBUG` false.
 
+### Account email configuration
+
+Local development uses Django's console email backend by default, so verification
+and reset links appear in the developer terminal. Automated tests explicitly use
+the in-memory test backend. Production never falls back to console email: startup
+fails with a clear configuration error when an SMTP host is missing.
+
+Configure an SMTP provider with credentials obtained from that provider (OMA does
+not provision or require a paid service):
+
+| Variable | Required production value |
+| --- | --- |
+| `EMAIL_HOST` | SMTP hostname (required) |
+| `EMAIL_PORT` | SMTP port; defaults to `587` |
+| `EMAIL_HOST_USER` | SMTP username, if the provider requires one |
+| `EMAIL_HOST_PASSWORD` | SMTP password or API credential, stored as a secret |
+| `EMAIL_USE_TLS` | `true` for STARTTLS (default) |
+| `EMAIL_USE_SSL` | `true` only for implicit TLS; do not enable with STARTTLS |
+| `DEFAULT_FROM_EMAIL` | Verified sender, for example `Open Media Atlas <accounts@example.org>` |
+| `EMAIL_VERIFICATION_TIMEOUT_HOURS` | Verification-link lifetime; defaults to `24` |
+| `EMAIL_BACKEND` | Optional backend override; leave SMTP in production |
+
+After deployment, create a normal test account, confirm receipt and sender
+authentication, verify it, request a password reset, confirm the old links cannot
+be reused, and check that an ordinary account has neither staff status nor access
+to `/admin/`. Also confirm `/`, `/discover/`, and public work pages remain usable
+while logged out. Delivery failures are reported honestly in the UI and can be
+retried; links are never rendered into public pages or production logs.
+
 ## Milestone scope
 
 - Title search and media-type filtering, including HTMX partial result updates.
 - Public-only work pages with compact facts, creators, fictional source references, inverse-aware relationship labels, and inline versions/releases.
 - Idempotent fictional fixtures: one novel, two independent film adaptations, and an embedded translation with two editions.
 - Admin CRUD for every milestone entity.
+- Signup, login/logout, email verification, password reset, and a compact account page, with database-backed abuse limits that work across web workers.
 
 Bulk ingestion, community editing, terms workflows, claims, rights conclusions, comments, recommendations, and licensing are deliberately deferred. The next recommended milestone is a sourced proposal/review flow with revision history, followed by controlled vocabulary suggestions.
 
