@@ -1,5 +1,9 @@
 import io
 import json
+import os
+import subprocess
+import sys
+from pathlib import Path
 from unittest.mock import patch
 
 from django.core.management import call_command
@@ -42,6 +46,27 @@ class CatalogTests(TestCase):
         response = self.client.get(reverse("health"))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b"ok")
+
+    def test_production_settings_load_without_optional_email_configuration(self):
+        env = os.environ.copy()
+        env.update({
+            "DJANGO_DEBUG": "false",
+            "DJANGO_SECRET_KEY": "production-settings-test-key",
+            "DATABASE_URL": "postgresql://user:password@db.example.test:5432/oma",
+        })
+        for name in ("EMAIL_BACKEND", "EMAIL_HOST"):
+            env.pop(name, None)
+
+        result = subprocess.run(
+            [sys.executable, "-c", "from django.conf import settings; print(settings.EMAIL_HOST)"],
+            cwd=str(Path(__file__).resolve().parent.parent),
+            env=env,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(result.stdout.strip(), "localhost")
 
     def test_search_and_media_filter(self):
         response = self.client.get(reverse("discover"), {"q": "Glass", "type": "novel"})
