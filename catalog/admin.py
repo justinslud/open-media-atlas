@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import (
     Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
     ImportItem, ImportRun, Release, RelationshipType, Source, SourceRecord,
-    Version, Work, WorkRelationship, WorkSource, WorkType,
+    MediaList, MediaListEntry, Version, Work, WorkRelationship, WorkSource, WorkType,
 )
 
 
@@ -81,5 +81,6 @@ class ImportedWorkStateAdmin(admin.ModelAdmin):
 
 
 admin.site.register([Agent, Credit, ExternalIdentifier, Release, RelationshipType, Source, Version, WorkSource, WorkType])
+admin.site.register([MediaList, MediaListEntry])
 admin.site.site_header = "Open Media Atlas administration"
 admin.site.site_title = "OMA admin"
