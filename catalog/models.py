@@ -195,6 +195,7 @@ class ImportRun(models.Model):
         RUNNING = "running", "Running"
         COMPLETED = "completed", "Completed"
         COMPLETED_WITH_ERRORS = "completed_with_errors", "Completed with errors"
+        FAILED = "failed", "Failed"
 
     source = models.ForeignKey(Source, on_delete=models.PROTECT, related_name="import_runs")
     status = models.CharField(max_length=30, choices=Status.choices, default=Status.RUNNING)
