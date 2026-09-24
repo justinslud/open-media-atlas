@@ -33,7 +33,7 @@ class Command(BaseCommand):
                 except Exception as exc: status="failed"; work=None; message=str(exc)[:1000]
                 ImportItem.objects.update_or_create(run=run,external_key=key,defaults={"status":status,"work":work,"message":message}); stats[status]+=1
                 if number%o["batch_size"]==0: self.stdout.write(f"processed={number} stats={stats}")
-        run.stats={"snapshot_date":manifest.get("snapshot_date"),**stats,"elapsed_seconds":round(time.monotonic()-started,3),"peak_rss_kib":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,"database_bytes_before":before,"database_bytes_after":db_size(),"gracefully_stopped":stopped,"extract":str(o["extract"])}
+        run.stats={**run.stats,"phase":"ingestion_stopped" if stopped else "complete","snapshot_date":manifest.get("snapshot_date"),**stats,"ingest_elapsed_seconds":round(time.monotonic()-started,3),"peak_rss_kib":resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,"database_bytes_before":before,"database_bytes_after":db_size(),"gracefully_stopped":stopped,"extract":str(o["extract"])}
         run.status=ImportRun.Status.RUNNING if stopped else (ImportRun.Status.COMPLETED_WITH_ERRORS if stats["failed"] else ImportRun.Status.COMPLETED); run.finished_at=None if stopped else timezone.now(); run.save(update_fields=("stats","status","finished_at"))
         report=o["report"] or o["extract"]/f"ingest-run-{run.pk}.json"; report.write_text(json.dumps({"run_id":run.pk,**run.stats},indent=2,sort_keys=True)+"\n")
         self.stdout.write(self.style.WARNING(f"run={run.pk} stopped; resume with --resume-run {run.pk}") if stopped else self.style.SUCCESS(f"run={run.pk} stats={stats}"))

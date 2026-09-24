@@ -296,6 +296,61 @@ class OpenLibraryBulkImportTests(TestCase):
         status,_,_=ingest_record({"work":{"key":"/works/OL9W","title":"Nine"},"editions":[{"key":"/books/OL9M"}],"authors":{}},source)
         self.assertEqual(status,"conflicted")
 
+    def test_cloud_command_runs_fixture_extract_and_persists_report(self):
+        fixture_extract = self.make_extract()
+        manifest = json.loads((fixture_extract / "manifest.json").read_text())
+        digest = "a" * 64
+        environment = {
+            "OPENLIBRARY_SNAPSHOT_DATE": "2026-09-01",
+            "OPENLIBRARY_EDITIONS_URL": "https://archive.org/ol_exports_2026-09-01/editions.txt.gz",
+            "OPENLIBRARY_WORKS_URL": "https://archive.org/ol_exports_2026-09-01/works.txt.gz",
+            "OPENLIBRARY_AUTHORS_URL": "https://archive.org/ol_exports_2026-09-01/authors.txt.gz",
+            "OPENLIBRARY_EDITIONS_CHECKSUM": digest,
+            "OPENLIBRARY_WORKS_CHECKSUM": digest,
+            "OPENLIBRARY_AUTHORS_CHECKSUM": digest,
+        }
+
+        def fixture_extraction(**kwargs):
+            import shutil
+            shutil.copytree(fixture_extract, kwargs["output"])
+            return manifest
+
+        resolved = {
+            "snapshot_date": environment["OPENLIBRARY_SNAPSHOT_DATE"],
+            "editions": environment["OPENLIBRARY_EDITIONS_URL"],
+            "works": environment["OPENLIBRARY_WORKS_URL"],
+            "authors": environment["OPENLIBRARY_AUTHORS_URL"],
+            "editions_checksum": digest, "works_checksum": digest, "authors_checksum": digest,
+        }
+        with patch.dict(os.environ, environment), patch(
+            "catalog.management.commands.run_openlibrary_cloud_pilot.resolve_snapshot", return_value=resolved,
+        ), patch("catalog.management.commands.run_openlibrary_cloud_pilot.extract", side_effect=fixture_extraction):
+            call_command("run_openlibrary_cloud_pilot", dry_run=True, min_free_mib=1)
+        run = ImportRun.objects.latest("pk")
+        self.assertEqual(run.status, ImportRun.Status.COMPLETED)
+        self.assertEqual(run.stats["phase"], "dry_run")
+        self.assertEqual(run.manifest["cloud_parameters"]["snapshot_date"], "2026-09-01")
+
+    def test_cloud_command_resolves_latest_links_and_official_checksums(self):
+        from catalog.management.commands.run_openlibrary_cloud_pilot import resolve_snapshot
+
+        responses = []
+        for kind in ("editions", "works", "authors"):
+            filename = f"ol_dump_{kind}_2026-09-01.txt.gz"
+            redirect = JsonResponse(b"")
+            redirect.geturl = lambda filename=filename: f"https://ia.example/1/items/ol_dump_2026-09-01/{filename}"
+            metadata = JsonResponse(json.dumps({"files": [{"name": filename, "sha1": "b" * 40}]}).encode())
+            responses.extend((redirect, metadata))
+        config = {"snapshot_date": ""}
+        for kind in ("editions", "works", "authors"):
+            config[kind] = f"https://openlibrary.org/data/ol_dump_{kind}_latest.txt.gz"
+            config[f"{kind}_checksum"] = ""
+        with patch("catalog.management.commands.run_openlibrary_cloud_pilot.urlopen", side_effect=responses):
+            resolved = resolve_snapshot(config)
+        self.assertEqual(resolved["snapshot_date"], "2026-09-01")
+        self.assertEqual(resolved["works_checksum"], "b" * 40)
+        self.assertIn("ol_dump_works_2026-09-01.txt.gz", resolved["works"])
+
 
 class MediaListTests(TestCase):
     @classmethod
