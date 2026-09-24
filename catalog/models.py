@@ -103,6 +103,7 @@ class MediaListEntry(models.Model):
 class Agent(models.Model):
     name = models.CharField(max_length=200)
     kind = models.CharField(max_length=20, choices=[("person", "Person"), ("organization", "Organization")])
+    openlibrary_key = models.CharField(max_length=40, unique=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -149,6 +150,7 @@ class Release(models.Model):
     publication_date_text = models.CharField(max_length=80, blank=True)
     publisher_statement = models.CharField(max_length=200, blank=True)
     pages = models.PositiveIntegerField(null=True, blank=True)
+    openlibrary_key = models.CharField(max_length=40, unique=True, null=True, blank=True)
 
     class Meta:
         ordering = ("id",)
@@ -200,6 +202,8 @@ class ImportRun(models.Model):
     stats = models.JSONField(default=dict)
     started_at = models.DateTimeField(auto_now_add=True)
     finished_at = models.DateTimeField(null=True, blank=True)
+    manifest = models.JSONField(default=dict, blank=True)
+    importer_version = models.CharField(max_length=40, blank=True)
 
     def __str__(self):
         return f"{self.source} import {self.pk} ({self.status})"
@@ -208,7 +212,7 @@ class ImportRun(models.Model):
 class ImportItem(models.Model):
     run = models.ForeignKey(ImportRun, on_delete=models.CASCADE, related_name="items")
     external_key = models.CharField(max_length=200)
-    status = models.CharField(max_length=20, choices=[("created", "Created"), ("updated", "Updated"), ("skipped", "Skipped"), ("failed", "Failed")])
+    status = models.CharField(max_length=20, choices=[("created", "Created"), ("updated", "Updated"), ("unchanged", "Unchanged"), ("skipped", "Skipped"), ("conflicted", "Conflicted"), ("failed", "Failed")])
     work = models.ForeignKey(Work, on_delete=models.SET_NULL, null=True, blank=True)
     message = models.TextField(blank=True)
 
