@@ -3,6 +3,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -18,6 +19,7 @@ from django.utils import timezone
 from accounts.models import EmailVerification
 
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
+from .importers.openlibrary_bulk import BulkImportError, extract, validate_extract
 from .models import (Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
     ContributionProposal, ContributionRevision, ImportItem, ImportRun, MediaList, MediaListEntry, RelationshipType, Release, Source, Version, Work, WorkRelationship, WorkSource,
     WorkType)
@@ -219,6 +221,80 @@ class OpenLibraryImportTests(TestCase):
         self.assertContains(self.client.get(book.get_absolute_url()), film.get_absolute_url())
         self.assertContains(self.client.get(film.get_absolute_url()), book.get_absolute_url())
         self.assertEqual(WorkRelationship.objects.filter(from_work=film, to_work=book).count(), 1)
+
+
+class OpenLibraryBulkImportTests(TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+
+    def tearDown(self): self.temp.cleanup()
+
+    def dump(self, name, kind, rows, malformed=False):
+        path=self.root/name
+        with path.open("wb") as stream:
+            for row in rows:
+                stream.write(f"{kind}\t{row['key']}\t1\t2026-09-01T00:00:00\t".encode()+json.dumps(row).encode()+b"\n")
+            if malformed: stream.write(b"broken\n")
+        return path
+
+    def make_extract(self):
+        editions=self.dump("editions.txt","/type/edition",[
+            {"key":"/books/OL1M","title":"English One","works":[{"key":"/works/OL1W"}],"languages":[{"key":"/languages/eng"}],"publishers":["Example"]},
+            {"key":"/books/OL2M","title":"Francais","works":[{"key":"/works/OL2W"}],"languages":[{"key":"/languages/fre"}]},
+            {"key":"/books/OL3M","title":"Translated title","works":[{"key":"/works/OL3W"}],"languages":[{"key":"/languages/eng"}]},
+        ],malformed=True)
+        works=self.dump("works.txt","/type/work",[
+            {"key":"/works/OL1W","title":"One","authors":[{"author":{"key":"/authors/OL1A"}}]},
+            {"key":"/works/OL2W","title":"Two"},
+            {"key":"/works/OL3W","title":"Original non-English work","authors":[{"author":{"key":"/authors/OL1A"}}]},
+        ])
+        authors=self.dump("authors.txt","/type/author",[{"key":"/authors/OL1A","name":"Author One"}])
+        output=self.root/"extract"
+        extract(editions=editions,works=works,authors=authors,output=output,limit=10,snapshot_date="2026-09-01",urls={"works":"https://example.test/works"})
+        return output
+
+    def test_selection_uses_edition_language_and_links_children(self):
+        output=self.make_extract(); manifest,_=validate_extract(output)
+        self.assertEqual(manifest["artifact"]["records"],2)
+        call_command("ingest_openlibrary_extract",output)
+        self.assertEqual(set(ExternalIdentifier.objects.filter(scheme="ol_work").values_list("value",flat=True)),{"OL1W","OL3W"})
+        self.assertEqual(Work.objects.filter(visibility=Work.Visibility.DRAFT).count(),2)
+        self.assertEqual(Credit.objects.get(work__identifiers__value="OL1W").agent.openlibrary_key,"OL1A")
+        self.assertEqual(Release.objects.filter(openlibrary_key__in=["OL1M","OL3M"]).count(),2)
+
+    def test_dry_run_idempotence_override_and_promotion(self):
+        output=self.make_extract(); call_command("ingest_openlibrary_extract",output,dry_run=True)
+        self.assertEqual(Work.objects.count(),0)
+        call_command("ingest_openlibrary_extract",output); run=ImportRun.objects.get()
+        work=Work.objects.get(identifiers__value="OL1W"); work.title="Human title"; work.save()
+        call_command("ingest_openlibrary_extract",output)
+        work.refresh_from_db(); self.assertEqual(work.title,"Human title"); self.assertEqual(Work.objects.count(),2)
+        call_command("promote_openlibrary_run",run.pk,confirm=True); work.refresh_from_db(); self.assertEqual(work.visibility,Work.Visibility.PUBLIC)
+        # A later staging pass reports, rather than mutates, a public record.
+        rows=(output/"records.jsonl").read_text().splitlines(); data=json.loads(rows[0]); data["work"]["title"]="Supplier change"; rows[0]=json.dumps(data,sort_keys=True)
+        (output/"records.jsonl").write_text("\n".join(rows)+"\n"); manifest=json.loads((output/"manifest.json").read_text()); import hashlib
+        manifest["artifact"]["sha256"]=hashlib.sha256((output/"records.jsonl").read_bytes()).hexdigest(); (output/"manifest.json").write_text(json.dumps(manifest))
+        call_command("ingest_openlibrary_extract",output); work.refresh_from_db(); self.assertEqual(work.title,"Human title"); self.assertTrue(ImportItem.objects.filter(status="conflicted").exists())
+
+    def test_resume_skips_completed_items_and_retries_failure(self):
+        output=self.make_extract()
+        with patch("catalog.management.commands.ingest_openlibrary_extract.ingest_record",side_effect=[("created",None,"ok"),RuntimeError("stop")]):
+            call_command("ingest_openlibrary_extract",output)
+        run=ImportRun.objects.get(); self.assertEqual(run.items.filter(status="failed").count(),1)
+        call_command("ingest_openlibrary_extract",output,resume_run=run.pk)
+        self.assertEqual(run.items.filter(status="failed").count(),0)
+
+    def test_rejects_truncated_extract_and_ambiguous_identifier(self):
+        output=self.make_extract(); (output/"records.jsonl").write_text("")
+        with self.assertRaises(BulkImportError): validate_extract(output)
+        source=Source.objects.create(title="Open Library bulk test"); kind=WorkType.objects.create(code="bulk",label="Book",medium="text")
+        for n in (1,2):
+            work=Work.objects.create(title=f"Duplicate {n}",slug=f"duplicate-{n}",work_type=kind)
+            ExternalIdentifier.objects.create(work=work,scheme="ol_work",value="OL9W")
+        from .importers.openlibrary_bulk import ingest_record
+        status,_,_=ingest_record({"work":{"key":"/works/OL9W","title":"Nine"},"editions":[{"key":"/books/OL9M"}],"authors":{}},source)
+        self.assertEqual(status,"conflicted")
 
 
 class MediaListTests(TestCase):

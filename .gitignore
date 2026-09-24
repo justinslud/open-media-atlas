@@ -6,4 +6,5 @@ db.sqlite3
 .coverage
 htmlcov/
 staticfiles/
-
+data/openlibrary-dumps/
+data/openlibrary-extracts/

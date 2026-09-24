@@ -62,7 +62,7 @@ class ImportItemInline(admin.TabularInline):
 class ImportRunAdmin(admin.ModelAdmin):
     list_display = ("id", "source", "status", "started_at", "finished_at", "stats")
     list_filter = ("status", "source")
-    readonly_fields = ("source", "status", "requested_keys", "stats", "started_at", "finished_at")
+    readonly_fields = ("source", "status", "requested_keys", "manifest", "importer_version", "stats", "started_at", "finished_at")
     inlines = (ImportItemInline,)
 
 
