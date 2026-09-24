@@ -14,6 +14,8 @@
         {% if primary_link.url %}<a class="primary-action" href="{{ primary_link.url }}">{{ primary_link.title|default:"View source or availability" }} <span aria-hidden="true">↗</span></a>{% endif %}
         {% if has_relationships %}<a class="secondary-action" href="#relationships">Explore connections</a>{% endif %}
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'add-to-list' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'add-to-list' work.pk %}{% endif %}">Add to list</a>
+        <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-correction' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-correction' work.pk %}{% endif %}">Suggest a correction</a>
+        <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-relationship' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-relationship' work.pk %}{% endif %}">Suggest a relationship</a>
       </div>
       <nav class="section-jumps" aria-label="On this page"><span>On this page</span>{% if has_relationships %}<a href="#relationships">Relationships</a>{% endif %}{% if work.description %}<a href="#description">Description</a>{% endif %}<a href="#details">Details</a>{% if work.credits.all %}<a href="#creators">Creators</a>{% endif %}{% if work.versions.all %}<a href="#versions">Editions &amp; versions</a>{% endif %}{% if work.source_links.all or work.identifiers.all %}<a href="#sources">Sources</a>{% endif %}</nav>
     </div>

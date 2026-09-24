@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} · Open Media Atlas{% endblock %}
+{% block content %}<div class="page-title"><p class="eyebrow">COMMUNITY CONTRIBUTION</p><h1>{{ heading }}</h1><p>For <a href="{{ work.get_absolute_url }}">{{ work.title }}</a>. Submissions are private until an editor reviews them.</p></div>
+{% if verification_required %}<div class="demo-banner">You can complete this form now, but must <a href="{% url 'accounts:account' %}">verify your email</a> before submitting. A failed submission keeps your entries on this page.</div>{% endif %}
+<form method="post" class="list-form">{% csrf_token %}{{ form.non_field_errors }}{% for field in form %}<div class="form-field">{{ field.label_tag }}{{ field }}{{ field.errors }}{% if field.help_text %}<p class="helper">{{ field.help_text }}</p>{% endif %}</div>{% endfor %}
+{% if direction %}<p class="direction-preview"><strong>Direction:</strong> {{ direction }}</p>{% elif heading == "Suggest a relationship" %}<p class="helper">The relationship will read from “{{ work.title }}” to the selected work using the selected wording. Review your selections before submitting.</p>{% endif %}
+<button type="submit">Submit for review</button></form>{% endblock %}
