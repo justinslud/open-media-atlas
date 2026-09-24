@@ -296,6 +296,35 @@ class OpenLibraryBulkImportTests(TestCase):
         status,_,_=ingest_record({"work":{"key":"/works/OL9W","title":"Nine"},"editions":[{"key":"/books/OL9M"}],"authors":{}},source)
         self.assertEqual(status,"conflicted")
 
+    def test_cloud_command_runs_fixture_extract_and_persists_report(self):
+        fixture_extract = self.make_extract()
+        manifest = json.loads((fixture_extract / "manifest.json").read_text())
+        digest = "a" * 64
+        environment = {
+            "OPENLIBRARY_SNAPSHOT_DATE": "2026-09-01",
+            "OPENLIBRARY_EDITIONS_URL": "https://archive.org/ol_exports_2026-09-01/editions.txt.gz",
+            "OPENLIBRARY_WORKS_URL": "https://archive.org/ol_exports_2026-09-01/works.txt.gz",
+            "OPENLIBRARY_AUTHORS_URL": "https://archive.org/ol_exports_2026-09-01/authors.txt.gz",
+            "OPENLIBRARY_EDITIONS_CHECKSUM": digest,
+            "OPENLIBRARY_WORKS_CHECKSUM": digest,
+            "OPENLIBRARY_AUTHORS_CHECKSUM": digest,
+        }
+
+        def fixture_extraction(**kwargs):
+            import shutil
+            shutil.copytree(fixture_extract, kwargs["output"])
+            return manifest
+
+        with patch.dict(os.environ, environment), patch(
+            "catalog.management.commands.run_openlibrary_cloud_pilot.extract",
+            side_effect=fixture_extraction,
+        ):
+            call_command("run_openlibrary_cloud_pilot", dry_run=True, min_free_mib=1)
+        run = ImportRun.objects.latest("pk")
+        self.assertEqual(run.status, ImportRun.Status.COMPLETED)
+        self.assertEqual(run.stats["phase"], "dry_run")
+        self.assertEqual(run.manifest["cloud_parameters"]["snapshot_date"], "2026-09-01")
+
 
 class MediaListTests(TestCase):
     @classmethod
