@@ -84,3 +84,77 @@ admin.site.register([Agent, Credit, ExternalIdentifier, Release, RelationshipTyp
 admin.site.register([MediaList, MediaListEntry])
 admin.site.site_header = "Open Media Atlas administration"
 admin.site.site_title = "OMA admin"
+
+from django import forms
+from django.contrib import messages
+from django.core.exceptions import ValidationError
+
+from .models import ContributionProposal, ContributionRevision
+
+
+class ContributionReviewForm(forms.ModelForm):
+    decision = forms.ChoiceField(choices=(("", "Leave pending"), ("approve", "Approve"), ("reject", "Reject")), required=False)
+    reconcile_conflict = forms.BooleanField(required=False, help_text="I inspected the current catalog value and explicitly reconciled this conflict.")
+
+    class Meta:
+        model = ContributionProposal
+        fields = ("reviewer_explanation",)
+
+    def clean(self):
+        data = super().clean()
+        if data.get("decision") == "reject" and not data.get("reviewer_explanation", "").strip():
+            self.add_error(None, "Enter a reviewer explanation before rejecting.")
+        return data
+
+
+@admin.register(ContributionProposal)
+class ContributionProposalAdmin(admin.ModelAdmin):
+    form = ContributionReviewForm
+    list_display = ("id", "kind", "work", "submitted_by", "status", "conflict", "submitted_at")
+    list_filter = ("status", "kind", "submitted_at")
+    search_fields = ("work__title", "submitted_by__username", "explanation", "source_url")
+    readonly_fields = ("kind", "status", "submitted_by", "work", "field_name", "value_at_submission",
+        "current_value_display", "proposed_value", "related_work", "relationship_type", "direction_display",
+        "work_updated_at", "related_work_updated_at", "explanation", "source_link", "submitted_at",
+        "reviewer", "reviewed_at")
+    fields = readonly_fields + ("reviewer_explanation", "decision", "reconcile_conflict")
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_view_permission(self, request, obj=None):
+        return request.user.has_perm("catalog.review_contributionproposal")
+
+    def has_change_permission(self, request, obj=None):
+        return request.user.has_perm("catalog.review_contributionproposal")
+
+    @admin.display(boolean=True, description="Conflict")
+    def conflict(self, obj): return obj.has_conflict
+    @admin.display(description="Current catalog value")
+    def current_value_display(self, obj): return obj.current_value
+    @admin.display(description="Relationship direction")
+    def direction_display(self, obj):
+        return f"{obj.work.title} — {obj.relationship_type.label} — {obj.related_work.title}" if obj.relationship_type_id else "—"
+    @admin.display(description="Supporting source")
+    def source_link(self, obj):
+        from django.utils.html import format_html
+        return format_html('<a href="{}" rel="nofollow noopener noreferrer">{}</a>', obj.source_url, obj.source_url)
+
+    def save_model(self, request, obj, form, change):
+        decision = form.cleaned_data.get("decision")
+        if decision:
+            obj.review(reviewer=request.user, approve=decision == "approve",
+                explanation=obj.reviewer_explanation, reconcile=form.cleaned_data.get("reconcile_conflict", False))
+            messages.success(request, f"Proposal {obj.status}.")
+
+
+@admin.register(ContributionRevision)
+class ContributionRevisionAdmin(admin.ModelAdmin):
+    list_display = ("work", "kind", "contributor", "reviewer", "created_at")
+    readonly_fields = ("proposal", "work", "contributor", "reviewer", "kind", "field_name", "previous_value",
+                       "new_value", "explanation", "source_url", "created_at")
+    def has_add_permission(self, request): return False
+    def has_delete_permission(self, request, obj=None): return False
