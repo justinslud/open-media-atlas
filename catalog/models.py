@@ -1,7 +1,10 @@
-from django.core.exceptions import ValidationError
+import re
+
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.conf import settings
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.text import slugify
 
 
@@ -274,3 +277,136 @@ class ExternalIdentifier(models.Model):
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=("work", "scheme", "value"), name="unique_external_identifier")]
+
+class ContributionProposal(models.Model):
+    class Kind(models.TextChoices):
+        CORRECTION = "correction", "Correction"
+        RELATIONSHIP = "relationship", "Relationship"
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        APPROVED = "approved", "Approved"
+        REJECTED = "rejected", "Rejected"
+
+    kind = models.CharField(max_length=20, choices=Kind.choices)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING, db_index=True)
+    submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="contribution_proposals")
+    work = models.ForeignKey(Work, on_delete=models.PROTECT, related_name="proposals")
+    field_name = models.CharField(max_length=40, blank=True)
+    value_at_submission = models.TextField(blank=True)
+    proposed_value = models.TextField(blank=True)
+    related_work = models.ForeignKey(Work, on_delete=models.PROTECT, null=True, blank=True, related_name="relationship_proposals")
+    relationship_type = models.ForeignKey(RelationshipType, on_delete=models.PROTECT, null=True, blank=True)
+    work_updated_at = models.DateTimeField()
+    related_work_updated_at = models.DateTimeField(null=True, blank=True)
+    explanation = models.TextField(max_length=2000)
+    source_url = models.URLField(max_length=500)
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True, blank=True, related_name="reviewed_contributions")
+    reviewer_explanation = models.TextField(blank=True, max_length=1000)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ("-submitted_at", "-id")
+        permissions = [("review_contributionproposal", "Can approve or reject contribution proposals")]
+
+    @property
+    def current_value(self):
+        if self.kind == self.Kind.CORRECTION:
+            return str(getattr(self.work, self.field_name, ""))
+        return "Relationship is already present" if WorkRelationship.objects.filter(
+            from_work=self.work, to_work=self.related_work, relationship_type=self.relationship_type
+        ).exists() else "Relationship is not present"
+
+    @property
+    def has_conflict(self):
+        if self.kind == self.Kind.CORRECTION:
+            return self.current_value != self.value_at_submission
+        return (self.work.updated_at != self.work_updated_at or
+                self.related_work.updated_at != self.related_work_updated_at or
+                WorkRelationship.objects.filter(from_work=self.work, to_work=self.related_work,
+                                                relationship_type=self.relationship_type).exists())
+
+    def clean(self):
+        super().clean()
+        if self.kind == self.Kind.CORRECTION:
+            if self.field_name not in {"title", "description", "first_publication_date_text"}:
+                raise ValidationError({"field_name": "This field cannot be proposed."})
+            if self.related_work_id or self.relationship_type_id:
+                raise ValidationError("Correction proposals cannot include a relationship.")
+        else:
+            if not self.related_work_id or not self.relationship_type_id:
+                raise ValidationError("Choose a related work and relationship type.")
+            if self.work_id == self.related_work_id:
+                raise ValidationError({"related_work": "A work cannot relate to itself."})
+        if self.source_url and not self.source_url.lower().startswith(("http://", "https://")):
+            raise ValidationError({"source_url": "Use an HTTP or HTTPS source URL."})
+
+    def review(self, *, reviewer, approve, explanation="", reconcile=False):
+        if not reviewer.has_perm("catalog.review_contributionproposal"):
+            raise PermissionDenied("Explicit reviewer permission is required.")
+        with transaction.atomic():
+            proposal = ContributionProposal.objects.select_for_update().select_related(
+                "work", "related_work", "relationship_type"
+            ).get(pk=self.pk)
+            if proposal.status != self.Status.PENDING:
+                raise ValidationError("This proposal has already been reviewed.")
+            if not approve and not explanation.strip():
+                raise ValidationError("A reviewer explanation is required when rejecting a proposal.")
+            if approve and proposal.has_conflict and not reconcile:
+                raise ValidationError("The catalog changed after submission. Reconcile the conflict explicitly before approval.")
+            old_value = proposal.current_value
+            if approve:
+                if proposal.kind == self.Kind.CORRECTION:
+                    setattr(proposal.work, proposal.field_name, proposal.proposed_value)
+                    fields = [proposal.field_name, "updated_at"]
+                    if proposal.field_name == "first_publication_date_text":
+                        match = re.search(r"(?<!\d)(1\d{3}|20\d{2})(?!\d)", proposal.proposed_value)
+                        proposal.work.first_publication_year = int(match.group(1)) if match else None
+                        fields.append("first_publication_year")
+                    if proposal.field_name == "title":
+                        proposal.work.slug = slugify(proposal.proposed_value)[:320]
+                        fields.append("slug")
+                    proposal.work.save(update_fields=fields)
+                else:
+                    source = Source.objects.create(title="Contributor-submitted source", url=proposal.source_url,
+                                                   notes="Reviewed supporting source for an approved community relationship.")
+                    WorkRelationship.objects.create(from_work=proposal.work, to_work=proposal.related_work,
+                        relationship_type=proposal.relationship_type, source=source,
+                        scope_note=proposal.explanation[:300], review_status="accepted")
+                proposal.status = self.Status.APPROVED
+            else:
+                proposal.status = self.Status.REJECTED
+            proposal.reviewer = reviewer
+            proposal.reviewer_explanation = explanation.strip()
+            proposal.reviewed_at = timezone.now()
+            proposal.save(update_fields=("status", "reviewer", "reviewer_explanation", "reviewed_at"))
+            if approve:
+                ContributionRevision.objects.create(proposal=proposal, work=proposal.work,
+                    contributor=proposal.submitted_by, reviewer=reviewer, kind=proposal.kind,
+                    field_name=proposal.field_name, previous_value=old_value,
+                    new_value=proposal.proposed_value, explanation=proposal.explanation,
+                    source_url=proposal.source_url)
+        self.refresh_from_db()
+
+    def __str__(self):
+        return f"{self.get_kind_display()} for {self.work} ({self.get_status_display()})"
+
+
+class ContributionRevision(models.Model):
+    proposal = models.OneToOneField(ContributionProposal, on_delete=models.PROTECT, related_name="revision")
+    work = models.ForeignKey(Work, on_delete=models.PROTECT, related_name="contribution_revisions")
+    contributor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="contribution_revisions")
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="reviewed_revisions")
+    kind = models.CharField(max_length=20, choices=ContributionProposal.Kind.choices)
+    field_name = models.CharField(max_length=40, blank=True)
+    previous_value = models.TextField(blank=True)
+    new_value = models.TextField(blank=True)
+    explanation = models.TextField()
+    source_url = models.URLField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("-created_at", "-id")
+
+    def __str__(self):
+        return f"Approved {self.kind} for {self.work}"

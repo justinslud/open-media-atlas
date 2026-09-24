@@ -14,6 +14,7 @@ LIMITS = {
     "login": (10, timedelta(minutes=5)),
     "password_reset": (5, timedelta(hours=1)),
     "verification": (5, timedelta(hours=1)),
+    "contribution": (10, timedelta(hours=1)),
 }
 
 

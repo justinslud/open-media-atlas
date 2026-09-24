@@ -358,3 +358,71 @@ def add_to_list(request, work_pk):
             messages.success(request, f"Added {work.title} to {media_list.title}.")
         return redirect("list-edit", pk=media_list.pk)
     return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists})
+
+
+def _verified_submission_allowed(request):
+    return EmailVerification.objects.filter(user=request.user, verified_at__isnull=False).exists()
+
+
+@login_required
+@require_http_methods(["GET", "POST"])
+def suggest_correction(request, pk):
+    from accounts.rate_limits import client_key, is_limited
+    from .forms import CorrectionProposalForm
+    from .models import ContributionProposal
+    work = get_object_or_404(public_works(), pk=pk)
+    form = CorrectionProposalForm(request.POST or None)
+    verification_required = not _verified_submission_allowed(request)
+    if request.method == "POST" and form.is_valid():
+        if verification_required:
+            form.add_error(None, "Verify your email address before submitting. Your entries remain below.")
+        elif is_limited("contribution", client_key(request, str(request.user.pk))):
+            return render(request, "accounts/rate_limited.html", status=429)
+        else:
+            field = form.cleaned_data["field_name"]
+            ContributionProposal.objects.create(kind="correction", submitted_by=request.user, work=work,
+                field_name=field, value_at_submission=str(getattr(work, field)),
+                proposed_value=form.cleaned_data["proposed_value"], work_updated_at=work.updated_at,
+                explanation=form.cleaned_data["explanation"], source_url=form.cleaned_data["source_url"])
+            messages.success(request, "Correction submitted for editorial review.")
+            return redirect("my-contributions")
+    return render(request, "catalog/contribution_form.html", {"form": form, "work": work,
+        "heading": "Suggest a correction", "verification_required": verification_required})
+
+
+@login_required
+@require_http_methods(["GET", "POST"])
+def suggest_relationship(request, pk):
+    from accounts.rate_limits import client_key, is_limited
+    from .forms import RelationshipProposalForm
+    from .models import ContributionProposal
+    work = get_object_or_404(public_works(), pk=pk)
+    form = RelationshipProposalForm(request.POST or None, source_work=work)
+    verification_required = not _verified_submission_allowed(request)
+    direction = None
+    if form.is_bound and form.is_valid():
+        target, relationship_type = form.cleaned_data["related_work"], form.cleaned_data["relationship_type"]
+        direction = f"{work.title} — {relationship_type.label} — {target.title}"
+        if request.method == "POST":
+            if verification_required:
+                form.add_error(None, "Verify your email address before submitting. Your entries remain below.")
+            elif is_limited("contribution", client_key(request, str(request.user.pk))):
+                return render(request, "accounts/rate_limited.html", status=429)
+            else:
+                ContributionProposal.objects.create(kind="relationship", submitted_by=request.user, work=work,
+                    related_work=target, relationship_type=relationship_type, work_updated_at=work.updated_at,
+                    related_work_updated_at=target.updated_at, explanation=form.cleaned_data["explanation"],
+                    source_url=form.cleaned_data["source_url"])
+                messages.success(request, "Relationship submitted for editorial review.")
+                return redirect("my-contributions")
+    return render(request, "catalog/contribution_form.html", {"form": form, "work": work,
+        "heading": "Suggest a relationship", "direction": direction, "verification_required": verification_required})
+
+
+@login_required
+@require_GET
+def my_contributions(request):
+    from .models import ContributionProposal
+    proposals = ContributionProposal.objects.filter(submitted_by=request.user).select_related(
+        "work", "related_work", "relationship_type", "reviewer")
+    return render(request, "catalog/my_contributions.html", {"proposals": proposals})
