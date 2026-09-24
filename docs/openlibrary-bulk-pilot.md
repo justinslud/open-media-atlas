@@ -1,106 +1,73 @@
-# Open Library bulk pilot runbook
+# Open Library cloud bulk pilot
 
-This is a **pipeline pilot**, not a popularity ranking and not a completed production import. It stages at most 5,000 works and makes no rights, ownership, or adaptation assertions. Open Library's [official dump documentation](https://openlibrary.org/developers/dumps) (checked 24 September 2026) describes monthly, gzip-compressed, five-column TSV dumps and links separate editions, works, and authors files. It points to [Internet Archive's dated `ol_exports` snapshots](https://archive.org/details/ol_exports?sort=-publicdate) for historical dumps. Use three files from one dated snapshot, never three moving `latest` links.
+This pilot runs extraction, validation, and staged ingestion inside **one Render one-off job**. It uses the repository's deployed image and environment, streams the three official gzip dumps, writes only the bounded extract to `/tmp`, and persists provenance, parameters, checkpoints, per-record outcomes, and its final report in PostgreSQL. It needs no workstation setup, container, dump transfer, persistent disk, S3, or always-on worker.
 
-## Selection and resource model
+> Safety: launch this only from the existing **pilot/staging Render service whose `DATABASE_URL` is a non-production database**. A one-off job inherits its parent service's build, environment variables, plan, and region. Never launch it from the production web service.
 
-The extractor first scans editions and keeps the 5,000 work IDs with the lowest SHA-256 of `seed:work_id` among editions whose explicit language key is `/languages/eng`. It does **not** assume that works have a language. A fixed seed and snapshot make the sample repeatable and hashing avoids input-order bias; it is reasonably varied but is not stratified, representative, quality-weighted, or popularity-ranked. Missing/incorrect edition language data and Open Library's coverage biases remain. A translated work qualifies when an English translation edition points to it; the pipeline does not mislabel English as the work's original language.
+## Pinned snapshot configuration
 
-The edition dump is scanned twice: once for bounded hash selection and once to retain up to two English editions per selected work. Works and authors are each scanned once. All scans stream gzip input; only 5,000 IDs, selected rows, and referenced authors are held in memory. Raw dumps are never loaded into PostgreSQL. The second editions scan is the deliberate tradeoff that avoids a potentially enormous disk index. Even a one-work import still scans all editions twice and all works/authors once. Malformed rows after a valid first row are counted/skipped; wrong-type, empty, invalid-gzip, and incomplete downloads are rejected. Extraction stops safely before writing a final artifact when `--max-runtime` expires, but a stopped large-file scan must restart.
+Choose editions, works, and authors files from the same dated `ol_exports_YYYY-MM-DD` item linked by [Open Library's official dump page](https://openlibrary.org/developers/dumps). Do not use any `latest` URL. Set these secret environment variables on the pilot service (not in Git):
 
-The resulting `records.jsonl`, `manifest.json`, and extraction report are reusable and small. The manifest pins source URLs, snapshot date, supplied checksums, artifact SHA-256, importer version, seed, limits, and scan counts. Keep it with the artifact. The extractor checks at least 100 MiB free, but operators must compare `df -h` with the dated snapshot's actual compressed sizes before download; do not assume a Render job's temporary allowance. Download and extract on a workstation or temporary machine with enough space, then remove raw dumps.
-
-## 1. Pin, download, and extract (outside production)
-
-On the Internet Archive snapshot page, choose one date and copy the exact works, editions, and authors download URLs and the checksums shown in each file's metadata. Internet Archive commonly publishes MD5/SHA-1; record those in your operator notes. The downloader can enforce SHA-256, so calculate/publish SHA-256 alongside any available archive checksums. Do not substitute `latest` after choosing the date.
-
-```bash
-mkdir -p data/openlibrary-dumps data/openlibrary-extracts/2026-09-01
-df -h data/openlibrary-dumps
-
-python manage.py download_openlibrary_dump 'EDITION_SNAPSHOT_URL' data/openlibrary-dumps/editions.txt.gz --sha256 EDITION_SHA256
-python manage.py download_openlibrary_dump 'WORK_SNAPSHOT_URL' data/openlibrary-dumps/works.txt.gz --sha256 WORK_SHA256
-python manage.py download_openlibrary_dump 'AUTHOR_SNAPSHOT_URL' data/openlibrary-dumps/authors.txt.gz --sha256 AUTHOR_SHA256
-
-python manage.py extract_openlibrary \
-  --editions data/openlibrary-dumps/editions.txt.gz \
-  --works data/openlibrary-dumps/works.txt.gz \
-  --authors data/openlibrary-dumps/authors.txt.gz \
-  --output data/openlibrary-extracts/2026-09-01 \
-  --snapshot-date 2026-09-01 --limit 5000 --editions-per-work 2 \
-  --seed oma-ol-pilot-v1 --max-runtime 21600 \
-  --editions-url 'EDITION_SNAPSHOT_URL' --editions-sha256 EDITION_SHA256 \
-  --works-url 'WORK_SNAPSHOT_URL' --works-sha256 WORK_SHA256 \
-  --authors-url 'AUTHOR_SNAPSHOT_URL' --authors-sha256 AUTHOR_SHA256
-
-python manage.py ingest_openlibrary_extract data/openlibrary-extracts/2026-09-01 --dry-run
-tar -C data/openlibrary-extracts -czf oma-ol-extract-2026-09-01.tgz 2026-09-01
-sha256sum oma-ol-extract-2026-09-01.tgz
+```text
+OPENLIBRARY_SNAPSHOT_DATE=YYYY-MM-DD
+OPENLIBRARY_EDITIONS_URL=https://archive.org/download/ol_exports_YYYY-MM-DD/...editions...txt.gz
+OPENLIBRARY_EDITIONS_CHECKSUM=<published SHA-1 or SHA-256 hex digest>
+OPENLIBRARY_WORKS_URL=https://archive.org/download/ol_exports_YYYY-MM-DD/...works...txt.gz
+OPENLIBRARY_WORKS_CHECKSUM=<published SHA-1 or SHA-256 hex digest>
+OPENLIBRARY_AUTHORS_URL=https://archive.org/download/ol_exports_YYYY-MM-DD/...authors...txt.gz
+OPENLIBRARY_AUTHORS_CHECKSUM=<published SHA-1 or SHA-256 hex digest>
+OPENLIBRARY_LIMIT=5000
+OPENLIBRARY_MAX_RUNTIME=21600
+OPENLIBRARY_MIN_FREE_MIB=512
 ```
 
-Upload/download the tarball through an already approved private object store or Render job file transfer mechanism. No object-store dependency is required by the app. If no approved durable store exists, retain the archive on the operator workstation and upload it for each job. Treat temporary one-off-job files as disposable; download the `ingest-run-ID.json` report before the job ends or copy its JSON from output/admin. Never commit dumps or extracts.
+Use the exact SHA-1 (40 hex characters) or SHA-256 (64 hex characters) shown in each snapshot file's metadata; do not invent a digest or calculate it from a moving URL. The command rejects missing digests, URLs that do not contain the common snapshot date, mismatched bytes, and different parameters on resume.
 
-## 2. Local rehearsal
+## What the command does
 
 ```bash
-DJANGO_DEBUG=true python manage.py migrate
-DJANGO_DEBUG=true python manage.py ingest_openlibrary_extract data/openlibrary-extracts/2026-09-01 --dry-run
-DJANGO_DEBUG=true python manage.py ingest_openlibrary_extract data/openlibrary-extracts/2026-09-01 --batch-size 50 --max-runtime 14400
-DJANGO_DEBUG=true python manage.py promote_openlibrary_run RUN_ID
+python manage.py run_openlibrary_cloud_pilot
 ```
 
-In admin, inspect **Import runs**, all conflicted/failed items, source payloads, author credits, English edition releases, and draft works. The last command is preview-only without `--confirm`.
+1. Creates an `ImportRun` immediately, recording URLs, official checksums, selection parameters, limits, and status in Postgres.
+2. Checks `/tmp` free space against `OPENLIBRARY_MIN_FREE_MIB` before network scans. The raw compressed dumps are streamed directly and never stored or unpacked. The small deterministic JSONL extract and reports alone use temporary disk.
+3. Streams editions twice (selection, then up to two editions per chosen work), works once, and authors once. The configured SHA-1/SHA-256 is checked at the end of every full stream. Selection retains at most 5,000 IDs and ingestion handles one record per transaction, so memory is bounded.
+4. Validates the extract checksum and count, then ingests it in the same process. New works remain drafts. Existing public works are conflicts and are not changed; supplier updates cannot overwrite a human-edited draft field.
+5. Saves scan checkpoints periodically and a concise final report in `ImportRun.stats`; provenance remains in the manifest, `SourceRecord`, `ImportItem`, identifiers, and source links. Raw dumps are never put in Postgres.
 
-Ingestion commits one work per short transaction. An interrupted run retains completed items and its manifest; retain the exact extract and run `--resume-run RUN_ID`. Failed items retry, completed items skip, and a different artifact checksum is refused. New records remain drafts. Existing public records are never changed: supplier differences become conflicts. Draft imported fields update only if blank or still equal their prior supplier value; missing source fields do not erase richer values. Work/author/edition source keys, constraints, and run-item uniqueness make reruns idempotent; title alone is never a work match. Same-ID ambiguity is reported rather than merged. Community-approved/human edits therefore remain protected.
+`--max-runtime`/`OPENLIBRARY_MAX_RUNTIME` is a graceful runtime target, not an enforced dollar cap. Six hours on a 512 MiB instance plus database usage is the planning basis for the requested **$5–10 pilot range**; confirm the current hourly price displayed by Render before launch. Network throughput and current dump sizes dominate runtime. Raise `OPENLIBRARY_MIN_FREE_MIB` if the expected extract plus safety margin exceeds 512 MiB.
 
-## 3. Render production sequence
+### Restart and troubleshooting behavior
 
-Render's [one-off job documentation](https://render.com/docs/one-off-jobs) (checked 24 September 2026) says jobs use a service's built image/configuration and environment variables. Consequently this job receives the production `DATABASE_URL`: it is **not** an isolated database. It also cannot rely on the web service's persistent disk, and temporary job files do not survive a later job.
+The deterministic selection makes reruns idempotent. A completed ingestion item is skipped, failed items retry, source hashes suppress unchanged updates, and stable Open Library IDs prevent duplicate works/authors/releases.
 
-1. Merge/deploy this code and confirm the deploy ran migrations. In the Render dashboard open **open-media-atlas-db → Recovery** and verify point-in-time recovery is enabled and its recovery window includes the current time. Do this immediately before mutations; a green web deploy is not a backup check.
-2. Open **New + → One-off Job**, select the repository/branch or the deployed environment for **open-media-atlas**, and choose the same commit/image as the healthy web service. Confirm `DATABASE_URL` is inherited. Choose **Starter (512 MB)** initially: extraction is intentionally performed elsewhere, while the bounded JSONL ingestion retains one record at a time. Do not attach or rely on the web persistent disk.
-3. Make the extract available in that job (for example, a short-lived authenticated download from an approved private store), unpack it under `/tmp/oma-extract`, and use this exact start command for validation:
+Temporary storage disappears when a job ends. Therefore interrupted **dump scans restart from byte zero** and reconstruct the extract; gzip/HTTP scans have no durable byte checkpoint. Pass `--resume-run RUN_ID` in a new job to reconstruct the same checksum-matching extract and resume **ingestion** from committed `ImportItem` rows. Changed URLs, checksums, seed, limits, or runtime settings are refused for that run. The extraction checkpoints in Postgres are observability records, not byte-range resume points.
 
-   ```bash
-   python manage.py ingest_openlibrary_extract /tmp/oma-extract --dry-run
-   ```
+Troubleshooting modes still perform cloud extraction and validation but do not ingest:
 
-4. Inspect the checksum/count output. Start a second one-off job from the **same deployed commit**, provide the same extract, and use:
+```bash
+python manage.py run_openlibrary_cloud_pilot --dry-run
+python manage.py run_openlibrary_cloud_pilot --extract-only
+python manage.py run_openlibrary_cloud_pilot --resume-run RUN_ID
+```
 
-   ```bash
-   python manage.py ingest_openlibrary_extract /tmp/oma-extract --batch-size 50 --max-runtime 14400 --report /tmp/ingest-report.json
-   ```
+The older `extract_openlibrary` and `ingest_openlibrary_extract --dry-run` commands remain available for small fixture diagnosis, but they are not the normal pilot workflow.
 
-5. Save the printed run ID and report/log output. If it stopped gracefully, start another identical job, restore the **same checksum-matching extract**, and run:
+## Render launch, monitoring, cancellation, and review
 
-   ```bash
-   python manage.py ingest_openlibrary_extract /tmp/oma-extract --resume-run RUN_ID --batch-size 50 --max-runtime 14400 --report /tmp/ingest-report.json
-   ```
+Render's one-off-job documentation says a job uses the selected service's latest successful deploy by default and inherits its environment. In the Render dashboard:
 
-6. Inspect the run and drafts in Django admin. Resolve every conflict/failure; spot-check source attribution, authors, editions, translations, and public search (drafts must not appear). Preview promotion in another one-off job:
+1. Open the **non-production pilot web service** and verify its latest deploy is this commit and its `DATABASE_URL` points to the pilot database.
+2. Click **Shell → New one-off job**, enter `python manage.py run_openlibrary_cloud_pilot`, select a 512 MiB instance, and click **Run job**.
+3. Open that job to follow live logs. Copy the printed `run_id`. Click **Cancel job** on the job page to stop it; the current DB transaction rolls back and earlier records remain resumable.
+4. Review **Catalog → Import runs**, its import items/source records, and draft works in Django admin. No promotion is part of the cloud command.
 
-   ```bash
-   python manage.py promote_openlibrary_run RUN_ID
-   ```
-
-7. Only after explicit editorial approval, publish the new records:
-
-   ```bash
-   python manage.py promote_openlibrary_run RUN_ID --confirm --limit 5000
-   ```
-
-The four-hour `--max-runtime 14400` is a conservative operational limit, not a platform or billing cap. At current dashboard rates, confirm the displayed Starter hourly price before launching; two short ingestion jobs should be comfortably inside the requested **$5–10 estimate**, but Render does not enforce that budget. Watch the live job logs and the Billing page. To stop spending or halt unexpected behavior, open the running job in the dashboard and click **Cancel job**; cancellation may interrupt the current one-record transaction, which rolls back, while prior items survive. Do not create an always-on worker.
-
-## Reports and limitations
-
-Extraction reports compressed bytes/records scanned, eligible editions, selected/written works, malformed rows, elapsed extraction time, free disk before the run, and peak RSS. Ingestion reports created, updated, unchanged, skipped-on-resume, conflicted, failed, elapsed database time, peak RSS, and PostgreSQL database bytes before/after (including indexes via `pg_database_size`; `null` on SQLite). Paths appear in the manifest/report and progress logs print every batch.
-
-Remaining pilot limits: it does not process redirects/deletes, infer original language, resolve translators, attach rights/public-domain claims, create adaptations, rank popularity, or update public records automatically. Author identity uses Open Library author keys; releases use edition keys. Extraction itself is restart-only, and reuse requires retaining the complete extract directory. Review and promotion remain intentionally explicit.
+For a credential-free browser trigger, add `RENDER_API_KEY` (a narrowly scoped Render API key) and `RENDER_PILOT_SERVICE_ID` as GitHub Actions repository secrets, then click **Actions → Run Open Library cloud pilot → Run workflow**. The workflow calls Render's `POST /v1/services/{serviceId}/jobs` endpoint from GitHub; the key never enters Git or browser-side application code. Delete/rotate it after the pilot. Monitor and cancel in Render exactly as above.
 
 ## Justin's next steps
 
-1. Pick one dated Internet Archive snapshot; record its three exact URLs and published checksums.
-2. Run the download/extraction commands on a machine whose `df -h` result safely exceeds the displayed dump sizes, then retain the checksum-verified extract archive.
-3. Merge and deploy this PR; immediately verify the production database recovery window in Render.
-4. Launch the dry-run one-off job, then the staged-ingestion job, using the same deployed commit and extract.
-5. Inspect the run/drafts and conflicts in admin. Run promotion preview, then use `--confirm` only if the review is satisfactory.
+1. In the existing non-production Render pilot service, set the ten `OPENLIBRARY_*` values shown above from one official dated snapshot; confirm `DATABASE_URL` is not production.
+2. Confirm the displayed price for a 512 MiB one-off job and that the job has at least `OPENLIBRARY_MIN_FREE_MIB` temporary space.
+3. Deploy this commit, then click **Shell → New one-off job**, enter `python manage.py run_openlibrary_cloud_pilot`, choose 512 MiB, and click **Run job**.
+4. Watch the job's live logs; use **Cancel job** there if needed.
+5. Open Django admin → **Catalog → Import runs**, select the printed run ID, and review its report, failures/conflicts, source records, and draft works.
