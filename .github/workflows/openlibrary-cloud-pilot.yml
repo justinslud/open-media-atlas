@@ -1,0 +1,20 @@
+name: Run Open Library cloud pilot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Launch one-off job from the deployed pilot service
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_PILOT_SERVICE_ID: ${{ secrets.RENDER_PILOT_SERVICE_ID }}
+        run: |
+          test -n "$RENDER_API_KEY" && test -n "$RENDER_PILOT_SERVICE_ID"
+          curl --fail-with-body --silent --show-error \
+            --request POST "https://api.render.com/v1/services/${RENDER_PILOT_SERVICE_ID}/jobs" \
+            --header "Authorization: Bearer ${RENDER_API_KEY}" \
+            --header "Content-Type: application/json" \
+            --data '{"startCommand":"python manage.py run_openlibrary_cloud_pilot"}'
