@@ -6,22 +6,18 @@ This pilot runs extraction, validation, and staged ingestion inside **one Render
 
 ## Pinned snapshot configuration
 
-Choose editions, works, and authors files from the same dated `ol_exports_YYYY-MM-DD` item linked by [Open Library's official dump page](https://openlibrary.org/developers/dumps). Do not use any `latest` URL. Set these secret environment variables on the pilot service (not in Git):
+Use the three separate `latest` links on [Open Library's official dump page](https://openlibrary.org/developers/dumps). At job start, the command resolves all three redirects, requires them to identify one matching dated Internet Archive snapshot, replaces them with canonical dated URLs, and obtains each published SHA-1/SHA-256 from official Internet Archive metadata. The resolved date, URLs, and checksums are persisted before extraction. Set these environment variables on the service:
 
 ```text
-OPENLIBRARY_SNAPSHOT_DATE=YYYY-MM-DD
-OPENLIBRARY_EDITIONS_URL=https://archive.org/download/ol_exports_YYYY-MM-DD/...editions...txt.gz
-OPENLIBRARY_EDITIONS_CHECKSUM=<published SHA-1 or SHA-256 hex digest>
-OPENLIBRARY_WORKS_URL=https://archive.org/download/ol_exports_YYYY-MM-DD/...works...txt.gz
-OPENLIBRARY_WORKS_CHECKSUM=<published SHA-1 or SHA-256 hex digest>
-OPENLIBRARY_AUTHORS_URL=https://archive.org/download/ol_exports_YYYY-MM-DD/...authors...txt.gz
-OPENLIBRARY_AUTHORS_CHECKSUM=<published SHA-1 or SHA-256 hex digest>
+OPENLIBRARY_EDITIONS_URL=https://openlibrary.org/data/ol_dump_editions_latest.txt.gz
+OPENLIBRARY_WORKS_URL=https://openlibrary.org/data/ol_dump_works_latest.txt.gz
+OPENLIBRARY_AUTHORS_URL=https://openlibrary.org/data/ol_dump_authors_latest.txt.gz
 OPENLIBRARY_LIMIT=5000
 OPENLIBRARY_MAX_RUNTIME=21600
 OPENLIBRARY_MIN_FREE_MIB=512
 ```
 
-Use the exact SHA-1 (40 hex characters) or SHA-256 (64 hex characters) shown in each snapshot file's metadata; do not invent a digest or calculate it from a moving URL. The command rejects missing digests, URLs that do not contain the common snapshot date, mismatched bytes, and different parameters on resume.
+Leave `OPENLIBRARY_SNAPSHOT_DATE` and the three `OPENLIBRARY_*_CHECKSUM` variables unset. Do not estimate a date. The command discovers and verifies the actual date and official checksums. You may instead set them as additional assertions; if supplied, they must exactly match official metadata or the job stops before scanning. A later resume uses the canonical pinned values already recorded on the run, so a changed `latest` snapshot cannot silently continue an older run.
 
 ## What the command does
 
@@ -29,7 +25,7 @@ Use the exact SHA-1 (40 hex characters) or SHA-256 (64 hex characters) shown in 
 python manage.py run_openlibrary_cloud_pilot
 ```
 
-1. Creates an `ImportRun` immediately, recording URLs, official checksums, selection parameters, limits, and status in Postgres.
+1. Resolves the three official links to one dated snapshot, verifies official metadata, then creates an `ImportRun` recording canonical URLs, checksums, selection parameters, limits, and status in Postgres.
 2. Checks `/tmp` free space against `OPENLIBRARY_MIN_FREE_MIB` before network scans. The raw compressed dumps are streamed directly and never stored or unpacked. The small deterministic JSONL extract and reports alone use temporary disk.
 3. Streams editions twice (selection, then up to two editions per chosen work), works once, and authors once. The configured SHA-1/SHA-256 is checked at the end of every full stream. Selection retains at most 5,000 IDs and ingestion handles one record per transaction, so memory is bounded.
 4. Validates the extract checksum and count, then ingests it in the same process. New works remain drafts. Existing public works are conflicts and are not changed; supplier updates cannot overwrite a human-edited draft field.
@@ -66,7 +62,7 @@ For a credential-free browser trigger, add `RENDER_API_KEY` (a narrowly scoped R
 
 ## Justin's next steps
 
-1. In the existing non-production Render pilot service, set the ten `OPENLIBRARY_*` values shown above from one official dated snapshot; confirm `DATABASE_URL` is not production.
+1. On the chosen Render service, set the six values shown above. Confirm which database its `DATABASE_URL` names and take/verify a recovery point if it is production.
 2. Confirm the displayed price for a 512 MiB one-off job and that the job has at least `OPENLIBRARY_MIN_FREE_MIB` temporary space.
 3. Deploy this commit, then click **Shell → New one-off job**, enter `python manage.py run_openlibrary_cloud_pilot`, choose 512 MiB, and click **Run job**.
 4. Watch the job's live logs; use **Cancel job** there if needed.

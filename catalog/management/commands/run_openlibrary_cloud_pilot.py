@@ -5,6 +5,8 @@ import shutil
 import tempfile
 import time
 from pathlib import Path
+from urllib.parse import quote
+from urllib.request import Request, urlopen
 
 from django.core.management import call_command
 from django.core.management.base import BaseCommand, CommandError
@@ -25,6 +27,49 @@ ENVIRONMENTS = {
 }
 
 
+def resolve_snapshot(config):
+    """Resolve OL's `latest` links and fill checksums from official IA metadata."""
+    import re
+
+    resolved = {}
+    identifiers = set()
+    dates = set()
+    for kind in ("editions", "works", "authors"):
+        url = config[kind]
+        with urlopen(Request(url, headers={"User-Agent": "OpenMediaAtlas/ol-bulk-2"}), timeout=60) as response:
+            final_url = response.geturl()
+        match = re.search(r"/(?:download/|\d+/items/)([^/]+)/(ol_dump_[^/]+\.txt\.gz)$", final_url)
+        if not match:
+            raise CommandError(f"{kind} URL did not resolve to an official dated Internet Archive dump")
+        identifier, filename = match.groups()
+        date_match = re.search(r"(\d{4}-\d{2}-\d{2})", filename)
+        if not date_match:
+            raise CommandError(f"{kind} dump filename has no snapshot date")
+        identifiers.add(identifier)
+        dates.add(date_match.group(1))
+        metadata_url = f"https://archive.org/metadata/{quote(identifier)}"
+        with urlopen(Request(metadata_url, headers={"User-Agent": "OpenMediaAtlas/ol-bulk-2"}), timeout=60) as response:
+            metadata = json.load(response)
+        file_metadata = next((item for item in metadata.get("files", []) if item.get("name") == filename), None)
+        if not file_metadata:
+            raise CommandError(f"No official metadata found for {filename}")
+        published_checksum = file_metadata.get("sha256") or file_metadata.get("sha1")
+        supplied_checksum = config[f"{kind}_checksum"]
+        if not supplied_checksum and not published_checksum:
+            raise CommandError(f"No SHA-1 or SHA-256 is published for {filename}")
+        if supplied_checksum and published_checksum and supplied_checksum.lower() != published_checksum.lower():
+            raise CommandError(f"Configured {kind} checksum differs from official metadata")
+        resolved[kind] = f"https://archive.org/download/{identifier}/{filename}"
+        resolved[f"{kind}_checksum"] = supplied_checksum or published_checksum
+    if len(identifiers) != 1 or len(dates) != 1:
+        raise CommandError("Editions, works, and authors must resolve to the same dated snapshot")
+    snapshot_date = dates.pop()
+    if config["snapshot_date"] and config["snapshot_date"] != snapshot_date:
+        raise CommandError(f"OPENLIBRARY_SNAPSHOT_DATE must be {snapshot_date} for the resolved files")
+    resolved["snapshot_date"] = snapshot_date
+    return resolved
+
+
 class Command(BaseCommand):
     help = "Stream a pinned Open Library snapshot, validate it, and stage it in one cloud job."
 
@@ -40,20 +85,32 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         config = {name: os.getenv(env, "").strip() for name, env in ENVIRONMENTS.items()}
-        missing = [ENVIRONMENTS[name] for name, value in config.items() if not value]
+        missing = [ENVIRONMENTS[name] for name in ("editions", "works", "authors") if not config[name]]
         if missing:
             raise CommandError("Missing required environment variables: " + ", ".join(missing))
-        if any(config["snapshot_date"] not in config[k] for k in ("editions", "works", "authors")):
-            raise CommandError("All three pinned URLs must contain OPENLIBRARY_SNAPSHOT_DATE")
-        if any(len(config[k]) not in (40, 64) for k in ("editions_checksum", "works_checksum", "authors_checksum")):
-            raise CommandError("Each OPENLIBRARY_*_CHECKSUM must be an official 40-character SHA-1 or 64-character SHA-256 digest")
-        if options["max_runtime"] < 60:
-            raise CommandError("--max-runtime must be at least 60 seconds")
-
         source, _ = Source.objects.get_or_create(
             title="Open Library",
             defaults={"kind": "dataset", "url": "https://openlibrary.org/developers/dumps", "notes": "Open Library bulk dump metadata; no rights conclusion."},
         )
+        resume_run = None
+        if options["resume_run"]:
+            try:
+                resume_run = ImportRun.objects.get(pk=options["resume_run"], source=source)
+            except ImportRun.DoesNotExist as exc:
+                raise CommandError("Resume run not found for Open Library") from exc
+            original = resume_run.manifest.get("cloud_parameters", {})
+            if original.get("urls") and original.get("checksums"):
+                config = {
+                    "snapshot_date": original.get("snapshot_date", ""),
+                    **original["urls"],
+                    **{f"{kind}_checksum": original["checksums"].get(kind, "") for kind in ("editions", "works", "authors")},
+                }
+        config = resolve_snapshot(config)
+        if any(len(config[k]) not in (40, 64) for k in ("editions_checksum", "works_checksum", "authors_checksum")):
+            raise CommandError("Each resolved checksum must be a 40-character SHA-1 or 64-character SHA-256 digest")
+        if options["max_runtime"] < 60:
+            raise CommandError("--max-runtime must be at least 60 seconds")
+
         parameters = {
             "snapshot_date": config["snapshot_date"], "urls": {k: config[k] for k in ("editions", "works", "authors")},
             "checksums": {k: config[f"{k}_checksum"] for k in ("editions", "works", "authors")},
@@ -61,10 +118,7 @@ class Command(BaseCommand):
             "max_runtime": options["max_runtime"], "min_free_mib": options["min_free_mib"],
         }
         if options["resume_run"]:
-            try:
-                run = ImportRun.objects.get(pk=options["resume_run"], source=source)
-            except ImportRun.DoesNotExist as exc:
-                raise CommandError("Resume run not found for Open Library") from exc
+            run = resume_run
             if run.manifest.get("cloud_parameters") != parameters:
                 raise CommandError("Resume parameters do not exactly match the original run")
             run.status = ImportRun.Status.RUNNING
