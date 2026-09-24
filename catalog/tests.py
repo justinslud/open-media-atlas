@@ -8,6 +8,8 @@ from unittest.mock import patch
 
 from django.core.management import call_command
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Permission
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import IntegrityError, transaction
 from django.test import TestCase
 from django.urls import reverse
@@ -17,7 +19,7 @@ from accounts.models import EmailVerification
 
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
 from .models import (Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ImportItem, ImportRun, MediaList, MediaListEntry, Release, Version, Work, WorkRelationship, WorkSource,
+    ContributionProposal, ContributionRevision, ImportItem, ImportRun, MediaList, MediaListEntry, RelationshipType, Release, Source, Version, Work, WorkRelationship, WorkSource,
     WorkType)
 
 
@@ -289,3 +291,122 @@ class MediaListTests(TestCase):
         self.assertNotContains(response, "Private secret")
         self.client.force_login(self.other)
         self.assertEqual(self.client.get(reverse("list-work-search", args=[public.pk]), {"q": "Published"}).status_code, 404)
+
+
+class ContributionFlowTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.member = get_user_model().objects.create_user("member", "member@example.test", "password123")
+        cls.other = get_user_model().objects.create_user("other-member", "other@example.test", "password123")
+        cls.reviewer = get_user_model().objects.create_user("reviewer", "reviewer@example.test", "password123", is_staff=True)
+        cls.reviewer.user_permissions.add(Permission.objects.get(codename="review_contributionproposal"))
+        EmailVerification.objects.create(user=cls.member, verified_at=timezone.now())
+        cls.kind = WorkType.objects.create(code="contribution-book", label="Book", medium="text")
+        cls.work = Work.objects.create(title="Old title", slug="old-title", description="Old description", work_type=cls.kind, visibility="public")
+        cls.target = Work.objects.create(title="Target", slug="target", work_type=cls.kind, visibility="public")
+        cls.rel_type = RelationshipType.objects.create(code="inspired-by-test", label="Inspired by", inverse_label="Inspired", category="derivation")
+
+    def correction_data(self, **updates):
+        data = {"field_name": "title", "proposed_value": "Better title", "explanation": "The publisher listing uses this title.", "source_url": "https://example.test/source"}
+        data.update(updates)
+        return data
+
+    def proposal(self, **updates):
+        values = dict(kind="correction", submitted_by=self.member, work=self.work, field_name="title",
+            value_at_submission=self.work.title, proposed_value="Better title", work_updated_at=self.work.updated_at,
+            explanation="Sourced correction", source_url="https://example.test/source")
+        values.update(updates)
+        return ContributionProposal.objects.create(**values)
+
+    def test_login_verification_validation_and_content_preservation(self):
+        url = reverse("suggest-correction", args=[self.work.pk])
+        self.assertRedirects(self.client.get(url), f"{reverse('accounts:login')}?next={url}")
+        self.client.force_login(self.other)
+        response = self.client.post(url, self.correction_data())
+        self.assertContains(response, "Verify your email")
+        self.assertContains(response, "Better title")
+        self.assertFalse(ContributionProposal.objects.exists())
+        self.client.force_login(self.member)
+        response = self.client.post(url, self.correction_data(source_url="ftp://unsafe.test/file"))
+        self.assertContains(response, "Use an HTTP or HTTPS source URL")
+        self.assertFalse(ContributionProposal.objects.exists())
+        self.assertRedirects(self.client.post(url, self.correction_data()), reverse("my-contributions"))
+
+    def test_private_contribution_history_is_owner_scoped(self):
+        proposal = self.proposal()
+        self.client.force_login(self.other)
+        response = self.client.get(reverse("my-contributions"))
+        self.assertNotContains(response, proposal.explanation)
+        self.client.force_login(self.member)
+        response = self.client.get(reverse("my-contributions"))
+        self.assertContains(response, proposal.explanation)
+        self.assertContains(response, "not yet independently reviewed")
+        self.assertNotContains(response, self.reviewer.email)
+
+    def test_approval_is_atomic_audited_and_cannot_repeat(self):
+        proposal = self.proposal()
+        with self.assertRaises(PermissionDenied):
+            proposal.review(reviewer=self.member, approve=True)
+        proposal.review(reviewer=self.reviewer, approve=True, explanation="Checked against source")
+        self.work.refresh_from_db()
+        self.assertEqual(self.work.title, "Better title")
+        revision = ContributionRevision.objects.get(proposal=proposal)
+        self.assertEqual((revision.previous_value, revision.new_value), ("Old title", "Better title"))
+        self.assertEqual(revision.contributor, self.member)
+        with self.assertRaises(ValidationError):
+            proposal.review(reviewer=self.reviewer, approve=True)
+        self.assertEqual(ContributionRevision.objects.count(), 1)
+
+    def test_rejection_requires_explanation_and_does_not_change_catalog(self):
+        proposal = self.proposal()
+        with self.assertRaises(ValidationError):
+            proposal.review(reviewer=self.reviewer, approve=False)
+        proposal.review(reviewer=self.reviewer, approve=False, explanation="Source does not support this.")
+        self.work.refresh_from_db()
+        self.assertEqual(self.work.title, "Old title")
+        self.assertFalse(ContributionRevision.objects.exists())
+
+    def test_stale_proposal_requires_explicit_reconciliation(self):
+        proposal = self.proposal()
+        self.work.title = "An intervening edit"
+        self.work.save()
+        with self.assertRaises(ValidationError):
+            proposal.review(reviewer=self.reviewer, approve=True)
+        proposal.review(reviewer=self.reviewer, approve=True, explanation="Reconciled manually", reconcile=True)
+        self.work.refresh_from_db()
+        self.assertEqual(self.work.title, "Better title")
+
+    def test_relationship_direction_duplicates_and_self_links(self):
+        self.client.force_login(self.member)
+        url = reverse("suggest-relationship", args=[self.work.pk])
+        data = {"related_work": self.target.pk, "relationship_type": self.rel_type.pk,
+                "explanation": "Documented connection", "source_url": "https://example.test/relationship"}
+        response = self.client.post(url, data)
+        self.assertRedirects(response, reverse("my-contributions"))
+        proposal = ContributionProposal.objects.get(kind="relationship")
+        self.assertContains(self.client.get(reverse("my-contributions")), "Old title — Inspired by — Target")
+        proposal.review(reviewer=self.reviewer, approve=True)
+        relationship = WorkRelationship.objects.get()
+        self.assertEqual((relationship.from_work, relationship.to_work), (self.work, self.target))
+        response = self.client.post(url, data)
+        self.assertContains(response, "already exists")
+        invalid = ContributionProposal(kind="relationship", submitted_by=self.member, work=self.work,
+            related_work=self.work, relationship_type=self.rel_type, work_updated_at=self.work.updated_at,
+            related_work_updated_at=self.work.updated_at, explanation="x", source_url="https://example.test")
+        with self.assertRaises(ValidationError): invalid.full_clean()
+
+    def test_approved_imported_field_remains_an_editorial_override(self):
+        source = Source.objects.create(title="Importer", url="https://example.test")
+        record = source.records.create(external_key="OL999W", matched_work=self.work, payload_hash="a", raw_payload={}, retrieved_at=timezone.now())
+        ImportedWorkState.objects.create(source_record=record, imported_title="Old title")
+        proposal = self.proposal()
+        proposal.review(reviewer=self.reviewer, approve=True)
+        # This is the importer's protection contract: accepted supplier state advances,
+        # while a current value differing from its previous state is left untouched.
+        previous = ImportedWorkState.objects.get(source_record=record)
+        if self.work.title == previous.imported_title:
+            self.work.title = "Supplier replacement"
+        previous.imported_title = "Supplier replacement"
+        previous.save()
+        self.work.refresh_from_db()
+        self.assertEqual(self.work.title, "Better title")

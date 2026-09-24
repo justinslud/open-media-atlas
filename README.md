@@ -131,3 +131,25 @@ To avoid charges, do not apply the Blueprint. If staging is no longer needed,
 delete both the web service and database in Render; suspending only the web
 service does not necessarily stop database billing. Render displays the exact
 prorated charges before creation and in the Billing page.
+
+## Community contribution review
+
+Verified members can propose sourced corrections and work-to-work relationships from a
+public work page, then track their private submissions under **My contributions**.
+Proposals do not alter the public catalog until an authorized reviewer approves them in
+Django admin. To grant that narrowly scoped capability, assign a staff user the
+`catalog | contribution proposal | Can approve or reject contribution proposals`
+permission (codename `catalog.review_contributionproposal`) through the admin user or
+group permission editor. Do not grant ordinary members staff status or this permission.
+
+After deployment:
+
+1. Run `python manage.py migrate`.
+2. Grant the review permission to the intended staff group/users and confirm a user
+   without it cannot open the contribution proposal admin.
+3. Submit and approve one non-production test correction, confirm the public work and
+   contribution status update, then remove the test data if appropriate.
+4. Confirm email verification and outbound email configuration, and monitor contribution
+   rate-limit and admin logs during rollout.
+5. Run one bounded reimport for an approved imported record and confirm the editorial
+   value remains in place.
