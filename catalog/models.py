@@ -38,7 +38,10 @@ class Work(models.Model):
 
     class Meta:
         ordering = ("title", "first_publication_year", "id")
-        indexes = [models.Index(fields=("visibility", "work_type"))]
+        indexes = [
+            models.Index(fields=("visibility", "work_type")),
+            models.Index(fields=("visibility", "first_publication_year")),
+        ]
 
     def save(self, *args, **kwargs):
         if not self.slug:
