@@ -12,6 +12,25 @@ from .forms import EntryCommentaryForm, MediaListForm
 from .models import FeaturedWork, MediaList, MediaListEntry, Work, WorkRelationship, WorkType
 
 
+DISCOVER_PAGE_SIZE = 30
+
+
+def _open_library_url(value, kind):
+    """Return a canonical Open Library URL for a supported structured key."""
+    if not value:
+        return None
+    value = str(value).strip().split("?", 1)[0].rstrip("/")
+    prefix, suffix = ("works", "W") if kind == "work" else ("books", "M")
+    marker = f"/{prefix}/"
+    if marker in value:
+        value = value.rsplit(marker, 1)[1]
+    elif value.startswith("/") or "/" in value:
+        return None
+    if not value.startswith("OL") or not value.endswith(suffix) or not value[2:-1].isdigit():
+        return None
+    return f"https://openlibrary.org/{prefix}/{value}"
+
+
 def public_works():
     """Return the public catalog, preferring real records over demo fixtures."""
     works = Work.objects.filter(visibility=Work.Visibility.PUBLIC)
@@ -66,6 +85,11 @@ def home(request):
 def discover(request):
     query = request.GET.get("q", "").strip()
     media_type = request.GET.get("type", "").strip()
+    creator = request.GET.get("creator", "").strip()[:200]
+    year_from = request.GET.get("year_from", "").strip()
+    year_to = request.GET.get("year_to", "").strip()
+    relationship = request.GET.get("relationship", "").strip()
+    sort = request.GET.get("sort", "title").strip()
     public = public_works()
     works = (
         public.select_related("work_type")
@@ -96,10 +120,47 @@ def discover(request):
         ).distinct()
     if media_type:
         works = works.filter(work_type_id=media_type)
+    if creator:
+        works = works.filter(credits__agent__name__icontains=creator).distinct()
+    if year_from.isdigit():
+        works = works.filter(first_publication_year__gte=int(year_from))
+    if year_to.isdigit():
+        works = works.filter(first_publication_year__lte=int(year_to))
+    if relationship == "has_adaptations":
+        # Relationships are stored derived work -> source work.
+        works = works.filter(
+            incoming_relationships__review_status="accepted",
+            incoming_relationships__relationship_type__category="derivation",
+            incoming_relationships__from_work__in=public,
+        ).distinct()
+    elif relationship == "is_adaptation":
+        works = works.filter(
+            outgoing_relationships__review_status="accepted",
+            outgoing_relationships__relationship_type__category="derivation",
+            outgoing_relationships__to_work__in=public,
+        ).distinct()
+    orderings = {
+        "title": ("title", "first_publication_year", "id"),
+        "newest": ("-first_publication_year", "title", "id"),
+        "oldest": ("first_publication_year", "title", "id"),
+    }
+    works = works.order_by(*orderings.get(sort, orderings["title"]))
+    page_obj = Paginator(works, DISCOVER_PAGE_SIZE).get_page(request.GET.get("page"))
+    preserved = request.GET.copy()
+    preserved.pop("page", None)
     context = {
-        "works": works,
+        "works": page_obj.object_list,
+        "page_obj": page_obj,
+        "result_count": page_obj.paginator.count,
+        "querystring": preserved.urlencode(),
         "query": query,
         "selected_type": media_type,
+        "creator": creator,
+        "year_from": year_from,
+        "year_to": year_to,
+        "selected_relationship": relationship,
+        "selected_sort": sort if sort in orderings else "title",
+        "has_filters": any((query, media_type, creator, year_from, year_to, relationship)),
         "work_types": WorkType.objects.order_by("label"),
     }
     template = (
@@ -155,19 +216,19 @@ def work_detail(request, pk, slug):
 
     # Existing URLs are the only availability data in this milestone. Present
     # them as source/catalog links rather than making an unsupported access claim.
-    primary_link = next(
-        (link.source for link in work.source_links.all() if link.source.url), None
+    open_library_url = next(
+        (_open_library_url(item.value, "work") for item in work.identifiers.all()
+         if item.scheme == "ol_work" and _open_library_url(item.value, "work")),
+        None,
     )
-    if primary_link is None:
-        open_library_id = next(
-            (item.value for item in work.identifiers.all() if item.scheme == "ol_work"),
-            None,
-        )
-        if open_library_id:
-            primary_link = {
-                "url": f"https://openlibrary.org/works/{open_library_id}",
-                "title": "View at Open Library",
-            }
+    primary_link = ({"url": open_library_url, "title": "View on Open Library"}
+                    if open_library_url else next(
+        (link.source for link in work.source_links.all()
+         if link.source.url and "openlibrary.org" not in link.source.url.lower()), None
+    ))
+    for version in work.versions.all():
+        for release in version.releases.all():
+            release.open_library_url = _open_library_url(release.openlibrary_key, "edition")
 
     has_relationships = any(relationship_groups.values())
     return render(
@@ -179,6 +240,7 @@ def work_detail(request, pk, slug):
             "has_relationships": has_relationships,
             "primary_link": primary_link,
             "owned_lists": MediaList.objects.filter(owner=request.user) if request.user.is_authenticated else (),
+            "open_library_url": open_library_url,
         },
     )
 
@@ -340,7 +402,9 @@ def list_entry_move(request, pk, entry_pk, direction):
 @require_http_methods(["GET", "POST"])
 def add_to_list(request, work_pk):
     work = get_object_or_404(public_works(), pk=work_pk)
-    lists = MediaList.objects.filter(owner=request.user)
+    lists = MediaList.objects.filter(owner=request.user).annotate(
+        contains_work=Count("entries", filter=Q(entries__work=work))
+    )
     if request.method == "POST":
         list_id = request.POST.get("list_id")
         if list_id:
@@ -350,13 +414,14 @@ def add_to_list(request, work_pk):
             if not title or len(title) > 120:
                 return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists, "error": "Enter a list title of 120 characters or fewer."})
             media_list = MediaList.objects.create(owner=request.user, title=title)
-        if media_list.entries.filter(work=work).exists():
-            messages.info(request, "That work is already in this list.")
-        else:
-            position = (media_list.entries.aggregate(Max("position"))["position__max"] or 0) + 1
-            MediaListEntry.objects.create(media_list=media_list, work=work, position=position)
-            messages.success(request, f"Added {work.title} to {media_list.title}.")
-        return redirect("list-edit", pk=media_list.pk)
+        with transaction.atomic():
+            if media_list.entries.select_for_update().filter(work=work).exists():
+                messages.info(request, f"{work.title} is already in {media_list.title}.")
+            else:
+                position = (media_list.entries.aggregate(Max("position"))["position__max"] or 0) + 1
+                MediaListEntry.objects.create(media_list=media_list, work=work, position=position)
+                messages.success(request, f"Added {work.title} to {media_list.title}.")
+        return redirect(media_list.get_absolute_url())
     return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists})
 
 

@@ -90,6 +90,46 @@ class CatalogTests(TestCase):
         self.assertNotContains(response, "<!doctype html>")
         self.assertContains(response, "<strong>2</strong> works", html=True)
 
+    def test_discover_paginates_and_preserves_filters(self):
+        kind = WorkType.objects.get(pk="novel")
+        Work.objects.bulk_create([
+            Work(title=f"Paged work {number:02}", slug=f"paged-{number}", work_type=kind,
+                 visibility=Work.Visibility.PUBLIC, is_demo=True)
+            for number in range(32)
+        ])
+        response = self.client.get(reverse("discover"), {"type": "novel", "sort": "newest"})
+        self.assertEqual(len(response.context["works"]), 30)
+        self.assertEqual(response.context["result_count"], 33)
+        self.assertContains(response, "type=novel&amp;sort=newest&amp;page=2")
+        second = self.client.get(reverse("discover"), {"type": "novel", "page": 2})
+        self.assertEqual(len(second.context["works"]), 3)
+
+    def test_discover_combines_year_creator_and_relationship_direction(self):
+        response = self.client.get(reverse("discover"), {
+            "creator": "Mara Vale", "year_from": "1900", "year_to": "1920",
+            "relationship": "has_adaptations",
+        })
+        self.assertEqual([work.pk for work in response.context["works"]], [1001])
+        response = self.client.get(reverse("discover"), {"relationship": "is_adaptation"})
+        self.assertEqual({work.pk for work in response.context["works"]}, {1002, 1003})
+
+    def test_open_library_links_use_structured_work_and_edition_keys(self):
+        work = Work.objects.get(pk=1001)
+        ExternalIdentifier.objects.create(work=work, scheme="ol_work", value="/works/OL123W")
+        release = Release.objects.filter(version__work=work).first()
+        release.openlibrary_key = "/books/OL456M"
+        release.save()
+        response = self.client.get(work.get_absolute_url())
+        self.assertContains(response, 'href="https://openlibrary.org/works/OL123W"')
+        self.assertContains(response, 'href="https://openlibrary.org/books/OL456M"')
+        self.assertNotContains(response, 'href="https://openlibrary.org/"')
+
+    def test_invalid_open_library_identifier_does_not_create_homepage_link(self):
+        work = Work.objects.get(pk=1001)
+        ExternalIdentifier.objects.create(work=work, scheme="ol_work", value="not-a-work")
+        response = self.client.get(work.get_absolute_url())
+        self.assertNotContains(response, "View on Open Library")
+
     def test_relationship_direction_and_inverse_label(self):
         film = Work.objects.get(pk=1002)
         novel = Work.objects.get(pk=1001)
@@ -410,6 +450,26 @@ class MediaListTests(TestCase):
             MediaListEntry.objects.create(media_list=item, work=self.work_a, position=3)
         self.client.post(reverse("list-delete", args=[item.pk]))
         self.assertFalse(MediaList.objects.filter(pk=item.pk).exists())
+
+    def test_add_to_list_shows_private_lists_persists_and_handles_duplicate(self):
+        own = MediaList.objects.create(owner=self.owner, title="Private shelf")
+        MediaList.objects.create(owner=self.other, title="Other private shelf")
+        self.client.force_login(self.owner)
+        chooser = self.client.get(reverse("add-to-list", args=[self.work_a.pk]))
+        self.assertContains(chooser, "Private shelf")
+        self.assertNotContains(chooser, "Other private shelf")
+        response = self.client.post(reverse("add-to-list", args=[self.work_a.pk]), {"list_id": own.pk})
+        self.assertRedirects(response, own.get_absolute_url())
+        self.assertContains(self.client.get(own.get_absolute_url()), self.work_a.title)
+        self.client.post(reverse("add-to-list", args=[self.work_a.pk]), {"list_id": own.pk})
+        self.assertEqual(own.entries.filter(work=self.work_a).count(), 1)
+
+    def test_add_to_list_rejects_another_users_list(self):
+        other_list = MediaList.objects.create(owner=self.other, title="Not yours")
+        self.client.force_login(self.owner)
+        response = self.client.post(reverse("add-to-list", args=[self.work_a.pk]), {"list_id": other_list.pk})
+        self.assertEqual(response.status_code, 404)
+        self.assertFalse(other_list.entries.exists())
 
     def test_unpublished_work_details_hidden_publicly_but_owner_warned(self):
         item = MediaList.objects.create(owner=self.owner, title="Public", visibility="public")
