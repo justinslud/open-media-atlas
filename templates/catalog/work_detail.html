@@ -21,7 +21,7 @@
     </div>
   </header>
 
-  {% if has_relationships %}<section id="relationships" class="content-section relationships-section">
+  <section id="relationships" class="content-section relationships-section">
     <p class="eyebrow">IMMEDIATE CONNECTIONS</p><h2>Relationships</h2>
     {% for group_name, relationships in relationship_groups.items %}{% if relationships %}
       <div class="relationship-group"><h3>{% if group_name == "adaptations" %}Adaptations &amp; source works{% elif group_name == "recordings" %}Recordings{% elif group_name == "commentary" %}Commentary{% else %}Other connections{% endif %}</h3>
@@ -32,18 +32,19 @@
         </article>{% endfor %}</div>
       </div>
     {% endif %}{% endfor %}
-  </section>{% endif %}
+    {% if not relationship_groups.adaptations %}<div class="empty compact"><strong>No adaptations recorded yet.</strong> <a href="{% if user.is_authenticated %}{% url 'suggest-relationship' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-relationship' work.pk %}{% endif %}">Suggest an adaptation relationship</a>.</div>{% endif %}
+  </section>
 
   <div class="detail-grid">
     {% if work.description %}<section id="description" class="content-section"><p class="eyebrow">ABOUT THIS WORK</p><h2>Description</h2><p class="prose">{{ work.description }}</p></section>{% endif %}
     <section id="details" class="content-section"><p class="eyebrow">CATALOG RECORD</p><h2>Details</h2><dl class="metadata"><dt>Format</dt><dd>{{ work.work_type.label }}</dd>{% if work.first_publication_date_text %}<dt>Original date</dt><dd>{{ work.first_publication_date_text }}</dd>{% endif %}{% if work.completion_status != "unknown" %}<dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd>{% endif %}<dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">An index record meets OMA’s identity standard but may not have full editorial detail.</p></section>
     {% if work.credits.all %}<section id="creators" class="content-section"><p class="eyebrow">CREDITS</p><h2>Creators</h2>{% for credit in work.credits.all %}<div class="credit-row"><span>{{ credit.role|capfirst }}</span><strong>{{ credit.agent.name }}</strong></div>{% endfor %}</section>{% endif %}
-    {% if work.source_links.all or work.identifiers.all %}<section id="sources" class="content-section"><p class="eyebrow">PROVENANCE &amp; LINKS</p><h2>Sources</h2><ul class="source-list">{% for identifier in work.identifiers.all %}{% if identifier.scheme == "ol_work" %}<li><a href="https://openlibrary.org/works/{{ identifier.value }}">View at Open Library</a><small>External identifier {{ identifier.value }}</small></li>{% endif %}{% endfor %}{% for link in work.source_links.all %}<li>{% if link.source.url %}<a href="{{ link.source.url }}">{{ link.source.title }}</a>{% else %}{{ link.source.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% endfor %}</ul></section>{% endif %}
+    {% if work.source_links.all or work.identifiers.all %}<section id="sources" class="content-section"><p class="eyebrow">PROVENANCE &amp; LINKS</p><h2>Sources</h2><ul class="source-list">{% if open_library_url %}<li><a href="{{ open_library_url }}">View work on Open Library</a></li>{% endif %}{% for link in work.source_links.all %}<li>{% if link.source.url and 'openlibrary.org' not in link.source.url %}<a href="{{ link.source.url }}">{{ link.source.title }}</a>{% else %}{{ link.source.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% endfor %}</ul></section>{% endif %}
   </div>
 
   {% if work.versions.all %}<section id="versions" class="content-section versions-section"><p class="eyebrow">EDITIONS, TRANSLATIONS &amp; RECORDINGS</p><h2>Detailed versions</h2><p class="section-deck">Open a version to see its releases and publication details.</p>
     <div class="version-list">{% for version in work.versions.all %}<details class="version" id="version-{{ version.id }}"><summary><span><strong>{{ version.label }}{% if version.title %} / {{ version.title }}{% endif %}</strong><small>{{ version.get_kind_display }}{% if version.language %} · {{ version.language }}{% endif %}{% if version.contributor_note %} · {{ version.contributor_note }}{% endif %}</small></span><span>{{ version.releases.all|length }} release{{ version.releases.all|length|pluralize }}</span></summary>
-      {% for release in version.releases.all %}<div class="release-row" id="release-{{ release.id }}"><span>{{ release.publication_date_text|default:"Date unknown" }}</span><span>{{ release.format|default:"Format unknown" }}</span><span><strong>{{ release.edition_name|default:release.title }}</strong>{% if release.publisher_statement %}<br><small>{{ release.publisher_statement }}</small>{% endif %}</span>{% if release.pages %}<span>{{ release.pages }} pages</span>{% endif %}</div>{% empty %}<p class="empty compact">No releases recorded for this version.</p>{% endfor %}
+      {% for release in version.releases.all %}<div class="release-row" id="release-{{ release.id }}">{% if release.publication_date_text %}<span>{{ release.publication_date_text }}</span>{% endif %}{% if release.format %}<span>{{ release.format }}</span>{% endif %}<span><strong>{{ release.edition_name|default:release.title }}</strong>{% if release.publisher_statement %}<br><small>{{ release.publisher_statement }}</small>{% endif %}{% if release.open_library_url %}<br><a href="{{ release.open_library_url }}">View edition on Open Library</a>{% endif %}</span>{% if release.pages %}<span>{{ release.pages }} pages</span>{% endif %}</div>{% empty %}<p class="empty compact">No releases recorded for this version.</p>{% endfor %}
     </details>{% endfor %}</div>
   </section>{% endif %}
 </article>
