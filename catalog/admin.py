@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import (
     Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ImportItem, ImportRun, Release, RelationshipType, Source, SourceRecord,
+    ImportItem, ImportRun, ImportRelationshipProposal, Release, RelationshipType, Source, SourceRecord,
     MediaList, MediaListEntry, Version, Work, WorkRelationship, WorkSource, WorkType,
 )
 
@@ -57,13 +57,28 @@ class ImportItemInline(admin.TabularInline):
     can_delete = False
     readonly_fields = ("external_key", "status", "work", "message")
 
+class ImportRelationshipProposalInline(admin.TabularInline):
+    model = ImportRelationshipProposal
+    extra = 0
+    can_delete = False
+    readonly_fields = ("statement_id", "from_work", "relationship_type", "to_work", "status", "evidence")
+
 
 @admin.register(ImportRun)
 class ImportRunAdmin(admin.ModelAdmin):
     list_display = ("id", "source", "status", "started_at", "finished_at", "stats")
     list_filter = ("status", "source")
     readonly_fields = ("source", "status", "requested_keys", "manifest", "importer_version", "stats", "started_at", "finished_at")
-    inlines = (ImportItemInline,)
+    inlines = (ImportItemInline, ImportRelationshipProposalInline)
+
+@admin.register(ImportRelationshipProposal)
+class ImportRelationshipProposalAdmin(admin.ModelAdmin):
+    list_display = ("statement_id", "from_work", "relationship_type", "to_work", "status", "run")
+    list_filter = ("status", "relationship_type", "run")
+    search_fields = ("statement_id", "from_work__title", "to_work__title")
+    readonly_fields = ("run", "statement_id", "from_work", "to_work", "relationship_type", "source", "evidence", "status", "reviewer", "reviewed_at")
+    def has_add_permission(self, request): return False
+    def has_delete_permission(self, request, obj=None): return False
 
 
 @admin.register(SourceRecord)

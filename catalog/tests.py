@@ -21,8 +21,9 @@ from accounts.models import EmailVerification
 
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
 from .importers.openlibrary_bulk import BulkImportError, extract, validate_extract
+from .importers.wikidata import WikidataClient, run_import
 from .models import (Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ContributionProposal, ContributionRevision, ImportItem, ImportRun, MediaList, MediaListEntry, RelationshipType, Release, Source, Version, Work, WorkRelationship, WorkSource,
+    ContributionProposal, ContributionRevision, ImportItem, ImportRun, ImportRelationshipProposal, MediaList, MediaListEntry, RelationshipType, Release, Source, Version, Work, WorkRelationship, WorkSource,
     WorkType)
 
 
@@ -41,6 +42,62 @@ def fake_open(payloads):
         return JsonResponse(json.dumps(next(responses)).encode())
 
     return opener
+
+
+class FakeWikidataClient:
+    requests = 2
+    def entities(self, ids):
+        entities = {
+            "Q1": {"id":"Q1","lastrevid":11,"labels":{"en":{"value":"Source novel"}},"descriptions":{"en":{"value":"human description"}},
+                   "claims":{"P31":[{"mainsnak":{"datavalue":{"value":{"entity-type":"item","id":"Q8261"}}}}],"P648":[{"mainsnak":{"datavalue":{"value":"OL1W"}}}]}},
+            "Q2": {"id":"Q2","lastrevid":22,"labels":{"en":{"value":"Derived film"}},"descriptions":{"en":{"value":"film description"}},
+                   "claims":{"P31":[{"mainsnak":{"datavalue":{"value":{"entity-type":"item","id":"Q11424"}}}}],
+                   "P144":[{"id":"Q2$ABC","rank":"normal","mainsnak":{"datavalue":{"value":{"entity-type":"item","id":"Q1"}}},
+                            "qualifiers":{"P580":[{"datavalue":{"value":{"time":"+2020-01-01T00:00:00Z"}}}]},"references":[{"snaks":{"P248":[]}}]}]}}
+        }
+        return {qid:entities[qid] for qid in ids}
+    def discover(self,seeds,limit):
+        return [{"derived":{"value":"http://www.wikidata.org/entity/Q2"},"seed":{"value":"http://www.wikidata.org/entity/Q1"},
+                 "statement":{"value":"http://www.wikidata.org/entity/statement/Q2-ABC"}}]
+
+
+class WikidataPilotTests(TestCase):
+    def setUp(self):
+        self.source=Source.objects.create(title="Wikidata",url="https://www.wikidata.org/")
+        self.run=ImportRun.objects.create(source=self.source,requested_keys=["Q1"])
+
+    def test_identifier_matching_stages_without_public_mutation_and_is_idempotent(self):
+        kind=WorkType.objects.create(code="novel",label="Novel",medium="text")
+        existing=Work.objects.create(title="Editorial title",slug="editorial",work_type=kind,description="A richer editor description",visibility="public")
+        ExternalIdentifier.objects.create(work=existing,scheme="ol_work",value="OL1W")
+        first=run_import(self.run,["Q1"],related_limit=5,client=FakeWikidataClient())
+        self.run.refresh_from_db(); second=run_import(self.run,["Q1"],related_limit=5,client=FakeWikidataClient())
+        existing.refresh_from_db()
+        self.assertEqual((existing.title,existing.description,existing.visibility),("Editorial title","A richer editor description","public"))
+        self.assertEqual(ExternalIdentifier.objects.filter(scheme="wikidata",value="Q1").count(),1)
+        self.assertEqual(ImportRelationshipProposal.objects.count(),1)
+        self.assertEqual(first["relationships_proposed"],second["relationships_proposed"])
+
+    def test_title_only_match_is_ambiguous_not_merged(self):
+        kind=WorkType.objects.create(code="film",label="Film",medium="screen")
+        Work.objects.create(title="Derived film",slug="existing-derived",work_type=kind,visibility="public")
+        stats=run_import(self.run,["Q1"],related_limit=5,client=FakeWikidataClient())
+        self.assertEqual(stats["ambiguous_matches"],1)
+        self.assertFalse(ExternalIdentifier.objects.filter(value="Q2").exists())
+
+    def test_direction_mapping_evidence_and_explicit_approval(self):
+        run_import(self.run,["Q1"],related_limit=5,client=FakeWikidataClient())
+        proposal=ImportRelationshipProposal.objects.get()
+        self.assertEqual((proposal.from_work.title,proposal.relationship_type.code,proposal.to_work.title),("Derived film","based-on","Source novel"))
+        self.assertEqual(proposal.evidence["property_id"],"P144")
+        self.assertTrue(proposal.evidence["references"]); self.assertTrue(proposal.evidence["qualifiers"])
+        reviewer=get_user_model().objects.create_user(username="reviewer")
+        relationship=proposal.approve(reviewer)
+        self.assertEqual(relationship.review_status,"accepted")
+        relationship.from_work.visibility=relationship.to_work.visibility="public"
+        relationship.from_work.save(); relationship.to_work.save()
+        self.assertContains(self.client.get(relationship.from_work.get_absolute_url()),"Based on")
+        self.assertContains(self.client.get(relationship.to_work.get_absolute_url()),"Inspired or adapted works")
 class CatalogTests(TestCase):
     @classmethod
     def setUpTestData(cls):
