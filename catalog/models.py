@@ -107,6 +107,7 @@ class Agent(models.Model):
     name = models.CharField(max_length=200)
     kind = models.CharField(max_length=20, choices=[("person", "Person"), ("organization", "Organization")])
     openlibrary_key = models.CharField(max_length=40, unique=True, null=True, blank=True)
+    wikidata_id = models.CharField(max_length=20, unique=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -263,6 +264,7 @@ class WorkRelationship(models.Model):
     scope_note = models.CharField(max_length=300, blank=True)
     review_status = models.CharField(max_length=20, choices=[("accepted", "Accepted"), ("unreviewed", "Unreviewed"), ("disputed", "Disputed")], default="unreviewed")
     authorization_status = models.CharField(max_length=20, default="unknown")
+    evidence = models.JSONField(default=dict, blank=True, help_text="Source statement, references, qualifiers, rank, and retrieval metadata.")
 
     class Meta:
         constraints = [
@@ -276,6 +278,50 @@ class WorkRelationship(models.Model):
 
     def __str__(self):
         return f"{self.from_work} {self.relationship_type.label} {self.to_work}"
+
+    @property
+    def evidence_url(self):
+        return self.evidence.get("source_url", "") if isinstance(self.evidence, dict) else ""
+
+
+class ImportRelationshipProposal(models.Model):
+    """A supplier assertion kept inert until an editor explicitly accepts it."""
+
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        APPROVED = "approved", "Approved"
+        REJECTED = "rejected", "Rejected"
+
+    run = models.ForeignKey(ImportRun, on_delete=models.CASCADE, related_name="relationship_proposals")
+    statement_id = models.CharField(max_length=200)
+    from_work = models.ForeignKey(Work, on_delete=models.PROTECT, related_name="import_outgoing_proposals")
+    to_work = models.ForeignKey(Work, on_delete=models.PROTECT, related_name="import_incoming_proposals")
+    relationship_type = models.ForeignKey(RelationshipType, on_delete=models.PROTECT)
+    source = models.ForeignKey(Source, on_delete=models.PROTECT)
+    evidence = models.JSONField(default=dict)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING, db_index=True)
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True, blank=True)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("run", "statement_id"), name="unique_statement_per_import_run")]
+
+    def approve(self, reviewer):
+        """Publish only the assertion; draft endpoint visibility remains a separate decision."""
+        with transaction.atomic():
+            proposal = ImportRelationshipProposal.objects.select_for_update().get(pk=self.pk)
+            relationship, _ = WorkRelationship.objects.update_or_create(
+                from_work=proposal.from_work, to_work=proposal.to_work,
+                relationship_type=proposal.relationship_type,
+                defaults={"source": proposal.source, "scope_note": "Wikidata P144 (based on) assertion; editor approved.",
+                          "review_status": "accepted", "authorization_status": "unknown", "evidence": proposal.evidence},
+            )
+            proposal.status = self.Status.APPROVED
+            proposal.reviewer = reviewer
+            proposal.reviewed_at = timezone.now()
+            proposal.save(update_fields=("status", "reviewer", "reviewed_at"))
+        self.refresh_from_db()
+        return relationship
 
 
 class ExternalIdentifier(models.Model):

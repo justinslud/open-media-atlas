@@ -221,11 +221,14 @@ def work_detail(request, pk, slug):
          if item.scheme == "ol_work" and _open_library_url(item.value, "work")),
         None,
     )
-    primary_link = ({"url": open_library_url, "title": "View on Open Library"}
-                    if open_library_url else next(
+    wikidata_url = next(
+        (f"https://www.wikidata.org/wiki/{item.value}" for item in work.identifiers.all()
+         if item.scheme == "wikidata" and item.value.startswith("Q") and item.value[1:].isdigit()), None)
+    primary_link = ({"url": open_library_url, "title": "View on Open Library"} if open_library_url else
+                    ({"url": wikidata_url, "title": "View on Wikidata"} if wikidata_url else next(
         (link.source for link in work.source_links.all()
          if link.source.url and "openlibrary.org" not in link.source.url.lower()), None
-    ))
+    )))
     for version in work.versions.all():
         for release in version.releases.all():
             release.open_library_url = _open_library_url(release.openlibrary_key, "edition")
@@ -241,6 +244,7 @@ def work_detail(request, pk, slug):
             "primary_link": primary_link,
             "owned_lists": MediaList.objects.filter(owner=request.user) if request.user.is_authenticated else (),
             "open_library_url": open_library_url,
+            "wikidata_url": wikidata_url,
         },
     )
 

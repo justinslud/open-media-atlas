@@ -1,0 +1,27 @@
+name: Run Wikidata enrichment pilot
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Fetch and report without staging entities"
+        type: boolean
+        default: true
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Launch bounded one-off job from deployed pilot service
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_PILOT_SERVICE_ID: ${{ secrets.RENDER_PILOT_SERVICE_ID }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          test -n "$RENDER_API_KEY" && test -n "$RENDER_PILOT_SERVICE_ID"
+          command="python manage.py run_wikidata_enrichment --seed-limit 50 --related-limit 300 --request-limit 250 --timeout 30 --max-runtime 1800"
+          if [ "$DRY_RUN" = true ]; then command="$command --dry-run"; fi
+          payload=$(COMMAND="$command" python -c 'import json,os; print(json.dumps({"startCommand": os.environ["COMMAND"]}))')
+          curl --fail-with-body --silent --show-error \
+            --request POST "https://api.render.com/v1/services/${RENDER_PILOT_SERVICE_ID}/jobs" \
+            --header "Authorization: Bearer ${RENDER_API_KEY}" \
+            --header "Content-Type: application/json" \
+            --data "$payload"
