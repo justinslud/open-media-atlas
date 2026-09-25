@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from django.core.management import call_command
+from django.core.management.base import CommandError
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Permission
 from django.core.exceptions import PermissionDenied, ValidationError
@@ -284,6 +285,15 @@ class OpenLibraryBulkImportTests(TestCase):
         run=ImportRun.objects.get(); self.assertEqual(run.items.filter(status="failed").count(),1)
         call_command("ingest_openlibrary_extract",output,resume_run=run.pk)
         self.assertEqual(run.items.filter(status="failed").count(),0)
+
+    def test_promotion_requires_explicit_override_for_reviewed_failures(self):
+        output=self.make_extract(); call_command("ingest_openlibrary_extract",output)
+        run=ImportRun.objects.get(); run.status=ImportRun.Status.COMPLETED_WITH_ERRORS; run.save(update_fields=("status",))
+        ImportItem.objects.create(run=run,external_key="OLFAILEDW",status="failed",message="reviewed test failure")
+        with self.assertRaises(CommandError):
+            call_command("promote_openlibrary_run",run.pk,confirm=True)
+        call_command("promote_openlibrary_run",run.pk,confirm=True,allow_errors=True)
+        self.assertEqual(Work.objects.filter(visibility=Work.Visibility.PUBLIC).count(),2)
 
     def test_rejects_truncated_extract_and_ambiguous_identifier(self):
         output=self.make_extract(); (output/"records.jsonl").write_text("")
