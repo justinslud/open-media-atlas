@@ -1,0 +1,206 @@
+{
+  "version": "2026-09-25",
+  "notes": "Pinned work-level entities (not editions, characters, or franchises). Revalidate redirects/types at fetch time; a missing or changed entity is reported, never guessed.",
+  "seeds": [
+    {
+      "qid": "Q179182",
+      "label": "Siddhartha"
+    },
+    {
+      "qid": "Q41567",
+      "label": "Hamlet"
+    },
+    {
+      "qid": "Q130283",
+      "label": "Macbeth"
+    },
+    {
+      "qid": "Q26833",
+      "label": "Othello"
+    },
+    {
+      "qid": "Q181598",
+      "label": "King Lear"
+    },
+    {
+      "qid": "Q83186",
+      "label": "Romeo and Juliet"
+    },
+    {
+      "qid": "Q86440",
+      "label": "The Tempest"
+    },
+    {
+      "qid": "Q104871",
+      "label": "A Midsummer Night's Dream"
+    },
+    {
+      "qid": "Q221211",
+      "label": "Twelfth Night"
+    },
+    {
+      "qid": "Q130851",
+      "label": "Much Ado About Nothing"
+    },
+    {
+      "qid": "Q150827",
+      "label": "Frankenstein"
+    },
+    {
+      "qid": "Q41542",
+      "label": "Dracula"
+    },
+    {
+      "qid": "Q170583",
+      "label": "Pride and Prejudice"
+    },
+    {
+      "qid": "Q223131",
+      "label": "A Study in Scarlet"
+    },
+    {
+      "qid": "Q500688",
+      "label": "The Sign of the Four"
+    },
+    {
+      "qid": "Q45192",
+      "label": "The Hound of the Baskervilles"
+    },
+    {
+      "qid": "Q392147",
+      "label": "The Adventures of Sherlock Holmes"
+    },
+    {
+      "qid": "Q92640",
+      "label": "Alice's Adventures in Wonderland"
+    },
+    {
+      "qid": "Q130295",
+      "label": "The Wonderful Wizard of Oz"
+    },
+    {
+      "qid": "Q226468",
+      "label": "Peter Pan"
+    },
+    {
+      "qid": "Q185118",
+      "label": "Treasure Island"
+    },
+    {
+      "qid": "Q627333",
+      "label": "The Time Machine"
+    },
+    {
+      "qid": "Q213019",
+      "label": "The War of the Worlds"
+    },
+    {
+      "qid": "Q1539509",
+      "label": "The Invisible Man"
+    },
+    {
+      "qid": "Q183565",
+      "label": "Twenty Thousand Leagues Under the Seas"
+    },
+    {
+      "qid": "Q1219561",
+      "label": "Around the World in Eighty Days"
+    },
+    {
+      "qid": "Q1215745",
+      "label": "Journey to the Center of the Earth"
+    },
+    {
+      "qid": "Q180736",
+      "label": "Les Misérables"
+    },
+    {
+      "qid": "Q191838",
+      "label": "The Count of Monte Cristo"
+    },
+    {
+      "qid": "Q140527",
+      "label": "The Three Musketeers"
+    },
+    {
+      "qid": "Q480",
+      "label": "Don Quixote"
+    },
+    {
+      "qid": "Q174596",
+      "label": "Moby-Dick"
+    },
+    {
+      "qid": "Q523076",
+      "label": "Little Women"
+    },
+    {
+      "qid": "Q565911",
+      "label": "Anne of Green Gables"
+    },
+    {
+      "qid": "Q472194",
+      "label": "The Secret Garden"
+    },
+    {
+      "qid": "Q62879",
+      "label": "A Christmas Carol"
+    },
+    {
+      "qid": "Q164974",
+      "label": "Oliver Twist"
+    },
+    {
+      "qid": "Q189811",
+      "label": "David Copperfield"
+    },
+    {
+      "qid": "Q219552",
+      "label": "Great Expectations"
+    },
+    {
+      "qid": "Q182961",
+      "label": "Jane Eyre"
+    },
+    {
+      "qid": "Q202975",
+      "label": "Wuthering Heights"
+    },
+    {
+      "qid": "Q82464",
+      "label": "The Picture of Dorian Gray"
+    },
+    {
+      "qid": "Q217352",
+      "label": "Strange Case of Dr Jekyll and Mr Hyde"
+    },
+    {
+      "qid": "Q225231",
+      "label": "The Phantom of the Opera"
+    },
+    {
+      "qid": "Q189509",
+      "label": "The Jungle Book"
+    },
+    {
+      "qid": "Q936276",
+      "label": "The Wind in the Willows"
+    },
+    {
+      "qid": "Q476871",
+      "label": "The Call of the Wild"
+    },
+    {
+      "qid": "Q152267",
+      "label": "White Fang"
+    },
+    {
+      "qid": "Q907568",
+      "label": "The Scarlet Letter"
+    },
+    {
+      "qid": "Q2222",
+      "label": "Uncle Tom's Cabin"
+    }
+  ]
+}
