@@ -6,6 +6,7 @@ import json
 import resource
 import shutil
 import time
+from contextlib import contextmanager
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -16,7 +17,7 @@ from django.utils.text import slugify
 from catalog.models import (Agent, Credit, ExternalIdentifier, ImportedWorkState,
     Release, Source, SourceRecord, Version, Work, WorkSource, WorkType)
 
-IMPORTER_VERSION = "ol-bulk-1"
+IMPORTER_VERSION = "ol-bulk-2"
 ENGLISH_KEYS = {"/languages/eng", "eng"}
 
 class BulkImportError(Exception): pass
@@ -32,6 +33,37 @@ def file_sha256(path):
 def _open(path):
     return gzip.open(path, "rb") if str(path).endswith(".gz") else open(path, "rb")
 
+class _HashingReader:
+    def __init__(self, stream):
+        self.stream = stream
+        self.digests = {"sha1": hashlib.sha1(), "sha256": hashlib.sha256()}
+    def read(self, size=-1):
+        data = self.stream.read(size)
+        for digest in self.digests.values(): digest.update(data)
+        return data
+    def close(self):
+        self.stream.close()
+
+@contextmanager
+def open_source(source, checksum=""):
+    """Open a local dump or stream a remote gzip dump without materialising it."""
+    value = str(source)
+    if value.startswith(("https://", "http://")):
+        response = urlopen(Request(value, headers={"User-Agent": "OpenMediaAtlas/ol-bulk-2"}), timeout=60)
+        hashed = _HashingReader(response)
+        stream = gzip.GzipFile(fileobj=hashed) if value.endswith(".gz") else hashed
+        try:
+            yield stream
+        finally:
+            stream.close()
+            response.close()
+        algorithm = "sha1" if len(checksum) == 40 else "sha256"
+        if checksum and hashed.digests[algorithm].hexdigest().lower() != checksum.lower():
+            raise BulkImportError(f"{algorithm.upper()} checksum mismatch for {value}")
+    else:
+        with _open(source) as stream:
+            yield stream
+
 def _payload(line, expected_type):
     try:
         parts = line.rstrip(b"\r\n").split(b"\t", 4)
@@ -42,9 +74,10 @@ def _payload(line, expected_type):
         raise BulkImportError(f"Malformed {expected_type} dump row: {exc}") from exc
 
 def validate_file(path, expected_type):
-    path = Path(path)
-    if not path.is_file() or path.stat().st_size == 0: raise BulkImportError(f"Empty or missing input: {path}")
-    with _open(path) as stream:
+    if not str(path).startswith(("https://", "http://")):
+        path = Path(path)
+        if not path.is_file() or path.stat().st_size == 0: raise BulkImportError(f"Empty or missing input: {path}")
+    with open_source(path) as stream:
         line = stream.readline()
         if not line: raise BulkImportError(f"Empty compressed input: {path}")
         _payload(line, expected_type)
@@ -77,13 +110,14 @@ def extract(*, editions, works, authors, output, limit=5000, editions_per_work=2
     for path, kind in ((editions,"/type/edition"),(works,"/type/work"),(authors,"/type/author")): validate_file(path, kind)
     output=Path(output); output.mkdir(parents=True, exist_ok=True)
     free=shutil.disk_usage(output).free
-    input_bytes=sum(Path(p).stat().st_size for p in (editions,works,authors))
+    input_bytes=sum(Path(p).stat().st_size for p in (editions,works,authors)
+                    if not str(p).startswith(("https://", "http://")))
     # Output is small, but extraction must coexist with supplied dumps.
     if free < 100 * 1024 * 1024: raise BulkImportError("Less than 100 MiB temporary storage is available")
     started=time.monotonic(); stats={"bytes_scanned":0,"records_scanned":0,"malformed":0,"eligible_editions":0,"works_selected":0}
     heap=[]; in_heap=set()
     def expired(): return max_runtime and time.monotonic()-started >= max_runtime
-    with _open(editions) as stream:
+    with open_source(editions, (checksums or {}).get("editions", "")) as stream:
         for line in stream:
             stats["bytes_scanned"]+=len(line); stats["records_scanned"]+=1
             try: row,_=_payload(line,"/type/edition")
@@ -98,10 +132,11 @@ def extract(*, editions, works, authors, output, limit=5000, editions_per_work=2
                 if len(heap)<limit: heapq.heappush(heap,item); in_heap.add(wid)
                 elif item>heap[0]:
                     removed=heapq.heapreplace(heap,item); in_heap.discard(removed[1]); in_heap.add(wid)
+            if progress and stats["records_scanned"] % 100000 == 0: progress("select_editions", stats)
             if expired(): raise BulkImportError("Maximum runtime reached during non-resumable selection scan")
     selected={wid for _,wid in heap}; stats["works_selected"]=len(selected)
     edition_rows={wid:[] for wid in selected}
-    with _open(editions) as stream:
+    with open_source(editions, (checksums or {}).get("editions", "")) as stream:
         for line in stream:
             stats["bytes_scanned"]+=len(line); stats["records_scanned"]+=1
             try: row,_=_payload(line,"/type/edition")
@@ -109,9 +144,10 @@ def extract(*, editions, works, authors, output, limit=5000, editions_per_work=2
             if "eng" not in set(_refs(row.get("languages"), "/languages/")): continue
             for wid in set(_refs(row.get("works"), "/works/")) & selected:
                 if len(edition_rows[wid])<editions_per_work: edition_rows[wid].append(row)
+            if progress and stats["records_scanned"] % 100000 == 0: progress("collect_editions", stats)
             if expired(): raise BulkImportError("Maximum runtime reached during edition collection scan")
     work_rows={}; author_ids=set()
-    with _open(works) as stream:
+    with open_source(works, (checksums or {}).get("works", "")) as stream:
         for line in stream:
             stats["bytes_scanned"]+=len(line); stats["records_scanned"]+=1
             try: row,_=_payload(line,"/type/work")
@@ -123,15 +159,17 @@ def extract(*, editions, works, authors, output, limit=5000, editions_per_work=2
                     ref=entry.get("author",entry) if isinstance(entry,dict) else {}
                     key=ref.get("key","") if isinstance(ref,dict) else ""
                     if key.startswith("/authors/"): author_ids.add(key.removeprefix("/authors/"))
+            if progress and stats["records_scanned"] % 100000 == 0: progress("scan_works", stats)
             if expired(): raise BulkImportError("Maximum runtime reached during works scan")
     author_rows={}
-    with _open(authors) as stream:
+    with open_source(authors, (checksums or {}).get("authors", "")) as stream:
         for line in stream:
             stats["bytes_scanned"]+=len(line); stats["records_scanned"]+=1
             try: row,_=_payload(line,"/type/author")
             except BulkImportError: continue
             aid=str(row.get("key","")).removeprefix("/authors/")
             if aid in author_ids: author_rows[aid]=row
+            if progress and stats["records_scanned"] % 100000 == 0: progress("scan_authors", stats)
             if expired(): raise BulkImportError("Maximum runtime reached during authors scan")
     records=output/"records.jsonl"; tmp=output/"records.jsonl.partial"; written=0
     with tmp.open("w",encoding="utf-8") as target:
