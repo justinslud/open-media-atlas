@@ -37,6 +37,8 @@ python manage.py run_openlibrary_cloud_pilot
 
 The deterministic selection makes reruns idempotent. A completed ingestion item is skipped, failed items retry, source hashes suppress unchanged updates, and stable Open Library IDs prevent duplicate works/authors/releases.
 
+After reviewing every failed item in admin, a `completed_with_errors` run can publish only its successful `created` items with `python manage.py promote_openlibrary_run RUN_ID --confirm --allow-errors`. Omit `--confirm` first to preview the successful and failed counts. The override never publishes failed items and does not permit promotion of running or fully failed runs.
+
 Temporary storage disappears when a job ends. Therefore interrupted **dump scans restart from byte zero** and reconstruct the extract; gzip/HTTP scans have no durable byte checkpoint. Pass `--resume-run RUN_ID` in a new job to reconstruct the same checksum-matching extract and resume **ingestion** from committed `ImportItem` rows. Changed URLs, checksums, seed, limits, or runtime settings are refused for that run. The extraction checkpoints in Postgres are observability records, not byte-range resume points.
 
 Troubleshooting modes still perform cloud extraction and validation but do not ingest:
@@ -51,19 +53,27 @@ The older `extract_openlibrary` and `ingest_openlibrary_extract --dry-run` comma
 
 ## Render launch, monitoring, cancellation, and review
 
-Render's one-off-job documentation says a job uses the selected service's latest successful deploy by default and inherits its environment. In the Render dashboard:
+Render's one-off-job documentation says a job uses the selected service's latest successful deploy by default and inherits its environment. Launching is an API operation, not a form in the service shell. Create a Render API key and copy the target service ID, then call:
 
-1. Open the **non-production pilot web service** and verify its latest deploy is this commit and its `DATABASE_URL` points to the pilot database.
-2. Click **Shell → New one-off job**, enter `python manage.py run_openlibrary_cloud_pilot`, select a 512 MiB instance, and click **Run job**.
-3. Open that job to follow live logs. Copy the printed `run_id`. Click **Cancel job** on the job page to stop it; the current DB transaction rolls back and earlier records remain resumable.
-4. Review **Catalog → Import runs**, its import items/source records, and draft works in Django admin. No promotion is part of the cloud command.
+```bash
+export RENDER_API_KEY='rnd_...'
+export RENDER_SERVICE_ID='srv_...'
+curl --fail-with-body --silent --show-error \
+  --request POST "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/jobs" \
+  --header "Authorization: Bearer ${RENDER_API_KEY}" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/json" \
+  --data '{"startCommand":"python manage.py run_openlibrary_cloud_pilot"}'
+```
 
-For a credential-free browser trigger, add `RENDER_API_KEY` (a narrowly scoped Render API key) and `RENDER_PILOT_SERVICE_ID` as GitHub Actions repository secrets, then click **Actions → Run Open Library cloud pilot → Run workflow**. The workflow calls Render's `POST /v1/services/{serviceId}/jobs` endpoint from GitHub; the key never enters Git or browser-side application code. Delete/rotate it after the pilot. Monitor and cancel in Render exactly as above.
+Do not send `"planId":"starter"`: `starter` is a service plan slug, not a valid one-off-job plan ID, and Render rejects it with HTTP 400. Omitting `planId` lets Render use the target service's compatible default. Run this in a trusted terminal that has `curl`, **not** inside the Render service shell: putting the API key into the service shell unnecessarily exposes an account credential to that service. The response contains the one-off job ID. Open the target service's **Jobs** page in Render to follow its logs and cancel it. Copy the Django `run_id` printed in the job logs. Cancellation rolls back the current DB transaction while earlier records remain resumable. Then review **Catalog → Import runs**, its import items/source records, and draft works in Django admin. No promotion is part of the cloud command.
+
+If you do not want to run `curl` locally, add `RENDER_API_KEY` and `RENDER_PILOT_SERVICE_ID` as GitHub Actions repository secrets, then click **Actions → Run Open Library cloud pilot → Run workflow**. The included workflow makes the same request from GitHub; the key never enters Git or browser-side application code. Delete/rotate it after the pilot. Monitor and cancel in Render exactly as above.
 
 ## Justin's next steps
 
 1. On the chosen Render service, set the six values shown above. Confirm which database its `DATABASE_URL` names and take/verify a recovery point if it is production.
 2. Confirm the displayed price for a 512 MiB one-off job and that the job has at least `OPENLIBRARY_MIN_FREE_MIB` temporary space.
-3. Deploy this commit, then click **Shell → New one-off job**, enter `python manage.py run_openlibrary_cloud_pilot`, choose 512 MiB, and click **Run job**.
+3. Deploy this commit, then make the API call above from a trusted terminal, or run the included GitHub Actions workflow.
 4. Watch the job's live logs; use **Cancel job** there if needed.
 5. Open Django admin → **Catalog → Import runs**, select the printed run ID, and review its report, failures/conflicts, source records, and draft works.
