@@ -1,13 +1,23 @@
-<div class="result-summary"><strong>{{ works|length }}</strong> work{{ works|length|pluralize }}{% if query %} matching “{{ query }}”{% endif %}</div>
+{% if has_filters %}<nav class="active-filters" aria-label="Active filters">
+  <strong>Active:</strong>
+  {% if query %}<a href="?{% if selected_type %}type={{ selected_type|urlencode }}&amp;{% endif %}{% if creator %}creator={{ creator|urlencode }}&amp;{% endif %}{% if year_from %}year_from={{ year_from|urlencode }}&amp;{% endif %}{% if year_to %}year_to={{ year_to|urlencode }}&amp;{% endif %}{% if selected_relationship %}relationship={{ selected_relationship|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">Search: {{ query }} ×</a>{% endif %}
+  {% if selected_type %}<a href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if creator %}creator={{ creator|urlencode }}&amp;{% endif %}{% if year_from %}year_from={{ year_from|urlencode }}&amp;{% endif %}{% if year_to %}year_to={{ year_to|urlencode }}&amp;{% endif %}{% if selected_relationship %}relationship={{ selected_relationship|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">Type ×</a>{% endif %}
+  {% if creator %}<a href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if selected_type %}type={{ selected_type|urlencode }}&amp;{% endif %}{% if year_from %}year_from={{ year_from|urlencode }}&amp;{% endif %}{% if year_to %}year_to={{ year_to|urlencode }}&amp;{% endif %}{% if selected_relationship %}relationship={{ selected_relationship|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">Creator: {{ creator }} ×</a>{% endif %}
+  {% if year_from %}<a href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if selected_type %}type={{ selected_type|urlencode }}&amp;{% endif %}{% if creator %}creator={{ creator|urlencode }}&amp;{% endif %}{% if year_to %}year_to={{ year_to|urlencode }}&amp;{% endif %}{% if selected_relationship %}relationship={{ selected_relationship|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">From {{ year_from }} ×</a>{% endif %}
+  {% if year_to %}<a href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if selected_type %}type={{ selected_type|urlencode }}&amp;{% endif %}{% if creator %}creator={{ creator|urlencode }}&amp;{% endif %}{% if year_from %}year_from={{ year_from|urlencode }}&amp;{% endif %}{% if selected_relationship %}relationship={{ selected_relationship|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">Through {{ year_to }} ×</a>{% endif %}
+  {% if selected_relationship %}<a href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if selected_type %}type={{ selected_type|urlencode }}&amp;{% endif %}{% if creator %}creator={{ creator|urlencode }}&amp;{% endif %}{% if year_from %}year_from={{ year_from|urlencode }}&amp;{% endif %}{% if year_to %}year_to={{ year_to|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">Adaptation filter ×</a>{% endif %}
+  <a href="{% url 'discover' %}">Clear all</a>
+</nav>{% endif %}
+<div class="result-summary"><span><strong>{{ result_count }}</strong> work{{ result_count|pluralize }}</span>{% if result_count %} · showing {{ page_obj.start_index }}–{{ page_obj.end_index }}{% endif %}</div>
 <div class="result-list">
-{% for work in works %}
-  <article class="result-row">
-    <div class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</div>
-    <div class="result-main"><h2><a href="{{ work.get_absolute_url }}">{{ work.title }}</a></h2><p>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</p></div>
-    <div class="result-end">{% if work.is_demo %}<span class="badge">Demo</span>{% endif %}<span>{{ work.connection_count }} connection{{ work.connection_count|pluralize }}</span></div>
-  </article>
-{% empty %}
-  <div class="empty"><h2>No works found</h2><p>Try a broader title or remove the media-type filter. The catalog is intentionally small in this milestone.</p><a href="{% url 'discover' %}">Clear all filters</a></div>
-{% endfor %}
+{% for work in works %}<article class="result-row">
+  <div class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</div>
+  <div class="result-main"><h2><a href="{{ work.get_absolute_url }}">{{ work.title }}</a></h2><p>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</p></div>
+  <div class="result-end">{% if work.is_demo %}<span class="badge">Demo</span>{% endif %}<span>{{ work.connection_count }} connection{{ work.connection_count|pluralize }}</span></div>
+</article>{% empty %}<div class="empty"><h2>No works found</h2><p>No works match these filters. Remove one or more filters to broaden the results.</p><a class="secondary-action" href="{% url 'discover' %}">Clear all filters</a></div>{% endfor %}
 </div>
-
+{% if page_obj.paginator.num_pages > 1 %}<nav class="pagination" aria-label="Results pages">
+  {% if page_obj.has_previous %}<a href="?{% if querystring %}{{ querystring }}&amp;{% endif %}page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}
+  <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}<a href="?{% if querystring %}{{ querystring }}&amp;{% endif %}page={{ page_obj.next_page_number }}">Next →</a>{% endif %}
+</nav>{% endif %}
