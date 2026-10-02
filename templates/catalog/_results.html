@@ -12,7 +12,7 @@
 <div class="result-list">
 {% for work in works %}<article class="result-row">
   <div class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</div>
-  <div class="result-main"><h2><a href="{{ work.get_absolute_url }}">{{ work.title }}</a></h2><p>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</p></div>
+  <div class="result-main"><h2><a href="{{ work.get_absolute_url }}">{{ work.display_title }}</a></h2><p>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</p></div>
   <div class="result-end">{% if work.is_demo %}<span class="badge">Demo</span>{% endif %}<span>{{ work.connection_count }} connection{{ work.connection_count|pluralize }}</span></div>
 </article>{% empty %}<div class="empty"><h2>No works found</h2><p>No works match these filters. Remove one or more filters to broaden the results.</p><a class="secondary-action" href="{% url 'discover' %}">Clear all filters</a></div>{% endfor %}
 </div>
