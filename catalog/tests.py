@@ -21,7 +21,7 @@ from accounts.models import EmailVerification
 
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
 from .importers.openlibrary_bulk import BulkImportError, extract, validate_extract
-from .importers.wikidata import WikidataClient, run_import
+from .importers.wikidata import WikidataClient, run_import, title_from_entity
 from .models import (Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
     ContributionProposal, ContributionRevision, ImportItem, ImportRun, ImportRelationshipProposal, MediaList, MediaListEntry, RelationshipType, Release, Source, SourceRecord, Term, Version, Work, WorkRelationship, WorkSource,
     WorkRedirect, WorkTermAssignment, WorkType)
@@ -78,6 +78,38 @@ class WikidataPilotTests(TestCase):
         self.assertEqual(ExternalIdentifier.objects.filter(scheme="wikidata",value="Q1").count(),1)
         self.assertEqual(ImportRelationshipProposal.objects.count(),1)
         self.assertEqual(first["relationships_proposed"],second["relationships_proposed"])
+
+    def test_title_resolution_uses_original_available_title_not_qid(self):
+        entity={"labels":{"fr":{"value":"Les Quatre Mousquetaires"}},"claims":{
+            "P345":[{"mainsnak":{"datavalue":{"value":"tt0258903"}}}]}}
+        self.assertEqual(title_from_entity(entity),("Les Quatre Mousquetaires","fr","label"))
+
+    def test_unresolved_qid_has_an_explicit_incomplete_display(self):
+        kind=WorkType.objects.create(code="unknown-film",label="Film",medium="screen")
+        work=Work.objects.create(title="Q3235021",slug="q3235021",work_type=kind,visibility="public")
+        ExternalIdentifier.objects.create(work=work,scheme="wikidata",value="Q3235021")
+        response=self.client.get(work.get_absolute_url())
+        self.assertContains(response,"Title pending enrichment")
+        self.assertContains(response,"Incomplete record")
+        self.assertNotContains(response,"<h1>Q3235021</h1>",html=True)
+
+    @patch("catalog.management.commands.enrich_wikidata_titles.WikidataClient")
+    def test_title_job_enriches_by_exact_ids_and_cites_wikipedia(self, client_class):
+        kind=WorkType.objects.create(code="belgian-film",label="Film",medium="screen")
+        work=Work.objects.create(title="Q3235021",slug="q3235021-job",work_type=kind,visibility="public")
+        ExternalIdentifier.objects.create(work=work,scheme="wikidata",value="Q3235021")
+        client=client_class.return_value; client.requests=2
+        client.entities.return_value={"Q3235021":{"id":"Q3235021","labels":{"fr":{"value":"Les Quatre Mousquetaires"}},
+            "sitelinks":{"frwiki":{"title":"Les Quatre Mousquetaires"}},"claims":{
+            "P345":[{"mainsnak":{"datavalue":{"value":"tt0258903"}}}]}}}
+        client.get_json.return_value={"query":{"pages":[{"title":"Les Quatre Mousquetaires","extract":"Film belge de 1934."}]}}
+        call_command("enrich_wikidata_titles",limit=5000)
+        work.refresh_from_db()
+        self.assertEqual(work.title,"Les Quatre Mousquetaires")
+        self.assertEqual(work.description,"Film belge de 1934.")
+        self.assertTrue(ExternalIdentifier.objects.filter(work=work,scheme="imdb",value="tt0258903").exists())
+        self.assertTrue(WorkSource.objects.filter(work=work,source__url__contains="fr.wikipedia.org/wiki/").exists())
+        self.assertEqual(ImportRun.objects.latest("pk").status,ImportRun.Status.COMPLETED)
 
     def test_title_only_match_is_ambiguous_not_merged(self):
         kind=WorkType.objects.create(code="film",label="Film",medium="screen")
