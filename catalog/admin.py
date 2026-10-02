@@ -3,8 +3,9 @@ from django.contrib import admin
 from .models import (
     Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
     ImportItem, ImportRun, ImportRelationshipProposal, Release, RelationshipType, Source, SourceRecord,
-    MediaList, MediaListEntry, Version, Work, WorkRelationship, WorkSource, WorkType,
+    MediaList, MediaListEntry, Version, Work, WorkRedirect, WorkRelationship, WorkSource, WorkType,
 )
+from .services import merge_works
 
 
 class CreditInline(admin.TabularInline):
@@ -29,6 +30,34 @@ class WorkAdmin(admin.ModelAdmin):
     search_fields = ("title", "description")
     prepopulated_fields = {"slug": ("title",)}
     inlines = (CreditInline, VersionInline, WorkSourceInline)
+
+
+@admin.register(WorkRedirect)
+class WorkRedirectAdmin(admin.ModelAdmin):
+    list_display = ("old_work", "canonical_work", "merged_by", "merged_at")
+    readonly_fields = ("merged_by", "merged_at")
+    autocomplete_fields = ("old_work", "canonical_work")
+
+    def has_add_permission(self, request):
+        return request.user.is_staff and request.user.has_perm("catalog.merge_work")
+
+    def has_view_permission(self, request, obj=None):
+        return request.user.is_staff and request.user.has_perm("catalog.merge_work")
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def save_model(self, request, obj, form, change):
+        redirect_record = merge_works(
+            source=obj.old_work, canonical=obj.canonical_work, actor=request.user
+        )
+        obj.pk = redirect_record.pk
+        obj.merged_by = redirect_record.merged_by
+        obj.merged_at = redirect_record.merged_at
+        obj._state.adding = False
 
 
 @admin.register(FeaturedWork)

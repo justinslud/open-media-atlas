@@ -22,9 +22,10 @@ from accounts.models import EmailVerification
 from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImporter
 from .importers.openlibrary_bulk import BulkImportError, extract, validate_extract
 from .importers.wikidata import WikidataClient, run_import
-from .models import (Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ContributionProposal, ContributionRevision, ImportItem, ImportRun, ImportRelationshipProposal, MediaList, MediaListEntry, RelationshipType, Release, Source, Version, Work, WorkRelationship, WorkSource,
-    WorkType)
+from .models import (Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
+    ContributionProposal, ContributionRevision, ImportItem, ImportRun, ImportRelationshipProposal, MediaList, MediaListEntry, RelationshipType, Release, Source, SourceRecord, Version, Work, WorkRelationship, WorkSource,
+    WorkRedirect, WorkType)
+from .services import merge_works
 
 
 class JsonResponse(io.BytesIO):
@@ -608,6 +609,8 @@ class ContributionFlowTests(TestCase):
         proposal.review(reviewer=self.reviewer, approve=True, explanation="Checked against source")
         self.work.refresh_from_db()
         self.assertEqual(self.work.title, "Better title")
+
+
         revision = ContributionRevision.objects.get(proposal=proposal)
         self.assertEqual((revision.previous_value, revision.new_value), ("Old title", "Better title"))
         self.assertEqual(revision.contributor, self.member)
@@ -668,3 +671,195 @@ class ContributionFlowTests(TestCase):
         previous.save()
         self.work.refresh_from_db()
         self.assertEqual(self.work.title, "Better title")
+class WorkMergeTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.kind = WorkType.objects.create(code="merge-book", label="Book", medium="text")
+        cls.source_work = Work.objects.create(
+            title="Duplicate", slug="duplicate", work_type=cls.kind, visibility="public"
+        )
+        cls.canonical = Work.objects.create(
+            title="Canonical", slug="canonical", work_type=cls.kind, visibility="public"
+        )
+        cls.staff = get_user_model().objects.create_user(username="merger", is_staff=True)
+        cls.staff.user_permissions.add(Permission.objects.get(codename="merge_work"))
+        cls.unprivileged_staff = get_user_model().objects.create_user(
+            username="ordinary-staff", is_staff=True
+        )
+
+    def test_merge_requires_explicit_staff_permission(self):
+        with self.assertRaises(PermissionDenied):
+            merge_works(
+                source=self.source_work,
+                canonical=self.canonical,
+                actor=self.unprivileged_staff,
+            )
+        self.assertFalse(WorkRedirect.objects.exists())
+
+        self.client.force_login(self.unprivileged_staff)
+        response = self.client.get(reverse("admin:catalog_workredirect_add"))
+        self.assertEqual(response.status_code, 403)
+        self.client.force_login(self.staff)
+        add_url = reverse("admin:catalog_workredirect_add")
+        self.assertEqual(self.client.get(add_url).status_code, 200)
+        response = self.client.post(
+            add_url,
+            {
+                "old_work": self.source_work.pk,
+                "canonical_work": self.canonical.pk,
+                "_save": "Save",
+            },
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(
+            WorkRedirect.objects.filter(
+                old_work=self.source_work, canonical_work=self.canonical
+            ).exists()
+        )
+
+    def test_merge_repoints_records_and_resolves_unique_collisions(self):
+        agent = Agent.objects.create(name="Writer", kind="person")
+        Credit.objects.create(work=self.canonical, agent=agent, role="author")
+        Credit.objects.create(work=self.source_work, agent=agent, role="author")
+        other_credit = Credit.objects.create(
+            work=self.source_work,
+            agent=Agent.objects.create(name="Editor", kind="person"),
+            role="editor",
+        )
+
+        canonical_version = Version.objects.create(
+            work=self.canonical, label="Original", kind="original"
+        )
+        duplicate_version = Version.objects.create(
+            work=self.source_work, label="Original", kind="original"
+        )
+        release = Release.objects.create(version=duplicate_version, title="Preserved release")
+        moved_version = Version.objects.create(
+            work=self.source_work, label="Translation", kind="translation"
+        )
+        ExternalIdentifier.objects.create(work=self.canonical, scheme="isbn", value="same")
+        ExternalIdentifier.objects.create(work=self.source_work, scheme="isbn", value="same")
+        unique_identifier = ExternalIdentifier.objects.create(
+            work=self.source_work, scheme="wikidata", value="Q123"
+        )
+
+        source = Source.objects.create(title="Merge evidence", url="https://example.test")
+        WorkSource.objects.create(work=self.canonical, source=source)
+        WorkSource.objects.create(work=self.source_work, source=source)
+        source_record = SourceRecord.objects.create(
+            source=source,
+            external_key="duplicate-record",
+            matched_work=self.source_work,
+            payload_hash="hash",
+            raw_payload={},
+            retrieved_at=timezone.now(),
+        )
+        relationship_type = RelationshipType.objects.create(
+            code="merge-based-on", label="Based on", inverse_label="Basis for"
+        )
+        third = Work.objects.create(title="Third", slug="third", work_type=self.kind)
+        WorkRelationship.objects.create(
+            from_work=self.canonical,
+            to_work=third,
+            relationship_type=relationship_type,
+            source=source,
+        )
+        WorkRelationship.objects.create(
+            from_work=self.source_work,
+            to_work=third,
+            relationship_type=relationship_type,
+            source=source,
+        )
+        WorkRelationship.objects.create(
+            from_work=self.source_work,
+            to_work=self.canonical,
+            relationship_type=relationship_type,
+            source=source,
+        )
+
+        owner = get_user_model().objects.create_user(username="list-owner")
+        media_list = MediaList.objects.create(owner=owner, title="Favorites")
+        canonical_entry = MediaListEntry.objects.create(
+            media_list=media_list, work=self.canonical, commentary="Canonical note", position=1
+        )
+        MediaListEntry.objects.create(
+            media_list=media_list, work=self.source_work, commentary="Duplicate note", position=2
+        )
+        proposal = ContributionProposal.objects.create(
+            kind="relationship",
+            submitted_by=owner,
+            work=self.source_work,
+            related_work=third,
+            relationship_type=relationship_type,
+            work_updated_at=self.source_work.updated_at,
+            related_work_updated_at=third.updated_at,
+            explanation="Evidence",
+            source_url="https://example.test/proposal",
+        )
+        import_run = ImportRun.objects.create(source=source)
+        import_item = ImportItem.objects.create(
+            run=import_run,
+            external_key="merge-item",
+            status="created",
+            work=self.source_work,
+        )
+        import_proposal = ImportRelationshipProposal.objects.create(
+            run=import_run,
+            statement_id="merge-statement",
+            from_work=self.source_work,
+            to_work=third,
+            relationship_type=relationship_type,
+            source=source,
+        )
+
+        redirect_record = merge_works(
+            source=self.source_work, canonical=self.canonical, actor=self.staff
+        )
+
+        self.assertEqual(redirect_record.canonical_work, self.canonical)
+        other_credit.refresh_from_db()
+        self.assertEqual(other_credit.work, self.canonical)
+        self.assertEqual(Credit.objects.filter(work=self.canonical, agent=agent, role="author").count(), 1)
+        release.refresh_from_db()
+        self.assertEqual(release.version, canonical_version)
+        moved_version.refresh_from_db()
+        self.assertEqual(moved_version.work, self.canonical)
+        unique_identifier.refresh_from_db()
+        source_record.refresh_from_db()
+        proposal.refresh_from_db()
+        import_item.refresh_from_db()
+        import_proposal.refresh_from_db()
+        canonical_entry.refresh_from_db()
+        self.assertEqual(unique_identifier.work, self.canonical)
+        self.assertEqual(source_record.matched_work, self.canonical)
+        self.assertEqual(proposal.work, self.canonical)
+        self.assertEqual(import_item.work, self.canonical)
+        self.assertEqual(import_proposal.from_work, self.canonical)
+        self.assertEqual(MediaListEntry.objects.filter(media_list=media_list).count(), 1)
+        self.assertIn("Duplicate note", canonical_entry.commentary)
+        self.assertEqual(WorkRelationship.objects.filter(from_work=self.canonical, to_work=third).count(), 1)
+        self.assertFalse(WorkRelationship.objects.filter(from_work=self.canonical, to_work=self.canonical).exists())
+
+    def test_old_work_url_permanently_redirects_to_canonical_url(self):
+        old_url = self.source_work.get_absolute_url()
+        merge_works(source=self.source_work, canonical=self.canonical, actor=self.staff)
+        response = self.client.get(old_url)
+        self.assertRedirects(
+            response, self.canonical.get_absolute_url(), status_code=301, fetch_redirect_response=False
+        )
+        visible_ids = self.client.get(reverse("discover")).context["works"].values_list(
+            "pk", flat=True
+        )
+        self.assertNotIn(self.source_work.pk, visible_ids)
+
+    def test_failure_rolls_back_all_repointing_and_redirect_creation(self):
+        identifier = ExternalIdentifier.objects.create(
+            work=self.source_work, scheme="rollback", value="original"
+        )
+        with patch("catalog.services.WorkRedirect.objects.create", side_effect=RuntimeError("boom")):
+            with self.assertRaises(RuntimeError):
+                merge_works(source=self.source_work, canonical=self.canonical, actor=self.staff)
+
+        identifier.refresh_from_db()
+        self.assertEqual(identifier.work, self.source_work)
+        self.assertFalse(WorkRedirect.objects.exists())
