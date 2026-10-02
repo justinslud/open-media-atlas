@@ -64,7 +64,9 @@ class RelationshipProposalForm(forms.Form):
     def __init__(self, *args, source_work, **kwargs):
         super().__init__(*args, **kwargs)
         self.source_work = source_work
-        self.fields["related_work"].queryset = Work.objects.filter(visibility=Work.Visibility.PUBLIC).exclude(pk=source_work.pk)
+        self.fields["related_work"].queryset = Work.objects.filter(
+            visibility=Work.Visibility.PUBLIC, canonical_redirect__isnull=True
+        ).exclude(pk=source_work.pk)
         self.fields["relationship_type"].queryset = RelationshipType.objects.order_by("label")
 
     def clean_source_url(self):
