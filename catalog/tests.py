@@ -635,6 +635,42 @@ class ContributionFlowTests(TestCase):
         self.work.refresh_from_db()
         self.assertEqual(self.work.title, "Better title")
 
+    def test_clarification_and_resubmission_preserve_attempt_history(self):
+        proposal = self.proposal()
+        proposal.request_clarification(reviewer=self.reviewer, explanation="Please cite the title page.")
+        self.client.force_login(self.member)
+        response = self.client.post(reverse("resubmit-contribution", args=[proposal.pk]),
+            self.correction_data(proposed_value="Best title", explanation="Now citing the title page."))
+        self.assertRedirects(response, reverse("my-contributions"))
+        proposal.refresh_from_db()
+        replacement = ContributionProposal.objects.get(supersedes=proposal)
+        self.assertEqual(proposal.status, ContributionProposal.Status.SUPERSEDED)
+        self.assertEqual(replacement.status, ContributionProposal.Status.PENDING)
+        self.assertEqual(replacement.proposed_value, "Best title")
+        self.assertEqual(proposal.proposed_value, "Better title")
+        history = self.client.get(reverse("my-contributions"))
+        self.assertContains(history, "retained as part of the proposal history")
+        self.assertContains(history, "revision of proposal")
+
+    def test_only_owner_can_resubmit_a_clarification_request(self):
+        proposal = self.proposal()
+        proposal.request_clarification(reviewer=self.reviewer, explanation="More detail needed.")
+        self.client.force_login(self.other)
+        self.assertEqual(self.client.get(reverse("resubmit-contribution", args=[proposal.pk])).status_code, 404)
+        with self.assertRaises(PermissionDenied):
+            proposal.resubmit(contributor=self.other, proposed_value="No", explanation="No",
+                              source_url="https://example.test/no")
+
+    def test_resubmission_refreshes_conflict_snapshot(self):
+        proposal = self.proposal()
+        proposal.request_clarification(reviewer=self.reviewer, explanation="Please revise.")
+        self.work.title = "Intervening title"
+        self.work.save()
+        replacement = proposal.resubmit(contributor=self.member, proposed_value="Final title",
+            explanation="Revised evidence", source_url="https://example.test/revised")
+        self.assertEqual(replacement.value_at_submission, "Intervening title")
+        self.assertFalse(replacement.has_conflict)
+
     def test_relationship_direction_duplicates_and_self_links(self):
         self.client.force_login(self.member)
         url = reverse("suggest-relationship", args=[self.work.pk])
