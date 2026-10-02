@@ -4,12 +4,13 @@
 {% if work.is_demo %}<div class="demo-banner"><strong>Demonstration record</strong> — This work and all associated facts and sources are fictional.</div>{% endif %}
 <article>
   <header class="work-header">
-    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.work_type.label }} title card for {{ work.title }}"><span>{{ work.work_type.label }}</span><strong>{{ work.title }}</strong></div>
+    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.work_type.label }} title card for {{ work.title }}"><span>{{ work.work_type.label }}</span><strong title="{{ work.title }}">{{ work.title|truncatechars:42 }}</strong></div>
     <div class="work-identity">
       <p class="eyebrow">{{ work.work_type.label|upper }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text|upper }}{% endif %}</p>
       <h1>{{ work.title }}</h1>
       {% if work.credits.all %}<p class="byline">{% for credit in work.credits.all %}{% if not forloop.first %}<span aria-hidden="true"> · </span>{% endif %}<span>{{ credit.role|capfirst }} <strong>{{ credit.agent.name }}</strong></span>{% endfor %}</p>{% endif %}
       {% if work.description %}<p class="lede">{{ work.description|truncatewords:45 }}</p>{% endif %}
+      {% if work.accepted_term_assignments %}<div class="term-pills" aria-label="Descriptive terms">{% for assignment in work.accepted_term_assignments %}<span>{{ assignment.term.label }}</span>{% endfor %}</div>{% endif %}
       <div class="work-actions">
         {% if primary_link.url %}<a class="primary-action" href="{{ primary_link.url }}">{{ primary_link.title|default:"View source or availability" }} <span aria-hidden="true">↗</span></a>{% endif %}
         {% if has_relationships %}<a class="secondary-action" href="#relationships">Explore connections</a>{% endif %}
