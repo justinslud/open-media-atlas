@@ -7,6 +7,7 @@ urlpatterns = [
     path("discover/", views.discover, name="discover"),
     path("works/<int:pk>/suggest-correction/", views.suggest_correction, name="suggest-correction"),
     path("works/<int:pk>/suggest-relationship/", views.suggest_relationship, name="suggest-relationship"),
+    path("works/<int:pk>/relationship-work-search/", views.relationship_work_search, name="relationship-work-search"),
     path("works/<int:pk>/suggest-term/", views.suggest_term, name="suggest-term"),
     path("works/<int:work_pk>/add-to-list/", views.add_to_list, name="add-to-list"),
     path("works/<int:pk>/<slug:slug>/", views.work_detail, name="work-detail"),

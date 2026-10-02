@@ -8,3 +8,7 @@
 
 /* Compact, shareable catalog controls. */
 .discover-filters{grid-template-columns:minmax(200px,1.4fr) repeat(2,minmax(140px,1fr))}.discover-filters .year-range{display:grid;grid-template-columns:1fr 1fr;gap:8px}.active-filters{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding-top:12px}.active-filters a{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:3px 8px;font-size:13px;text-decoration:none}@media(max-width:800px){.discover-filters{grid-template-columns:1fr}}
+
+
+/* Relationship search and compact work context. */
+.nav-wrap nav a,.nav-action button,.secondary-action{text-decoration:none}.term-pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}.term-pills span{border:1px solid #cec1d5;border-radius:999px;background:#f3eef5;color:var(--accent);font-size:12px;font-weight:700;padding:3px 9px}.work-cover strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:4}.relationship-work-results{border-block:1px solid var(--rule);margin-top:10px}.work-search-choice{display:flex!important;align-items:center;gap:10px;margin:0!important;padding:9px 4px;border-top:1px solid var(--rule);cursor:pointer}.work-search-choice:first-child{border-top:0}.work-search-choice input{width:auto!important;min-height:auto}.work-search-choice span{min-width:0}.work-search-choice strong,.work-search-choice small{display:block}.work-search-choice small{color:var(--muted);font-weight:400}
