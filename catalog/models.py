@@ -464,8 +464,10 @@ class ContributionProposal(models.Model):
         RELATIONSHIP = "relationship", "Relationship"
     class Status(models.TextChoices):
         PENDING = "pending", "Pending"
+        CLARIFICATION_NEEDED = "clarification_needed", "Clarification needed"
         APPROVED = "approved", "Approved"
         REJECTED = "rejected", "Rejected"
+        SUPERSEDED = "superseded", "Superseded"
 
     kind = models.CharField(max_length=20, choices=Kind.choices)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING, db_index=True)
@@ -484,6 +486,11 @@ class ContributionProposal(models.Model):
     reviewer_explanation = models.TextField(blank=True, max_length=1000)
     submitted_at = models.DateTimeField(auto_now_add=True)
     reviewed_at = models.DateTimeField(null=True, blank=True)
+    supersedes = models.OneToOneField(
+        "self", on_delete=models.PROTECT, null=True, blank=True,
+        related_name="superseded_by",
+        help_text="The earlier clarification-requested proposal replaced by this attempt.",
+    )
 
     class Meta:
         ordering = ("-submitted_at", "-id")
@@ -567,6 +574,54 @@ class ContributionProposal(models.Model):
                     new_value=proposal.proposed_value, explanation=proposal.explanation,
                     source_url=proposal.source_url)
         self.refresh_from_db()
+
+    def request_clarification(self, *, reviewer, explanation):
+        """Return a pending proposal to its contributor without losing its history."""
+        if not reviewer.has_perm("catalog.review_contributionproposal"):
+            raise PermissionDenied("Explicit reviewer permission is required.")
+        if not explanation.strip():
+            raise ValidationError("A reviewer explanation is required when requesting clarification.")
+        with transaction.atomic():
+            proposal = ContributionProposal.objects.select_for_update().get(pk=self.pk)
+            if proposal.status != self.Status.PENDING:
+                raise ValidationError("This proposal is not awaiting review.")
+            proposal.status = self.Status.CLARIFICATION_NEEDED
+            proposal.reviewer = reviewer
+            proposal.reviewer_explanation = explanation.strip()
+            proposal.reviewed_at = timezone.now()
+            proposal.save(update_fields=("status", "reviewer", "reviewer_explanation", "reviewed_at"))
+        self.refresh_from_db()
+
+    def resubmit(self, *, contributor, proposed_value="", related_work=None,
+                 relationship_type=None, explanation="", source_url=""):
+        """Create a new immutable review attempt and supersede this one."""
+        if contributor.pk != self.submitted_by_id:
+            raise PermissionDenied("Only the proposal owner can resubmit it.")
+        with transaction.atomic():
+            previous = ContributionProposal.objects.select_for_update().select_related("work").get(pk=self.pk)
+            if previous.status != self.Status.CLARIFICATION_NEEDED:
+                raise ValidationError("Only proposals needing clarification can be resubmitted.")
+            values = {
+                "kind": previous.kind, "submitted_by": contributor, "work": previous.work,
+                "field_name": previous.field_name, "proposed_value": proposed_value,
+                "related_work": related_work, "relationship_type": relationship_type,
+                "work_updated_at": previous.work.updated_at, "explanation": explanation,
+                "source_url": source_url, "supersedes": previous,
+            }
+            if previous.kind == self.Kind.CORRECTION:
+                values["value_at_submission"] = str(getattr(previous.work, previous.field_name))
+                values["related_work"] = None
+                values["relationship_type"] = None
+            else:
+                values["proposed_value"] = ""
+                values["related_work_updated_at"] = related_work.updated_at
+            replacement = ContributionProposal(**values)
+            replacement.full_clean()
+            replacement.save()
+            previous.status = self.Status.SUPERSEDED
+            previous.save(update_fields=("status",))
+        self.refresh_from_db()
+        return replacement
 
     def __str__(self):
         return f"{self.get_kind_display()} for {self.work} ({self.get_status_display()})"

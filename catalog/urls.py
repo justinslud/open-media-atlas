@@ -11,6 +11,7 @@ urlpatterns = [
     path("works/<int:work_pk>/add-to-list/", views.add_to_list, name="add-to-list"),
     path("works/<int:pk>/<slug:slug>/", views.work_detail, name="work-detail"),
     path("me/contributions/", views.my_contributions, name="my-contributions"),
+    path("me/contributions/<int:pk>/resubmit/", views.resubmit_contribution, name="resubmit-contribution"),
     path("lists/", views.public_lists, name="public-lists"),
     path("lists/<int:pk>/<slug:slug>/", views.list_detail, name="list-detail"),
     path("me/lists/", views.my_lists, name="my-lists"),
