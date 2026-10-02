@@ -500,7 +500,27 @@ def suggest_relationship(request, pk):
                 messages.success(request, "Relationship submitted for editorial review.")
                 return redirect("my-contributions")
     return render(request, "catalog/contribution_form.html", {"form": form, "work": work,
-        "heading": "Suggest a relationship", "direction": direction, "verification_required": verification_required})
+        "heading": "Suggest a relationship", "direction": direction, "verification_required": verification_required,
+        "relationship_form": True})
+
+
+@login_required
+@require_GET
+def relationship_work_search(request, pk):
+    """Return a small, selectable set of public relationship targets."""
+    source_work = get_object_or_404(public_works(), pk=pk)
+    query = request.GET.get("work_q", "").strip()[:200]
+    works = public_works().exclude(pk=source_work.pk).select_related("work_type")
+    if query:
+        lookup = Q(title__icontains=query)
+        if query.isdigit():
+            lookup |= Q(pk=int(query))
+        works = works.filter(lookup).order_by("title", "id")[:20]
+    else:
+        works = works.none()
+    return render(request, "catalog/_relationship_work_results.html", {
+        "works": works, "query": query, "selected_id": request.GET.get("related_work", ""),
+    })
 
 
 @login_required
@@ -589,4 +609,5 @@ def resubmit_contribution(request, pk):
     return render(request, "catalog/contribution_form.html", {
         "form": form, "work": proposal.work, "heading": "Revise and resubmit",
         "verification_required": verification_required, "proposal": proposal,
+        "relationship_form": proposal.kind == ContributionProposal.Kind.RELATIONSHIP,
     })
