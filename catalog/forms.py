@@ -27,7 +27,7 @@ class EntryCommentaryForm(forms.ModelForm):
         fields = ("commentary",)
         widgets = {"commentary": forms.Textarea(attrs={"rows": 3})}
 
-from .models import ContributionProposal, RelationshipType, Work, WorkRelationship
+from .models import ContributionProposal, RelationshipType, Term, Work, WorkRelationship, WorkTermAssignment
 
 
 class CorrectionProposalForm(forms.Form):
@@ -83,3 +83,31 @@ class RelationshipProposalForm(forms.Form):
             work=self.source_work, related_work=target, relationship_type=rel_type).exists()):
             raise forms.ValidationError("That relationship already exists or is awaiting review.")
         return data
+
+
+class TermSuggestionForm(forms.Form):
+    term = forms.ModelChoiceField(queryset=Term.objects.none(), label="Catalog term")
+    provenance_note = forms.CharField(
+        max_length=2000, widget=forms.Textarea(attrs={"rows": 4}),
+        label="Why does this term apply?",
+    )
+    source_url = forms.URLField(
+        max_length=500,
+        help_text="HTTP or HTTPS only. OMA will not fetch this link automatically.",
+    )
+
+    def __init__(self, *args, work, **kwargs):
+        super().__init__(*args, **kwargs)
+        unavailable = WorkTermAssignment.objects.filter(
+            work=work, review_state__in=(
+                WorkTermAssignment.ReviewState.PENDING,
+                WorkTermAssignment.ReviewState.ACCEPTED,
+            )
+        ).values("term_id")
+        self.fields["term"].queryset = Term.objects.exclude(pk__in=unavailable)
+
+    def clean_source_url(self):
+        value = self.cleaned_data["source_url"]
+        if not value.lower().startswith(("http://", "https://")):
+            raise forms.ValidationError("Use an HTTP or HTTPS source URL.")
+        return value

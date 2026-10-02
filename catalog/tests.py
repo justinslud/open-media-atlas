@@ -23,8 +23,8 @@ from .importers.openlibrary import ImportFailure, ImportResult, OpenLibraryImpor
 from .importers.openlibrary_bulk import BulkImportError, extract, validate_extract
 from .importers.wikidata import WikidataClient, run_import
 from .models import (Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
-    ContributionProposal, ContributionRevision, ImportItem, ImportRun, ImportRelationshipProposal, MediaList, MediaListEntry, RelationshipType, Release, Source, SourceRecord, Version, Work, WorkRelationship, WorkSource,
-    WorkRedirect, WorkType)
+    ContributionProposal, ContributionRevision, ImportItem, ImportRun, ImportRelationshipProposal, MediaList, MediaListEntry, RelationshipType, Release, Source, SourceRecord, Term, Version, Work, WorkRelationship, WorkSource,
+    WorkRedirect, WorkTermAssignment, WorkType)
 from .services import merge_works
 
 
@@ -609,8 +609,6 @@ class ContributionFlowTests(TestCase):
         proposal.review(reviewer=self.reviewer, approve=True, explanation="Checked against source")
         self.work.refresh_from_db()
         self.assertEqual(self.work.title, "Better title")
-
-
         revision = ContributionRevision.objects.get(proposal=proposal)
         self.assertEqual((revision.previous_value, revision.new_value), ("Old title", "Better title"))
         self.assertEqual(revision.contributor, self.member)
@@ -671,6 +669,54 @@ class ContributionFlowTests(TestCase):
         previous.save()
         self.work.refresh_from_db()
         self.assertEqual(self.work.title, "Better title")
+
+
+class WorkTermFlowTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.member = get_user_model().objects.create_user("term-member", "terms@example.test", "password123")
+        cls.reviewer = get_user_model().objects.create_user("term-reviewer", is_staff=True)
+        cls.reviewer.user_permissions.add(Permission.objects.get(codename="review_worktermassignment"))
+        EmailVerification.objects.create(user=cls.member, verified_at=timezone.now())
+        kind = WorkType.objects.create(code="term-book", label="Book", medium="text")
+        cls.work = Work.objects.create(title="Tagged work", slug="tagged-work", work_type=kind, visibility="public")
+        cls.term = Term.objects.create(vocabulary="oma-subjects", identifier="climate-fiction",
+            label="Climate fiction", category="genre", source_identifier="subjects/climate-fiction")
+
+    def test_pending_assignment_never_appears_on_public_work_page(self):
+        assignment = WorkTermAssignment.objects.create(work=self.work, term=self.term,
+            submitted_by=self.member, provenance_note="A source describes the genre.",
+            source_url="https://example.test/genre")
+        self.assertNotContains(self.client.get(self.work.get_absolute_url()), self.term.label)
+        assignment.review(reviewer=self.reviewer, accept=True, note="Source checked.")
+        self.assertContains(self.client.get(self.work.get_absolute_url()), self.term.label)
+        assignment.refresh_from_db()
+        self.assertEqual(assignment.source.url, "https://example.test/genre")
+
+    def test_verified_contributor_suggests_but_cannot_publish_a_term(self):
+        self.client.force_login(self.member)
+        response = self.client.post(reverse("suggest-term", args=[self.work.pk]), {
+            "term": self.term.pk, "provenance_note": "Supported by the linked bibliography.",
+            "source_url": "https://example.test/bibliography"})
+        self.assertRedirects(response, reverse("my-contributions"))
+        assignment = WorkTermAssignment.objects.get()
+        self.assertEqual(assignment.review_state, WorkTermAssignment.ReviewState.PENDING)
+        self.assertIsNone(assignment.reviewer)
+        self.assertContains(self.client.get(reverse("my-contributions")), "not yet independently reviewed")
+
+    def test_term_identifiers_and_active_assignments_are_unique(self):
+        with self.assertRaises(IntegrityError):
+            with transaction.atomic():
+                Term.objects.create(vocabulary=self.term.vocabulary, identifier=self.term.identifier,
+                    label="Duplicate", category="genre")
+        WorkTermAssignment.objects.create(work=self.work, term=self.term, submitted_by=self.member,
+            provenance_note="First", source_url="https://example.test/first")
+        with self.assertRaises(IntegrityError):
+            with transaction.atomic():
+                WorkTermAssignment.objects.create(work=self.work, term=self.term,
+                    submitted_by=self.member, provenance_note="Duplicate",
+                    source_url="https://example.test/duplicate")
+
 class WorkMergeTests(TestCase):
     @classmethod
     def setUpTestData(cls):

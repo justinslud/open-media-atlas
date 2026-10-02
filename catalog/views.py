@@ -9,7 +9,10 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 
 from accounts.models import EmailVerification
 from .forms import EntryCommentaryForm, MediaListForm
-from .models import FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship, WorkType
+from .models import (
+    FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship,
+    WorkTermAssignment, WorkType,
+)
 
 
 DISCOVER_PAGE_SIZE = 30
@@ -192,6 +195,13 @@ def work_detail(request, pk, slug):
             "identifiers",
             Prefetch("outgoing_relationships", queryset=accepted_outgoing),
             Prefetch("incoming_relationships", queryset=accepted_incoming),
+            Prefetch(
+                "term_assignments",
+                queryset=WorkTermAssignment.objects.filter(
+                    review_state=WorkTermAssignment.ReviewState.ACCEPTED
+                ).select_related("term", "source"),
+                to_attr="accepted_term_assignments",
+            ),
         ),
         pk=pk,
     )
@@ -494,9 +504,42 @@ def suggest_relationship(request, pk):
 
 
 @login_required
+@require_http_methods(["GET", "POST"])
+def suggest_term(request, pk):
+    from accounts.rate_limits import client_key, is_limited
+    from .forms import TermSuggestionForm
+
+    work = get_object_or_404(public_works(), pk=pk)
+    form = TermSuggestionForm(request.POST or None, work=work)
+    verification_required = not _verified_submission_allowed(request)
+    if request.method == "POST" and form.is_valid():
+        if verification_required:
+            form.add_error(None, "Verify your email address before submitting. Your entries remain below.")
+        elif is_limited("contribution", client_key(request, str(request.user.pk))):
+            return render(request, "accounts/rate_limited.html", status=429)
+        else:
+            WorkTermAssignment.objects.create(
+                work=work, term=form.cleaned_data["term"], submitted_by=request.user,
+                provenance_note=form.cleaned_data["provenance_note"],
+                source_url=form.cleaned_data["source_url"],
+            )
+            messages.success(request, "Term submitted for editorial review.")
+            return redirect("my-contributions")
+    return render(request, "catalog/contribution_form.html", {
+        "form": form, "work": work, "heading": "Suggest a term",
+        "verification_required": verification_required,
+    })
+
+
+@login_required
 @require_GET
 def my_contributions(request):
     from .models import ContributionProposal
     proposals = ContributionProposal.objects.filter(submitted_by=request.user).select_related(
         "work", "related_work", "relationship_type", "reviewer")
-    return render(request, "catalog/my_contributions.html", {"proposals": proposals})
+    term_suggestions = WorkTermAssignment.objects.filter(
+        submitted_by=request.user
+    ).select_related("work", "term", "reviewer")
+    return render(request, "catalog/my_contributions.html", {
+        "proposals": proposals, "term_suggestions": term_suggestions,
+    })
