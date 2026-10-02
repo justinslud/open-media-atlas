@@ -55,6 +55,38 @@ class Work(models.Model):
         return f"{self.title} ({self.first_publication_date_text or 'date unknown'})"
 
 
+class WorkRedirect(models.Model):
+    """A durable pointer from a merged work record to its canonical record."""
+
+    old_work = models.OneToOneField(
+        Work, on_delete=models.PROTECT, related_name="canonical_redirect"
+    )
+    canonical_work = models.ForeignKey(
+        Work, on_delete=models.PROTECT, related_name="merged_work_redirects"
+    )
+    merged_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="work_merges"
+    )
+    merged_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("-merged_at", "-id")
+        permissions = [("merge_work", "Can merge works into a canonical work")]
+        constraints = [
+            models.CheckConstraint(
+                condition=~models.Q(old_work=models.F("canonical_work")),
+                name="work_redirect_not_self",
+            )
+        ]
+
+    def clean(self):
+        if self.old_work_id == self.canonical_work_id:
+            raise ValidationError("A work cannot redirect to itself.")
+
+    def __str__(self):
+        return f"{self.old_work} → {self.canonical_work}"
+
+
 class MediaList(models.Model):
     """A member-curated, ordered collection (separate from homepage curation)."""
 
