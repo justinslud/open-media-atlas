@@ -107,7 +107,7 @@ class ImportRelationshipProposalAdmin(admin.ModelAdmin):
     list_filter = ("status", "relationship_type", "run")
     search_fields = ("statement_id", "from_work__title", "to_work__title")
     readonly_fields = ("run", "statement_id", "from_work", "to_work", "relationship_type", "source", "evidence", "status", "reviewer", "reviewed_at")
-    actions = ("approve_selected",)
+    actions = ("approve_selected", "publish_approved_endpoints")
 
     @admin.action(description="Approve selected relationship proposals")
     def approve_selected(self, request, queryset):
@@ -117,6 +117,16 @@ class ImportRelationshipProposalAdmin(admin.ModelAdmin):
             proposal.approve(request.user)
             approved += 1
         self.message_user(request, f"Approved {approved} relationship proposal(s).")
+
+    @admin.action(description="Publish works from selected approved proposals")
+    def publish_approved_endpoints(self, request, queryset):
+        approved = queryset.filter(status=ImportRelationshipProposal.Status.APPROVED)
+        work_ids = set(approved.values_list("from_work_id", flat=True))
+        work_ids.update(approved.values_list("to_work_id", flat=True))
+        published = Work.objects.filter(
+            pk__in=work_ids, visibility=Work.Visibility.DRAFT
+        ).update(visibility=Work.Visibility.PUBLIC)
+        self.message_user(request, f"Published {published} draft work(s).")
 
     def has_add_permission(self, request): return False
     def has_delete_permission(self, request, obj=None): return False
