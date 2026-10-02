@@ -51,6 +51,13 @@ class Work(models.Model):
     def get_absolute_url(self):
         return reverse("work-detail", kwargs={"pk": self.pk, "slug": self.slug})
 
+    @property
+    def display_title(self):
+        """Never present an identifier as though it were a catalog title."""
+        if re.fullmatch(r"Q\d+", self.title.strip(), re.IGNORECASE):
+            return "Title pending enrichment"
+        return self.title
+
     def __str__(self):
         return f"{self.title} ({self.first_publication_date_text or 'date unknown'})"
 
