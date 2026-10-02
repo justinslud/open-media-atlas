@@ -59,3 +59,29 @@ Coverage is whatever Wikidata currently asserts with non-deprecated `P144`; it i
 3. Run the normal bounded one-off job; copy its Django run ID from logs.
 4. Review that run, its conflicts, every proposed statement and both endpoint records in admin.
 5. Preview, then confirm, only the statement IDs Justin approves using `promote_wikidata_run`; add `--publish-endpoints` only for endpoint drafts that are ready for public display.
+
+## Repair unresolved titles already in the catalog
+
+The title repair command extends the same identifier-based Wikidata machinery and `ImportRun`/`ImportItem` tracking. It reads `P1476`, labels in all returned languages, `P345` IMDb IDs, and exact Wikidata sitelinks. English is preferred when Wikidata supplies it; otherwise the sourced monolingual/original or available-language value is retained with its language in the import item and source note. An exact Wikipedia sitelink is fetched for supplemental metadata and stored as a cited `SourceRecord`/`WorkSource`. The job never uses name-only matching, overwrites a non-imported editorial title, merges an IMDb conflict, removes a sparse work, or changes relationship review/confidence.
+
+For the reported example, the identifier mapping was checked directly: [Wikidata `Q3235021`](https://www.wikidata.org/wiki/Q3235021) supplies the French label *Les Quatre Mousquetaires*, [IMDb `P345` value `tt0258903`](https://www.imdb.com/title/tt0258903/), a 1934 date, and Gaston Schoukens as director. Its [exact French Wikipedia sitelink](https://fr.wikipedia.org/wiki/Les_Quatre_Mousquetaires) identifies the same Belgian film. The similarly named 1934 German film is a different work and IMDb identifier, so it must not be merged by English-name similarity.
+
+First establish the target. With no `DATABASE_URL`, debug mode targets local SQLite; deployed jobs use the PostgreSQL database named by `DATABASE_URL`:
+
+```bash
+DJANGO_DEBUG=true python manage.py shell -c 'from django.db import connection; print(connection.vendor, connection.settings_dict["NAME"])'
+```
+
+Then run the one-time bounded job (the command also prints the selected database before doing work):
+
+```bash
+python manage.py enrich_wikidata_titles --limit 5000 --request-limit 500 --timeout 30
+```
+
+If a platform runtime limit requires chunks, use the reported `last_work_id` as the next checkpoint:
+
+```bash
+python manage.py enrich_wikidata_titles --limit 250 --after-id LAST_WORK_ID --request-limit 100 --timeout 30
+```
+
+Unresolved items remain linked to their relationships and are recorded as failed enrichment items for a later retry. Public rendering labels them **Title pending enrichment** rather than treating a QID as a title; their Wikidata identifier remains available in Sources.

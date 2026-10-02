@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% block title %}{{ work.title }} · Open Media Atlas{% endblock %}
+{% block title %}{{ work.display_title }} · Open Media Atlas{% endblock %}
 {% block content %}
 {% if work.is_demo %}<div class="demo-banner"><strong>Demonstration record</strong> — This work and all associated facts and sources are fictional.</div>{% endif %}
 <article>
   <header class="work-header">
-    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.work_type.label }} title card for {{ work.title }}"><span>{{ work.work_type.label }}</span><strong title="{{ work.title }}">{{ work.title|truncatechars:42 }}</strong></div>
+    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.work_type.label }} title card for {{ work.display_title }}"><span>{{ work.work_type.label }}</span><strong title="{{ work.display_title }}">{{ work.display_title|truncatechars:42 }}</strong></div>
     <div class="work-identity">
       <p class="eyebrow">{{ work.work_type.label|upper }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text|upper }}{% endif %}</p>
-      <h1>{{ work.title }}</h1>
+      <h1>{{ work.display_title }}</h1>
+      {% if work.display_title != work.title %}<p class="helper"><strong>Incomplete record:</strong> this title is queued for enrichment. The source identifier remains available under Sources.</p>{% endif %}
       {% if work.credits.all %}<p class="byline">{% for credit in work.credits.all %}{% if not forloop.first %}<span aria-hidden="true"> · </span>{% endif %}<span>{{ credit.role|capfirst }} <strong>{{ credit.agent.name }}</strong></span>{% endfor %}</p>{% endif %}
       {% if work.description %}<p class="lede">{{ work.description|truncatewords:45 }}</p>{% endif %}
       {% if work.accepted_term_assignments %}<div class="term-pills" aria-label="Descriptive terms">{% for assignment in work.accepted_term_assignments %}<span>{{ assignment.term.label }}</span>{% endfor %}</div>{% endif %}
@@ -29,7 +30,7 @@
       <div class="relationship-group"><h3>{% if group_name == "adaptations" %}Adaptations &amp; source works{% elif group_name == "recordings" %}Recordings{% elif group_name == "commentary" %}Commentary{% else %}Other connections{% endif %}</h3>
         <div class="relationship-list">{% for rel in relationships %}<article class="relationship-row">
           <span class="relation-label">{{ rel.display_label }}</span>
-          <a href="{{ rel.related_work.get_absolute_url }}"><strong>{{ rel.related_work.title }}</strong><small>{{ rel.related_work.work_type.label }}{% if rel.related_work.first_publication_date_text %} · {{ rel.related_work.first_publication_date_text }}{% endif %}</small></a>
+          <a href="{{ rel.related_work.get_absolute_url }}"><strong>{{ rel.related_work.display_title }}</strong><small>{{ rel.related_work.work_type.label }}{% if rel.related_work.first_publication_date_text %} · {{ rel.related_work.first_publication_date_text }}{% endif %}</small></a>
           <details><summary>About this connection</summary><p>{{ rel.scope_note|default:"Direct catalog relationship." }}</p><p>Source: {% if rel.evidence_url %}<a href="{{ rel.evidence_url }}">{{ rel.source.title }} statement</a>{% elif rel.source.url %}<a href="{{ rel.source.url }}">{{ rel.source.title }}</a>{% else %}{{ rel.source.title }}{% endif %}. Authorization status: {{ rel.authorization_status }}.</p></details>
         </article>{% endfor %}</div>
       </div>

@@ -65,7 +65,9 @@ class WikidataClient:
         for offset in range(0, len(ids), 50):
             data = self.get_json(ENTITY_API, {"action": "wbgetentities", "format": "json", "formatversion": 2,
                 "ids": "|".join(ids[offset:offset + 50]), "props": "info|labels|aliases|descriptions|claims|sitelinks",
-                "languages": "en", "languagefallback": 1, "maxlag": 5})
+                # Do not filter labels to English: many valid works have no
+                # English label, and their original/available title is still useful.
+                "maxlag": 5})
             answer.update(data.get("entities", {}))
         return answer
 
@@ -90,6 +92,32 @@ def first_claim(entity, prop):
     claims=entity.get("claims", {}).get(prop, [])
     return claims[0].get("mainsnak", {}).get("datavalue", {}).get("value") if claims else None
 
+def title_from_entity(entity):
+    """Return (title, language, basis), without inventing a translation."""
+    titles=[]
+    for claim in entity.get("claims",{}).get("P1476",[]):
+        value=claim.get("mainsnak",{}).get("datavalue",{}).get("value")
+        if isinstance(value,dict) and value.get("text"):
+            titles.append((value["text"].strip(),value.get("language","") or "und","P1476"))
+    for preferred in ("en","mul"):
+        match=next((row for row in titles if row[1]==preferred),None)
+        if match: return match
+    labels=entity.get("labels",{})
+    for preferred in ("en","mul"):
+        value=labels.get(preferred,{}).get("value","").strip()
+        if value: return value,preferred,"label"
+    if titles: return titles[0]
+    # Prefer a language with a Wikipedia article, then deterministic label order.
+    for site in sorted(entity.get("sitelinks",{})):
+        if site.endswith("wiki"):
+            language=site[:-4]
+            value=labels.get(language,{}).get("value","").strip()
+            if value: return value,language,"label"
+    for language,data in sorted(labels.items()):
+        value=data.get("value","").strip()
+        if value: return value,language,"label"
+    return "", "und", "unresolved"
+
 def date_fields(entity):
     value=first_claim(entity, "P577") or first_claim(entity, "P571")
     if not isinstance(value, dict): return "", None, None
@@ -110,10 +138,17 @@ def stage_entity(entity, source, run, *, supporting_entities=None, existing_only
         candidate=value.get("mainsnak",{}).get("datavalue",{}).get("value")
         if isinstance(candidate,str): olids.append(candidate.removeprefix("/works/"))
     olmatch=ExternalIdentifier.objects.filter(scheme="ol_work", value__in=olids).select_related("work").first()
-    if exact and olmatch and exact.work_id != olmatch.work_id:
-        return None, "conflicted", "Wikidata and Open Library identifiers point to different works"
-    matched=(exact or olmatch).work if (exact or olmatch) else None
-    title=entity.get("labels",{}).get("en",{}).get("value", qid)[:300]
+    imdbids=[]
+    for claim in entity.get("claims",{}).get("P345",[]):
+        candidate=claim.get("mainsnak",{}).get("datavalue",{}).get("value")
+        if isinstance(candidate,str): imdbids.append(candidate)
+    imdbmatch=ExternalIdentifier.objects.filter(scheme="imdb",value__in=imdbids).select_related("work").first()
+    matches=[item for item in (exact,olmatch,imdbmatch) if item]
+    if len({item.work_id for item in matches}) > 1:
+        return None, "conflicted", "Wikidata, Open Library, or IMDb identifiers point to different works; merge requires review"
+    matched=matches[0].work if matches else None
+    resolved_title,title_language,title_basis=title_from_entity(entity)
+    title=(resolved_title or qid)[:300]
     created = not matched
     if created:
         candidates=Work.objects.filter(title__iexact=title)
@@ -136,6 +171,7 @@ def stage_entity(entity, source, run, *, supporting_entities=None, existing_only
     ImportedWorkState.objects.update_or_create(source_record=record,defaults={"imported_title":title,"imported_date_text":date,"imported_year":year})
     ExternalIdentifier.objects.get_or_create(work=matched,scheme="wikidata",value=qid)
     for olid in olids: ExternalIdentifier.objects.get_or_create(work=matched,scheme="ol_work",value=olid)
+    for imdbid in imdbids: ExternalIdentifier.objects.get_or_create(work=matched,scheme="imdb",value=imdbid)
     WorkSource.objects.get_or_create(work=matched,source=source,defaults={"note":f"Wikidata entity {qid}; staged supplier metadata."})
     supporting_entities=supporting_entities or {}
     languages=claim_ids(entity,"P364")
@@ -151,7 +187,7 @@ def stage_entity(entity, source, run, *, supporting_entities=None, existing_only
                 if name:
                     agent,_=Agent.objects.get_or_create(wikidata_id=agent_id,defaults={"name":name[:200],"kind":"person"})
                     Credit.objects.get_or_create(work=matched,agent=agent,role=role,defaults={"billing_order":order,"source":source})
-    return matched,state_status,f"staged {qid}; date precision={precision}; aliases retained in source record"
+    return matched,state_status,f"staged {qid}; title={title_basis}:{title_language}; date precision={precision}; aliases retained in source record"
 
 def run_import(run, seeds, *, related_limit=300, client=None, dry_run=False):
     if not 1 <= related_limit <= MAX_RELATED_HARD: raise WikidataError("related limit must be between 1 and 300")
