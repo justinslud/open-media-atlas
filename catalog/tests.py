@@ -115,6 +115,16 @@ class WikidataPilotTests(TestCase):
         self.assertEqual(proposal.status, ImportRelationshipProposal.Status.APPROVED)
         self.assertEqual(proposal.reviewer, admin_user)
         self.assertTrue(WorkRelationship.objects.filter(review_status="accepted").exists())
+
+        response = self.client.post(reverse("admin:catalog_importrelationshipproposal_changelist"), {
+            "action": "publish_approved_endpoints", "_selected_action": [proposal.pk],
+        })
+        self.assertEqual(response.status_code, 302)
+        proposal.from_work.refresh_from_db()
+        proposal.to_work.refresh_from_db()
+        self.assertEqual(proposal.from_work.visibility, Work.Visibility.PUBLIC)
+        self.assertEqual(proposal.to_work.visibility, Work.Visibility.PUBLIC)
+        self.assertContains(self.client.get(proposal.to_work.get_absolute_url()), proposal.to_work.title)
 class CatalogTests(TestCase):
     @classmethod
     def setUpTestData(cls):
