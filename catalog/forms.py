@@ -56,7 +56,10 @@ class CorrectionProposalForm(forms.Form):
 
 
 class RelationshipProposalForm(forms.Form):
-    related_work = forms.ModelChoiceField(queryset=Work.objects.none(), label="Other published work")
+    related_work = forms.ModelChoiceField(
+        queryset=Work.objects.none(), label="Other published work", widget=forms.RadioSelect,
+        error_messages={"required": "Search for and select another published work."},
+    )
     relationship_type = forms.ModelChoiceField(queryset=RelationshipType.objects.none())
     explanation = forms.CharField(max_length=2000, widget=forms.Textarea(attrs={"rows": 4}))
     source_url = forms.URLField(max_length=500, help_text="HTTP or HTTPS only. OMA will not fetch this link automatically.")
@@ -67,6 +70,12 @@ class RelationshipProposalForm(forms.Form):
         self.fields["related_work"].queryset = Work.objects.filter(
             visibility=Work.Visibility.PUBLIC, canonical_redirect__isnull=True
         ).exclude(pk=source_work.pk)
+        selected_id = self.data.get("related_work") if self.is_bound else self.initial.get("related_work")
+        selected_id = getattr(selected_id, "pk", selected_id)
+        self.selected_work = (
+            self.fields["related_work"].queryset.filter(pk=selected_id).first()
+            if str(selected_id or "").isdigit() else None
+        )
         self.fields["relationship_type"].queryset = RelationshipType.objects.order_by("label")
 
     def clean_source_url(self):

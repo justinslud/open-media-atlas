@@ -107,6 +107,17 @@ class ImportRelationshipProposalAdmin(admin.ModelAdmin):
     list_filter = ("status", "relationship_type", "run")
     search_fields = ("statement_id", "from_work__title", "to_work__title")
     readonly_fields = ("run", "statement_id", "from_work", "to_work", "relationship_type", "source", "evidence", "status", "reviewer", "reviewed_at")
+    actions = ("approve_selected",)
+
+    @admin.action(description="Approve selected relationship proposals")
+    def approve_selected(self, request, queryset):
+        pending = queryset.filter(status=ImportRelationshipProposal.Status.PENDING)
+        approved = 0
+        for proposal in pending.select_related("from_work", "to_work", "relationship_type", "source"):
+            proposal.approve(request.user)
+            approved += 1
+        self.message_user(request, f"Approved {approved} relationship proposal(s).")
+
     def has_add_permission(self, request): return False
     def has_delete_permission(self, request, obj=None): return False
 

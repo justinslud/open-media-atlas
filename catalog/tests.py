@@ -99,6 +99,22 @@ class WikidataPilotTests(TestCase):
         relationship.from_work.save(); relationship.to_work.save()
         self.assertContains(self.client.get(relationship.from_work.get_absolute_url()),"Based on")
         self.assertContains(self.client.get(relationship.to_work.get_absolute_url()),"Inspired or adapted works")
+
+    def test_admin_can_bulk_approve_imported_relationships(self):
+        run_import(self.run, ["Q1"], related_limit=5, client=FakeWikidataClient())
+        proposal = ImportRelationshipProposal.objects.get()
+        admin_user = get_user_model().objects.create_superuser(
+            username="import-reviewer", email="reviewer@example.test", password="password123"
+        )
+        self.client.force_login(admin_user)
+        response = self.client.post(reverse("admin:catalog_importrelationshipproposal_changelist"), {
+            "action": "approve_selected", "_selected_action": [proposal.pk],
+        })
+        self.assertEqual(response.status_code, 302)
+        proposal.refresh_from_db()
+        self.assertEqual(proposal.status, ImportRelationshipProposal.Status.APPROVED)
+        self.assertEqual(proposal.reviewer, admin_user)
+        self.assertTrue(WorkRelationship.objects.filter(review_status="accepted").exists())
 class CatalogTests(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -689,6 +705,20 @@ class ContributionFlowTests(TestCase):
             related_work=self.work, relationship_type=self.rel_type, work_updated_at=self.work.updated_at,
             related_work_updated_at=self.work.updated_at, explanation="x", source_url="https://example.test")
         with self.assertRaises(ValidationError): invalid.full_clean()
+
+    def test_relationship_target_searches_by_title_or_exact_id(self):
+        self.client.force_login(self.member)
+        url = reverse("relationship-work-search", args=[self.work.pk])
+        response = self.client.get(url, {"work_q": "Targ"})
+        self.assertContains(response, self.target.title)
+        self.assertContains(response, f"catalog ID {self.target.pk}")
+        response = self.client.get(url, {"work_q": str(self.target.pk)})
+        self.assertContains(response, self.target.title)
+        self.assertNotContains(response, self.work.title)
+
+        form_page = self.client.get(reverse("suggest-relationship", args=[self.work.pk]))
+        self.assertContains(form_page, "Search by title or catalog ID")
+        self.assertNotContains(form_page, 'select name="related_work"', html=False)
 
     def test_approved_imported_field_remains_an_editorial_override(self):
         source = Source.objects.create(title="Importer", url="https://example.test")
