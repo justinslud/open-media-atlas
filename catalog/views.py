@@ -9,7 +9,7 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 
 from accounts.models import EmailVerification
 from .forms import EntryCommentaryForm, MediaListForm
-from .models import FeaturedWork, MediaList, MediaListEntry, Work, WorkRelationship, WorkType
+from .models import FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship, WorkType
 
 
 DISCOVER_PAGE_SIZE = 30
@@ -33,7 +33,9 @@ def _open_library_url(value, kind):
 
 def public_works():
     """Return the public catalog, preferring real records over demo fixtures."""
-    works = Work.objects.filter(visibility=Work.Visibility.PUBLIC)
+    works = Work.objects.filter(
+        visibility=Work.Visibility.PUBLIC, canonical_redirect__isnull=True
+    )
     if works.filter(is_demo=False).exists():
         works = works.filter(is_demo=False)
     return works
@@ -172,6 +174,9 @@ def discover(request):
 
 
 def work_detail(request, pk, slug):
+    canonical = WorkRedirect.objects.select_related("canonical_work").filter(old_work_id=pk).first()
+    if canonical:
+        return redirect(canonical.canonical_work.get_absolute_url(), permanent=True)
     public = public_works()
     accepted_outgoing = WorkRelationship.objects.filter(
         review_status="accepted", to_work__in=public
