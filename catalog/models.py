@@ -278,6 +278,100 @@ class WorkSource(models.Model):
         constraints = [models.UniqueConstraint(fields=("work", "source"), name="unique_work_source")]
 
 
+class Term(models.Model):
+    """A stable entry in a named, editorially managed vocabulary."""
+
+    vocabulary = models.SlugField(max_length=80)
+    identifier = models.SlugField(max_length=120)
+    label = models.CharField(max_length=160)
+    category = models.SlugField(max_length=80)
+    description = models.TextField(blank=True)
+    source = models.ForeignKey(
+        Source, on_delete=models.PROTECT, null=True, blank=True, related_name="terms"
+    )
+    source_identifier = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        ordering = ("vocabulary", "category", "label", "id")
+        constraints = [
+            models.UniqueConstraint(
+                fields=("vocabulary", "identifier"), name="unique_term_identifier_per_vocabulary"
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.label} ({self.vocabulary})"
+
+
+class WorkTermAssignment(models.Model):
+    """A reviewed term assertion; only accepted assertions are public."""
+
+    class ReviewState(models.TextChoices):
+        PENDING = "pending", "Pending"
+        ACCEPTED = "accepted", "Accepted"
+        REJECTED = "rejected", "Rejected"
+
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name="term_assignments")
+    term = models.ForeignKey(Term, on_delete=models.PROTECT, related_name="work_assignments")
+    review_state = models.CharField(
+        max_length=20, choices=ReviewState.choices, default=ReviewState.PENDING, db_index=True
+    )
+    source = models.ForeignKey(
+        Source, on_delete=models.PROTECT, null=True, blank=True, related_name="term_assignments"
+    )
+    source_url = models.URLField(max_length=500)
+    provenance_note = models.TextField(max_length=2000)
+    submitted_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="term_suggestions"
+    )
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    reviewer = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True, blank=True,
+        related_name="reviewed_term_assignments",
+    )
+    reviewer_note = models.TextField(blank=True, max_length=1000)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ("-submitted_at", "-id")
+        permissions = [("review_worktermassignment", "Can review work-term assignments")]
+        constraints = [
+            models.UniqueConstraint(
+                fields=("work", "term"),
+                condition=models.Q(review_state__in=("pending", "accepted")),
+                name="unique_active_work_term_assignment",
+            )
+        ]
+
+    def review(self, *, reviewer, accept, note=""):
+        if not reviewer.has_perm("catalog.review_worktermassignment"):
+            raise PermissionDenied("Explicit term reviewer permission is required.")
+        with transaction.atomic():
+            assignment = WorkTermAssignment.objects.select_for_update().get(pk=self.pk)
+            if assignment.review_state != self.ReviewState.PENDING:
+                raise ValidationError("This term suggestion has already been reviewed.")
+            if not accept and not note.strip():
+                raise ValidationError("A reviewer note is required when rejecting a term suggestion.")
+            if accept:
+                assignment.source = Source.objects.create(
+                    title="Contributor-submitted term source", url=assignment.source_url,
+                    notes="Reviewed supporting source for an accepted work-term assignment.",
+                )
+                assignment.review_state = self.ReviewState.ACCEPTED
+            else:
+                assignment.review_state = self.ReviewState.REJECTED
+            assignment.reviewer = reviewer
+            assignment.reviewer_note = note.strip()
+            assignment.reviewed_at = timezone.now()
+            assignment.save(update_fields=(
+                "review_state", "source", "reviewer", "reviewer_note", "reviewed_at"
+            ))
+        self.refresh_from_db()
+
+    def __str__(self):
+        return f"{self.work}: {self.term} ({self.get_review_state_display()})"
+
+
 class RelationshipType(models.Model):
     code = models.SlugField(primary_key=True)
     label = models.CharField(max_length=100, help_text="From work to target, e.g. Adapted from")
