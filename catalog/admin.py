@@ -3,7 +3,8 @@ from django.contrib import admin
 from .models import (
     Agent, Credit, ExternalIdentifier, FeaturedWork, ImportedWorkState,
     ImportItem, ImportRun, ImportRelationshipProposal, Release, RelationshipType, Source, SourceRecord,
-    MediaList, MediaListEntry, Version, Work, WorkRedirect, WorkRelationship, WorkSource, WorkType,
+    MediaList, MediaListEntry, Term, Version, Work, WorkRedirect, WorkRelationship,
+    WorkSource, WorkTermAssignment, WorkType,
 )
 from .services import merge_works
 
@@ -202,3 +203,55 @@ class ContributionRevisionAdmin(admin.ModelAdmin):
                        "new_value", "explanation", "source_url", "created_at")
     def has_add_permission(self, request): return False
     def has_delete_permission(self, request, obj=None): return False
+
+
+@admin.register(Term)
+class TermAdmin(admin.ModelAdmin):
+    list_display = ("label", "vocabulary", "category", "identifier")
+    list_filter = ("vocabulary", "category")
+    search_fields = ("label", "identifier", "description", "source_identifier")
+
+
+class WorkTermReviewForm(forms.ModelForm):
+    decision = forms.ChoiceField(
+        choices=(("", "Leave pending"), ("accept", "Accept"), ("reject", "Reject")),
+        required=False,
+    )
+
+    class Meta:
+        model = WorkTermAssignment
+        fields = ("reviewer_note",)
+
+    def clean(self):
+        data = super().clean()
+        if data.get("decision") == "reject" and not data.get("reviewer_note", "").strip():
+            self.add_error(None, "Enter a reviewer note before rejecting.")
+        return data
+
+
+@admin.register(WorkTermAssignment)
+class WorkTermAssignmentAdmin(admin.ModelAdmin):
+    form = WorkTermReviewForm
+    list_display = ("work", "term", "review_state", "submitted_by", "submitted_at")
+    list_filter = ("review_state", "term__vocabulary", "term__category")
+    readonly_fields = (
+        "work", "term", "review_state", "source", "source_url", "provenance_note",
+        "submitted_by", "submitted_at", "reviewer", "reviewed_at",
+    )
+    fields = readonly_fields + ("reviewer_note", "decision")
+
+    def has_add_permission(self, request): return False
+    def has_delete_permission(self, request, obj=None): return False
+    def has_view_permission(self, request, obj=None):
+        return request.user.has_perm("catalog.review_worktermassignment")
+    def has_change_permission(self, request, obj=None):
+        return request.user.has_perm("catalog.review_worktermassignment")
+
+    def save_model(self, request, obj, form, change):
+        decision = form.cleaned_data.get("decision")
+        if decision:
+            obj.review(
+                reviewer=request.user, accept=decision == "accept",
+                note=obj.reviewer_note,
+            )
+            messages.success(request, f"Term suggestion {obj.review_state}.")
