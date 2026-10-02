@@ -543,3 +543,50 @@ def my_contributions(request):
     return render(request, "catalog/my_contributions.html", {
         "proposals": proposals, "term_suggestions": term_suggestions,
     })
+
+
+@login_required
+@require_http_methods(["GET", "POST"])
+def resubmit_contribution(request, pk):
+    """Let an owner answer a clarification request as a separately audited attempt."""
+    from .forms import CorrectionProposalForm, RelationshipProposalForm
+    from .models import ContributionProposal
+
+    proposal = get_object_or_404(
+        ContributionProposal.objects.select_related("work", "related_work", "relationship_type"),
+        pk=pk, submitted_by=request.user,
+        status=ContributionProposal.Status.CLARIFICATION_NEEDED,
+    )
+    if proposal.kind == ContributionProposal.Kind.CORRECTION:
+        form_class = CorrectionProposalForm
+        form_kwargs = {}
+        initial = {"field_name": proposal.field_name, "proposed_value": proposal.proposed_value,
+                   "explanation": proposal.explanation, "source_url": proposal.source_url}
+    else:
+        form_class = RelationshipProposalForm
+        form_kwargs = {"source_work": proposal.work}
+        initial = {"related_work": proposal.related_work, "relationship_type": proposal.relationship_type,
+                   "explanation": proposal.explanation, "source_url": proposal.source_url}
+    form = form_class(request.POST or None, initial=initial, **form_kwargs)
+    if proposal.kind == ContributionProposal.Kind.CORRECTION:
+        # A revision may answer the reviewer, but it must not silently become a
+        # proposal about a different catalog field.
+        form.fields["field_name"].disabled = True
+    verification_required = not _verified_submission_allowed(request)
+    if request.method == "POST" and form.is_valid():
+        if verification_required:
+            form.add_error(None, "Verify your email address before resubmitting. Your entries remain below.")
+        else:
+            proposal.resubmit(
+                contributor=request.user,
+                proposed_value=form.cleaned_data.get("proposed_value", ""),
+                related_work=form.cleaned_data.get("related_work"),
+                relationship_type=form.cleaned_data.get("relationship_type"),
+                explanation=form.cleaned_data["explanation"], source_url=form.cleaned_data["source_url"],
+            )
+            messages.success(request, "Revised proposal submitted for editorial review.")
+            return redirect("my-contributions")
+    return render(request, "catalog/contribution_form.html", {
+        "form": form, "work": proposal.work, "heading": "Revise and resubmit",
+        "verification_required": verification_required, "proposal": proposal,
+    })

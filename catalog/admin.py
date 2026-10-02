@@ -138,7 +138,8 @@ from .models import ContributionProposal, ContributionRevision
 
 
 class ContributionReviewForm(forms.ModelForm):
-    decision = forms.ChoiceField(choices=(("", "Leave pending"), ("approve", "Approve"), ("reject", "Reject")), required=False)
+    decision = forms.ChoiceField(choices=(("", "Leave pending"), ("approve", "Approve"),
+        ("clarify", "Request clarification"), ("reject", "Reject")), required=False)
     reconcile_conflict = forms.BooleanField(required=False, help_text="I inspected the current catalog value and explicitly reconciled this conflict.")
 
     class Meta:
@@ -147,8 +148,8 @@ class ContributionReviewForm(forms.ModelForm):
 
     def clean(self):
         data = super().clean()
-        if data.get("decision") == "reject" and not data.get("reviewer_explanation", "").strip():
-            self.add_error(None, "Enter a reviewer explanation before rejecting.")
+        if data.get("decision") in {"reject", "clarify"} and not data.get("reviewer_explanation", "").strip():
+            self.add_error(None, "Enter a reviewer explanation before rejecting or requesting clarification.")
         return data
 
 
@@ -161,7 +162,7 @@ class ContributionProposalAdmin(admin.ModelAdmin):
     readonly_fields = ("kind", "status", "submitted_by", "work", "field_name", "value_at_submission",
         "current_value_display", "proposed_value", "related_work", "relationship_type", "direction_display",
         "work_updated_at", "related_work_updated_at", "explanation", "source_link", "submitted_at",
-        "reviewer", "reviewed_at")
+        "reviewer", "reviewed_at", "supersedes")
     fields = readonly_fields + ("reviewer_explanation", "decision", "reconcile_conflict")
 
     def has_add_permission(self, request):
@@ -191,8 +192,11 @@ class ContributionProposalAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         decision = form.cleaned_data.get("decision")
         if decision:
-            obj.review(reviewer=request.user, approve=decision == "approve",
-                explanation=obj.reviewer_explanation, reconcile=form.cleaned_data.get("reconcile_conflict", False))
+            if decision == "clarify":
+                obj.request_clarification(reviewer=request.user, explanation=obj.reviewer_explanation)
+            else:
+                obj.review(reviewer=request.user, approve=decision == "approve",
+                    explanation=obj.reviewer_explanation, reconcile=form.cleaned_data.get("reconcile_conflict", False))
             messages.success(request, f"Proposal {obj.status}.")
 
 
