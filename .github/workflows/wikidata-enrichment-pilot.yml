@@ -10,18 +10,60 @@ jobs:
   launch:
     runs-on: ubuntu-latest
     steps:
-      - name: Launch bounded one-off job from deployed pilot service
+      - name: Launch and monitor bounded one-off job from deployed pilot service
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
           DRY_RUN: ${{ inputs.dry_run }}
         run: |
+          set -euo pipefail
+
+          job_id="Not available"
+          status="launch_failed"
+          write_summary() {
+            {
+              echo "## Wikidata enrichment pilot"
+              echo
+              printf -- "- Render job ID: \`%s\`\n" "$job_id"
+              printf -- "- Final status: **%s**\n" "$status"
+            } >> "$GITHUB_STEP_SUMMARY"
+          }
+          trap write_summary EXIT
+
           test -n "$RENDER_API_KEY" && test -n "$RENDER_SERVICE_ID"
           command="python manage.py run_wikidata_enrichment --seed-limit 50 --related-limit 300 --request-limit 250 --timeout 30 --max-runtime 1800"
           if [ "$DRY_RUN" = true ]; then command="$command --dry-run"; fi
           payload=$(COMMAND="$command" python -c 'import json,os; print(json.dumps({"startCommand": os.environ["COMMAND"]}))')
-          curl --fail-with-body --silent --show-error \
+          response=$(curl --fail-with-body --silent --show-error \
             --request POST "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/jobs" \
             --header "Authorization: Bearer ${RENDER_API_KEY}" \
             --header "Content-Type: application/json" \
-            --data "$payload"
+            --data "$payload")
+
+          job_id=$(python -c 'import json,sys; print(json.load(sys.stdin)["id"])' <<< "$response")
+          status=$(python -c 'import json,sys; print(json.load(sys.stdin)["status"])' <<< "$response")
+          echo "Render job $job_id created with status: $status"
+
+          while [ "$status" = "pending" ] || [ "$status" = "running" ]; do
+            sleep 30
+            response=$(curl --fail-with-body --silent --show-error \
+              "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/jobs/${job_id}" \
+              --header "Authorization: Bearer ${RENDER_API_KEY}" \
+              --header "Accept: application/json")
+            status=$(python -c 'import json,sys; print(json.load(sys.stdin)["status"])' <<< "$response")
+            echo "Render job $job_id status: $status"
+          done
+
+          case "$status" in
+            succeeded)
+              echo "Render job $job_id completed successfully."
+              ;;
+            failed|canceled)
+              echo "Render job $job_id finished with status: $status" >&2
+              exit 1
+              ;;
+            *)
+              echo "Render job $job_id returned unexpected terminal status: $status" >&2
+              exit 1
+              ;;
+          esac
