@@ -53,12 +53,21 @@ class Work(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title) or "work"
+        adding = self._state.adding
         with transaction.atomic():
             previous = Work.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
             super().save(*args, **kwargs)
             if previous:
                 from .provenance import track_edit
                 track_edit(previous, Work.objects.get(pk=self.pk))
+            if not adding and self.visibility == self.Visibility.PUBLIC and (
+                kwargs.get("update_fields") is None or "visibility" in kwargs["update_fields"]
+            ):
+                pending = WorkRelationship.objects.select_for_update().filter(
+                    models.Q(from_work=self) | models.Q(to_work=self), pending_publication=True,
+                )
+                for relationship in pending:
+                    relationship.save()
 
     def get_absolute_url(self):
         return reverse("work-detail", kwargs={"pk": self.pk, "slug": self.slug})
@@ -148,6 +157,7 @@ class MediaList(models.Model):
     slug = models.SlugField(max_length=140, blank=True)
     description = models.TextField(blank=True, max_length=1000)
     visibility = models.CharField(max_length=10, choices=Visibility.choices, default=Visibility.PRIVATE, db_index=True)
+    public_since = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -157,7 +167,13 @@ class MediaList(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)[:140] or "list"
-        super().save(*args, **kwargs)
+        with transaction.atomic():
+            old = MediaList.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
+            if old and old.visibility != self.visibility and (kwargs.get("update_fields") is None or "visibility" in kwargs["update_fields"]):
+                self.public_since = timezone.now()
+                if kwargs.get("update_fields") is not None:
+                    kwargs["update_fields"] = set(kwargs["update_fields"]) | {"public_since"}
+            super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("list-detail", kwargs={"pk": self.pk, "slug": self.slug})
@@ -179,6 +195,20 @@ class MediaListEntry(models.Model):
             models.UniqueConstraint(fields=("media_list", "work"), name="unique_work_per_media_list"),
             models.UniqueConstraint(fields=("media_list", "position"), name="unique_position_per_media_list"),
         ]
+
+    def save(self, *args, **kwargs):
+        from .library import record_membership
+        with transaction.atomic():
+            old = MediaListEntry.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
+            # Lock the parent to serialize against privacy transitions.
+            MediaList.objects.select_for_update().get(pk=self.media_list_id)
+            super().save(*args, **kwargs)
+            current = MediaListEntry.objects.get(pk=self.pk)
+            if old is None:
+                record_membership(current, "collection_added")
+            elif (old.media_list_id, old.work_id) != (current.media_list_id, current.work_id):
+                record_membership(old, "collection_removed")
+                record_membership(current, "collection_added")
 
     def __str__(self):
         return f"{self.media_list}: {self.work}"
@@ -437,6 +467,7 @@ class WorkRelationship(models.Model):
     relationship_type = models.ForeignKey(RelationshipType, on_delete=models.PROTECT)
     source = models.ForeignKey(Source, on_delete=models.PROTECT, related_name="relationships")
     scope_note = models.CharField(max_length=300, blank=True)
+    pending_publication = models.BooleanField(default=False, editable=False)
     review_status = models.CharField(max_length=20, choices=[("accepted", "Accepted"), ("unreviewed", "Unreviewed"), ("disputed", "Disputed")], default="unreviewed")
     authorization_status = models.CharField(max_length=20, default="unknown")
     evidence = models.JSONField(default=dict, blank=True, help_text="Source statement, references, qualifiers, rank, and retrieval metadata.")
@@ -447,11 +478,16 @@ class WorkRelationship(models.Model):
             models.CheckConstraint(condition=~models.Q(from_work=models.F("to_work")), name="relationship_not_self"),
         ]
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, publish_event=False, **kwargs):
+        from .library import record_relationship_change, relationship_snapshot, tracking_enabled
         with transaction.atomic():
             previous = WorkRelationship.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
-            if previous and (previous.from_work_id, previous.to_work_id, previous.relationship_type_id) != (
-                    self.from_work_id, self.to_work_id, self.relationship_type_id) and previous.evidence == self.evidence:
+            update_fields = kwargs.get("update_fields")
+            identity_changed = previous and any(
+                (update_fields is None or field in update_fields or field + "_id" in update_fields)
+                and getattr(previous, field + "_id") != getattr(self, field + "_id")
+                for field in ("from_work", "to_work", "relationship_type"))
+            if identity_changed and previous.evidence == self.evidence:
                 self.evidence = {"source_invalidated": True, "correction_history": [
                     {"field": "relationship", "value": previous.relationship_type_id,
                      "source_url": previous.evidence_url or previous.source.url}]}
@@ -471,7 +507,18 @@ class WorkRelationship(models.Model):
                     self.evidence = evidence
                     if kwargs.get("update_fields") is not None:
                         kwargs["update_fields"] = set(kwargs["update_fields"]) | {"evidence"}
+            old = previous
+            before = None if old and old.pending_publication else relationship_snapshot(old)
             super().save(*args, **kwargs)
+            # Use persisted values, including update_fields, rather than unsaved edits.
+            current = WorkRelationship.objects.get(pk=self.pk)
+            after = relationship_snapshot(current)
+            tracked_acceptance = tracking_enabled() and (publish_event or (old and old.review_status != "accepted" and current.review_status == "accepted"))
+            pending = current.review_status == "accepted" and after is None and bool(tracked_acceptance or (old and old.pending_publication))
+            WorkRelationship.objects.filter(pk=self.pk).update(pending_publication=pending)
+            self.pending_publication = pending
+            if old is not None or publish_event:
+                record_relationship_change(before, after)
 
     def clean(self):
         if self.from_work_id == self.to_work_id:
@@ -517,12 +564,18 @@ class ImportRelationshipProposal(models.Model):
         """Publish only the assertion; draft endpoint visibility remains a separate decision."""
         with transaction.atomic():
             proposal = ImportRelationshipProposal.objects.select_for_update().get(pk=self.pk)
-            relationship, _ = WorkRelationship.objects.update_or_create(
+            relationship, created = WorkRelationship.objects.update_or_create(
                 from_work=proposal.from_work, to_work=proposal.to_work,
                 relationship_type=proposal.relationship_type,
                 defaults={"source": proposal.source, "scope_note": "Wikidata P144 (based on) assertion; editor approved.",
                           "review_status": "accepted", "authorization_status": "unknown", "evidence": dict(proposal.evidence, reviewed_at=timezone.now().isoformat())},
             )
+            if created:
+                from .library import record_relationship_change, relationship_snapshot
+                snapshot = relationship_snapshot(relationship)
+                record_relationship_change(None, snapshot)
+                if snapshot is None:
+                    WorkRelationship.objects.filter(pk=relationship.pk).update(pending_publication=True)
             proposal.status = self.Status.APPROVED
             proposal.reviewer = reviewer
             proposal.reviewed_at = timezone.now()
@@ -691,10 +744,11 @@ class ContributionProposal(models.Model):
                 else:
                     source = Source.objects.create(title="Contributor-submitted source", url=proposal.source_url,
                                                    notes="Reviewed supporting source for an approved community relationship.")
-                    WorkRelationship.objects.create(from_work=proposal.work, to_work=proposal.related_work,
+                    relationship = WorkRelationship(from_work=proposal.work, to_work=proposal.related_work,
                         relationship_type=proposal.relationship_type, source=source,
                         scope_note=proposal.explanation[:300], review_status="accepted",
                         evidence={"reviewed_at": timezone.now().isoformat()})
+                    relationship.save(publish_event=True)
                 proposal.status = self.Status.APPROVED
             else:
                 proposal.status = self.Status.REJECTED
@@ -807,3 +861,48 @@ class FieldEvidence(models.Model):
             models.CheckConstraint(condition=models.Q(field_name__in=("title", "work_type", "first_publication_date_text")),
                                    name="bounded_work_evidence_field"),
         ]
+
+
+class SavedWork(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name="saves")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("user", "work"), name="unique_saved_work")]
+
+
+class WorkFollow(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name="follows")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("user", "work"), name="unique_work_follow")]
+
+
+class CollectionFollow(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    collection = models.ForeignKey(MediaList, on_delete=models.CASCADE, related_name="follows")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=("user", "collection"), name="unique_collection_follow")]
+
+
+class LibraryEvent(models.Model):
+    """One event per committed mutation, shared by all current followers; no backfill."""
+    deduplication_key = models.CharField(max_length=120, unique=True, null=True, blank=True)
+    kind = models.CharField(max_length=40, choices=[
+        ("relationship_added", "Relationship added"), ("relationship_corrected", "Relationship corrected"),
+        ("relationship_removed", "Relationship removed"),
+        ("collection_added", "Work added to collection"), ("collection_removed", "Work removed from collection"),
+    ])
+    collection = models.ForeignKey(MediaList, null=True, blank=True, on_delete=models.CASCADE)
+    works = models.ManyToManyField(Work, related_name="library_events")
+    before = models.JSONField(default=dict)
+    after = models.JSONField(default=dict)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ("-created_at", "-pk")

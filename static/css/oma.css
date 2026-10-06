@@ -19,3 +19,48 @@
 .provenance > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .provenance-body { padding: .75rem; border: 1px solid var(--border, #d6dcd7); border-radius: .4rem; overflow-wrap: anywhere; }
 .evidence-entry + .evidence-entry { border-top: 1px solid var(--border, #d6dcd7); margin-top: .75rem; padding-top: .5rem; }
+
+/* Connections remain a usable server-rendered list without JS or a graph. */
+.connection-filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin: 1.5rem 0; }
+.connection-filters > div { flex: 1 1 180px; min-width: 0; }
+.connection-filters label { display: block; margin-bottom: .4rem; font-weight: 600; }
+.connection-filters input, .connection-filters select { width: 100%; }
+.connection-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
+.connection-row p { margin: .4rem 0; }
+.connection-row small { display: block; }
+.connection-row a, .connection-statement { overflow-wrap: anywhere; }
+.connection-evidence summary { cursor: pointer; font-weight: 600; }
+.connection-statement { padding: .75rem 0; }
+.connection-group-heading { margin-top: 1.5rem; }
+.connections-section :is(a, button, input, select, summary):focus-visible { outline: 3px solid #865d35; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .connection-row { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+  .connection-filters > div { flex-basis: 100%; }
+  .connection-filters button { width: 100%; }
+}
+/* Annotated collections */
+.collection-intro{max-width:76ch;min-width:0}.collection-intro .lede{line-height:1.7;margin-block:18px}.collection-intro .lede p{margin-block:10px}.collection-chooser{display:grid;grid-template-columns:1fr 1fr;gap:24px}.collection-chooser .account-panel{max-width:none;min-width:0}.collection-search{max-width:660px;margin-bottom:24px}.collection-search label{display:block;font-weight:700;margin-bottom:5px}.collection-choice{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--rule)}.collection-choice p{margin:3px 0}.collection-choice form{margin:0}.collection-preview{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px}.collection-preview li{max-width:36ch}.curator-note{line-height:1.7;padding:14px 18px}.unavailable-entry{grid-column:2/-1}.managed-entry>div:first-child{min-width:0;flex:1}.entry-actions{flex-shrink:0;max-width:350px}textarea:focus-visible{outline:3px solid #a98abc;outline-offset:2px}@media(max-width:800px){.collection-chooser{grid-template-columns:1fr}.public-entry .format-mark{display:flex;height:44px;width:36px;grid-column:2;grid-row:1}.public-entry>div:last-child{grid-column:2}.collection-preview{display:block}.collection-preview li{margin-block:8px}.entry-actions{max-width:none}.collection-search .search-line{width:100%}}
+/* Keep collection navigation reachable without overflowing narrow screens. */
+@media(max-width:800px){.site-header{height:auto}.nav-wrap{flex-wrap:wrap;gap:8px;padding-block:10px}.nav-wrap nav{flex-basis:100%;flex-wrap:wrap;margin-left:0;gap:8px 16px}.nav-wrap nav a:nth-child(2){display:inline}.nav-action button{white-space:nowrap}}@media(max-width:420px){.nav-wrap nav a:first-child{font-size:14px}.nav-wrap nav a:first-child:after{display:none}}
+
+/* Private library controls remain outside links and wrap on narrow screens. */
+.library-control { display: inline-flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 0; }
+.library-control button[aria-pressed="true"] { background: var(--ink, #20363d); color: #fff; }
+.library-control button:disabled { opacity: .65; cursor: wait; }
+.library-error { color: #a22929; max-width: 22rem; font-size: .875rem; }
+.library-error:empty { display: none; }
+.featured-card { display: flex; flex-direction: column; gap: .5rem; }
+.featured-card .featured-work { flex: 1; }
+.library-update { padding: 1.2rem 0; border-bottom: 1px solid var(--rule); overflow-wrap: anywhere; }
+.library-update h3 { margin-bottom: .3rem; }
+.library-update time { font-size: .875rem; }
+.section-jumps a[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+@media (max-width: 800px) {
+  .result-row { flex-wrap: wrap; }
+  .result-end { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .library-control button { min-height: 44px; }
+  .list-header-actions { flex-wrap: wrap; }
+}
+@media (max-width: 640px) {
+  .result-end { flex-basis: 100%; padding-left: 56px; }
+}

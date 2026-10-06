@@ -1,4 +1,4 @@
 {% extends "base.html" %}{% block title %}Sign up · Open Media Atlas{% endblock %}{% block content %}
 <section class="account-panel"><p class="eyebrow">ACCOUNT</p><h1>Create an account</h1><p>Your username is public. Your email address stays private.</p>
 <form method="post">{% include "accounts/_form.html" %}<button type="submit">Sign up</button></form>
-<p class="account-links">Already registered? <a href="{% url 'accounts:login' %}">Log in</a>.</p></section>{% endblock %}
+<p class="account-links">Already registered? <a href="{% url 'accounts:login' %}?next={{ next|urlencode }}">Log in</a>.</p></section>{% endblock %}

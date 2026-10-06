@@ -246,3 +246,44 @@ class ProvenanceTests(TestCase):
             "proposed_value": "New claim", "explanation": "Fixture", "source_url": "https://example.org/new"})
         self.assertEqual(response.status_code, 200)
         self.assertFalse(ContributionProposal.objects.exists())
+
+    def test_reviewed_relationship_correction_preserves_library_event_and_history(self):
+        from .models import LibraryEvent
+        rel = self.relationship()
+        proposal = self.proposal("scope_note", "Reviewed replacement", rel)
+        proposal.review(reviewer=self.reviewer, approve=True)
+        rel.refresh_from_db()
+        self.assertEqual(rel.evidence["correction_history"][0]["value"], "Original note")
+        self.assertIn("evidence_history", rel.evidence)
+        event = LibraryEvent.objects.get(kind="relationship_corrected")
+        self.assertEqual(event.before["scope"], "Original note")
+        self.assertEqual(event.after["scope"], "Reviewed replacement")
+        response = self.client.get(self.work.get_absolute_url())
+        row = response.context["connection_rows"][0]
+        self.assertEqual(row["relationships"][0]["provenance"]["target"], f"Relationship {rel.pk}")
+        self.assertContains(response, "Reviewed relationship note source")
+
+    def test_publication_save_tracks_title_and_publishes_pending_connection(self):
+        from .models import LibraryEvent
+        rel = self.relationship()
+        self.work.visibility = "draft"
+        self.work.save(update_fields=["visibility"])
+        WorkRelationship.objects.filter(pk=rel.pk).update(pending_publication=True)
+        LibraryEvent.objects.all().delete()
+        self.work.title = "Published title"
+        self.work.visibility = "public"
+        self.work.save(update_fields=["title", "visibility"])
+        self.assertEqual(work_provenance(self.work)["title"]["entries"][0]["state"], "Source not recorded for this field")
+        rel.refresh_from_db()
+        self.assertFalse(rel.pending_publication)
+        self.assertTrue(LibraryEvent.objects.filter(kind="relationship_added").exists())
+
+    def test_unsaved_relationship_identity_does_not_invalidate_evidence(self):
+        rel = self.relationship()
+        rel.relationship_type = RelationshipType.objects.create(code="unsaved", label="Unsaved", inverse_label="Unsaved")
+        rel.scope_note = "Persisted note"
+        rel.save(update_fields=["scope_note"])
+        rel.refresh_from_db()
+        self.assertEqual(rel.relationship_type_id, "based-on")
+        self.assertFalse(rel.evidence.get("source_invalidated"))
+        self.assertEqual(rel.authorization_statement, "A fixture statement")
