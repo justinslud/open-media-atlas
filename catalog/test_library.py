@@ -358,3 +358,17 @@ class LibraryTests(TestCase):
         self.assertEqual(LibraryEvent.objects.count(), 1)
         entry.refresh_from_db()
         self.assertEqual(entry.work_id, self.work.pk)
+
+    def test_repeated_delete_processing_has_durable_deduplication(self):
+        from .library_signals import entry_removed, relationship_removed
+        self.follow()
+        entry = MediaListEntry.objects.create(media_list=self.collection, work=self.work, position=1)
+        entry_removed(MediaListEntry, entry)
+        entry_removed(MediaListEntry, entry)
+        entry.delete()
+        self.assertEqual(LibraryEvent.objects.filter(kind='collection_removed').count(), 1)
+        rel = self.relationship()
+        relationship_removed(WorkRelationship, rel)
+        relationship_removed(WorkRelationship, rel)
+        rel.delete()
+        self.assertEqual(LibraryEvent.objects.filter(kind='relationship_removed').count(), 1)

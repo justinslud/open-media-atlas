@@ -9,12 +9,13 @@ from .models import MediaListEntry, WorkRelationship, Work, LibraryEvent
 @receiver(pre_delete, sender=MediaListEntry)
 def entry_removed(sender, instance, **kwargs):
     # Django's deletion collector runs these inside its deletion transaction.
-    record_membership(instance, "collection_removed")
+    record_membership(instance, "collection_removed", deduplication_key=f"collection-entry-delete:{instance.pk}")
 
 
 @receiver(pre_delete, sender=WorkRelationship)
 def relationship_removed(sender, instance, **kwargs):
-    record_relationship_change(None if instance.pending_publication else relationship_snapshot(instance), None)
+    record_relationship_change(None if instance.pending_publication else relationship_snapshot(instance), None,
+                               deduplication_key=f"relationship-delete:{instance.pk}")
 
 
 @receiver(post_delete, sender=Work)

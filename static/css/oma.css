@@ -54,3 +54,6 @@
   .library-control button { min-height: 44px; }
   .list-header-actions { flex-wrap: wrap; }
 }
+@media (max-width: 640px) {
+  .result-end { flex-basis: 100%; padding-left: 56px; }
+}

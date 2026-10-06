@@ -29,21 +29,25 @@ def relationship_snapshot(relationship):
         return None
     return {"from": relationship.from_work_id, "to": relationship.to_work_id,
             "type": relationship.relationship_type_id, "label": relationship.relationship_type.label,
-            "scope": relationship.scope_note, "source": relationship.source_id}
+            "scope": relationship.scope_note, "source": relationship.source_id, "source_label": relationship.source.title}
 
 
-def record_relationship_change(before, after):
+def record_relationship_change(before, after, *, deduplication_key=None):
     if not _tracking.get() or before == after or not (before or after):
         return
     from .models import LibraryEvent
-    event = LibraryEvent.objects.create(
-        kind="relationship_corrected" if before and after else "relationship_added" if after else "relationship_removed",
-        before=before or {}, after=after or {},
-    )
+    values = {"kind": "relationship_corrected" if before and after else "relationship_added" if after else "relationship_removed",
+              "before": before or {}, "after": after or {}}
+    if deduplication_key:
+        event, created = LibraryEvent.objects.get_or_create(deduplication_key=deduplication_key, defaults=values)
+        if not created:
+            return
+    else:
+        event = LibraryEvent.objects.create(**values)
     event.works.add(*{value[key] for value in (before, after) if value for key in ("from", "to")})
 
 
-def record_membership(entry, kind):
+def record_membership(entry, kind, *, deduplication_key=None):
     if not _tracking.get():
         return
     from .models import LibraryEvent, MediaList, Work
@@ -51,7 +55,13 @@ def record_membership(entry, kind):
         return
     if not Work.objects.filter(pk=entry.work_id, visibility="public", canonical_redirect__isnull=True).exists():
         return
-    event = LibraryEvent.objects.create(kind=kind, collection_id=entry.media_list_id)
+    values = {"kind": kind, "collection_id": entry.media_list_id}
+    if deduplication_key:
+        event, created = LibraryEvent.objects.get_or_create(deduplication_key=deduplication_key, defaults=values)
+        if not created:
+            return
+    else:
+        event = LibraryEvent.objects.create(**values)
     event.works.add(entry.work_id)
 
 

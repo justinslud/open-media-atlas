@@ -47,4 +47,6 @@ def event_summary(event, side):
     text = f"{works.get(snapshot.get('from'), 'Work')} → {snapshot.get('label', 'relationship')} → {works.get(snapshot.get('to'), 'Work')}"
     if snapshot.get("scope"):
         text += f". {snapshot['scope']}"
+    if snapshot.get("source_label"):
+        text += f". Source: {snapshot['source_label']}"
     return text
