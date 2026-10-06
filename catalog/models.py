@@ -55,7 +55,11 @@ class Work(models.Model):
             self.slug = slugify(self.title) or "work"
         adding = self._state.adding
         with transaction.atomic():
+            previous = Work.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
             super().save(*args, **kwargs)
+            if previous:
+                from .provenance import track_edit
+                track_edit(previous, Work.objects.get(pk=self.pk))
             if not adding and self.visibility == self.Visibility.PUBLIC and (
                 kwargs.get("update_fields") is None or "visibility" in kwargs["update_fields"]
             ):
@@ -477,7 +481,33 @@ class WorkRelationship(models.Model):
     def save(self, *args, publish_event=False, **kwargs):
         from .library import record_relationship_change, relationship_snapshot, tracking_enabled
         with transaction.atomic():
-            old = WorkRelationship.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
+            previous = WorkRelationship.objects.select_for_update().filter(pk=self.pk).first() if self.pk else None
+            update_fields = kwargs.get("update_fields")
+            identity_changed = previous and any(
+                (update_fields is None or field in update_fields or field + "_id" in update_fields)
+                and getattr(previous, field + "_id") != getattr(self, field + "_id")
+                for field in ("from_work", "to_work", "relationship_type"))
+            if identity_changed and previous.evidence == self.evidence:
+                self.evidence = {"source_invalidated": True, "correction_history": [
+                    {"field": "relationship", "value": previous.relationship_type_id,
+                     "source_url": previous.evidence_url or previous.source.url}]}
+                if kwargs.get("update_fields") is not None:
+                    kwargs["update_fields"] = set(kwargs["update_fields"]) | {"evidence"}
+            if previous:
+                evidence = dict(self.evidence) if isinstance(self.evidence, dict) else {}
+                old_evidence = previous.evidence if isinstance(previous.evidence, dict) else {}
+                if previous.scope_note != self.scope_note and evidence.get("scope_note_source_url") == old_evidence.get("scope_note_source_url"):
+                    evidence.pop("scope_note_source_url", None)
+                    evidence.pop("scope_note_reviewed_at", None)
+                if evidence != old_evidence:
+                    archived = list(old_evidence.get("evidence_history", []))
+                    archived.append({"source_id": previous.source_id, "scope_note": previous.scope_note,
+                                     "evidence": {key: value for key, value in old_evidence.items() if key != "evidence_history"}})
+                    evidence["evidence_history"] = archived
+                    self.evidence = evidence
+                    if kwargs.get("update_fields") is not None:
+                        kwargs["update_fields"] = set(kwargs["update_fields"]) | {"evidence"}
+            old = previous
             before = None if old and old.pending_publication else relationship_snapshot(old)
             super().save(*args, **kwargs)
             # Use persisted values, including update_fields, rather than unsaved edits.
@@ -538,7 +568,7 @@ class ImportRelationshipProposal(models.Model):
                 from_work=proposal.from_work, to_work=proposal.to_work,
                 relationship_type=proposal.relationship_type,
                 defaults={"source": proposal.source, "scope_note": "Wikidata P144 (based on) assertion; editor approved.",
-                          "review_status": "accepted", "authorization_status": "unknown", "evidence": proposal.evidence},
+                          "review_status": "accepted", "authorization_status": "unknown", "evidence": dict(proposal.evidence, reviewed_at=timezone.now().isoformat())},
             )
             if created:
                 from .library import record_relationship_change, relationship_snapshot
@@ -577,6 +607,7 @@ class ContributionProposal(models.Model):
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING, db_index=True)
     submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="contribution_proposals")
     work = models.ForeignKey(Work, on_delete=models.PROTECT, related_name="proposals")
+    target_relationship = models.ForeignKey(WorkRelationship, on_delete=models.PROTECT, null=True, blank=True, related_name="corrections")
     field_name = models.CharField(max_length=40, blank=True)
     value_at_submission = models.TextField(blank=True)
     proposed_value = models.TextField(blank=True)
@@ -603,7 +634,14 @@ class ContributionProposal(models.Model):
     @property
     def current_value(self):
         if self.kind == self.Kind.CORRECTION:
-            return str(getattr(self.work, self.field_name, ""))
+            if self.target_relationship_id:
+                rel = self.target_relationship
+                if self.field_name == "relationship_type":
+                    return rel.relationship_type_id
+                if self.field_name == "authorization_statement":
+                    return rel.authorization_statement
+                return rel.scope_note
+            return str(getattr(self.work, "work_type_id" if self.field_name == "work_type" else self.field_name, ""))
         return "Relationship is already present" if WorkRelationship.objects.filter(
             from_work=self.work, to_work=self.related_work, relationship_type=self.relationship_type
         ).exists() else "Relationship is not present"
@@ -620,8 +658,19 @@ class ContributionProposal(models.Model):
     def clean(self):
         super().clean()
         if self.kind == self.Kind.CORRECTION:
-            if self.field_name not in {"title", "description", "first_publication_date_text"}:
+            if self.field_name not in {"title", "description", "first_publication_date_text", "work_type", "scope_note", "relationship_type", "authorization_statement"}:
                 raise ValidationError({"field_name": "This field cannot be proposed."})
+            if self.field_name in {"scope_note", "relationship_type", "authorization_statement"}:
+                if not self.target_relationship_id or self.target_relationship.from_work_id != self.work_id:
+                    raise ValidationError("Choose a relationship belonging to this work.")
+                if self.field_name == "authorization_statement" and not self.target_relationship.authorization_statement:
+                    raise ValidationError("Only an existing attributed rights statement can be corrected.")
+            elif self.target_relationship_id:
+                raise ValidationError("This field belongs to a work, not a relationship.")
+            if self.field_name == "relationship_type" and not RelationshipType.objects.filter(pk=self.proposed_value).exists():
+                raise ValidationError("Choose an existing relationship type code.")
+            if self.field_name == "work_type" and not WorkType.objects.filter(pk=self.proposed_value).exists():
+                raise ValidationError("Choose an existing work type code.")
             if self.related_work_id or self.relationship_type_id:
                 raise ValidationError("Correction proposals cannot include a relationship.")
         else:
@@ -648,7 +697,31 @@ class ContributionProposal(models.Model):
             old_value = proposal.current_value
             if approve:
                 if proposal.kind == self.Kind.CORRECTION:
-                    setattr(proposal.work, proposal.field_name, proposal.proposed_value)
+                    if proposal.target_relationship_id:
+                        rel = WorkRelationship.objects.select_for_update().get(pk=proposal.target_relationship_id)
+                        evidence = dict(rel.evidence)
+                        history = list(evidence.get("correction_history", []))
+                        history.append({"field": proposal.field_name, "value": old_value,
+                                        "source_url": evidence.get(proposal.field_name + "_source_url", "")})
+                        evidence["correction_history"] = history
+                        evidence[proposal.field_name + "_value"] = proposal.proposed_value
+                        evidence[proposal.field_name + "_source_url"] = proposal.source_url
+                        evidence[proposal.field_name + "_reviewed_at"] = timezone.now().isoformat()
+                        if proposal.field_name == "authorization_statement":
+                            evidence["authorization_statement"] = proposal.proposed_value
+                        elif proposal.field_name == "relationship_type":
+                            rel.relationship_type_id = proposal.proposed_value
+                            # Previous assertion evidence remains historical, not current support.
+                            history.append({"field": "relationship", "value": old_value, "source_url": rel.evidence_url or rel.source.url})
+                            evidence = {key: value for key, value in evidence.items() if key in {
+                                "correction_history", "relationship_type_source_url", "relationship_type_reviewed_at"}}
+                            rel.source = Source.objects.create(title="Reviewed relationship correction source", url=proposal.source_url)
+                        else:
+                            rel.scope_note = proposal.proposed_value
+                        rel.evidence = evidence
+                        rel.save()
+                    else:
+                        setattr(proposal.work, "work_type_id" if proposal.field_name == "work_type" else proposal.field_name, proposal.proposed_value)
                     fields = [proposal.field_name, "updated_at"]
                     if proposal.field_name == "first_publication_date_text":
                         match = re.search(r"(?<!\d)(1\d{3}|20\d{2})(?!\d)", proposal.proposed_value)
@@ -661,13 +734,20 @@ class ContributionProposal(models.Model):
                     if proposal.field_name == "title":
                         proposal.work.slug = slugify(proposal.proposed_value)[:320]
                         fields.append("slug")
-                    proposal.work.save(update_fields=fields)
+                    if not proposal.target_relationship_id:
+                        proposal.work.save(update_fields=fields)
+                        if proposal.field_name in {"title", "work_type", "first_publication_date_text"}:
+                            from .provenance import record_evidence
+                            record_evidence(proposal.work, proposal.field_name, proposal.proposed_value,
+                                            origin="reviewed", source_url=proposal.source_url,
+                                            reviewed_at=timezone.now())
                 else:
                     source = Source.objects.create(title="Contributor-submitted source", url=proposal.source_url,
                                                    notes="Reviewed supporting source for an approved community relationship.")
                     relationship = WorkRelationship(from_work=proposal.work, to_work=proposal.related_work,
                         relationship_type=proposal.relationship_type, source=source,
-                        scope_note=proposal.explanation[:300], review_status="accepted")
+                        scope_note=proposal.explanation[:300], review_status="accepted",
+                        evidence={"reviewed_at": timezone.now().isoformat()})
                     relationship.save(publish_event=True)
                 proposal.status = self.Status.APPROVED
             else:
@@ -718,7 +798,8 @@ class ContributionProposal(models.Model):
                 "source_url": source_url, "supersedes": previous,
             }
             if previous.kind == self.Kind.CORRECTION:
-                values["value_at_submission"] = str(getattr(previous.work, previous.field_name))
+                values["target_relationship"] = previous.target_relationship
+                values["value_at_submission"] = previous.current_value
                 values["related_work"] = None
                 values["relationship_type"] = None
             else:
@@ -754,6 +835,32 @@ class ContributionRevision(models.Model):
 
     def __str__(self):
         return f"Approved {self.kind} for {self.work}"
+
+
+class FieldEvidence(models.Model):
+    """A bounded value association, retained after replacement; no supplier backfill."""
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name="field_evidence")
+    field_name = models.CharField(max_length=40)
+    value = models.TextField(blank=True)
+    current = models.BooleanField(default=True)
+    source = models.ForeignKey(Source, on_delete=models.PROTECT, null=True, blank=True)
+    source_record = models.ForeignKey(SourceRecord, on_delete=models.SET_NULL, null=True, blank=True)
+    source_url = models.URLField(max_length=500, blank=True)
+    origin = models.CharField(max_length=20, default="unrecorded", choices=[
+        ("unrecorded", "Source not recorded"), ("imported", "Imported"), ("reviewed", "Human-reviewed")])
+    note = models.TextField(blank=True, help_text="Public explanation of normalization or selection; never private reviewer notes.")
+    retrieved_at = models.DateTimeField(null=True, blank=True)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("-created_at", "-pk")
+        constraints = [
+            models.UniqueConstraint(fields=("work", "field_name"), condition=models.Q(current=True),
+                                    name="unique_current_work_field_evidence"),
+            models.CheckConstraint(condition=models.Q(field_name__in=("title", "work_type", "first_publication_date_text")),
+                                   name="bounded_work_evidence_field"),
+        ]
 
 
 class SavedWork(models.Model):

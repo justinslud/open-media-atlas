@@ -28,11 +28,13 @@ def direction_label(relationship, current_id):
 
 
 def evidence_details(relationship):
+    from .provenance import relationship_provenance, rights_provenance, safe_url
+    relationship.display_label = direction_label(relationship, relationship.current_work_id)
     evidence = relationship.evidence if isinstance(relationship.evidence, dict) else {}
     links = []
     def add(url, label):
         # Render only navigable HTTP sources, never arbitrary supplier schemes.
-        if isinstance(url, str) and url.startswith(('https://', 'http://')) and url not in [u for u, _ in links]:
+        if safe_url(url) and url not in [u for u, _ in links]:
             links.append((url, label))
     add(relationship.evidence_url, 'Supporting statement')
     add(relationship.source.url, relationship.source.title)
@@ -48,7 +50,11 @@ def evidence_details(relationship):
             for snak in snaks.get('P854', []):
                 if isinstance(snak, dict) and isinstance(snak.get('datavalue'), dict):
                     add(snak['datavalue'].get('value'), 'Reference')
+    if evidence.get('source_invalidated'):
+        links = []
     return {
+        'provenance': relationship_provenance(relationship),
+        'rights_provenance': rights_provenance(relationship) if relationship.authorization_statement else None,
         'label': direction_label(relationship, relationship.current_work_id),
         'exact': relationship.relationship_type.label,
         'from_work': relationship.from_work,
@@ -56,8 +62,8 @@ def evidence_details(relationship):
         'review': relationship.get_review_status_display(),
         'origin': f"Imported assertion: {evidence['asserted_by']}" if evidence.get('asserted_by') else 'Origin not recorded',
         'links': links,
-        'source_title': relationship.source.title,
-        'source_note': relationship.source.notes,
+        'source_title': 'Source not recorded for this field' if evidence.get('source_invalidated') else relationship.source.title,
+        'source_note': '',
         'authorization_statement': relationship.authorization_statement,
         'note': relationship.scope_note or evidence.get('excerpt') or evidence.get('note') or '',
         'statement_id': evidence.get('statement_id', ''),

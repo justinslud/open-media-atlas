@@ -1,0 +1,13 @@
+<details class="provenance">
+  <summary>{% if connection %}About this connection · {% endif %}Why this value?<span class="sr-only"> {{ evidence.label }}: {{ evidence.value }}</span></summary>
+  <div class="provenance-body">
+    <p><strong>{{ evidence.label }}:</strong> {{ evidence.value }}{% if evidence.attribution %} — attributed to {{ evidence.attribution }}{% endif %}</p>
+    <p>{{ evidence.meaning }}</p>
+    {% for entry in evidence.entries %}{% include "catalog/_evidence_entry.html" %}{% empty %}<p>Source not recorded for this field.</p>{% endfor %}
+    {% if evidence.conflict %}<p><strong>Conflicting sources:</strong> recorded supplier titles differ from the current value.</p>{% endif %}
+    {% if evidence.alternatives %}<h4>Recorded alternatives</h4><p>Different supplier values are recorded; they may differ in scope or precision. Selection reasons are shown only when recorded.</p>{% for entry in evidence.alternatives %}{% include "catalog/_evidence_entry.html" %}{% endfor %}{% endif %}
+    {% if evidence.history %}<details><summary>Previous values and evidence</summary>{% for entry in evidence.history %}{% include "catalog/_evidence_entry.html" %}{% endfor %}</details>{% else %}<p class="helper">Earlier values and selection history may not have been recorded.</p>{% endif %}
+    <p class="helper">{{ evidence.target }}</p>
+    <a href="{{ evidence.correction_url }}">Suggest a correction</a>
+  </div>
+</details>

@@ -125,6 +125,9 @@ def merge_works(*, source, canonical, actor):
     _move_relationships(source, canonical)
     _move_list_entries(source, canonical)
 
+    # Merged evidence is retained as history, never silently attached to the canonical value.
+    from .models import FieldEvidence
+    FieldEvidence.objects.filter(work=source).update(work=canonical, current=False)
     SourceRecord.objects.filter(matched_work=source).update(matched_work=canonical)
     ImportItem.objects.filter(work=source).update(work=canonical)
     ContributionProposal.objects.filter(work=source).update(work=canonical)

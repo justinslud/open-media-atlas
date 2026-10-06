@@ -1,0 +1,7 @@
+<div class="evidence-entry">
+  <p><strong>{{ entry.value }}</strong> — {{ entry.state }}</p>
+  {% if entry.source %}<p>Source: {% if entry.url %}<a href="{{ entry.url }}" rel="nofollow noreferrer">{{ entry.source }}</a>{% else %}{{ entry.source }}{% endif %}</p>{% endif %}
+  {% if entry.note %}<p>{{ entry.note }}</p>{% endif %}
+  {% if entry.retrieved_at %}<p class="helper">Retrieved: {{ entry.retrieved_at }} (not a verification date)</p>{% endif %}
+  {% if entry.reviewed_at %}<p class="helper">Reviewed: {{ entry.reviewed_at }}</p>{% endif %}
+</div>

@@ -13,6 +13,13 @@
 /* Relationship search and compact work context. */
 .nav-wrap nav a,.nav-action button,.secondary-action{text-decoration:none}.term-pills{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}.term-pills span{border:1px solid #cec1d5;border-radius:999px;background:#f3eef5;color:var(--accent);font-size:12px;font-weight:700;padding:3px 9px}.work-cover strong{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:4}.relationship-work-results{border-block:1px solid var(--rule);margin-top:10px}.work-search-choice{display:flex!important;align-items:center;gap:10px;margin:0!important;padding:9px 4px;border-top:1px solid var(--rule);cursor:pointer}.work-search-choice:first-child{border-top:0}.work-search-choice input{width:auto!important;min-height:auto}.work-search-choice span{min-width:0}.work-search-choice strong,.work-search-choice small{display:block}.work-search-choice small{color:var(--muted);font-weight:400}
 
+/* Native disclosures keep provenance keyboard accessible without modal focus traps. */
+.provenance { margin: .5rem 0; max-width: 48rem; font-size: .875rem; }
+.provenance > summary { cursor: pointer; color: var(--muted, #59635d); padding: .35rem 0; }
+.provenance > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.provenance-body { padding: .75rem; border: 1px solid var(--border, #d6dcd7); border-radius: .4rem; overflow-wrap: anywhere; }
+.evidence-entry + .evidence-entry { border-top: 1px solid var(--border, #d6dcd7); margin-top: .75rem; padding-top: .5rem; }
+
 /* Connections remain a usable server-rendered list without JS or a graph. */
 .connection-filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin: 1.5rem 0; }
 .connection-filters > div { flex: 1 1 180px; min-width: 0; }
