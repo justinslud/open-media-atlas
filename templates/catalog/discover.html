@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Browse · Open Media Atlas{% endblock %}
 {% block content %}
-<header class="page-title"><p class="eyebrow">CATALOG</p><h1>Browse works</h1><p>Filters combine to narrow the public catalog. Results and filter choices can be bookmarked.</p></header>
+<header class="page-title"><p class="eyebrow">CATALOG</p><h1>Browse works</h1><p>All public records remain available. Discovery favors editorial selections, identifiable works and reviewed connections. Search ranks title and alias matches before creator matches. Filters combine to narrow the public catalog. Results and filter choices can be bookmarked.</p></header>
 <form class="filter-bar discover-filters" method="get" action="{% url 'discover' %}" hx-get="{% url 'discover' %}" hx-target="#search-results" hx-push-url="true" hx-trigger="submit, input changed delay:400ms from:#id-q, change from:select">
   <div><label for="id-q">Title or creator</label><input id="id-q" name="q" type="search" value="{{ query }}" placeholder="Search catalog"></div>
   <div><label for="id-type">Media type / form</label><select id="id-type" name="type"><option value="">All types</option>{% for type in work_types %}<option value="{{ type.pk }}" {% if selected_type == type.pk %}selected{% endif %}>{{ type.label }}</option>{% endfor %}</select></div>
   <div><label for="id-creator">Creator</label><input id="id-creator" name="creator" value="{{ creator }}" placeholder="Creator name"></div>
-  <div class="year-range"><div><label for="id-year-from">Year from</label><input id="id-year-from" name="year_from" inputmode="numeric" value="{{ year_from }}"></div><div><label for="id-year-to">Year to</label><input id="id-year-to" name="year_to" inputmode="numeric" value="{{ year_to }}"></div></div>
+  <div class="year-range"><div><label for="id-year-from">Catalog year from</label><input id="id-year-from" name="year_from" inputmode="numeric" value="{{ year_from }}"></div><div><label for="id-year-to">Catalog year to</label><input id="id-year-to" name="year_to" inputmode="numeric" value="{{ year_to }}"></div></div>
   <div><label for="id-relationship">Adaptations</label><select id="id-relationship" name="relationship"><option value="">Any relationship</option><option value="has_adaptations" {% if selected_relationship == 'has_adaptations' %}selected{% endif %}>Has recorded adaptations</option><option value="is_adaptation" {% if selected_relationship == 'is_adaptation' %}selected{% endif %}>Is an adaptation</option></select></div>
-  <div><label for="id-sort">Sort</label><select id="id-sort" name="sort"><option value="title" {% if selected_sort == 'title' %}selected{% endif %}>Title</option><option value="newest" {% if selected_sort == 'newest' %}selected{% endif %}>Newest first</option><option value="oldest" {% if selected_sort == 'oldest' %}selected{% endif %}>Oldest first</option></select></div>
+  <div><label for="id-sort">Sort</label><select id="id-sort" name="sort"><option value="auto" {% if selected_sort == 'auto' %}selected{% endif %}>Discovery / query relevance</option><option value="title" {% if selected_sort == 'title' %}selected{% endif %}>Title (alphabetical)</option><option value="newest" {% if selected_sort == 'newest' %}selected{% endif %}>Catalog date: newest first</option><option value="oldest" {% if selected_sort == 'oldest' %}selected{% endif %}>Catalog date: oldest first</option></select></div>
   <button type="submit">Apply</button>
 </form>
 <div id="search-results" aria-live="polite">{% include "catalog/_results.html" %}</div>

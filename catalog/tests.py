@@ -89,7 +89,7 @@ class WikidataPilotTests(TestCase):
         work=Work.objects.create(title="Q3235021",slug="q3235021",work_type=kind,visibility="public")
         ExternalIdentifier.objects.create(work=work,scheme="wikidata",value="Q3235021")
         response=self.client.get(work.get_absolute_url())
-        self.assertContains(response,"Title pending enrichment")
+        self.assertContains(response,"Title unknown — film")
         self.assertContains(response,"Incomplete record")
         self.assertNotContains(response,"<h1>Q3235021</h1>",html=True)
 
@@ -98,6 +98,9 @@ class WikidataPilotTests(TestCase):
         kind=WorkType.objects.create(code="belgian-film",label="Film",medium="screen")
         work=Work.objects.create(title="Q3235021",slug="q3235021-job",work_type=kind,visibility="public")
         ExternalIdentifier.objects.create(work=work,scheme="wikidata",value="Q3235021")
+        record = SourceRecord.objects.create(source=self.source, external_key="Q3235021", matched_work=work,
+            payload_hash="old", raw_payload={}, retrieved_at=timezone.now())
+        ImportedWorkState.objects.create(source_record=record, imported_title="Q3235021", imported_date_text="1934", imported_year=1934)
         client=client_class.return_value; client.requests=2
         client.entities.return_value={"Q3235021":{"id":"Q3235021","labels":{"fr":{"value":"Les Quatre Mousquetaires"}},
             "sitelinks":{"frwiki":{"title":"Les Quatre Mousquetaires"}},"claims":{
@@ -106,6 +109,7 @@ class WikidataPilotTests(TestCase):
         call_command("enrich_wikidata_titles",limit=5000)
         work.refresh_from_db()
         self.assertEqual(work.title,"Les Quatre Mousquetaires")
+        self.assertEqual(ImportedWorkState.objects.get(source_record=record).imported_date_text, "1934")
         self.assertEqual(work.description,"Film belge de 1934.")
         self.assertTrue(ExternalIdentifier.objects.filter(work=work,scheme="imdb",value="tt0258903").exists())
         self.assertTrue(WorkSource.objects.filter(work=work,source__url__contains="fr.wikipedia.org/wiki/").exists())

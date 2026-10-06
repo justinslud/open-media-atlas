@@ -52,6 +52,9 @@ to `/admin/`. Also confirm `/`, `/discover/`, and public work pages remain usabl
 while logged out. Delivery failures are reported honestly in the UI and can be
 retried; links are never rendered into public pages or production logs.
 
+Catalog date semantics, discovery ordering, validation and the scoped data-correction
+procedure are documented in [Trustworthy catalog labels and discovery](docs/trustworthy-catalog-discovery.md).
+
 ## Milestone scope
 
 - Title search and media-type filtering, including HTMX partial result updates.
