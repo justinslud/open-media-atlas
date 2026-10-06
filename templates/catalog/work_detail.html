@@ -15,7 +15,7 @@
       <div class="work-actions">
         {% if primary_link.url %}<a class="primary-action" href="{{ primary_link.url }}">{{ primary_link.title|default:"View source or availability" }} <span aria-hidden="true">↗</span></a>{% endif %}
         {% if has_relationships %}<a class="secondary-action" href="#connections">Explore connections</a>{% endif %}
-        <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'add-to-list' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'add-to-list' work.pk %}{% endif %}">Add to list</a>
+        <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'add-to-list' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'add-to-list' work.pk %}{% endif %}">Add to collection</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-correction' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-correction' work.pk %}{% endif %}">Suggest a correction</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-relationship' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-relationship' work.pk %}{% endif %}">Suggest a relationship</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-term' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-term' work.pk %}{% endif %}">Suggest a term</a>

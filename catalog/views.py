@@ -5,6 +5,7 @@ from django.db import transaction
 from django.db.models import Count, Max, Prefetch, Q
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from accounts.models import EmailVerification
@@ -231,15 +232,19 @@ def _can_view_private(user):
 
 
 def _owned_list(request, pk):
-    return get_object_or_404(MediaList, pk=pk, owner=request.user)
+    return get_object_or_404(MediaList.objects.select_for_update() if request.method == "POST" else MediaList.objects.all(), pk=pk, owner=request.user)
 
 
 @require_GET
 def public_lists(request):
+    available = MediaListEntry.objects.filter(work__visibility=Work.Visibility.PUBLIC).select_related("work__work_type").prefetch_related("work__credits__agent", "work__source_records")
     lists = MediaList.objects.filter(visibility=MediaList.Visibility.PUBLIC).select_related("owner").annotate(
         item_count=Count("entries", filter=Q(entries__work__visibility=Work.Visibility.PUBLIC))
-    ).order_by("-updated_at", "-id")
-    return render(request, "catalog/public_lists.html", {"page_obj": Paginator(lists, 12).get_page(request.GET.get("page"))})
+    ).order_by("-updated_at", "-id").prefetch_related(Prefetch("entries", queryset=available[:3], to_attr="preview_entries"))
+    query = request.GET.get("q", "").strip()[:200]
+    if query:
+        lists = lists.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(owner__username__icontains=query))
+    return render(request, "catalog/public_lists.html", {"page_obj": Paginator(lists, 12).get_page(request.GET.get("page")), "query": query})
 
 
 def list_detail(request, pk, slug):
@@ -247,8 +252,13 @@ def list_detail(request, pk, slug):
     is_owner = request.user.is_authenticated and media_list.owner_id == request.user.id
     if media_list.visibility != MediaList.Visibility.PUBLIC and not (is_owner or _can_view_private(request.user)):
         raise Http404
+    if slug != media_list.slug:
+        return redirect(media_list.get_absolute_url(), permanent=True)
     entries = media_list.entries.select_related("work__work_type").prefetch_related("work__credits__agent", "work__source_records")
-    return render(request, "catalog/list_detail.html", {"media_list": media_list, "entries": entries, "is_owner": is_owner})
+    work_count = entries.filter(work__visibility=Work.Visibility.PUBLIC).count()
+    if not is_owner:
+        entries = entries.filter(work__visibility=Work.Visibility.PUBLIC)
+    return render(request, "catalog/list_detail.html", {"media_list": media_list, "entries": entries, "is_owner": is_owner, "work_count": work_count})
 
 
 @login_required
@@ -267,11 +277,12 @@ def list_create(request):
         media_list.save()
         messages.success(request, "List created.")
         return redirect("list-edit", pk=media_list.pk)
-    return render(request, "catalog/list_form.html", {"form": form, "heading": "Create a list"})
+    return render(request, "catalog/list_form.html", {"form": form, "heading": "Create a collection"})
 
 
 @login_required
 @require_http_methods(["GET", "POST"])
+@transaction.atomic
 def list_edit(request, pk):
     media_list = _owned_list(request, pk)
     form = MediaListForm(request.POST or None, instance=media_list, can_publish=_can_publish(request.user))
@@ -279,11 +290,13 @@ def list_edit(request, pk):
         form.save()
         messages.success(request, "List updated.")
         return redirect("list-edit", pk=pk)
-    return render(request, "catalog/list_form.html", {"form": form, "heading": "Edit list", "media_list": media_list})
+    entries = media_list.entries.select_related("work__work_type").prefetch_related("work__credits__agent", "work__source_records")
+    return render(request, "catalog/list_form.html", {"form": form, "heading": "Edit collection", "media_list": media_list, "entries": entries})
 
 
 @login_required
 @require_http_methods(["GET", "POST"])
+@transaction.atomic
 def list_delete(request, pk):
     media_list = _owned_list(request, pk)
     if request.method == "POST":
@@ -298,108 +311,136 @@ def list_delete(request, pk):
 def list_work_search(request, pk):
     media_list = _owned_list(request, pk)
     query = request.GET.get("q", "").strip()[:200]
-    works = public_works().select_related("work_type").prefetch_related("credits__agent")
+    works = public_works().select_related("work_type").prefetch_related("credits__agent", "source_records")
     if query:
-        works = works.filter(Q(title__icontains=query) | Q(credits__agent__name__icontains=query)).distinct()[:20]
+        works = search(works, query).order_by("relevance", "relevance_distance", "title", "pk")[:20]
     else:
         works = works.none()
-    return render(request, "catalog/_list_search_results.html", {"media_list": media_list, "works": works, "query": query})
+    return render(request, "catalog/_list_search_results.html", {"media_list": media_list, "works": works, "query": query, "included_work_ids": set(media_list.entries.values_list("work_id", flat=True))})
 
 
 @login_required
 @require_POST
+@transaction.atomic
 def list_add_work(request, pk, work_pk):
     media_list = _owned_list(request, pk)
     work = get_object_or_404(public_works(), pk=work_pk)
-    if media_list.entries.filter(work=work).exists():
-        messages.info(request, "That work is already in this list.")
+    if _append_work(media_list, work):
+        messages.success(request, f"Added {work.display_title}.")
     else:
-        position = (media_list.entries.aggregate(Max("position"))["position__max"] or 0) + 1
-        MediaListEntry.objects.create(media_list=media_list, work=work, position=position)
-        messages.success(request, f"Added {work.title}.")
+        messages.info(request, "That work is already in this list.")
     return redirect("list-edit", pk=pk)
 
 
 @login_required
 @require_http_methods(["GET", "POST"])
+@transaction.atomic
 def list_entry_edit(request, pk, entry_pk):
     media_list = _owned_list(request, pk)
     entry = get_object_or_404(MediaListEntry, pk=entry_pk, media_list=media_list)
     form = EntryCommentaryForm(request.POST or None, instance=entry)
     if request.method == "POST" and form.is_valid():
         form.save()
-        messages.success(request, "Commentary updated.")
+        _touch_list(media_list)
+        messages.success(request, "Annotation updated.")
         return redirect("list-edit", pk=pk)
     return render(request, "catalog/entry_form.html", {"form": form, "entry": entry, "media_list": media_list})
 
 
 @login_required
 @require_POST
+@transaction.atomic
 def list_entry_remove(request, pk, entry_pk):
     media_list = _owned_list(request, pk)
     entry = get_object_or_404(MediaListEntry, pk=entry_pk, media_list=media_list)
     entry.delete()
     _normalize_positions(media_list)
+    _touch_list(media_list)
     messages.success(request, "Entry removed.")
     return redirect("list-edit", pk=pk)
 
 
+def _touch_list(media_list):
+    MediaList.objects.filter(pk=media_list.pk).update(updated_at=timezone.now())
+
+
+def _append_work(media_list, work):
+    # The caller holds the parent row lock; locking entries alone cannot protect
+    # an empty collection from two simultaneous additions.
+    if media_list.entries.filter(work=work).exists():
+        return False
+    position = (media_list.entries.aggregate(Max("position"))["position__max"] or 0) + 1
+    MediaListEntry.objects.create(media_list=media_list, work=work, position=position)
+    _touch_list(media_list)
+    return True
+
+
+def _write_positions(media_list, entries):
+    # Move above the largest current position, including collections with gaps.
+    offset = (media_list.entries.aggregate(Max("position"))["position__max"] or 0) + 1
+    for entry in entries:
+        MediaListEntry.objects.filter(pk=entry.pk).update(position=entry.position + offset)
+    for position, entry in enumerate(entries, 1):
+        MediaListEntry.objects.filter(pk=entry.pk).update(position=position)
+
+
 def _normalize_positions(media_list):
-    with transaction.atomic():
-        entries = list(media_list.entries.order_by("position", "id"))
-        offset = len(entries) + 1
-        for entry in entries:
-            MediaListEntry.objects.filter(pk=entry.pk).update(position=entry.position + offset)
-        for position, entry in enumerate(entries, 1):
-            MediaListEntry.objects.filter(pk=entry.pk).update(position=position)
+    _write_positions(media_list, list(media_list.entries.order_by("position", "id")))
 
 
 @login_required
 @require_POST
+@transaction.atomic
 def list_entry_move(request, pk, entry_pk, direction):
     media_list = _owned_list(request, pk)
     if direction not in ("up", "down"):
         raise Http404
     get_object_or_404(MediaListEntry, pk=entry_pk, media_list=media_list)
     entries = list(media_list.entries.order_by("position", "id"))
-    index = next((i for i, entry in enumerate(entries) if entry.pk == entry_pk), None)
+    index = next(i for i, entry in enumerate(entries) if entry.pk == entry_pk)
     target = index - 1 if direction == "up" else index + 1
-    if index is not None and 0 <= target < len(entries):
+    if 0 <= target < len(entries):
         entries[index], entries[target] = entries[target], entries[index]
-        with transaction.atomic():
-            offset = len(entries) + 1
-            for entry in entries:
-                MediaListEntry.objects.filter(pk=entry.pk).update(position=entry.position + offset)
-            for position, entry in enumerate(entries, 1):
-                MediaListEntry.objects.filter(pk=entry.pk).update(position=position)
+        _write_positions(media_list, entries)
+        _touch_list(media_list)
     return redirect("list-edit", pk=pk)
 
 
 @login_required
 @require_http_methods(["GET", "POST"])
+@transaction.atomic
 def add_to_list(request, work_pk):
     work = get_object_or_404(public_works(), pk=work_pk)
     lists = MediaList.objects.filter(owner=request.user).annotate(
         contains_work=Count("entries", filter=Q(entries__work=work))
     )
+    query = request.GET.get("q", "").strip()[:200]
+    if query:
+        lists = lists.filter(title__icontains=query)
+    create_form = MediaListForm(request.POST if request.method == "POST" and not request.POST.get("list_id") else None, can_publish=_can_publish(request.user))
     if request.method == "POST":
         list_id = request.POST.get("list_id")
         if list_id:
-            media_list = get_object_or_404(lists, pk=list_id)
+            if not str(list_id).isdigit():
+                raise Http404
+            media_list = get_object_or_404(MediaList.objects.select_for_update(), owner=request.user, pk=list_id)
         else:
-            title = request.POST.get("title", "").strip()
-            if not title or len(title) > 120:
-                return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists, "error": "Enter a list title of 120 characters or fewer."})
-            media_list = MediaList.objects.create(owner=request.user, title=title)
-        with transaction.atomic():
-            if media_list.entries.select_for_update().filter(work=work).exists():
-                messages.info(request, f"{work.title} is already in {media_list.title}.")
-            else:
-                position = (media_list.entries.aggregate(Max("position"))["position__max"] or 0) + 1
-                MediaListEntry.objects.create(media_list=media_list, work=work, position=position)
-                messages.success(request, f"Added {work.title} to {media_list.title}.")
+            # Older clients may omit visibility; personal collections stay private.
+            if "visibility" not in request.POST:
+                data = request.POST.copy()
+                data["visibility"] = MediaList.Visibility.PRIVATE
+                create_form = MediaListForm(data, can_publish=_can_publish(request.user))
+            if not create_form.is_valid():
+                return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists, "create_form": create_form, "query": query})
+            media_list = create_form.save(commit=False)
+            media_list.owner = request.user
+            media_list.save()
+        if _append_work(media_list, work):
+            messages.success(request, f"Added {work.display_title} to {media_list.title}.")
+        else:
+            messages.info(request, f"{work.display_title} is already in {media_list.title}.")
         return redirect(media_list.get_absolute_url())
-    return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists})
+    return render(request, "catalog/add_to_list.html", {"work": work, "lists": lists, "create_form": create_form, "query": query})
 
 
 def _verified_submission_allowed(request):

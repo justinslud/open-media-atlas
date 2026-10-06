@@ -614,6 +614,142 @@ class MediaListTests(TestCase):
         self.assertEqual(self.client.get(reverse("list-work-search", args=[public.pk]), {"q": "Published"}).status_code, 404)
 
 
+    def test_all_collection_mutations_and_search_are_owner_scoped(self):
+        item = MediaList.objects.create(owner=self.owner, title="Secret shelf")
+        entry = MediaListEntry.objects.create(media_list=item, work=self.work_a, position=1, commentary="Secret annotation")
+        self.client.force_login(self.other)
+        routes = [
+            ("list-edit", [item.pk], {"title": "Stolen", "visibility": "public"}),
+            ("list-delete", [item.pk], {}),
+            ("list-add-work", [item.pk, self.work_b.pk], {}),
+            ("list-entry-edit", [item.pk, entry.pk], {"commentary": "Stolen"}),
+            ("list-entry-remove", [item.pk, entry.pk], {}),
+            ("list-entry-move", [item.pk, entry.pk, "down"], {}),
+        ]
+        for name, args, data in routes:
+            with self.subTest(route=name):
+                self.assertEqual(self.client.post(reverse(name, args=args), data).status_code, 404)
+        self.assertEqual(self.client.get(reverse("list-work-search", args=[item.pk]), {"q": "Published"}).status_code, 404)
+        entry.refresh_from_db()
+        self.assertEqual(entry.commentary, "Secret annotation")
+        self.assertEqual(item.entries.count(), 1)
+
+    def test_private_discovery_search_and_chooser_do_not_leak(self):
+        item = MediaList.objects.create(owner=self.owner, title="Hidden title", description="Hidden introduction")
+        MediaListEntry.objects.create(media_list=item, work=self.work_a, commentary="Hidden annotation", position=1)
+        for user in (None, self.other):
+            if user:
+                self.client.force_login(user)
+            for route in ("public-lists", "discover"):
+                response = self.client.get(reverse(route), {"q": "Hidden"})
+                for text in ("Hidden title", "Hidden introduction", "Hidden annotation"):
+                    self.assertNotContains(response, text)
+            self.assertEqual(self.client.get(item.get_absolute_url()).status_code, 404)
+        response = self.client.get(reverse("add-to-list", args=[self.work_a.pk]), {"q": "Hidden"})
+        self.assertNotContains(response, "Hidden title")
+
+    def test_annotations_introductions_and_titles_are_plain_text_and_validated(self):
+        payload = '<script>alert("collection")</script>'
+        item = MediaList.objects.create(owner=self.owner, title=payload, description=payload, visibility="public")
+        entry = MediaListEntry.objects.create(media_list=item, work=self.work_a, position=1)
+        self.client.force_login(self.owner)
+        self.client.post(reverse("list-entry-edit", args=[item.pk, entry.pk]), {"commentary": payload})
+        entry.refresh_from_db()
+        self.assertEqual(entry.commentary, payload)
+        response = self.client.get(item.get_absolute_url())
+        self.assertContains(response, "&lt;script&gt;")
+        self.assertNotContains(response, payload)
+        response = self.client.post(reverse("list-entry-edit", args=[item.pk, entry.pk]), {"commentary": "x" * 1001})
+        self.assertEqual(response.status_code, 200)
+        entry.refresh_from_db()
+        self.assertEqual(entry.commentary, payload)
+        response = self.client.post(reverse("list-edit", args=[item.pk]), {"title": "x" * 121, "description": "x" * 1001, "visibility": "private"})
+        self.assertEqual(response.status_code, 200)
+        item.refresh_from_db()
+        self.assertEqual(item.description, payload)
+
+    def test_sparse_ordering_and_removal_preserve_annotations_and_work(self):
+        item = MediaList.objects.create(owner=self.owner, title="Sparse")
+        a = MediaListEntry.objects.create(media_list=item, work=self.work_a, position=1, commentary="First note")
+        b = MediaListEntry.objects.create(media_list=item, work=self.work_b, position=4, commentary="Second note")
+        self.client.force_login(self.owner)
+        self.client.post(reverse("list-entry-move", args=[item.pk, b.pk, "up"]))
+        self.assertEqual(list(item.entries.values_list("work_id", "position", "commentary")), [(self.work_b.pk, 1, "Second note"), (self.work_a.pk, 2, "First note")])
+        self.client.post(reverse("list-entry-remove", args=[item.pk, a.pk]))
+        self.assertTrue(Work.objects.filter(pk=self.work_a.pk).exists())
+        self.assertEqual(item.entries.get().commentary, "Second note")
+        self.assertEqual(item.entries.get().position, 1)
+
+    def test_public_counts_previews_and_all_unavailable_empty_state(self):
+        item = MediaList.objects.create(owner=self.owner, title="Visible", visibility="public")
+        MediaListEntry.objects.create(media_list=item, work=self.work_a, position=1, commentary="Visible note")
+        MediaListEntry.objects.create(media_list=item, work=self.work_b, position=2, commentary="Hidden note")
+        self.work_b.visibility = "suppressed"
+        self.work_b.save()
+        response = self.client.get(reverse("public-lists"))
+        self.assertContains(response, "1 work")
+        self.assertContains(response, self.work_a.title)
+        self.assertNotContains(response, self.work_b.title)
+        self.assertContains(self.client.get(item.get_absolute_url()), "1 work")
+        self.work_a.visibility = "draft"
+        self.work_a.save()
+        response = self.client.get(item.get_absolute_url())
+        self.assertContains(response, "Still being assembled")
+        self.assertContains(response, "0 works")
+        self.assertNotContains(response, "Visible note")
+        self.assertNotContains(response, "Hidden note")
+
+    def test_creation_from_work_defaults_private_and_rejects_unverified_public(self):
+        self.client.force_login(self.owner)
+        endpoint = reverse("add-to-list", args=[self.work_a.pk])
+        response = self.client.get(endpoint)
+        self.assertEqual(response.context["create_form"]["visibility"].value(), "private")
+        response = self.client.post(endpoint, {"title": "New shelf", "description": "An introduction"})
+        item = MediaList.objects.get()
+        self.assertRedirects(response, item.get_absolute_url())
+        self.assertEqual(item.visibility, "private")
+        self.assertEqual(item.entries.get().work, self.work_a)
+        response = self.client.post(endpoint, {"title": "Public shelf", "visibility": "public"})
+        self.assertContains(response, "Verify your email address")
+        self.assertEqual(MediaList.objects.count(), 1)
+        self.assertEqual(self.client.post(endpoint, {"list_id": "invalid"}).status_code, 404)
+
+    def test_auth_flow_retains_intended_work_and_signup_link(self):
+        endpoint = reverse("add-to-list", args=[self.work_a.pk])
+        response = self.client.get(endpoint, follow=True)
+        self.assertEqual(response.context["next"], endpoint)
+        from urllib.parse import quote
+        self.assertContains(response, reverse("accounts:signup") + "?next=" + quote(endpoint, safe="/"))
+        response = self.client.post(reverse("accounts:login"), {"username": "curator", "password": "password123", "next": endpoint})
+        self.assertRedirects(response, endpoint)
+
+    def test_collection_search_marks_membership_and_links_remain_stable(self):
+        item = MediaList.objects.create(owner=self.owner, title="Original shelf", visibility="public")
+        original_url = item.get_absolute_url()
+        MediaListEntry.objects.create(media_list=item, work=self.work_a, position=1)
+        self.client.force_login(self.owner)
+        response = self.client.get(reverse("list-work-search", args=[item.pk]), {"q": "Published"})
+        self.assertContains(response, "Already included")
+        response = self.client.get(reverse("add-to-list", args=[self.work_a.pk]), {"q": "Original"})
+        self.assertContains(response, "Already included")
+        EmailVerification.objects.create(user=self.owner, verified_at=timezone.now())
+        self.client.post(reverse("list-edit", args=[item.pk]), {"title": "Renamed shelf", "description": "", "visibility": "public"})
+        item.refresh_from_db()
+        self.assertEqual(item.get_absolute_url(), original_url)
+        self.assertContains(self.client.get(original_url), "Renamed shelf")
+
+    def test_position_constraint_and_recent_update_on_membership_change(self):
+        item = MediaList.objects.create(owner=self.owner, title="Constraint shelf")
+        MediaListEntry.objects.create(media_list=item, work=self.work_a, position=1)
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            MediaListEntry.objects.create(media_list=item, work=self.work_b, position=1)
+        before = item.updated_at
+        self.client.force_login(self.owner)
+        self.client.post(reverse("list-add-work", args=[item.pk, self.work_b.pk]))
+        item.refresh_from_db()
+        self.assertGreater(item.updated_at, before)
+
+
 class ContributionFlowTests(TestCase):
     @classmethod
     def setUpTestData(cls):
