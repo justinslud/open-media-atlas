@@ -610,6 +610,8 @@ class ContributionProposal(models.Model):
             if self.field_name in {"scope_note", "relationship_type", "authorization_statement"}:
                 if not self.target_relationship_id or self.target_relationship.from_work_id != self.work_id:
                     raise ValidationError("Choose a relationship belonging to this work.")
+                if self.field_name == "authorization_statement" and not self.target_relationship.authorization_statement:
+                    raise ValidationError("Only an existing attributed rights statement can be corrected.")
             elif self.target_relationship_id:
                 raise ValidationError("This field belongs to a work, not a relationship.")
             if self.field_name == "relationship_type" and not RelationshipType.objects.filter(pk=self.proposed_value).exists():
