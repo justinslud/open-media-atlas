@@ -86,7 +86,7 @@ class TrustworthyCatalogTests(TestCase):
         response = self.client.get(reverse('discover'), {'type': 'book'})
         self.assertEqual({w.pk for w in response.context['works']}, {novel.pk, generic.pk})
         self.assertContains(response, 'Novel')
-        self.assertContains(self.client.get(generic.get_absolute_url()), '<dd>Novel</dd>', html=True)
+        self.assertEqual(self.client.get(generic.get_absolute_url()).context['provenance']['work_type']['value'], 'Novel')
         self.assertEqual(generic.work_type_id, 'creative-work')
         unknown = self.client.get(reverse('discover'), {'type': 'unclassified'})
         self.assertEqual([w.pk for w in unknown.context['works']], [sparse.pk])

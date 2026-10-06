@@ -244,6 +244,8 @@ def ingest_record(row, source):
             changed.extend(("date_kind", "date_evidence"))
         if changed: work.save(update_fields=changed+["updated_at"])
     ImportedWorkState.objects.update_or_create(source_record=record,defaults={"imported_title":title,"imported_date_text":date,"imported_year":year})
+    from catalog.provenance import imported_fields
+    imported_fields(work, record, title=title, date=date, created=created, changed=changed, type_note="Importer assigns Book to Open Library works; this is a process classification.")
     ExternalIdentifier.objects.get_or_create(work=work,scheme="ol_work",value=wid); WorkSource.objects.get_or_create(work=work,source=source,defaults={"note":f"Open Library dump work {wid}; snapshot {now.date()}."})
     author_map=row.get("authors",{})
     for order,entry in enumerate(work_data.get("authors") or []):

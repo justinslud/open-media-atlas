@@ -32,7 +32,7 @@ from .models import ContributionProposal, RelationshipType, Term, Work, WorkRela
 
 class CorrectionProposalForm(forms.Form):
     FIELD_CHOICES = (("title", "Title"), ("description", "Description"),
-                     ("first_publication_date_text", "Original publication date"))
+                     ("first_publication_date_text", "Displayed date"), ("work_type", "Work type"), ("scope_note", "Relationship note"), ("relationship_type", "Relationship type"), ("authorization_statement", "Attributed rights statement"))
     field_name = forms.ChoiceField(choices=FIELD_CHOICES, label="What should change?")
     proposed_value = forms.CharField(max_length=2000, widget=forms.Textarea(attrs={"rows": 4}), label="Proposed value")
     explanation = forms.CharField(max_length=2000, widget=forms.Textarea(attrs={"rows": 4}))
@@ -41,11 +41,17 @@ class CorrectionProposalForm(forms.Form):
     def clean_proposed_value(self):
         value = self.cleaned_data["proposed_value"].strip()
         field = self.cleaned_data.get("field_name")
-        limits = {"title": 300, "first_publication_date_text": 80, "description": 2000}
+        limits = {"scope_note": 300, "title": 300, "first_publication_date_text": 80, "description": 2000}
         if field == "title" and not value:
             raise forms.ValidationError("A title cannot be empty.")
         if field in limits and len(value) > limits[field]:
             raise forms.ValidationError(f"Keep this value to {limits[field]} characters or fewer.")
+        if field == "work_type":
+            from .models import WorkType
+            if not WorkType.objects.filter(pk=value).exists():
+                raise forms.ValidationError("Use an existing work type code.")
+        if field == "relationship_type" and not RelationshipType.objects.filter(pk=value).exists():
+            raise forms.ValidationError("Use an existing relationship type code.")
         return value
 
     def clean_source_url(self):
