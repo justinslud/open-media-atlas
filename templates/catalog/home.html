@@ -20,13 +20,13 @@
   <div class="featured-grid">
     {% for selection in featured_selections %}{% with work=selection.work %}
       <a class="featured-work" href="{{ work.get_absolute_url }}">
-        <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</span>
-        <span><strong>{{ work.display_title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</small>{% if selection.note %}<em>{{ selection.note }}</em>{% endif %}</span>
+        <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.public_type_label|slice:":1" }}</span>
+        <span><strong>{{ work.display_title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.public_type_label }}{% if work.date_summary %} · {{ work.date_summary }}{% endif %}</small>{% if selection.note %}<em>{{ selection.note }}</em>{% endif %}</span>
       </a>
     {% endwith %}{% empty %}
       {% for work in fallback_works %}<a class="featured-work" href="{{ work.get_absolute_url }}">
-        <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.work_type.label|slice:":1" }}</span>
-        <span><strong>{{ work.display_title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.work_type.label }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text }}{% endif %}</small></span>
+        <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.public_type_label|slice:":1" }}</span>
+        <span><strong>{{ work.display_title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.public_type_label }}{% if work.date_summary %} · {{ work.date_summary }}{% endif %}</small></span>
       </a>{% empty %}<div class="empty"><strong>The catalog is being prepared.</strong><p>There are no published works to show yet. Please check back soon.</p></div>{% endfor %}
     {% endfor %}
   </div>
@@ -37,9 +37,9 @@
   <p class="section-deck">Explore reviewed relationships between published works.</p>
   <div class="connection-pairs">
     {% for relationship in relationships %}<article class="connection-pair">
-      <a href="{{ relationship.to_work.get_absolute_url }}"><strong>{{ relationship.to_work.display_title }}</strong><small>{{ relationship.to_work.work_type.label }}{% if relationship.to_work.first_publication_date_text %} · {{ relationship.to_work.first_publication_date_text }}{% endif %}</small></a>
+      <a href="{{ relationship.to_work.get_absolute_url }}"><strong>{{ relationship.to_work.display_title }}</strong><small>{{ relationship.to_work.public_type_label }}{% if relationship.to_work.date_summary %} · {{ relationship.to_work.date_summary }}{% endif %}</small></a>
       <div class="connection-label"><span aria-hidden="true">→</span> {{ relationship.relationship_type.inverse_label }}</div>
-      <a href="{{ relationship.from_work.get_absolute_url }}"><strong>{{ relationship.from_work.display_title }}</strong><small>{{ relationship.from_work.work_type.label }}{% if relationship.from_work.first_publication_date_text %} · {{ relationship.from_work.first_publication_date_text }}{% endif %}</small></a>
+      <a href="{{ relationship.from_work.get_absolute_url }}"><strong>{{ relationship.from_work.display_title }}</strong><small>{{ relationship.from_work.public_type_label }}{% if relationship.from_work.date_summary %} · {{ relationship.from_work.date_summary }}{% endif %}</small></a>
     </article>{% empty %}<div class="empty"><strong>Connections are coming into focus.</strong><p>No reviewed relationships between published works are available yet. Browse the catalog in the meantime.</p></div>{% endfor %}
   </div>
 </section>

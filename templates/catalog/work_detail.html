@@ -4,11 +4,11 @@
 {% if work.is_demo %}<div class="demo-banner"><strong>Demonstration record</strong> — This work and all associated facts and sources are fictional.</div>{% endif %}
 <article>
   <header class="work-header">
-    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.work_type.label }} title card for {{ work.display_title }}"><span>{{ work.work_type.label }}</span><strong title="{{ work.display_title }}">{{ work.display_title|truncatechars:42 }}</strong></div>
+    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.public_type_label }} title card for {{ work.display_title }}"><span>{{ work.public_type_label }}</span><strong title="{{ work.display_title }}">{{ work.display_title|truncatechars:42 }}</strong></div>
     <div class="work-identity">
-      <p class="eyebrow">{{ work.work_type.label|upper }}{% if work.first_publication_date_text %} · {{ work.first_publication_date_text|upper }}{% endif %}</p>
+      <p class="eyebrow">{{ work.public_type_label|upper }}{% if work.date_summary %} · {{ work.date_summary|upper }}{% endif %}</p>
       <h1>{{ work.display_title }}</h1>
-      {% if work.display_title != work.title %}<p class="helper"><strong>Incomplete record:</strong> this title is queued for enrichment. The source identifier remains available under Sources.</p>{% endif %}
+      {% if work.display_title != work.title %}<p class="helper"><strong>Incomplete record:</strong> the title is missing from the catalog entry.{% if work.identifiers.all %} The source identifier remains available under Sources.{% endif %}</p>{% endif %}
       {% if work.credits.all %}<p class="byline">{% for credit in work.credits.all %}{% if not forloop.first %}<span aria-hidden="true"> · </span>{% endif %}<span>{{ credit.role|capfirst }} <strong>{{ credit.agent.name }}</strong></span>{% endfor %}</p>{% endif %}
       {% if work.description %}<p class="lede">{{ work.description|truncatewords:45 }}</p>{% endif %}
       {% if work.accepted_term_assignments %}<div class="term-pills" aria-label="Descriptive terms">{% for assignment in work.accepted_term_assignments %}<span>{{ assignment.term.label }}</span>{% endfor %}</div>{% endif %}
@@ -30,8 +30,8 @@
       <div class="relationship-group"><h3>{% if group_name == "adaptations" %}Adaptations &amp; source works{% elif group_name == "recordings" %}Recordings{% elif group_name == "commentary" %}Commentary{% else %}Other connections{% endif %}</h3>
         <div class="relationship-list">{% for rel in relationships %}<article class="relationship-row">
           <span class="relation-label">{{ rel.display_label }}</span>
-          <a href="{{ rel.related_work.get_absolute_url }}"><strong>{{ rel.related_work.display_title }}</strong><small>{{ rel.related_work.work_type.label }}{% if rel.related_work.first_publication_date_text %} · {{ rel.related_work.first_publication_date_text }}{% endif %}</small></a>
-          <details><summary>About this connection</summary><p>{{ rel.scope_note|default:"Direct catalog relationship." }}</p><p>Source: {% if rel.evidence_url %}<a href="{{ rel.evidence_url }}">{{ rel.source.title }} statement</a>{% elif rel.source.url %}<a href="{{ rel.source.url }}">{{ rel.source.title }}</a>{% else %}{{ rel.source.title }}{% endif %}. Authorization status: {{ rel.authorization_status }}.</p></details>
+          <a href="{{ rel.related_work.get_absolute_url }}"><strong>{{ rel.related_work.display_title }}</strong><small>{{ rel.related_work.public_type_label }}{% if rel.related_work.date_summary %} · {{ rel.related_work.date_summary }}{% endif %}</small></a>
+          <details><summary>About this connection</summary><p>{{ rel.scope_note|default:"Direct catalog relationship." }}</p><p>Source: {% if rel.evidence_url %}<a href="{{ rel.evidence_url }}">{{ rel.source.title }} statement</a>{% elif rel.source.url %}<a href="{{ rel.source.url }}">{{ rel.source.title }}</a>{% else %}{{ rel.source.title }}{% endif %}.</p>{% if rel.authorization_statement %}<p>{{ rel.authorization_statement }} — attributed to {{ rel.source.title }}. This statement is separate from relationship review.</p>{% endif %}</details>
         </article>{% endfor %}</div>
       </div>
     {% endif %}{% endfor %}
@@ -40,7 +40,7 @@
 
   <div class="detail-grid">
     {% if work.description %}<section id="description" class="content-section"><p class="eyebrow">ABOUT THIS WORK</p><h2>Description</h2><p class="prose">{{ work.description }}</p></section>{% endif %}
-    <section id="details" class="content-section"><p class="eyebrow">CATALOG RECORD</p><h2>Details</h2><dl class="metadata"><dt>Format</dt><dd>{{ work.work_type.label }}</dd>{% if work.first_publication_date_text %}<dt>Original date</dt><dd>{{ work.first_publication_date_text }}</dd>{% endif %}{% if work.completion_status != "unknown" %}<dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd>{% endif %}{% if work.accepted_term_assignments %}<dt>Terms</dt><dd>{% for assignment in work.accepted_term_assignments %}{{ assignment.term.label }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>{% endif %}<dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">An index record meets OMA’s identity standard but may not have full editorial detail.</p></section>
+    <section id="details" class="content-section"><p class="eyebrow">CATALOG RECORD</p><h2>Details</h2><dl class="metadata"><dt>Format</dt><dd>{{ work.public_type_label }}</dd>{% if work.date_summary %}<dt>{{ work.date_label }}</dt><dd>{{ work.first_publication_date_text }}</dd>{% endif %}{% if work.completion_status != "unknown" %}<dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd>{% endif %}{% if work.accepted_term_assignments %}<dt>Terms</dt><dd>{% for assignment in work.accepted_term_assignments %}{{ assignment.term.label }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>{% endif %}<dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">{% if work.depth == "index" %}Basic catalog entry. Some details are missing.{% else %}Catalog entry with editorial detail.{% endif %}</p></section>
     {% if work.credits.all %}<section id="creators" class="content-section"><p class="eyebrow">CREDITS</p><h2>Creators</h2>{% for credit in work.credits.all %}<div class="credit-row"><span>{{ credit.role|capfirst }}</span><strong>{{ credit.agent.name }}</strong></div>{% endfor %}</section>{% endif %}
     {% if work.source_links.all or work.identifiers.all %}<section id="sources" class="content-section"><p class="eyebrow">PROVENANCE &amp; LINKS</p><h2>Sources</h2><ul class="source-list">{% if open_library_url %}<li><a href="{{ open_library_url }}">View work on Open Library</a></li>{% endif %}{% if wikidata_url %}<li><a href="{{ wikidata_url }}">View entity on Wikidata</a></li>{% endif %}{% for link in work.source_links.all %}<li>{% if link.source.url and 'openlibrary.org' not in link.source.url %}<a href="{{ link.source.url }}">{{ link.source.title }}</a>{% else %}{{ link.source.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% endfor %}</ul></section>{% endif %}
   </div>
@@ -51,5 +51,5 @@
     </details>{% endfor %}</div>
   </section>{% endif %}
 </article>
-<script>document.addEventListener("DOMContentLoaded",()=>{const target=document.querySelector(location.hash);if(target?.tagName==="DETAILS")target.open=true})</script>
+<script>document.addEventListener("DOMContentLoaded",()=>{const target=location.hash?document.getElementById(location.hash.slice(1)):null;if(target?.tagName==="DETAILS")target.open=true})</script>
 {% endblock %}

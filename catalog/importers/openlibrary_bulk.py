@@ -222,18 +222,26 @@ def ingest_record(row, source):
     if work and work.visibility==Work.Visibility.PUBLIC:
         return "conflicted",work,"Public record was not mutated; review source changes manually"
     created=work is None
-    date=str(work_data.get("first_publish_date") or "").strip()
-    import re
-    match=re.search(r"(?<!\d)(1\d{3}|20\d{2})(?!\d)",date); year=int(match.group(1)) if match else None
+    from catalog.dates import openlibrary_date
+    date, year = openlibrary_date(work_data)
     book,_=WorkType.objects.get_or_create(code="book",defaults={"label":"Book","medium":"text"})
     if created:
-        work=Work.objects.create(title=title,slug=f"{slugify(title)}-{wid.lower()}",work_type=book,first_publication_date_text=date,first_publication_year=year,completion_status="released",visibility=Work.Visibility.DRAFT,depth="index")
+        work=Work.objects.create(title=title,slug=f"{slugify(title)}-{wid.lower()}",work_type=book,first_publication_date_text=date,first_publication_year=year,date_kind="publication",date_evidence={"date_text":date,"property":"first_publish_date","source_url":f"https://openlibrary.org/works/{wid}"},completion_status="released",visibility=Work.Visibility.DRAFT,depth="index")
     record,_=SourceRecord.objects.update_or_create(source=source,external_key=wid,defaults={"matched_work":work,"payload_hash":digest,"raw_payload":row,"retrieved_at":now})
     state=ImportedWorkState.objects.filter(source_record=record).first(); changed=[]
     if not created:
+        preserve_date = (work.date_kind in {"first_publication", "first_release"} or work.depth == "editorial"
+            or work.contribution_revisions.filter(field_name="first_publication_date_text").exists()
+            or (state is not None and (work.first_publication_date_text not in ("", state.imported_date_text)
+                                      or work.first_publication_year not in (None, state.imported_year))))
         for field,value,old in (("title",title,state.imported_title if state else None),("first_publication_date_text",date,state.imported_date_text if state else None),("first_publication_year",year,state.imported_year if state else None)):
+            if field.startswith("first_publication") and preserve_date: continue
             current=getattr(work,field)
             if value not in (None,"") and current in (None,"",old) and current!=value: setattr(work,field,value); changed.append(field)
+        if "first_publication_date_text" in changed and work.date_kind not in {"first_publication", "first_release"}:
+            work.date_kind = "publication"
+            work.date_evidence = {"date_text":date,"property":"first_publish_date","source_url":f"https://openlibrary.org/works/{wid}"}
+            changed.extend(("date_kind", "date_evidence"))
         if changed: work.save(update_fields=changed+["updated_at"])
     ImportedWorkState.objects.update_or_create(source_record=record,defaults={"imported_title":title,"imported_date_text":date,"imported_year":year})
     ExternalIdentifier.objects.get_or_create(work=work,scheme="ol_work",value=wid); WorkSource.objects.get_or_create(work=work,source=source,defaults={"note":f"Open Library dump work {wid}; snapshot {now.date()}."})
