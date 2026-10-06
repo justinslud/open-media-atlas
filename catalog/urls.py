@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from . import views, library_views
 
 urlpatterns = [
+    path("me/library/action/<str:action>/<int:pk>/", library_views.library_action, name="library-action"),
+    path("me/library/resume/", library_views.resume, name="library-resume"),
     path("health/", views.health, name="health"),
     path("", views.home, name="home"),
     path("discover/", views.discover, name="discover"),

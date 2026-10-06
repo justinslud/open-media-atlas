@@ -1,3 +1,4 @@
+from catalog.library import suppress_updates
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils.text import slugify
@@ -10,6 +11,7 @@ class Command(BaseCommand):
     help = "Idempotently load three manually verified book-to-film relationships."
 
     @transaction.atomic
+    @suppress_updates()
     def handle(self, *args, **options):
         required = ("OL872932W", "OL66554W", "OL3140822W")
         book_ids = {item.value: item.work for item in ExternalIdentifier.objects.filter(

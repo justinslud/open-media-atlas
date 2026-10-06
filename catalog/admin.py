@@ -80,6 +80,9 @@ class RelationshipAdmin(admin.ModelAdmin):
     list_filter = ("relationship_type", "review_status")
     autocomplete_fields = ("from_work", "to_work")
 
+    def save_model(self, request, obj, form, change):
+        obj.save(publish_event=True)
+
 
 class ImportItemInline(admin.TabularInline):
     model = ImportItem
@@ -123,9 +126,11 @@ class ImportRelationshipProposalAdmin(admin.ModelAdmin):
         approved = queryset.filter(status=ImportRelationshipProposal.Status.APPROVED)
         work_ids = set(approved.values_list("from_work_id", flat=True))
         work_ids.update(approved.values_list("to_work_id", flat=True))
-        published = Work.objects.filter(
-            pk__in=work_ids, visibility=Work.Visibility.DRAFT
-        ).update(visibility=Work.Visibility.PUBLIC)
+        published = 0
+        for work in Work.objects.filter(pk__in=work_ids, visibility=Work.Visibility.DRAFT):
+            work.visibility = Work.Visibility.PUBLIC
+            work.save(update_fields=("visibility", "updated_at"))
+            published += 1
         self.message_user(request, f"Published {published} draft work(s).")
 
     def has_add_permission(self, request): return False
