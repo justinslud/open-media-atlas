@@ -168,6 +168,8 @@ def stage_entity(entity, source, run, *, supporting_entities=None, existing_only
     record,_=SourceRecord.objects.update_or_create(source=source,external_key=qid,defaults={"matched_work":matched,
         "payload_hash":hashlib.sha256(raw).hexdigest(),"raw_payload":entity,"retrieved_at":timezone.now()})
     ImportedWorkState.objects.update_or_create(source_record=record,defaults={"imported_title":title,"imported_date_text":date,"imported_year":year})
+    from catalog.provenance import imported_fields
+    imported_fields(matched, record, title=title, date=date, created=created, type_note="Importer maps stored P31/P7937 classifications to catalog types; conflicting specific classifications keep the generic fallback.")
     ExternalIdentifier.objects.get_or_create(work=matched,scheme="wikidata",value=qid)
     for olid in olids: ExternalIdentifier.objects.get_or_create(work=matched,scheme="ol_work",value=olid)
     for imdbid in imdbids: ExternalIdentifier.objects.get_or_create(work=matched,scheme="imdb",value=imdbid)

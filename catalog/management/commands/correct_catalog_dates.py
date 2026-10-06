@@ -97,6 +97,9 @@ class Command(BaseCommand):
                         work.date_evidence = evidence
                         work.save(update_fields=('first_publication_date_text', 'first_publication_year',
                                                  'date_kind', 'date_evidence', 'updated_at'))
+                        from catalog.provenance import record_evidence
+                        record_evidence(work, "first_publication_date_text", work.first_publication_date_text,
+                                        source_url=row['source_url'], note=row['basis'])
                 self.stdout.write(json.dumps(report, ensure_ascii=False, sort_keys=True))
 
     @staticmethod

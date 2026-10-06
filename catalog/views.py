@@ -176,7 +176,10 @@ def work_detail(request, pk, slug):
     work = get_object_or_404(
         public.select_related("work_type").prefetch_related(
             "credits__agent",
-            "source_records",
+            "source_records__source",
+            "source_records__work_state",
+            "field_evidence__source",
+            "contribution_revisions",
             "versions__releases",
             "source_links__source",
             "identifiers",
@@ -235,6 +238,12 @@ def work_detail(request, pk, slug):
         for release in version.releases.all():
             release.open_library_url = _open_library_url(release.openlibrary_key, "edition")
 
+    from .provenance import work_provenance, relationship_provenance, rights_provenance
+    provenance = work_provenance(work)
+    for relationships in relationship_groups.values():
+        for rel in relationships:
+            rel.provenance = relationship_provenance(rel)
+            rel.rights_provenance = rights_provenance(rel) if rel.authorization_statement else None
     has_relationships = any(relationship_groups.values())
     return render(
         request,
@@ -242,6 +251,7 @@ def work_detail(request, pk, slug):
         {
             "work": work,
             "relationship_groups": relationship_groups,
+            "provenance": provenance,
             "has_relationships": has_relationships,
             "primary_link": primary_link,
             "owned_lists": MediaList.objects.filter(owner=request.user) if request.user.is_authenticated else (),
@@ -442,7 +452,28 @@ def suggest_correction(request, pk):
     from .forms import CorrectionProposalForm
     from .models import ContributionProposal
     work = get_object_or_404(public_works(), pk=pk)
-    form = CorrectionProposalForm(request.POST or None)
+    from .models import WorkRelationship, WorkType
+    relationship_id = request.POST.get("target_relationship") if request.method == "POST" else request.GET.get("relationship")
+    relationship = None
+    if relationship_id:
+        relationship = get_object_or_404(WorkRelationship.objects.select_related("from_work", "to_work"),
+            pk=relationship_id, from_work=work, review_status="accepted", to_work__in=public_works())
+    initial_field = request.GET.get("field", "relationship_type" if relationship else "title")
+    allowed = {name for name, _ in CorrectionProposalForm.FIELD_CHOICES}
+    if initial_field not in allowed:
+        initial_field = "title"
+    form = CorrectionProposalForm(request.POST or None, initial={"field_name": initial_field})
+    relationship_fields = {"scope_note", "relationship_type", "authorization_statement"}
+    form.fields["field_name"].choices = [choice for choice in form.FIELD_CHOICES
+        if (choice[0] in relationship_fields) == bool(relationship)]
+    selected_field = request.POST.get("field_name", initial_field)
+    current_value = (ContributionProposal(work=work, field_name=selected_field, kind="correction", target_relationship=relationship).current_value
+                     if selected_field in {choice[0] for choice in form.fields["field_name"].choices} else "")
+    form.fields["proposed_value"].help_text = "Propose the replacement value; it will remain pending until reviewed."
+    if selected_field in {"work_type", "relationship_type"}:
+        from .models import RelationshipType
+        types = WorkType if selected_field == "work_type" else RelationshipType
+        form.fields["proposed_value"].help_text = "Use a catalog code: " + ", ".join(types.objects.values_list("code", flat=True))
     verification_required = not _verified_submission_allowed(request)
     if request.method == "POST" and form.is_valid():
         if verification_required:
@@ -452,13 +483,14 @@ def suggest_correction(request, pk):
         else:
             field = form.cleaned_data["field_name"]
             ContributionProposal.objects.create(kind="correction", submitted_by=request.user, work=work,
-                field_name=field, value_at_submission=str(getattr(work, field)),
+                field_name=field, target_relationship=relationship, value_at_submission=current_value,
                 proposed_value=form.cleaned_data["proposed_value"], work_updated_at=work.updated_at,
                 explanation=form.cleaned_data["explanation"], source_url=form.cleaned_data["source_url"])
             messages.success(request, "Correction submitted for editorial review.")
             return redirect("my-contributions")
     return render(request, "catalog/contribution_form.html", {"form": form, "work": work,
-        "heading": "Suggest a correction", "verification_required": verification_required})
+        "heading": "Suggest a correction", "verification_required": verification_required,
+        "current_value": current_value, "target_relationship": relationship})
 
 
 @login_required
@@ -596,5 +628,6 @@ def resubmit_contribution(request, pk):
     return render(request, "catalog/contribution_form.html", {
         "form": form, "work": proposal.work, "heading": "Revise and resubmit",
         "verification_required": verification_required, "proposal": proposal,
+        "target_relationship": proposal.target_relationship,
         "relationship_form": proposal.kind == ContributionProposal.Kind.RELATIONSHIP,
     })

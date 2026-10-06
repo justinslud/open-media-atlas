@@ -8,6 +8,7 @@
     <div class="work-identity">
       <p class="eyebrow">{{ work.public_type_label|upper }}{% if work.date_summary %} · {{ work.date_summary|upper }}{% endif %}</p>
       <h1>{{ work.display_title }}</h1>
+      {% include "catalog/_provenance.html" with evidence=provenance.title %}
       {% if work.display_title != work.title %}<p class="helper"><strong>Incomplete record:</strong> the title is missing from the catalog entry.{% if work.identifiers.all %} The source identifier remains available under Sources.{% endif %}</p>{% endif %}
       {% if work.credits.all %}<p class="byline">{% for credit in work.credits.all %}{% if not forloop.first %}<span aria-hidden="true"> · </span>{% endif %}<span>{{ credit.role|capfirst }} <strong>{{ credit.agent.name }}</strong></span>{% endfor %}</p>{% endif %}
       {% if work.description %}<p class="lede">{{ work.description|truncatewords:45 }}</p>{% endif %}
@@ -31,7 +32,8 @@
         <div class="relationship-list">{% for rel in relationships %}<article class="relationship-row">
           <span class="relation-label">{{ rel.display_label }}</span>
           <a href="{{ rel.related_work.get_absolute_url }}"><strong>{{ rel.related_work.display_title }}</strong><small>{{ rel.related_work.public_type_label }}{% if rel.related_work.date_summary %} · {{ rel.related_work.date_summary }}{% endif %}</small></a>
-          <details><summary>About this connection</summary><p>{{ rel.scope_note|default:"Direct catalog relationship." }}</p><p>Source: {% if rel.evidence_url %}<a href="{{ rel.evidence_url }}">{{ rel.source.title }} statement</a>{% elif rel.source.url %}<a href="{{ rel.source.url }}">{{ rel.source.title }}</a>{% else %}{{ rel.source.title }}{% endif %}.</p>{% if rel.authorization_statement %}<p>{{ rel.authorization_statement }} — attributed to {{ rel.source.title }}. This statement is separate from relationship review.</p>{% endif %}</details>
+          {% include "catalog/_provenance.html" with evidence=rel.provenance connection=True %}
+          {% if rel.rights_provenance %}{% include "catalog/_provenance.html" with evidence=rel.rights_provenance %}{% endif %}
         </article>{% endfor %}</div>
       </div>
     {% endif %}{% endfor %}
@@ -40,7 +42,7 @@
 
   <div class="detail-grid">
     {% if work.description %}<section id="description" class="content-section"><p class="eyebrow">ABOUT THIS WORK</p><h2>Description</h2><p class="prose">{{ work.description }}</p></section>{% endif %}
-    <section id="details" class="content-section"><p class="eyebrow">CATALOG RECORD</p><h2>Details</h2><dl class="metadata"><dt>Format</dt><dd>{{ work.public_type_label }}</dd>{% if work.date_summary %}<dt>{{ work.date_label }}</dt><dd>{{ work.first_publication_date_text }}</dd>{% endif %}{% if work.completion_status != "unknown" %}<dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd>{% endif %}{% if work.accepted_term_assignments %}<dt>Terms</dt><dd>{% for assignment in work.accepted_term_assignments %}{{ assignment.term.label }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>{% endif %}<dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">{% if work.depth == "index" %}Basic catalog entry. Some details are missing.{% else %}Catalog entry with editorial detail.{% endif %}</p></section>
+    <section id="details" class="content-section"><p class="eyebrow">CATALOG RECORD</p><h2>Details</h2><dl class="metadata"><dt>Format</dt><dd>{{ work.public_type_label }}{% include "catalog/_provenance.html" with evidence=provenance.work_type %}</dd>{% if work.date_summary %}<dt>{{ work.date_label }}</dt><dd>{{ work.first_publication_date_text }}{% include "catalog/_provenance.html" with evidence=provenance.first_publication_date_text %}</dd>{% endif %}{% if work.completion_status != "unknown" %}<dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd>{% endif %}{% if work.accepted_term_assignments %}<dt>Terms</dt><dd>{% for assignment in work.accepted_term_assignments %}{{ assignment.term.label }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>{% endif %}<dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">{% if work.depth == "index" %}Basic catalog entry. Some details are missing.{% else %}Catalog entry with editorial detail.{% endif %}</p></section>
     {% if work.credits.all %}<section id="creators" class="content-section"><p class="eyebrow">CREDITS</p><h2>Creators</h2>{% for credit in work.credits.all %}<div class="credit-row"><span>{{ credit.role|capfirst }}</span><strong>{{ credit.agent.name }}</strong></div>{% endfor %}</section>{% endif %}
     {% if work.source_links.all or work.identifiers.all %}<section id="sources" class="content-section"><p class="eyebrow">PROVENANCE &amp; LINKS</p><h2>Sources</h2><ul class="source-list">{% if open_library_url %}<li><a href="{{ open_library_url }}">View work on Open Library</a></li>{% endif %}{% if wikidata_url %}<li><a href="{{ wikidata_url }}">View entity on Wikidata</a></li>{% endif %}{% for link in work.source_links.all %}<li>{% if link.source.url and 'openlibrary.org' not in link.source.url %}<a href="{{ link.source.url }}">{{ link.source.title }}</a>{% else %}{{ link.source.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% endfor %}</ul></section>{% endif %}
   </div>

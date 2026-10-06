@@ -71,6 +71,9 @@ class Command(BaseCommand):
                                 "matched_work":work,"payload_hash":hashlib.sha256(raw).hexdigest(),"raw_payload":entity,"retrieved_at":timezone.now()})
                             ImportedWorkState.objects.update_or_create(source_record=record,defaults={
                                 "imported_title":title[:300]})
+                            if status == "updated":
+                                from catalog.provenance import imported_fields
+                                imported_fields(work, record, title=title[:300], date="", changed=("title",))
                             for value in imdb: ExternalIdentifier.objects.get_or_create(work=work,scheme="imdb",value=value)
                             WorkSource.objects.get_or_create(work=work,source=wikidata,defaults={"note":f"Title {basis} ({language}); entity {qid}."})
                             try:
