@@ -1,6 +1,8 @@
 from django.core.exceptions import PermissionDenied, ValidationError
 from django.db import models, transaction
 
+from .library import suppress_updates
+
 from .models import (
     ContributionProposal,
     ContributionRevision,
@@ -89,6 +91,7 @@ def _move_list_entries(source, canonical):
             entry.save(update_fields=("work",))
 
 
+@suppress_updates()
 @transaction.atomic
 def merge_works(*, source, canonical, actor):
     """Merge ``source`` into ``canonical`` and leave a durable URL redirect."""
@@ -112,6 +115,9 @@ def merge_works(*, source, canonical, actor):
     if WorkRedirect.objects.filter(old_work=canonical).exists():
         raise ValidationError("Merge into the final canonical work, not another redirect.")
 
+    from .models import SavedWork, WorkFollow
+    _move_unique_rows(SavedWork, source, canonical, ("user",))
+    _move_unique_rows(WorkFollow, source, canonical, ("user",))
     _move_unique_rows(Credit, source, canonical, ("agent", "role"))
     _move_versions(source, canonical)
     _move_unique_rows(ExternalIdentifier, source, canonical, ("scheme", "value"))

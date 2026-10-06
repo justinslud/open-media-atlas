@@ -14,13 +14,15 @@ The type disclosure explains the existing public-label mapping and traces a more
 
 ## Migration and future edits
 
-Migration `0014` adds `FieldEvidence` for three work fields and a nullable stable relationship target on correction proposals. Existing values and source records are preserved; no data backfill or network operation runs. A conditional unique constraint allows one current evidence row per work/field, and a check constraint bounds the field set.
+Migration `0014_contributionproposal_target_relationship_and_more` adds `FieldEvidence` for three work fields and a nullable stable relationship target on correction proposals. Existing values and source records are preserved; no data backfill or network operation runs. A conditional unique constraint allows one current evidence row per work/field, and a check constraint bounds the field set.
 
 Work `save()` compares persisted values inside a transaction. A replacement retires current evidence, retains prior values and known legacy date/revision support, and records an uncited current value. Returning to an older string does not reactivate its citation. Explicit import writers associate only fields they actually wrote, preserving retrieval time and selection/normalization notes. Existing title repair and offline date correction writers also register their evidence.
 
 Relationship edits retain earlier evidence in an internal `evidence_history` snapshot. Changing endpoints/type without replacement evidence invalidates the current source association. Relationship-note and attributed-statement corrections have separate source/review metadata and retained public value history. Raw archived payloads are never rendered. Relationship targets use PROTECT so deletion/duplicate-removal cannot discard a correction's target; merges that require deleting a targeted relationship must resolve that target explicitly.
 
 Use model `save()` and `catalog.provenance.record_evidence()` for future supported-field writers. Django `QuerySet.update()`/bulk writes bypass save hooks; current bulk operations change visibility or explicit merge associations, not selected title/type/date values. The merge service retires moved field evidence as history. General value-selection policy is unchanged.
+
+Migration `0015_merge_20261006_1851` joins the provenance and personal-library migration branches without data operations. Save hooks preserve both evidence history and library relationship/publication events. Provenance uses the current paginated, filterable connection evidence interface.
 
 ## Corrections and public rendering
 

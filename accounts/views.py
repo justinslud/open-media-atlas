@@ -67,7 +67,36 @@ def signup(request):
 @login_required
 def account(request):
     verification, _ = EmailVerification.objects.get_or_create(user=request.user)
-    return render(request, "accounts/account.html", {"verification": verification})
+    from django.core.paginator import Paginator
+    from django.db.models import Q
+    from catalog.library import accessible_collections, updates_for
+    from catalog.models import Work, WorkType, WorkFollow, CollectionFollow, MediaList
+    section = request.GET.get("section", "saved")
+    if section not in {"saved", "collections", "following", "updates"}:
+        section = "saved"
+    query = request.GET.get("q", "").strip()[:200]
+    selected_type = request.GET.get("type", "")
+    works = Work.objects.filter(saves__user=request.user, visibility="public", canonical_redirect__isnull=True).select_related("work_type")
+    if query:
+        works = works.filter(Q(title__icontains=query) | Q(credits__agent__name__icontains=query)).distinct()
+    if selected_type:
+        works = works.filter(work_type_id=selected_type)
+    work_follows = WorkFollow.objects.filter(user=request.user, work__visibility="public", work__canonical_redirect__isnull=True).select_related("work__work_type").order_by("-created_at", "-pk")
+    collection_follows = CollectionFollow.objects.filter(user=request.user, collection__in=accessible_collections(request.user)).select_related("collection").order_by("-created_at", "-pk")
+    following_kind = request.GET.get("kind", "works")
+    if following_kind not in {"works", "collections"}:
+        following_kind = "works"
+    rows = {"saved": works, "collections": MediaList.objects.filter(owner=request.user),
+            "following": work_follows if following_kind == "works" else collection_follows}
+    rows["updates"] = updates_for(request.user) if section == "updates" else Work.objects.none()
+    page_obj = Paginator(rows[section], 20).get_page(request.GET.get("page"))
+    params = request.GET.copy()
+    params.pop("page", None)
+    return render(request, "accounts/account.html", {
+        "verification": verification, "section": section, "page_obj": page_obj,
+        "query": query, "selected_type": selected_type, "work_types": WorkType.objects.order_by("label"),
+        "following_kind": following_kind, "querystring": params.urlencode(),
+    })
 
 
 @login_required

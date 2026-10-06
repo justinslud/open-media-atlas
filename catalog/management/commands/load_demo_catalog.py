@@ -1,3 +1,4 @@
+from catalog.library import suppress_updates
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.text import slugify
@@ -9,6 +10,7 @@ class Command(BaseCommand):
     help = "Idempotently load the fictional Open Media Atlas demonstration catalog."
 
     @transaction.atomic
+    @suppress_updates()
     def handle(self, *args, **options):
         types = {}
         for code, label, medium in (("novel", "Novel", "text"), ("film", "Film", "screen")):

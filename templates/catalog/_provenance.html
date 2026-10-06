@@ -1,7 +1,7 @@
 <details class="provenance">
   <summary>{% if connection %}About this connection · {% endif %}Why this value?<span class="sr-only"> {{ evidence.label }}: {{ evidence.value }}</span></summary>
   <div class="provenance-body">
-    <p><strong>{{ evidence.label }}:</strong> {{ evidence.value }}</p>
+    <p><strong>{{ evidence.label }}:</strong> {{ evidence.value }}{% if evidence.attribution %} — attributed to {{ evidence.attribution }}{% endif %}</p>
     <p>{{ evidence.meaning }}</p>
     {% for entry in evidence.entries %}{% include "catalog/_evidence_entry.html" %}{% empty %}<p>Source not recorded for this field.</p>{% endfor %}
     {% if evidence.conflict %}<p><strong>Conflicting sources:</strong> recorded supplier titles differ from the current value.</p>{% endif %}

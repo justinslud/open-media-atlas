@@ -188,6 +188,7 @@ def rights_provenance(rel):
     reviewed = evidence.get("authorization_statement_reviewed_at") if matching else None
     url = evidence.get("authorization_statement_source_url") if matching else None
     return dict(label="Attributed rights statement", value=rel.authorization_statement,
+                attribution="Reviewed rights statement source" if url else rel.source.title,
                 meaning="A recorded statement attributed to its source; OMA does not adjudicate rights or infer adaptation authorization.",
                 target=f"Relationship {rel.pk}",
                 entries=[item(rel.authorization_statement, "Reviewed rights statement source" if url else rel.source.title, (url or rel.evidence_url or rel.source.url) if matching else "",
