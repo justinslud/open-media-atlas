@@ -12,7 +12,9 @@ class MediaListForm(forms.ModelForm):
     def __init__(self, *args, can_publish=False, **kwargs):
         super().__init__(*args, **kwargs)
         self.can_publish = can_publish
-        self.fields["visibility"].help_text = "Publishing requires a verified email address."
+        self.fields["description"].label = "Introduction"
+        self.fields["description"].help_text = "What is this collection about? Plain text, up to 1,000 characters."
+        self.fields["visibility"].help_text = "Private: visible to you and authorized reviewers. Public: shareable with everyone; requires a verified email address."
 
     def clean_visibility(self):
         visibility = self.cleaned_data["visibility"]
@@ -25,6 +27,7 @@ class EntryCommentaryForm(forms.ModelForm):
     class Meta:
         model = MediaListEntry
         fields = ("commentary",)
+        labels = {"commentary": "Why this belongs here"}
         widgets = {"commentary": forms.Textarea(attrs={"rows": 3})}
 
 from .models import ContributionProposal, RelationshipType, Term, Work, WorkRelationship, WorkTermAssignment

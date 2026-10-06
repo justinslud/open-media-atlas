@@ -1,3 +1,38 @@
 {% extends "base.html" %}{% block title %}{{ media_list.title }} · Open Media Atlas{% endblock %}
-{% block content %}<article><header class="page-title action-heading"><div><p class="eyebrow">{% if media_list.visibility == 'public' %}PUBLIC LIST{% else %}PRIVATE LIST{% endif %}</p><h1>{{ media_list.title }}</h1><p>Curated by <strong>{{ media_list.owner.username }}</strong> · Updated {{ media_list.updated_at|date:"M j, Y" }}</p>{% if media_list.description %}<p class="lede">{{ media_list.description|linebreaksbr }}</p>{% endif %}</div><div class="list-header-actions">{% if is_owner %}<a class="secondary-action" href="{% url 'list-edit' media_list.pk %}">Edit list</a>{% endif %}{% if media_list.visibility == 'public' %}<button class="secondary-action" type="button" onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied')">Copy link</button>{% endif %}</div></header>
-<div class="public-entries">{% for entry in entries %}{% if entry.work.visibility == 'public' %}<article class="public-entry"><span class="entry-number">{{ forloop.counter }}</span><div class="format-mark format-{{ entry.work.work_type.medium }}" aria-hidden="true">{{ entry.work.public_type_label|slice:":1" }}</div><div><span class="badge">{{ entry.work.public_type_label }}</span><h2><a href="{{ entry.work.get_absolute_url }}">{{ entry.work.display_title }}</a></h2><p class="list-meta">{% if entry.work.date_summary %}{{ entry.work.date_summary }}{% endif %}{% for credit in entry.work.credits.all %}{% if forloop.first %}{% if entry.work.date_summary %} · {% endif %}{{ credit.agent.name }}{% endif %}{% endfor %}</p>{% if entry.commentary %}<div class="curator-note"><strong>Curator’s note</strong><p>{{ entry.commentary|linebreaksbr }}</p></div>{% endif %}</div></article>{% elif is_owner %}<article class="public-entry unavailable"><span class="entry-number">{{ forloop.counter }}</span><div><h2>Unavailable work</h2><p>This entry’s catalog work is no longer published. Its details are hidden from public visitors.</p></div></article>{% endif %}{% empty %}<div class="empty"><h2>This list is empty</h2><p>{% if is_owner %}Edit the list to add published catalog works.{% else %}The curator has not added any available works yet.{% endif %}</p></div>{% endfor %}</div></article>{% endblock %}
+{% block content %}
+<article>
+  <header class="page-title action-heading">
+    <div class="collection-intro">
+      <p class="eyebrow">{{ media_list.get_visibility_display|upper }} COLLECTION</p>
+      <h1>{{ media_list.title }}</h1>
+      <p class="list-meta">Curated by <strong>{{ media_list.owner.username }}</strong> · {{ work_count }} work{{ work_count|pluralize }} · Updated {{ media_list.updated_at|date:"M j, Y" }}</p>
+      {% if media_list.description %}<div class="lede">{{ media_list.description|linebreaks }}</div>{% endif %}
+      <p class="helper">A curated selection. Inclusion and annotations express the curator’s perspective, not a catalog relationship.</p>
+    </div>
+    <div class="list-header-actions">
+      {% if is_owner %}<a class="secondary-action" href="{% url 'list-edit' media_list.pk %}">Edit collection</a>{% endif %}
+      {% if media_list.visibility == 'public' %}<button class="secondary-action" type="button" onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied').catch(()=>this.textContent='Copy the address from your browser')">Copy link</button>{% endif %}
+    </div>
+  </header>
+  <div class="public-entries">
+    {% for entry in entries %}
+      {% if entry.work.visibility == 'public' %}
+      <article class="public-entry">
+        <span class="entry-number">{{ forloop.counter }}</span>
+        <div class="format-mark format-{{ entry.work.work_type.medium }}" aria-hidden="true">{{ entry.work.public_type_label|slice:":1" }}</div>
+        <div>
+          <span class="badge">{{ entry.work.public_type_label }}</span>
+          <h2><a href="{{ entry.work.get_absolute_url }}">{{ entry.work.display_title }}</a></h2>
+          <p class="list-meta">{% if entry.work.date_summary %}{{ entry.work.date_summary }}{% endif %}{% for credit in entry.work.credits.all %}{% if forloop.first %}{% if entry.work.date_summary %} · {% endif %}{{ credit.agent.name }}{% endif %}{% endfor %}</p>
+          {% if entry.commentary %}<div class="curator-note"><strong>Why this belongs here</strong><p>{{ entry.commentary|linebreaksbr }}</p></div>{% endif %}
+        </div>
+      </article>
+      {% elif is_owner %}
+      <article class="public-entry unavailable"><span class="entry-number">{{ forloop.counter }}</span><div class="unavailable-entry"><h2>Unavailable work</h2><p>This entry’s catalog work is no longer published. Its details are hidden from public visitors.</p><a href="{% url 'list-edit' media_list.pk %}">Manage this entry</a></div></article>
+      {% endif %}
+    {% empty %}
+      <div class="empty"><h2>{% if is_owner %}This collection is empty{% else %}Still being assembled{% endif %}</h2><p>{% if is_owner %}Start with a published catalog work, then add your own annotation.{% else %}The curator has not added any available works yet.{% endif %}</p>{% if is_owner %}<a class="primary-action" href="{% url 'list-edit' media_list.pk %}#list-q">Add your first work</a>{% endif %}</div>
+    {% endfor %}
+  </div>
+</article>
+{% endblock %}
