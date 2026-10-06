@@ -1,3 +1,32 @@
-{% extends "base.html" %}{% block title %}Your account · Open Media Atlas{% endblock %}{% block content %}
-<section class="account-panel"><p class="eyebrow">ACCOUNT</p><h1>Your account</h1><dl class="metadata"><dt>Username</dt><dd>{{ user.username }}</dd><dt>Email</dt><dd>{{ user.email }}</dd><dt>Status</dt><dd>{% if verification.is_verified %}<span class="status-good">Verified</span>{% else %}Not verified{% endif %}</dd></dl>
-{% if not verification.is_verified %}<p class="helper">Verify your email before future member-only features become available.</p><form method="post" action="{% url 'accounts:resend_verification' %}">{% csrf_token %}<button type="submit">Send verification email</button></form>{% endif %}</section>{% endblock %}
+{% extends "base.html" %}{% load library_tags %}{% block title %}My library · Open Media Atlas{% endblock %}{% block content %}
+<header class="page-title"><p class="eyebrow">PRIVATE LIBRARY</p><h1>My library</h1><p>Keep works for later, curate collections, and track changes inside OMA.</p></header>
+<nav class="section-jumps" aria-label="Library sections">
+<a href="?section=saved" {% if section == 'saved' %}aria-current="page"{% endif %}>Saved works</a>
+<a href="?section=collections" {% if section == 'collections' %}aria-current="page"{% endif %}>My collections</a>
+<a href="?section=following" {% if section == 'following' %}aria-current="page"{% endif %}>Following</a>
+<a href="?section=updates" {% if section == 'updates' %}aria-current="page"{% endif %}>Updates</a>
+</nav>
+<section class="content-section">
+{% if section == 'saved' %}
+<h2>Saved works</h2><p class="helper">Private to you. Saving does not follow updates or add a work to a collection.</p>
+<form class="filter-bar" method="get"><input type="hidden" name="section" value="saved"><div><label for="saved-q">Title or creator</label><input id="saved-q" type="search" name="q" value="{{ query }}"></div><div><label for="saved-type">Work type</label><select id="saved-type" name="type"><option value="">All types</option>{% for type in work_types %}<option value="{{ type.pk }}" {% if selected_type == type.pk %}selected{% endif %}>{{ type.label }}</option>{% endfor %}</select></div><button type="submit">Search saved works</button></form>
+<div class="result-list">{% for work in page_obj %}<article class="result-row"><div class="result-main"><h3><a href="{{ work.get_absolute_url }}">{{ work.display_title }}</a></h3><p>{{ work.public_type_label }}</p></div>{% library_control work "save" %}</article>{% empty %}<div class="empty"><h3>No saved works match</h3><p>Save a work to keep it here, or clear your search filters.</p><a href="{% url 'discover' %}">Browse works</a> · <a href="?section=saved">Clear filters</a></div>{% endfor %}</div>
+{% elif section == 'collections' %}
+<h2>My collections</h2><p><a class="secondary-action" href="{% url 'list-create' %}">Create a collection</a> <a href="{% url 'my-lists' %}">Manage my collections</a></p>
+{% for collection in page_obj %}<article class="result-row"><div class="result-main"><h3><a href="{{ collection.get_absolute_url }}">{{ collection.title }}</a></h3><p>{{ collection.get_visibility_display }}</p></div><a href="{% url 'list-edit' collection.pk %}">Edit collection</a></article>{% empty %}<div class="empty"><p>No collections yet. Create one to curate works with your own notes.</p><a href="{% url 'public-lists' %}">Browse collections</a></div>{% endfor %}
+{% elif section == 'following' %}
+<h2>Following</h2><p class="helper">Follow tracks meaningful changes inside OMA. Saves and collection membership are independent. Inaccessible objects are hidden; following does not preserve access.</p>
+<nav class="section-jumps" aria-label="Following type"><a href="?section=following&amp;kind=works" {% if following_kind == 'works' %}aria-current="page"{% endif %}>Works</a><a href="?section=following&amp;kind=collections" {% if following_kind == 'collections' %}aria-current="page"{% endif %}>Collections</a></nav>
+{% for follow in page_obj %}<article class="result-row"><div class="result-main">{% if following_kind == 'works' %}<h3><a href="{{ follow.work.get_absolute_url }}">{{ follow.work.display_title }}</a></h3><p>Work · {{ follow.work.public_type_label }}</p>{% else %}<h3><a href="{{ follow.collection.get_absolute_url }}">{{ follow.collection.title }}</a></h3><p>Collection</p>{% endif %}</div>{% if following_kind == 'works' %}{% library_control follow.work "follow-work" %}{% else %}{% library_control follow.collection "follow-collection" %}{% endif %}</article>{% empty %}<div class="empty"><p>No accessible {{ following_kind }} followed yet.</p><a href="{% url 'discover' %}">Browse works</a> · <a href="{% url 'public-lists' %}">Browse collections</a></div>{% endfor %}
+{% else %}
+<h2>Updates</h2><p class="helper">Accepted direct relationship changes and public collection membership changes since you followed. Tracking starts with this feature; past catalog history is not replayed.</p>
+{% for event in page_obj %}<article class="library-update"><h3>{{ event.get_kind_display }}</h3><time datetime="{{ event.created_at|date:'c' }}">{{ event.created_at|date:"M j, Y, H:i" }} UTC</time>
+{% if event.collection %}<p>Collection: <a href="{{ event.collection.get_absolute_url }}">{{ event.collection.title }}</a></p>{% endif %}
+<p>{% if not event.collection %}Concerning: {% endif %}{% for work in event.works.all %}<a href="{{ work.get_absolute_url }}">{{ work.display_title }}</a>{% if not event.collection and work.is_followed %} (followed){% endif %}{% if not forloop.last %} · {% endif %}{% endfor %}</p>
+{% if event.before %}<p><strong>Before:</strong> {% event_summary event 'before' %}</p>{% endif %}{% if event.after %}<p><strong>After:</strong> {% event_summary event 'after' %}</p>{% endif %}
+</article>{% empty %}<div class="empty"><h3>No updates yet</h3><p>Follow a work or collection to see future supported changes here.</p><a href="{% url 'discover' %}">Browse works</a> · <a href="{% url 'public-lists' %}">Browse collections</a></div>{% endfor %}
+{% endif %}
+{% if page_obj.paginator.num_pages > 1 %}<nav class="pagination" aria-label="Library pages">{% if page_obj.has_previous %}<a href="?{{ querystring }}&amp;page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}<span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>{% if page_obj.has_next %}<a href="?{{ querystring }}&amp;page={{ page_obj.next_page_number }}">Next →</a>{% endif %}</nav>{% endif %}
+</section>
+<details class="account-panel"><summary>Account settings</summary><dl class="metadata"><dt>Username</dt><dd>{{ user.username }}</dd><dt>Email</dt><dd>{{ user.email }}</dd><dt>Status</dt><dd>{% if verification.is_verified %}<span class="status-good">Verified</span>{% else %}Not verified{% endif %}</dd></dl>
+{% if not verification.is_verified %}<p class="helper">Verify your email to publish collections and submit contributions.</p><form method="post" action="{% url 'accounts:resend_verification' %}">{% csrf_token %}<button type="submit">Send verification email</button></form>{% endif %}</details>{% endblock %}
