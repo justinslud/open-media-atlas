@@ -26,9 +26,11 @@
           <p><strong>Source:</strong> {{ rel.source_title }}.</p>{% if rel.source_note %}<p>{{ rel.source_note }}</p>{% endif %}
           {% if rel.links %}<ul>{% for url, label in rel.links %}<li><a href="{{ url }}">{{ label }}</a></li>{% endfor %}</ul>{% else %}<p>No evidence source link recorded.</p>{% endif %}
           {% if rel.statement_id %}<p class="helper">Statement: {{ rel.statement_id }}{% if rel.property_id %} · Property: {{ rel.property_id }}{% endif %}{% if rel.retrieved_at %} · Retrieved: {{ rel.retrieved_at }}{% endif %}</p>{% endif %}
-          {% if rel.authorization_statement %}<p>{{ rel.authorization_statement }} — attributed to {{ rel.source_title }}. This stored source statement is separate from relationship review.</p>{% endif %}
+
+          {% include "catalog/_provenance.html" with evidence=rel.provenance connection=True %}
+          {% if rel.rights_provenance %}{% include "catalog/_provenance.html" with evidence=rel.rights_provenance %}{% endif %}
         </div>{% endfor %}
-        <a href="{% url 'suggest-correction' work.pk %}">Suggest a correction</a>
+
       </details>
     </article>
     {% empty %}<div class="empty compact">{% if connection_total %}<strong>No connected works match these filters.</strong> <a href="{{ work.get_absolute_url }}#connections">Reset view</a>.{% else %}<strong>No connections recorded yet.</strong> This does not mean that no connections exist. <a href="{% url 'suggest-relationship' work.pk %}">Suggest a relationship</a>.{% endif %}</div>{% endfor %}

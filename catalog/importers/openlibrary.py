@@ -134,6 +134,8 @@ class OpenLibraryImporter:
         ImportedWorkState.objects.update_or_create(source_record=record, defaults={
             "imported_title": title, "imported_date_text": date_text, "imported_year": year,
         })
+        from catalog.provenance import imported_fields
+        imported_fields(work, record, title=title, date=date_text, created=created, changed=changed, type_note="Importer assigns Book to Open Library works; this is a process classification.")
         ExternalIdentifier.objects.get_or_create(work=work, scheme="ol_work", value=external_id)
         WorkSource.objects.update_or_create(work=work, source=self.source, defaults={
             "note": f"Open Library work {external_id}; retrieved {retrieved_at.date().isoformat()}."
