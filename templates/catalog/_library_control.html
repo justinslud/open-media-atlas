@@ -1,0 +1,5 @@
+<form class="library-control" method="post" action="{% url 'library-action' action object.pk %}" data-library-control>
+  {% csrf_token %}<input type="hidden" name="active" value="{% if active %}0{% else %}1{% endif %}"><input type="hidden" name="next" value="{{ request.get_full_path }}">
+  <button class="secondary-action" type="submit" aria-pressed="{{ active|yesno:'true,false' }}" aria-label="{% if active %}{% if action == 'save' %}Remove {{ object_label }} from saved works{% else %}Unfollow {{ object_label }}{% endif %}{% else %}{{ label }} {{ object_label }}{% endif %}" data-label="{{ label }}" data-active-label="{{ active_label }}" data-object="{{ object_label }}" data-action="{{ action }}" title="{% if action == 'save' %}Keep this work in your private library{% else %}Track accepted relationship or collection membership changes inside OMA{% endif %}">{% if active %}{{ active_label }}{% else %}{{ label }}{% endif %}</button>
+  <span class="library-error" role="alert"></span>
+</form>

@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% block title %}{{ media_list.title }} · Open Media Atlas{% endblock %}
+{% extends "base.html" %}{% load library_tags %}{% block title %}{{ media_list.title }} · Open Media Atlas{% endblock %}
 {% block content %}
 <article>
   <header class="page-title action-heading">
@@ -10,6 +10,8 @@
       <p class="helper">A curated selection. Inclusion and annotations express the curator’s perspective, not a catalog relationship.</p>
     </div>
     <div class="list-header-actions">
+      {% library_control media_list "follow-collection" %}
+      <p class="helper">Follow shows public membership changes inside OMA. Access follows the collection’s current visibility.</p>
       {% if is_owner %}<a class="secondary-action" href="{% url 'list-edit' media_list.pk %}">Edit collection</a>{% endif %}
       {% if media_list.visibility == 'public' %}<button class="secondary-action" type="button" onclick="navigator.clipboard.writeText(location.href).then(()=>this.textContent='Copied').catch(()=>this.textContent='Copy the address from your browser')">Copy link</button>{% endif %}
     </div>

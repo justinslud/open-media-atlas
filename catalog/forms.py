@@ -19,7 +19,7 @@ class MediaListForm(forms.ModelForm):
     def clean_visibility(self):
         visibility = self.cleaned_data["visibility"]
         if visibility == MediaList.Visibility.PUBLIC and not self.can_publish:
-            raise forms.ValidationError("Verify your email address before publishing a list.")
+            raise forms.ValidationError("Verify your email address before publishing a collection.")
         return visibility
 
 
