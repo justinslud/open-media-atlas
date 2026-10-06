@@ -70,7 +70,7 @@ class Command(BaseCommand):
                             record,_=SourceRecord.objects.update_or_create(source=wikidata,external_key=qid,defaults={
                                 "matched_work":work,"payload_hash":hashlib.sha256(raw).hexdigest(),"raw_payload":entity,"retrieved_at":timezone.now()})
                             ImportedWorkState.objects.update_or_create(source_record=record,defaults={
-                                "imported_title":title[:300],"imported_date_text":"","imported_year":None})
+                                "imported_title":title[:300]})
                             for value in imdb: ExternalIdentifier.objects.get_or_create(work=work,scheme="imdb",value=value)
                             WorkSource.objects.get_or_create(work=work,source=wikidata,defaults={"note":f"Title {basis} ({language}); entity {qid}."})
                             try:

@@ -32,6 +32,8 @@ class Command(BaseCommand):
         for key, (pk, title, type_code, date_text, year, description, source_key) in work_specs.items():
             works[key], _ = Work.objects.update_or_create(pk=pk, defaults={
                 "title": title, "slug": slugify(f"{title}-{type_code}-{year}"), "work_type": types[type_code],
+                "date_kind": "first_publication" if type_code == "novel" else "first_release",
+                "date_evidence": {"date_text": date_text, "source_url": "https://example.org/oma-fictional-fixture", "basis": "Fictional demonstration"},
                 "description": description, "first_publication_date_text": date_text, "first_publication_year": year,
                 "completion_status": "released", "visibility": Work.Visibility.PUBLIC, "depth": "editorial", "is_demo": True,
             })

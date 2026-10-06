@@ -84,6 +84,7 @@ TYPE_MAP = {
 def claim_ids(entity, prop):
     values=[]
     for claim in entity.get("claims", {}).get(prop, []):
+        if claim.get("rank") == "deprecated": continue
         value=claim.get("mainsnak", {}).get("datavalue", {}).get("value")
         if isinstance(value, dict) and value.get("entity-type") == "item": values.append(value.get("id"))
     return [v for v in values if v]
@@ -119,13 +120,8 @@ def title_from_entity(entity):
     return "", "und", "unresolved"
 
 def date_fields(entity):
-    value=first_claim(entity, "P577") or first_claim(entity, "P571")
-    if not isinstance(value, dict): return "", None, None
-    raw=value.get("time", ""); precision=value.get("precision")
-    year=int(raw[1:5]) if len(raw) >= 5 and raw[1:5].isdigit() else None
-    text=str(year) if year else raw
-    if precision and precision >= 11 and len(raw) >= 11: text=f"{raw[1:5]}-{raw[6:8]}-{raw[9:11]}"
-    return text, year, precision
+    from catalog.dates import wikidata_date
+    return wikidata_date(entity)[:3]
 
 def _source():
     return Source.objects.get_or_create(title="Wikidata", defaults={"kind":"knowledge-base", "url":"https://www.wikidata.org/", "notes":"Supplier assertions require OMA review."})[0]
@@ -155,12 +151,15 @@ def stage_entity(entity, source, run, *, supporting_entities=None, existing_only
         if candidates.exists():
             return None, "conflicted", f"title-only candidate(s): {', '.join(str(x.pk) for x in candidates[:5])}; requires review"
         if existing_only: return None, "skipped", "seed is not currently in OMA"
-        spec=next((TYPE_MAP[x] for x in claim_ids(entity,"P31") if x in TYPE_MAP), ("creative-work","Creative work","other"))
+        supported = {TYPE_MAP[x] for prop in ("P31", "P7937") for x in claim_ids(entity, prop) if x in TYPE_MAP}
+        specific = {spec for spec in supported if spec[0] not in {"book", "literary-work", "written-work", "creative-work"}}
+        spec = next(iter(specific)) if len(specific) == 1 else next((TYPE_MAP[q] for q in ("Q571", "Q7725634", "Q47461344") if TYPE_MAP[q] in supported), ("creative-work", "Creative work", "other"))
         work_type,_=WorkType.objects.get_or_create(code=spec[0], defaults={"label":spec[1],"medium":spec[2]})
-        date,year,precision=date_fields(entity)
+        from catalog.dates import wikidata_date
+        date,year,precision,kind,evidence=wikidata_date(entity)
         matched=Work.objects.create(title=title, slug=slugify(f"{title}-{qid}"), work_type=work_type,
             description=entity.get("descriptions",{}).get("en",{}).get("value","")[:1000], first_publication_date_text=date,
-            first_publication_year=year, visibility=Work.Visibility.DRAFT, depth="index")
+            first_publication_year=year, date_kind=kind, date_evidence=evidence, visibility=Work.Visibility.DRAFT, depth="index")
         state_status="created"
     else:
         state_status="unchanged"  # supplier metadata never mutates an existing work in this pilot

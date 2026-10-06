@@ -29,6 +29,13 @@ class Work(models.Model):
     description = models.TextField(blank=True)
     first_publication_date_text = models.CharField(max_length=80, blank=True)
     first_publication_year = models.IntegerField(null=True, blank=True)
+    date_kind = models.CharField(max_length=30, default="unknown", choices=[
+        ("unknown", "Meaning unverified"), ("publication", "Source publication date"),
+        ("release", "Source release date"), ("inception", "Creation date"),
+        ("edition", "Edition date"), ("first_publication", "First published"),
+        ("first_release", "First released"),
+    ])
+    date_evidence = models.JSONField(default=dict, blank=True)
     completion_status = models.CharField(max_length=30, default="unknown")
     visibility = models.CharField(max_length=20, choices=Visibility.choices, default=Visibility.DRAFT, db_index=True)
     depth = models.CharField(max_length=20, choices=[("index", "Index record"), ("editorial", "Editorial")], default="index")
@@ -45,18 +52,48 @@ class Work(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.title) or "work"
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("work-detail", kwargs={"pk": self.pk, "slug": self.slug})
 
     @property
+    def has_known_title(self):
+        return bool(self.title.strip()) and not re.fullmatch(r"Q\d+", self.title.strip(), re.IGNORECASE)
+
+    @property
+    def public_type_code(self):
+        from .presentation import public_type_code
+        return public_type_code(self)
+
+    @property
+    def public_type_label(self):
+        from .presentation import TYPE_LABELS
+        return TYPE_LABELS.get(self.public_type_code, self.work_type.label)
+
+    @property
     def display_title(self):
-        """Never present an identifier as though it were a catalog title."""
-        if re.fullmatch(r"Q\d+", self.title.strip(), re.IGNORECASE):
-            return "Title pending enrichment"
-        return self.title
+        if self.has_known_title:
+            return self.title
+        facts = [self.public_type_label.lower()]
+        if self.first_publication_year:
+            facts.append(str(self.first_publication_year))
+        creator = next(iter(self.credits.all()), None)
+        suffix = f" — {creator.agent.name}" if creator else f" — record {self.pk}"
+        return "Title unknown — " + ", ".join(facts) + suffix
+
+    @property
+    def date_label(self):
+        evidence = self.date_evidence if isinstance(self.date_evidence, dict) else {}
+        # Stale evidence after a manual edit must not support a stronger claim.
+        if self.date_kind == "unknown" or evidence.get("date_text") != self.first_publication_date_text or not evidence.get("source_url"):
+            return "Date (meaning unverified)"
+        return dict(self._meta.get_field("date_kind").choices).get(self.date_kind, "Date (meaning unverified)")
+
+    @property
+    def date_summary(self):
+        return f"{self.date_label}: {self.first_publication_date_text}" if self.first_publication_date_text else ""
 
     def __str__(self):
         return f"{self.title} ({self.first_publication_date_text or 'date unknown'})"
@@ -413,6 +450,12 @@ class WorkRelationship(models.Model):
         return f"{self.from_work} {self.relationship_type.label} {self.to_work}"
 
     @property
+    def authorization_statement(self):
+        evidence = self.evidence if isinstance(self.evidence, dict) else {}
+        # A bare status (including "unknown") is not a substantive sourced claim.
+        return evidence.get("authorization_statement", "") if self.source_id else ""
+
+    @property
     def evidence_url(self):
         return self.evidence.get("source_url", "") if isinstance(self.evidence, dict) else ""
 
@@ -557,6 +600,10 @@ class ContributionProposal(models.Model):
                         match = re.search(r"(?<!\d)(1\d{3}|20\d{2})(?!\d)", proposal.proposed_value)
                         proposal.work.first_publication_year = int(match.group(1)) if match else None
                         fields.append("first_publication_year")
+                        proposal.work.date_kind = "first_publication" if proposal.work.work_type.medium not in {"screen", "audio", "interactive"} else "first_release"
+                        proposal.work.date_evidence = {"date_text": proposal.proposed_value, "source_url": proposal.source_url,
+                            "proposal_id": proposal.pk, "reviewer_id": reviewer.pk}
+                        fields.extend(("date_kind", "date_evidence"))
                     if proposal.field_name == "title":
                         proposal.work.slug = slugify(proposal.proposed_value)[:320]
                         fields.append("slug")
