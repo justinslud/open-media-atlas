@@ -8,7 +8,7 @@
     <div class="work-identity">
       <p class="eyebrow">{{ work.public_type_label|upper }}{% if work.date_summary %} · {{ work.date_summary|upper }}{% endif %}</p>
       <h1>{{ work.display_title }}</h1>
-      {% if work.display_title != work.title %}<p class="helper"><strong>Incomplete record:</strong> the title is missing from the catalog entry. The source identifier remains available under Sources.</p>{% endif %}
+      {% if work.display_title != work.title %}<p class="helper"><strong>Incomplete record:</strong> the title is missing from the catalog entry.{% if work.identifiers.all %} The source identifier remains available under Sources.{% endif %}</p>{% endif %}
       {% if work.credits.all %}<p class="byline">{% for credit in work.credits.all %}{% if not forloop.first %}<span aria-hidden="true"> · </span>{% endif %}<span>{{ credit.role|capfirst }} <strong>{{ credit.agent.name }}</strong></span>{% endfor %}</p>{% endif %}
       {% if work.description %}<p class="lede">{{ work.description|truncatewords:45 }}</p>{% endif %}
       {% if work.accepted_term_assignments %}<div class="term-pills" aria-label="Descriptive terms">{% for assignment in work.accepted_term_assignments %}<span>{{ assignment.term.label }}</span>{% endfor %}</div>{% endif %}
