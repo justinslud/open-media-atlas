@@ -1,0 +1,322 @@
+[
+  {
+    "model": "catalog.worktype",
+    "pk": "album",
+    "fields": {
+      "label": "Album",
+      "medium": "audio"
+    }
+  },
+  {
+    "model": "catalog.worktype",
+    "pk": "book",
+    "fields": {
+      "label": "Book",
+      "medium": "text"
+    }
+  },
+  {
+    "model": "catalog.worktype",
+    "pk": "film",
+    "fields": {
+      "label": "Film",
+      "medium": "screen"
+    }
+  },
+  {
+    "model": "catalog.work",
+    "pk": 1,
+    "fields": {
+      "title": "The Paper Harbor",
+      "slug": "the-paper-harbor",
+      "work_type": "book",
+      "description": "",
+      "first_publication_date_text": "",
+      "first_publication_year": null,
+      "date_kind": "unknown",
+      "date_evidence": {},
+      "completion_status": "unknown",
+      "visibility": "public",
+      "depth": "index",
+      "is_demo": true,
+      "created_at": "2026-10-06T19:10:53.117Z",
+      "updated_at": "2026-10-06T19:10:53.117Z"
+    }
+  },
+  {
+    "model": "catalog.work",
+    "pk": 2,
+    "fields": {
+      "title": "Harbor at Night",
+      "slug": "harbor-at-night",
+      "work_type": "film",
+      "description": "",
+      "first_publication_date_text": "",
+      "first_publication_year": null,
+      "date_kind": "unknown",
+      "date_evidence": {},
+      "completion_status": "unknown",
+      "visibility": "public",
+      "depth": "index",
+      "is_demo": true,
+      "created_at": "2026-10-06T19:10:53.156Z",
+      "updated_at": "2026-10-06T19:10:53.156Z"
+    }
+  },
+  {
+    "model": "catalog.work",
+    "pk": 3,
+    "fields": {
+      "title": "Harbor Sounds",
+      "slug": "harbor-sounds",
+      "work_type": "album",
+      "description": "",
+      "first_publication_date_text": "",
+      "first_publication_year": null,
+      "date_kind": "unknown",
+      "date_evidence": {},
+      "completion_status": "unknown",
+      "visibility": "public",
+      "depth": "index",
+      "is_demo": true,
+      "created_at": "2026-10-06T19:10:53.184Z",
+      "updated_at": "2026-10-06T19:10:53.184Z"
+    }
+  },
+  {
+    "model": "catalog.work",
+    "pk": 4,
+    "fields": {
+      "title": "The Unrecorded Journey",
+      "slug": "the-unrecorded-journey",
+      "work_type": "book",
+      "description": "",
+      "first_publication_date_text": "",
+      "first_publication_year": null,
+      "date_kind": "unknown",
+      "date_evidence": {},
+      "completion_status": "unknown",
+      "visibility": "public",
+      "depth": "index",
+      "is_demo": true,
+      "created_at": "2026-10-06T19:10:53.204Z",
+      "updated_at": "2026-10-06T19:10:53.204Z"
+    }
+  },
+  {
+    "model": "catalog.source",
+    "pk": 1,
+    "fields": {
+      "title": "Fictional catalog reference",
+      "kind": "webpage",
+      "url": "https://example.org/catalog",
+      "notes": ""
+    }
+  },
+  {
+    "model": "catalog.worksource",
+    "pk": 1,
+    "fields": {
+      "work": 1,
+      "source": 1,
+      "note": ""
+    }
+  },
+  {
+    "model": "catalog.worksource",
+    "pk": 2,
+    "fields": {
+      "work": 2,
+      "source": 1,
+      "note": ""
+    }
+  },
+  {
+    "model": "catalog.worksource",
+    "pk": 3,
+    "fields": {
+      "work": 3,
+      "source": 1,
+      "note": ""
+    }
+  },
+  {
+    "model": "catalog.worksource",
+    "pk": 4,
+    "fields": {
+      "work": 4,
+      "source": 1,
+      "note": ""
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "work": 1,
+      "label": "French translation",
+      "kind": "translation",
+      "title": "",
+      "language": "French",
+      "contributor_note": "",
+      "first_available_date_text": "",
+      "runtime_seconds": null,
+      "page_mode": "embedded",
+      "page_mode_reason": ""
+    }
+  },
+  {
+    "model": "catalog.release",
+    "pk": 1,
+    "fields": {
+      "version": 1,
+      "title": "Illustrated 1999 edition",
+      "edition_name": "",
+      "format": "",
+      "publication_date_text": "",
+      "publisher_statement": "",
+      "pages": null,
+      "openlibrary_key": null
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 1,
+    "fields": {
+      "work": 1,
+      "version": null,
+      "release": null,
+      "provider": "Example Reading Room",
+      "url": "https://example.org/read",
+      "category": "full",
+      "scope_note": "Original text",
+      "language": "",
+      "region": "",
+      "restrictions": "",
+      "source_url": "https://example.org/evidence",
+      "last_checked": null,
+      "reviewed_at": "2026-10-06T19:10:53.131Z",
+      "active": true
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 2,
+    "fields": {
+      "work": 1,
+      "version": 1,
+      "release": 1,
+      "provider": "Example Library",
+      "url": "https://example.org/borrow",
+      "category": "borrow",
+      "scope_note": "",
+      "language": "French",
+      "region": "France",
+      "restrictions": "Library membership required",
+      "source_url": "https://example.org/evidence",
+      "last_checked": "2026-10-06",
+      "reviewed_at": null,
+      "active": true
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 3,
+    "fields": {
+      "work": 2,
+      "version": null,
+      "release": null,
+      "provider": "Example Cinema",
+      "url": "https://example.org/trailer",
+      "category": "excerpt",
+      "scope_note": "Trailer, not the full film",
+      "language": "",
+      "region": "",
+      "restrictions": "",
+      "source_url": "",
+      "last_checked": null,
+      "reviewed_at": null,
+      "active": true
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 4,
+    "fields": {
+      "work": 2,
+      "version": null,
+      "release": null,
+      "provider": "Example Rental",
+      "url": "https://example.org/rent",
+      "category": "rent",
+      "scope_note": "",
+      "language": "",
+      "region": "US",
+      "restrictions": "Paid rental; account required",
+      "source_url": "",
+      "last_checked": null,
+      "reviewed_at": null,
+      "active": true
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 5,
+    "fields": {
+      "work": 3,
+      "version": null,
+      "release": null,
+      "provider": "Example Audio",
+      "url": "https://example.org/album",
+      "category": "subscription",
+      "scope_note": "Original recording",
+      "language": "",
+      "region": "",
+      "restrictions": "Subscription required",
+      "source_url": "",
+      "last_checked": null,
+      "reviewed_at": null,
+      "active": true
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 6,
+    "fields": {
+      "work": 3,
+      "version": null,
+      "release": null,
+      "provider": "Example Discography",
+      "url": "https://example.org/catalog",
+      "category": "catalog",
+      "scope_note": "",
+      "language": "",
+      "region": "",
+      "restrictions": "",
+      "source_url": "",
+      "last_checked": null,
+      "reviewed_at": null,
+      "active": true
+    }
+  },
+  {
+    "model": "catalog.accesslink",
+    "pk": 7,
+    "fields": {
+      "work": 4,
+      "version": null,
+      "release": null,
+      "provider": "Internet Archive",
+      "url": "https://archive.org/search?query=The+Unrecorded+Journey",
+      "category": "search",
+      "scope_note": "",
+      "language": "",
+      "region": "",
+      "restrictions": "",
+      "source_url": "",
+      "last_checked": null,
+      "reviewed_at": null,
+      "active": true
+    }
+  }
+]

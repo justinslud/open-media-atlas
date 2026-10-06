@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import MediaList, MediaListEntry
+from .models import AccessLink, MediaList, MediaListEntry
 
 
 class MediaListForm(forms.ModelForm):
@@ -129,3 +129,42 @@ class TermSuggestionForm(forms.Form):
         if not value.lower().startswith(("http://", "https://")):
             raise forms.ValidationError("Use an HTTP or HTTPS source URL.")
         return value
+
+
+class AccessProposalForm(forms.ModelForm):
+    action = forms.ChoiceField(choices=(("replace", "Suggest / replace a link"), ("remove", "Report incorrect, broken, or mismatched link")))
+    explanation = forms.CharField(max_length=2000, widget=forms.Textarea(attrs={"rows": 3}), help_text="Explain what the link offers, or why it is incorrect, broken, or mismatched.")
+    source_url = forms.URLField(max_length=500, label="Supporting source", help_text="Evidence for this description. No automatic fetching. For a broken link, include the original URL or a supporting reference.")
+
+    class Meta:
+        model = AccessLink
+        fields = ("provider", "url", "category", "version", "release", "scope_note", "language", "region", "restrictions", "last_checked")
+        widgets = {"last_checked": forms.DateInput(attrs={"type": "date"})}
+        help_texts = {"category": "Choose only what you can establish. A catalog or reachable page is not an available copy.", "url": "HTTP or HTTPS, without embedded credentials.", "scope_note": "Identify an edition/translation if it cannot be selected above. Adaptations belong on their own work page."}
+
+    def __init__(self, *args, work, target=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        from .models import Version, Release
+        self.instance.work = work
+        self.target = target
+        self.fields["version"].queryset = Version.objects.filter(work=work)
+        self.fields["release"].queryset = Release.objects.filter(version__work=work)
+        if not target:
+            self.fields["action"].choices = (("replace", "Suggest a link"),)
+        self.fields["version"].empty_label = "Unknown / not specified"
+        self.fields["release"].empty_label = "Unknown / not specified"
+
+    def clean_source_url(self):
+        from .provenance import safe_url
+        value = self.cleaned_data["source_url"]
+        if not safe_url(value):
+            raise forms.ValidationError("Use an HTTP or HTTPS URL without embedded credentials.")
+        return value
+
+    def payload(self):
+        import json
+        from .access import LINK_FIELDS
+        values = {field: getattr(self.instance, field) for field in LINK_FIELDS}
+        values["last_checked"] = str(self.instance.last_checked) if self.instance.last_checked else None
+        values["active"] = self.cleaned_data["action"] != "remove"
+        return json.dumps(values, sort_keys=True)

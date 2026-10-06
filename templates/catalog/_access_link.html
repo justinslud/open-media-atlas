@@ -1,0 +1,7 @@
+<li>
+  <a href="{{ item.url }}" rel="nofollow noopener noreferrer">{{ item.title }}</a>
+  {% if item.link %}
+    <p class="helper">{{ item.scope }}{% if item.link.language %} · Language: {{ item.link.language }}{% endif %}{% if item.link.region %} · Region: {{ item.link.region }}{% endif %}{% if item.link.restrictions %} · {{ item.link.restrictions }}{% endif %}{% if item.link.last_checked %} · Content / offer checked {{ item.link.last_checked|date:"M j, Y" }}{% else %} · Content / offer not checked{% endif %}</p>
+    <details class="provenance"><summary>About this link</summary><div class="provenance-body">{% include "catalog/_evidence_entry.html" with entry=item.entry %}<p><a href="{{ item.correction_url }}">Report a problem or suggest a replacement</a></p></div></details>
+  {% endif %}
+</li>

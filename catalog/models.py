@@ -357,6 +357,56 @@ class WorkSource(models.Model):
         constraints = [models.UniqueConstraint(fields=("work", "source"), name="unique_work_source")]
 
 
+class AccessLink(models.Model):
+    """An editorially described destination, separate from catalog citations and rights."""
+    class Category(models.TextChoices):
+        UNKNOWN = "unknown", "Purpose unknown"
+        FULL = "full", "Full text / playable media"
+        EXCERPT = "excerpt", "Excerpt / sample / trailer"
+        BORROW = "borrow", "Borrow"
+        BUY = "buy", "Buy"
+        RENT = "rent", "Rent"
+        SUBSCRIPTION = "subscription", "Subscription"
+        CATALOG = "catalog", "Reference / catalog"
+        SEARCH = "search", "External search"
+
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name="access_links")
+    version = models.ForeignKey(Version, on_delete=models.PROTECT, null=True, blank=True)
+    release = models.ForeignKey(Release, on_delete=models.PROTECT, null=True, blank=True)
+    provider = models.CharField(max_length=120)
+    url = models.URLField(max_length=500)
+    category = models.CharField(max_length=20, choices=Category.choices, default=Category.UNKNOWN)
+    scope_note = models.CharField(max_length=300, blank=True, help_text="Specify an unresolved edition/version here; never assume versions are interchangeable.")
+    language = models.CharField(max_length=80, blank=True)
+    region = models.CharField(max_length=120, blank=True)
+    restrictions = models.CharField(max_length=300, blank=True, help_text="Known login, subscription, or other conditions. Blank means unknown.")
+    source_url = models.URLField(max_length=500, blank=True)
+    last_checked = models.DateField(null=True, blank=True, help_text="Date content/offer was inspected; HTTP success alone is insufficient.")
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ("id",)
+
+    def clean(self):
+        from .provenance import safe_url
+        super().clean()
+        for field in ("url", "source_url"):
+            if getattr(self, field) and not safe_url(getattr(self, field)):
+                raise ValidationError({field: "Use an HTTP or HTTPS URL without embedded credentials."})
+        if self.last_checked and self.last_checked > timezone.localdate():
+            raise ValidationError({"last_checked": "A check date cannot be in the future."})
+        if self.version_id and self.version.work_id != self.work_id:
+            raise ValidationError("The version must belong to this work.")
+        if self.release_id and self.release.version.work_id != self.work_id:
+            raise ValidationError("The release must belong to this work.")
+        if self.version_id and self.release_id and self.release.version_id != self.version_id:
+            raise ValidationError("The release must belong to the selected version.")
+
+    def __str__(self):
+        return f"{self.provider}: {self.get_category_display()}"
+
+
 class Term(models.Model):
     """A stable entry in a named, editorially managed vocabulary."""
 
@@ -596,6 +646,7 @@ class ContributionProposal(models.Model):
     class Kind(models.TextChoices):
         CORRECTION = "correction", "Correction"
         RELATIONSHIP = "relationship", "Relationship"
+        ACCESS = "access", "Access link"
     class Status(models.TextChoices):
         PENDING = "pending", "Pending"
         CLARIFICATION_NEEDED = "clarification_needed", "Clarification needed"
@@ -608,6 +659,7 @@ class ContributionProposal(models.Model):
     submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="contribution_proposals")
     work = models.ForeignKey(Work, on_delete=models.PROTECT, related_name="proposals")
     target_relationship = models.ForeignKey(WorkRelationship, on_delete=models.PROTECT, null=True, blank=True, related_name="corrections")
+    target_access_link = models.ForeignKey(AccessLink, on_delete=models.PROTECT, null=True, blank=True, related_name="proposals")
     field_name = models.CharField(max_length=40, blank=True)
     value_at_submission = models.TextField(blank=True)
     proposed_value = models.TextField(blank=True)
@@ -632,7 +684,23 @@ class ContributionProposal(models.Model):
         permissions = [("review_contributionproposal", "Can approve or reject contribution proposals")]
 
     @property
+    def access_description(self):
+        if self.kind != self.Kind.ACCESS:
+            return ""
+        import json
+        try:
+            values = json.loads(self.proposed_value)
+            category = dict(AccessLink.Category.choices).get(values.get("category"), "Purpose unknown")
+            action = "Remove" if not values.get("active", True) else "Suggest / replace"
+            return f"{action}: {values.get('provider', '')} — {category}. {values.get('url', '')}"
+        except (ValueError, AttributeError):
+            return "Invalid access-link description"
+
+    @property
     def current_value(self):
+        if self.kind == self.Kind.ACCESS:
+            from .access import link_snapshot
+            return link_snapshot(self.target_access_link) if self.target_access_link_id else ""
         if self.kind == self.Kind.CORRECTION:
             if self.target_relationship_id:
                 rel = self.target_relationship
@@ -648,7 +716,7 @@ class ContributionProposal(models.Model):
 
     @property
     def has_conflict(self):
-        if self.kind == self.Kind.CORRECTION:
+        if self.kind in {self.Kind.CORRECTION, self.Kind.ACCESS}:
             return self.current_value != self.value_at_submission
         return (self.work.updated_at != self.work_updated_at or
                 self.related_work.updated_at != self.related_work_updated_at or
@@ -657,7 +725,19 @@ class ContributionProposal(models.Model):
 
     def clean(self):
         super().clean()
-        if self.kind == self.Kind.CORRECTION:
+        if self.target_access_link_id and self.kind != self.Kind.ACCESS:
+            raise ValidationError("Only access proposals can target an access link.")
+        if self.kind == self.Kind.ACCESS:
+            from .access import proposed_link
+            if self.related_work_id or self.relationship_type_id or self.target_relationship_id:
+                raise ValidationError("Access proposals cannot include a relationship.")
+            if self.target_access_link_id and self.target_access_link.work_id != self.work_id:
+                raise ValidationError("Choose an access link belonging to this work.")
+            proposed_link(self)
+            from .provenance import safe_url
+            if not safe_url(self.source_url):
+                raise ValidationError({"source_url": "Use an HTTP or HTTPS URL without embedded credentials."})
+        elif self.kind == self.Kind.CORRECTION:
             if self.field_name not in {"title", "description", "first_publication_date_text", "work_type", "scope_note", "relationship_type", "authorization_statement"}:
                 raise ValidationError({"field_name": "This field cannot be proposed."})
             if self.field_name in {"scope_note", "relationship_type", "authorization_statement"}:
@@ -694,9 +774,22 @@ class ContributionProposal(models.Model):
                 raise ValidationError("A reviewer explanation is required when rejecting a proposal.")
             if approve and proposal.has_conflict and not reconcile:
                 raise ValidationError("The catalog changed after submission. Reconcile the conflict explicitly before approval.")
+            if proposal.target_access_link_id:
+                proposal.target_access_link = AccessLink.objects.select_for_update().get(pk=proposal.target_access_link_id)
+            if approve:
+                proposal.full_clean()
+                if proposal.has_conflict and not reconcile:
+                    raise ValidationError("The access link changed after submission. Reconcile explicitly.")
             old_value = proposal.current_value
             if approve:
-                if proposal.kind == self.Kind.CORRECTION:
+                if proposal.kind == self.Kind.ACCESS:
+                    from .access import proposed_link
+                    link = proposed_link(proposal)
+                    link.reviewed_at = timezone.now()
+                    link.source_url = proposal.source_url
+                    link.save()
+                    proposal.target_access_link = link
+                elif proposal.kind == self.Kind.CORRECTION:
                     if proposal.target_relationship_id:
                         rel = WorkRelationship.objects.select_for_update().get(pk=proposal.target_relationship_id)
                         evidence = dict(rel.evidence)
@@ -755,7 +848,7 @@ class ContributionProposal(models.Model):
             proposal.reviewer = reviewer
             proposal.reviewer_explanation = explanation.strip()
             proposal.reviewed_at = timezone.now()
-            proposal.save(update_fields=("status", "reviewer", "reviewer_explanation", "reviewed_at"))
+            proposal.save(update_fields=("status", "reviewer", "reviewer_explanation", "reviewed_at", "target_access_link"))
             if approve:
                 ContributionRevision.objects.create(proposal=proposal, work=proposal.work,
                     contributor=proposal.submitted_by, reviewer=reviewer, kind=proposal.kind,
@@ -797,7 +890,10 @@ class ContributionProposal(models.Model):
                 "work_updated_at": previous.work.updated_at, "explanation": explanation,
                 "source_url": source_url, "supersedes": previous,
             }
-            if previous.kind == self.Kind.CORRECTION:
+            if previous.kind == self.Kind.ACCESS:
+                values["target_access_link"] = previous.target_access_link
+                values["value_at_submission"] = previous.current_value
+            elif previous.kind == self.Kind.CORRECTION:
                 values["target_relationship"] = previous.target_relationship
                 values["value_at_submission"] = previous.current_value
                 values["related_work"] = None
