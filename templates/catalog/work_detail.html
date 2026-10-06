@@ -15,7 +15,7 @@
       {% if work.accepted_term_assignments %}<div class="term-pills" aria-label="Descriptive terms">{% for assignment in work.accepted_term_assignments %}<span>{{ assignment.term.label }}</span>{% endfor %}</div>{% endif %}
       <div class="work-actions">
         {% library_control work "save" %}{% library_control work "follow-work" %}
-        {% if primary_link.url %}<a class="primary-action" href="{{ primary_link.url }}">{{ primary_link.title|default:"View source or availability" }} <span aria-hidden="true">↗</span></a>{% endif %}
+        <a class="primary-action" href="#access">{{ access_heading }}</a>
         {% if has_relationships %}<a class="secondary-action" href="#connections">Explore connections</a>{% endif %}
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'add-to-list' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'add-to-list' work.pk %}{% endif %}">Add to collection</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-correction' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-correction' work.pk %}{% endif %}">Suggest a correction</a>
@@ -23,9 +23,11 @@
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-term' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-term' work.pk %}{% endif %}">Suggest a term</a>
       </div>
       <p class="helper">Save keeps this work in your private library. Follow shows accepted relationship changes inside OMA.</p>
-      <nav class="section-jumps" aria-label="On this page"><span>On this page</span><a href="#connections">Connections</a>{% if work.description %}<a href="#description">Description</a>{% endif %}<a href="#details">Details</a>{% if work.credits.all %}<a href="#creators">Creators</a>{% endif %}{% if work.versions.all %}<a href="#versions">Editions &amp; versions</a>{% endif %}{% if work.source_links.all or work.identifiers.all %}<a href="#sources">Sources</a>{% endif %}</nav>
+      <nav class="section-jumps" aria-label="On this page"><span>On this page</span><a href="#access">{{ access_heading }}</a><a href="#connections">Connections</a>{% if work.description %}<a href="#description">Description</a>{% endif %}<a href="#details">Details</a>{% if work.credits.all %}<a href="#creators">Creators</a>{% endif %}{% if work.versions.all %}<a href="#versions">Editions &amp; versions</a>{% endif %}{% if work.source_links.all or work.identifiers.all %}<a href="#sources">Sources</a>{% endif %}</nav>
     </div>
   </header>
+
+  {% include "catalog/_access.html" %}
 
   {% include "catalog/_connections.html" %}
 
@@ -33,7 +35,7 @@
     {% if work.description %}<section id="description" class="content-section"><p class="eyebrow">ABOUT THIS WORK</p><h2>Description</h2><p class="prose">{{ work.description }}</p></section>{% endif %}
     <section id="details" class="content-section"><p class="eyebrow">CATALOG RECORD</p><h2>Details</h2><dl class="metadata"><dt>Format</dt><dd>{{ work.public_type_label }}{% include "catalog/_provenance.html" with evidence=provenance.work_type %}</dd>{% if work.date_summary %}<dt>{{ work.date_label }}</dt><dd>{{ work.first_publication_date_text }}{% include "catalog/_provenance.html" with evidence=provenance.first_publication_date_text %}</dd>{% endif %}{% if work.completion_status != "unknown" %}<dt>Status</dt><dd>{{ work.completion_status|capfirst }}</dd>{% endif %}{% if work.accepted_term_assignments %}<dt>Terms</dt><dd>{% for assignment in work.accepted_term_assignments %}{{ assignment.term.label }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>{% endif %}<dt>Record depth</dt><dd>{{ work.get_depth_display }}</dd></dl><p class="helper">{% if work.depth == "index" %}Basic catalog entry. Some details are missing.{% else %}Catalog entry with editorial detail.{% endif %}</p></section>
     {% if work.credits.all %}<section id="creators" class="content-section"><p class="eyebrow">CREDITS</p><h2>Creators</h2>{% for credit in work.credits.all %}<div class="credit-row"><span>{{ credit.role|capfirst }}</span><strong>{{ credit.agent.name }}</strong></div>{% endfor %}</section>{% endif %}
-    {% if work.source_links.all or work.identifiers.all %}<section id="sources" class="content-section"><p class="eyebrow">PROVENANCE &amp; LINKS</p><h2>Sources</h2><ul class="source-list">{% if open_library_url %}<li><a href="{{ open_library_url }}">View work on Open Library</a></li>{% endif %}{% if wikidata_url %}<li><a href="{{ wikidata_url }}">View entity on Wikidata</a></li>{% endif %}{% for link in work.source_links.all %}<li>{% if link.source.url and 'openlibrary.org' not in link.source.url %}<a href="{{ link.source.url }}">{{ link.source.title }}</a>{% else %}{{ link.source.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% endfor %}</ul></section>{% endif %}
+    {% if work.source_links.all or work.identifiers.all %}<section id="sources" class="content-section"><p class="eyebrow">REFERENCE &amp; PROVENANCE</p><h2>Sources</h2><p class="helper">Catalog records and supporting references do not establish that a copy is available or that reuse is permitted.</p><ul class="source-list">{% if open_library_url %}<li><a href="{{ open_library_url }}">View work on Open Library</a></li>{% endif %}{% if wikidata_url %}<li><a href="{{ wikidata_url }}">View entity on Wikidata</a></li>{% endif %}{% for link in reference_links %}<li>{% if link.url %}<a href="{{ link.url }}" rel="nofollow noopener noreferrer">{{ link.title }}</a>{% else %}{{ link.title }}{% endif %}{% if link.note %}<small>{{ link.note }}</small>{% endif %}</li>{% endfor %}</ul></section>{% endif %}
   </div>
 
   {% if work.versions.all %}<section id="versions" class="content-section versions-section"><p class="eyebrow">EDITIONS, TRANSLATIONS &amp; RECORDINGS</p><h2>Detailed versions</h2><p class="section-deck">Open a version to see its releases and publication details.</p>

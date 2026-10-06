@@ -186,7 +186,7 @@ class ContributionProposalAdmin(admin.ModelAdmin):
     list_filter = ("status", "kind", "submitted_at")
     search_fields = ("work__title", "submitted_by__username", "explanation", "source_url")
     readonly_fields = ("kind", "status", "submitted_by", "work", "field_name", "value_at_submission",
-        "current_value_display", "proposed_value", "related_work", "relationship_type", "direction_display",
+        "current_value_display", "proposed_value", "target_access_link", "related_work", "relationship_type", "direction_display",
         "work_updated_at", "related_work_updated_at", "explanation", "source_link", "submitted_at",
         "reviewer", "reviewed_at", "supersedes")
     fields = readonly_fields + ("reviewer_explanation", "decision", "reconcile_conflict")
@@ -285,3 +285,23 @@ class WorkTermAssignmentAdmin(admin.ModelAdmin):
                 note=obj.reviewer_note,
             )
             messages.success(request, f"Term suggestion {obj.review_state}.")
+
+
+from .models import AccessLink
+
+
+@admin.register(AccessLink)
+class AccessLinkAdmin(admin.ModelAdmin):
+    list_display = ("provider", "work", "category", "version", "release", "active", "last_checked")
+    list_filter = ("category", "active")
+    search_fields = ("provider", "work__title", "url")
+    readonly_fields = ("reviewed_at",)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
