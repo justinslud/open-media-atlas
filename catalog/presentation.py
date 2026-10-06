@@ -16,6 +16,8 @@ BOOK_TYPES = {'book', 'novel'}
 def normalize_search(value):
     # Keep words/accents; punctuation, case and whitespace have no ranking weight.
     value = unicodedata.normalize('NFKC', value).casefold()
+    # Apostrophes within names/titles do not create a new search word.
+    value = value.translate(str.maketrans('', '', "'’ʼ"))
     return ' '.join(''.join(c if c.isalnum() else ' ' for c in value).split())
 
 

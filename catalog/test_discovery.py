@@ -234,3 +234,5 @@ class TrustworthyCatalogTests(TestCase):
         books = self.client.get(reverse('discover'), {'q': 'Three Musketeers', 'type': 'book'})
         self.assertEqual([w.pk for w in books.context['works']], [novel.pk])
         self.assertEqual(novel.work_type_id, 'literary-work')
+        punctuation = self.client.get(reverse('discover'), {'q': 'DArtagnan'})
+        self.assertEqual([w.pk for w in punctuation.context['works']], [adaptation.pk])
