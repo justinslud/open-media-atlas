@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% load library_tags %}
 {% block content %}
 <section class="home-intro" aria-labelledby="intro-title">
   <div>
@@ -19,15 +19,15 @@
   </div>
   <div class="featured-grid">
     {% for selection in featured_selections %}{% with work=selection.work %}
-      <a class="featured-work" href="{{ work.get_absolute_url }}">
+      <div class="featured-card"><a class="featured-work" href="{{ work.get_absolute_url }}">
         <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.public_type_label|slice:":1" }}</span>
         <span><strong>{{ work.display_title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.public_type_label }}{% if work.date_summary %} · {{ work.date_summary }}{% endif %}</small>{% if selection.note %}<em>{{ selection.note }}</em>{% endif %}</span>
-      </a>
+      </a>{% library_control work "save" %}</div>
     {% endwith %}{% empty %}
-      {% for work in fallback_works %}<a class="featured-work" href="{{ work.get_absolute_url }}">
+      {% for work in fallback_works %}<div class="featured-card"><a class="featured-work" href="{{ work.get_absolute_url }}">
         <span class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.public_type_label|slice:":1" }}</span>
         <span><strong>{{ work.display_title }}</strong><small>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.public_type_label }}{% if work.date_summary %} · {{ work.date_summary }}{% endif %}</small></span>
-      </a>{% empty %}<div class="empty"><strong>The catalog is being prepared.</strong><p>There are no published works to show yet. Please check back soon.</p></div>{% endfor %}
+      </a>{% library_control work "save" %}</div>{% empty %}<div class="empty"><strong>The catalog is being prepared.</strong><p>There are no published works to show yet. Please check back soon.</p></div>{% endfor %}
     {% endfor %}
   </div>
 </section>

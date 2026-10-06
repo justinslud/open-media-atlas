@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% load library_tags %}
 {% block title %}{{ work.display_title }} · Open Media Atlas{% endblock %}
 {% block content %}
 {% if work.is_demo %}<div class="demo-banner"><strong>Demonstration record</strong> — This work and all associated facts and sources are fictional.</div>{% endif %}
@@ -13,6 +13,7 @@
       {% if work.description %}<p class="lede">{{ work.description|truncatewords:45 }}</p>{% endif %}
       {% if work.accepted_term_assignments %}<div class="term-pills" aria-label="Descriptive terms">{% for assignment in work.accepted_term_assignments %}<span>{{ assignment.term.label }}</span>{% endfor %}</div>{% endif %}
       <div class="work-actions">
+        {% library_control work "save" %}{% library_control work "follow-work" %}
         {% if primary_link.url %}<a class="primary-action" href="{{ primary_link.url }}">{{ primary_link.title|default:"View source or availability" }} <span aria-hidden="true">↗</span></a>{% endif %}
         {% if has_relationships %}<a class="secondary-action" href="#connections">Explore connections</a>{% endif %}
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'add-to-list' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'add-to-list' work.pk %}{% endif %}">Add to collection</a>
@@ -20,6 +21,7 @@
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-relationship' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-relationship' work.pk %}{% endif %}">Suggest a relationship</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-term' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-term' work.pk %}{% endif %}">Suggest a term</a>
       </div>
+      <p class="helper">Save keeps this work in your private library. Follow shows accepted relationship changes inside OMA.</p>
       <nav class="section-jumps" aria-label="On this page"><span>On this page</span><a href="#connections">Connections</a>{% if work.description %}<a href="#description">Description</a>{% endif %}<a href="#details">Details</a>{% if work.credits.all %}<a href="#creators">Creators</a>{% endif %}{% if work.versions.all %}<a href="#versions">Editions &amp; versions</a>{% endif %}{% if work.source_links.all or work.identifiers.all %}<a href="#sources">Sources</a>{% endif %}</nav>
     </div>
   </header>

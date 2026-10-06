@@ -1,3 +1,4 @@
+{% load library_tags %}
 {% if has_filters %}<nav class="active-filters" aria-label="Active filters">
   <strong>Active:</strong>
   {% if query %}<a href="?{% if selected_type %}type={{ selected_type|urlencode }}&amp;{% endif %}{% if creator %}creator={{ creator|urlencode }}&amp;{% endif %}{% if year_from %}year_from={{ year_from|urlencode }}&amp;{% endif %}{% if year_to %}year_to={{ year_to|urlencode }}&amp;{% endif %}{% if selected_relationship %}relationship={{ selected_relationship|urlencode }}&amp;{% endif %}sort={{ selected_sort }}">Search: {{ query }} ×</a>{% endif %}
@@ -13,7 +14,7 @@
 {% for work in works %}<article class="result-row">
   <div class="format-mark format-{{ work.work_type.medium }}" aria-hidden="true">{{ work.public_type_label|slice:":1" }}</div>
   <div class="result-main"><h2><a href="{{ work.get_absolute_url }}">{{ work.display_title }}</a></h2><p>{% for credit in work.credits.all %}{% if forloop.first %}{{ credit.agent.name }} · {% endif %}{% endfor %}{{ work.public_type_label }}{% if work.date_summary %} · {{ work.date_summary }}{% endif %}</p></div>
-  <div class="result-end">{% if work.is_demo %}<span class="badge">Demo</span>{% endif %}<span>{{ work.connection_count }} connection{{ work.connection_count|pluralize }}</span></div>
+  <div class="result-end">{% library_control work "save" %}{% if work.is_demo %}<span class="badge">Demo</span>{% endif %}<span>{{ work.connection_count }} connection{{ work.connection_count|pluralize }}</span></div>
 </article>{% empty %}<div class="empty"><h2>No works found</h2><p>No works match these filters. Remove one or more filters to broaden the results.</p><a class="secondary-action" href="{% url 'discover' %}">Clear all filters</a></div>{% endfor %}
 </div>
 {% if page_obj.paginator.num_pages > 1 %}<nav class="pagination" aria-label="Results pages">

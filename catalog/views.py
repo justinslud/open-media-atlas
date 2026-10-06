@@ -275,7 +275,7 @@ def list_create(request):
         media_list = form.save(commit=False)
         media_list.owner = request.user
         media_list.save()
-        messages.success(request, "List created.")
+        messages.success(request, "Collection created.")
         return redirect("list-edit", pk=media_list.pk)
     return render(request, "catalog/list_form.html", {"form": form, "heading": "Create a collection"})
 
@@ -288,7 +288,7 @@ def list_edit(request, pk):
     form = MediaListForm(request.POST or None, instance=media_list, can_publish=_can_publish(request.user))
     if request.method == "POST" and form.is_valid():
         form.save()
-        messages.success(request, "List updated.")
+        messages.success(request, "Collection updated.")
         return redirect("list-edit", pk=pk)
     entries = media_list.entries.select_related("work__work_type").prefetch_related("work__credits__agent", "work__source_records")
     return render(request, "catalog/list_form.html", {"form": form, "heading": "Edit collection", "media_list": media_list, "entries": entries})
@@ -301,7 +301,7 @@ def list_delete(request, pk):
     media_list = _owned_list(request, pk)
     if request.method == "POST":
         media_list.delete()
-        messages.success(request, "List deleted.")
+        messages.success(request, "Collection deleted.")
         return redirect("my-lists")
     return render(request, "catalog/list_confirm_delete.html", {"media_list": media_list})
 
@@ -328,7 +328,7 @@ def list_add_work(request, pk, work_pk):
     if _append_work(media_list, work):
         messages.success(request, f"Added {work.display_title}.")
     else:
-        messages.info(request, "That work is already in this list.")
+        messages.info(request, "That work is already in this collection.")
     return redirect("list-edit", pk=pk)
 
 
