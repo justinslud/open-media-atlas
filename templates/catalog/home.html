@@ -38,7 +38,7 @@
   <div class="connection-pairs">
     {% for relationship in relationships %}<article class="connection-pair">
       <a href="{{ relationship.to_work.get_absolute_url }}"><strong>{{ relationship.to_work.display_title }}</strong><small>{{ relationship.to_work.public_type_label }}{% if relationship.to_work.date_summary %} · {{ relationship.to_work.date_summary }}{% endif %}</small></a>
-      <div class="connection-label"><span aria-hidden="true">→</span> {{ relationship.relationship_type.inverse_label }}</div>
+      <div class="connection-label"><span aria-hidden="true">→</span> {{ relationship.display_label }}</div>
       <a href="{{ relationship.from_work.get_absolute_url }}"><strong>{{ relationship.from_work.display_title }}</strong><small>{{ relationship.from_work.public_type_label }}{% if relationship.from_work.date_summary %} · {{ relationship.from_work.date_summary }}{% endif %}</small></a>
     </article>{% empty %}<div class="empty"><strong>Connections are coming into focus.</strong><p>No reviewed relationships between published works are available yet. Browse the catalog in the meantime.</p></div>{% endfor %}
   </div>
