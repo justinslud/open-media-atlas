@@ -15,6 +15,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
+            model_name='workrelationship',
+            name='pending_publication',
+            field=models.BooleanField(default=False, editable=False),
+        ),
+        migrations.AddField(
             model_name='medialist',
             name='public_since',
             field=models.DateTimeField(default=django.utils.timezone.now),
@@ -23,6 +28,7 @@ class Migration(migrations.Migration):
             name='LibraryEvent',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('deduplication_key', models.CharField(blank=True, max_length=120, null=True, unique=True)),
                 ('kind', models.CharField(choices=[('relationship_added', 'Relationship added'), ('relationship_corrected', 'Relationship corrected'), ('relationship_removed', 'Relationship removed'), ('collection_added', 'Work added to collection'), ('collection_removed', 'Work removed from collection')], max_length=40)),
                 ('before', models.JSONField(default=dict)),
                 ('after', models.JSONField(default=dict)),

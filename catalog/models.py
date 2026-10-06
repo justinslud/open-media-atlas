@@ -785,6 +785,7 @@ class CollectionFollow(models.Model):
 
 class LibraryEvent(models.Model):
     """One event per committed mutation, shared by all current followers; no backfill."""
+    deduplication_key = models.CharField(max_length=120, unique=True, null=True, blank=True)
     kind = models.CharField(max_length=40, choices=[
         ("relationship_added", "Relationship added"), ("relationship_corrected", "Relationship corrected"),
         ("relationship_removed", "Relationship removed"),
