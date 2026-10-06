@@ -465,7 +465,8 @@ def suggest_correction(request, pk):
     form = CorrectionProposalForm(request.POST or None, initial={"field_name": initial_field})
     relationship_fields = {"scope_note", "relationship_type", "authorization_statement"}
     form.fields["field_name"].choices = [choice for choice in form.FIELD_CHOICES
-        if (choice[0] in relationship_fields) == bool(relationship)]
+        if (choice[0] in relationship_fields) == bool(relationship)
+        and (choice[0] != "authorization_statement" or relationship.authorization_statement)]
     selected_field = request.POST.get("field_name", initial_field)
     current_value = (ContributionProposal(work=work, field_name=selected_field, kind="correction", target_relationship=relationship).current_value
                      if selected_field in {choice[0] for choice in form.fields["field_name"].choices} else "")

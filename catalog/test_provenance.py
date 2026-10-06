@@ -235,3 +235,14 @@ class ProvenanceTests(TestCase):
         data = work_provenance(self.work)["first_publication_date_text"]
         self.assertEqual(data["entries"][0]["state"], "Source not recorded for this field")
         self.assertEqual(data["history"][0]["url"], "https://example.org/legacy-date")
+
+    def test_correction_flow_cannot_introduce_new_rights_statement(self):
+        rel = self.relationship()
+        rel.evidence = {}
+        rel.save()
+        self.client.force_login(self.user)
+        url = reverse("suggest-correction", args=[self.work.pk])
+        response = self.client.post(url, {"target_relationship": rel.pk, "field_name": "authorization_statement",
+            "proposed_value": "New claim", "explanation": "Fixture", "source_url": "https://example.org/new"})
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(ContributionProposal.objects.exists())
