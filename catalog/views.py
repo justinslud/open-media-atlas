@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 from accounts.models import EmailVerification
+from .discovery import DISCOVERY_ORDER, catalog_queryset, filter_public_type, search
 from .forms import EntryCommentaryForm, MediaListForm
 from .models import (
     FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship,
@@ -53,7 +54,7 @@ def home(request):
     featured = (
         FeaturedWork.objects.filter(work__in=public)
         .select_related("work__work_type")
-        .prefetch_related("work__credits__agent")
+        .prefetch_related("work__credits__agent", "work__source_records")
         .order_by("position", "id")[:6]
     )
 
@@ -62,7 +63,7 @@ def home(request):
     fallback_works = []
     if not featured:
         fallback_works = list(
-            public.select_related("work_type").prefetch_related("credits__agent")[:6]
+            catalog_queryset(public).order_by(*DISCOVERY_ORDER)[:6]
         )
 
     relationships = (
@@ -72,7 +73,7 @@ def home(request):
         .select_related(
             "from_work__work_type", "to_work__work_type", "relationship_type"
         )
-        .prefetch_related("from_work__credits__agent", "to_work__credits__agent")
+        .prefetch_related("from_work__credits__agent", "to_work__credits__agent", "from_work__source_records", "to_work__source_records")
         .order_by("id")[:3]
     )
     return render(
@@ -90,41 +91,14 @@ def home(request):
 def discover(request):
     query = request.GET.get("q", "").strip()
     media_type = request.GET.get("type", "").strip()
+    media_type = {"creative-work": "unclassified", "unknown": "unclassified", "literary-work": "written-work"}.get(media_type, media_type)
     creator = request.GET.get("creator", "").strip()[:200]
     year_from = request.GET.get("year_from", "").strip()
     year_to = request.GET.get("year_to", "").strip()
     relationship = request.GET.get("relationship", "").strip()
-    sort = request.GET.get("sort", "title").strip()
+    sort = request.GET.get("sort", "auto").strip()
     public = public_works()
-    works = (
-        public.select_related("work_type")
-        .prefetch_related("credits__agent")
-        .annotate(
-            connection_count=Count(
-                "outgoing_relationships",
-                filter=Q(
-                    outgoing_relationships__review_status="accepted",
-                    outgoing_relationships__to_work__in=public,
-                ),
-                distinct=True,
-            )
-            + Count(
-                "incoming_relationships",
-                filter=Q(
-                    incoming_relationships__review_status="accepted",
-                    incoming_relationships__from_work__in=public,
-                ),
-                distinct=True,
-            )
-        )
-    )
-    if query:
-        works = works.filter(
-            Q(title__icontains=query)
-            | Q(credits__agent__name__icontains=query)
-        ).distinct()
-    if media_type:
-        works = works.filter(work_type_id=media_type)
+    works = catalog_queryset(public)
     if creator:
         works = works.filter(credits__agent__name__icontains=creator).distinct()
     if year_from.isdigit():
@@ -144,12 +118,19 @@ def discover(request):
             outgoing_relationships__relationship_type__category="derivation",
             outgoing_relationships__to_work__in=public,
         ).distinct()
+    if media_type:
+        works = filter_public_type(works, media_type)
+    if query:
+        works = search(works, query)
     orderings = {
         "title": ("title", "first_publication_year", "id"),
         "newest": ("-first_publication_year", "title", "id"),
         "oldest": ("first_publication_year", "title", "id"),
     }
-    works = works.order_by(*orderings.get(sort, orderings["title"]))
+    if sort not in {"auto", *orderings}:
+        sort = "auto"
+    ordering = orderings.get(sort, (("relevance", "relevance_distance") + DISCOVERY_ORDER if query else DISCOVERY_ORDER))
+    works = works.order_by(*ordering)
     page_obj = Paginator(works, DISCOVER_PAGE_SIZE).get_page(request.GET.get("page"))
     preserved = request.GET.copy()
     preserved.pop("page", None)
@@ -164,9 +145,14 @@ def discover(request):
         "year_from": year_from,
         "year_to": year_to,
         "selected_relationship": relationship,
-        "selected_sort": sort if sort in orderings else "title",
+        "selected_sort": sort,
         "has_filters": any((query, media_type, creator, year_from, year_to, relationship)),
-        "work_types": WorkType.objects.order_by("label"),
+        "work_types": [{"pk": "book", "label": "Books (including novels)"},
+                       {"pk": "unclassified", "label": "Unclassified works"},
+                       {"pk": "written-work", "label": "Written works (type unspecified)"}] + [
+            {"pk": kind.pk, "label": "Written works (type unspecified)" if kind.pk in {"literary-work", "written-work"} else kind.label}
+            for kind in WorkType.objects.exclude(pk__in=("book", "creative-work", "unknown", "literary-work", "written-work")).order_by("label")
+        ],
     }
     template = (
         "catalog/_results.html"
@@ -183,13 +169,14 @@ def work_detail(request, pk, slug):
     public = public_works()
     accepted_outgoing = WorkRelationship.objects.filter(
         review_status="accepted", to_work__in=public
-    ).select_related("to_work__work_type", "relationship_type", "source")
+    ).select_related("to_work__work_type", "relationship_type", "source").prefetch_related("to_work__credits__agent", "to_work__source_records")
     accepted_incoming = WorkRelationship.objects.filter(
         review_status="accepted", from_work__in=public
-    ).select_related("from_work__work_type", "relationship_type", "source")
+    ).select_related("from_work__work_type", "relationship_type", "source").prefetch_related("from_work__credits__agent", "from_work__source_records")
     work = get_object_or_404(
         public.select_related("work_type").prefetch_related(
             "credits__agent",
+            "source_records",
             "versions__releases",
             "source_links__source",
             "identifiers",
@@ -289,7 +276,7 @@ def list_detail(request, pk, slug):
     is_owner = request.user.is_authenticated and media_list.owner_id == request.user.id
     if media_list.visibility != MediaList.Visibility.PUBLIC and not (is_owner or _can_view_private(request.user)):
         raise Http404
-    entries = media_list.entries.select_related("work__work_type").prefetch_related("work__credits__agent")
+    entries = media_list.entries.select_related("work__work_type").prefetch_related("work__credits__agent", "work__source_records")
     return render(request, "catalog/list_detail.html", {"media_list": media_list, "entries": entries, "is_owner": is_owner})
 
 

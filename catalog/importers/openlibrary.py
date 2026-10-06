@@ -91,15 +91,15 @@ class OpenLibraryImporter:
             existing_record.save(update_fields=("retrieved_at",))
             return ImportResult("skipped", existing_record.matched_work, "Source payload unchanged")
 
-        date_text = str(payload.get("first_publish_date") or "").strip()
-        year_match = re.search(r"(?<!\d)(1\d{3}|20\d{2})(?!\d)", date_text)
-        year = int(year_match.group(1)) if year_match else None
+        from catalog.dates import openlibrary_date
+        date_text, year = openlibrary_date(payload)
         work = existing_record.matched_work if existing_record else None
         created = work is None
         if created:
             book_type, _ = WorkType.objects.get_or_create(code="book", defaults={"label": "Book", "medium": "text"})
             work = Work.objects.create(title=title, slug=f"{slugify(title)}-{external_id.lower()}", work_type=book_type,
                 first_publication_date_text=date_text, first_publication_year=year,
+                date_kind="publication", date_evidence={"date_text": date_text, "property": "first_publish_date", "source_url": f"https://openlibrary.org/works/{external_id}"},
                 completion_status="released", visibility=Work.Visibility.PUBLIC, depth="index", is_demo=False)
 
         record, _ = SourceRecord.objects.update_or_create(source=self.source, external_key=external_id, defaults={
@@ -107,6 +107,11 @@ class OpenLibraryImporter:
         })
         previous = ImportedWorkState.objects.filter(source_record=record).first()
         changed = []
+        preserve_date = not created and (work.date_kind in {"first_publication", "first_release"}
+            or work.depth == "editorial"
+            or work.contribution_revisions.filter(field_name="first_publication_date_text").exists()
+            or (previous is not None and (work.first_publication_date_text not in ("", previous.imported_date_text)
+                                         or work.first_publication_year not in (None, previous.imported_year))))
         if not created:
             for field, new_value, old_imported in (
                 ("title", title, previous.imported_title if previous else None),
@@ -114,10 +119,16 @@ class OpenLibraryImporter:
                 ("first_publication_year", year, previous.imported_year if previous else None),
             ):
                 current = getattr(work, field)
+                if field.startswith("first_publication") and preserve_date:
+                    continue
                 if current in (None, "") or current == old_imported:
                     if current != new_value:
                         setattr(work, field, new_value)
                         changed.append(field)
+            if "first_publication_date_text" in changed and work.date_kind not in {"first_publication", "first_release"}:
+                work.date_kind = "publication"
+                work.date_evidence = {"date_text": date_text, "property": "first_publish_date", "source_url": f"https://openlibrary.org/works/{external_id}"}
+                changed.extend(("date_kind", "date_evidence"))
             if changed:
                 work.save(update_fields=changed + ["updated_at"])
         ImportedWorkState.objects.update_or_create(source_record=record, defaults={

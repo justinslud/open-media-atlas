@@ -14,8 +14,8 @@
     <div class="nav-wrap">
       <a class="brand" href="{% url 'home' %}"><span aria-hidden="true">OMA</span><span class="brand-long">Open Media Atlas</span></a>
       <form class="nav-search" action="{% url 'discover' %}" method="get" role="search">
-        <label class="sr-only" for="nav-q">Search titles</label>
-        <input id="nav-q" type="search" name="q" placeholder="Search titles…">
+        <label class="sr-only" for="nav-q">Search titles or creators</label>
+        <input id="nav-q" type="search" name="q" placeholder="Title or creator…">
       </form>
       <nav aria-label="Main navigation">
         <a href="{% url 'discover' %}">Browse catalog</a>
