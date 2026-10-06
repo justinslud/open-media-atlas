@@ -13,7 +13,7 @@ from .connections import connections_context, direction_label
 from .discovery import DISCOVERY_ORDER, catalog_queryset, filter_public_type, search
 from .forms import EntryCommentaryForm, MediaListForm
 from .models import (
-    FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship,
+    AccessLink, FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship,
     WorkTermAssignment, WorkType,
 )
 
@@ -180,6 +180,7 @@ def work_detail(request, pk, slug):
             "contribution_revisions",
             "versions__releases",
             "source_links__source",
+            Prefetch("access_links", queryset=AccessLink.objects.filter(active=True).select_related("version", "release__version")),
             "identifiers",
             Prefetch(
                 "term_assignments",
@@ -202,17 +203,13 @@ def work_detail(request, pk, slug):
     wikidata_url = next(
         (f"https://www.wikidata.org/wiki/{item.value}" for item in work.identifiers.all()
          if item.scheme == "wikidata" and item.value.startswith("Q") and item.value[1:].isdigit()), None)
-    primary_link = ({"url": open_library_url, "title": "View on Open Library"} if open_library_url else
-                    ({"url": wikidata_url, "title": "View on Wikidata"} if wikidata_url else next(
-        (link.source for link in work.source_links.all()
-         if link.source.url and "openlibrary.org" not in link.source.url.lower()), None
-    )))
     for version in work.versions.all():
         for release in version.releases.all():
             release.open_library_url = _open_library_url(release.openlibrary_key, "edition")
 
     from .provenance import work_provenance
     provenance = work_provenance(work)
+    from .access import access_context
     connection_context = connections_context(request, work, public)
     return render(
         request,
@@ -221,7 +218,7 @@ def work_detail(request, pk, slug):
             "work": work,
             **connection_context,
             "provenance": provenance,
-            "primary_link": primary_link,
+            **access_context(work),
             "owned_lists": MediaList.objects.filter(owner=request.user) if request.user.is_authenticated else (),
             "open_library_url": open_library_url,
             "wikidata_url": wikidata_url,
@@ -597,7 +594,7 @@ def my_contributions(request):
 @require_http_methods(["GET", "POST"])
 def resubmit_contribution(request, pk):
     """Let an owner answer a clarification request as a separately audited attempt."""
-    from .forms import CorrectionProposalForm, RelationshipProposalForm
+    from .forms import AccessProposalForm, CorrectionProposalForm, RelationshipProposalForm
     from .models import ContributionProposal
 
     proposal = get_object_or_404(
@@ -605,7 +602,14 @@ def resubmit_contribution(request, pk):
         pk=pk, submitted_by=request.user,
         status=ContributionProposal.Status.CLARIFICATION_NEEDED,
     )
-    if proposal.kind == ContributionProposal.Kind.CORRECTION:
+    if proposal.kind == ContributionProposal.Kind.ACCESS:
+        import json
+        from .access import proposed_link
+        form_class = AccessProposalForm
+        form_kwargs = {"work": proposal.work, "target": proposal.target_access_link, "instance": proposed_link(proposal)}
+        initial = {"action": "replace" if json.loads(proposal.proposed_value).get("active", True) else "remove",
+                   "explanation": proposal.explanation, "source_url": proposal.source_url}
+    elif proposal.kind == ContributionProposal.Kind.CORRECTION:
         form_class = CorrectionProposalForm
         form_kwargs = {}
         initial = {"field_name": proposal.field_name, "proposed_value": proposal.proposed_value,
@@ -627,7 +631,7 @@ def resubmit_contribution(request, pk):
         else:
             proposal.resubmit(
                 contributor=request.user,
-                proposed_value=form.cleaned_data.get("proposed_value", ""),
+                proposed_value=form.payload() if proposal.kind == ContributionProposal.Kind.ACCESS else form.cleaned_data.get("proposed_value", ""),
                 related_work=form.cleaned_data.get("related_work"),
                 relationship_type=form.cleaned_data.get("relationship_type"),
                 explanation=form.cleaned_data["explanation"], source_url=form.cleaned_data["source_url"],
@@ -640,3 +644,39 @@ def resubmit_contribution(request, pk):
         "target_relationship": proposal.target_relationship,
         "relationship_form": proposal.kind == ContributionProposal.Kind.RELATIONSHIP,
     })
+
+
+@login_required
+@require_http_methods(["GET", "POST"])
+def suggest_access(request, pk):
+    from accounts.rate_limits import client_key, is_limited
+    from .models import AccessLink, ContributionProposal
+    from .forms import AccessProposalForm
+    work = get_object_or_404(public_works(), pk=pk)
+    target = None
+    if request.GET.get("link"):
+        if not request.GET["link"].isdigit():
+            raise Http404("Invalid access-link ID")
+        target = get_object_or_404(AccessLink, pk=request.GET["link"], work=work)
+    # Form instances are mutable; retain a separate persisted target for the snapshot.
+    instance = AccessLink.objects.get(pk=target.pk) if target else AccessLink(work=work)
+    form = AccessProposalForm(request.POST or None, work=work, target=target, instance=instance)
+    verification_required = not _verified_submission_allowed(request)
+    if request.method == "POST" and form.is_valid():
+        if verification_required:
+            form.add_error(None, "Verify your email address before submitting. Your entries remain below.")
+        elif is_limited("contribution", client_key(request, str(request.user.pk))):
+            return render(request, "accounts/rate_limited.html", status=429)
+        else:
+            proposal = ContributionProposal(kind="access", submitted_by=request.user, work=work,
+                target_access_link=target, proposed_value=form.payload(), work_updated_at=work.updated_at,
+                explanation=form.cleaned_data["explanation"], source_url=form.cleaned_data["source_url"])
+            proposal.value_at_submission = proposal.current_value
+            proposal.full_clean()
+            proposal.save()
+            messages.success(request, "Access link submitted for editorial review.")
+            return redirect("my-contributions")
+    return render(request, "catalog/contribution_form.html", {"form": form, "work": work,
+        "heading": "Report or replace an access link" if target else "Suggest an access link",
+        "verification_required": verification_required,
+        "current_value": str(target) if target else "No selected access link"})

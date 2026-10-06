@@ -1,0 +1,10 @@
+<section id="access" class="content-section access-section" aria-labelledby="access-heading">
+  <h2 id="access-heading">{{ access_heading }}</h2>
+  {% if not has_access %}<p class="empty compact">No known access links for this work.</p>{% endif %}
+  {% if access_groups.direct %}<h3>Direct access</h3><ul class="access-list">{% for item in access_groups.direct %}{% include "catalog/_access_link.html" %}{% endfor %}</ul>{% endif %}
+  {% if access_groups.offers %}<h3>Borrow, buy, rent or subscribe</h3><ul class="access-list">{% for item in access_groups.offers %}{% include "catalog/_access_link.html" %}{% endfor %}</ul>{% endif %}
+  {% if access_groups.reference %}<details class="access-reference"><summary>Reference / catalog and unclassified links</summary><p class="helper">These pages do not establish availability.</p><ul class="access-list">{% for item in access_groups.reference %}{% include "catalog/_access_link.html" %}{% endfor %}</ul></details>{% endif %}
+  {% if access_groups.search %}<div class="access-search"><h3>External searches</h3><p class="helper">Search results may include other editions or works. Availability is not verified.</p><ul class="access-list">{% for item in access_groups.search %}{% include "catalog/_access_link.html" %}{% endfor %}</ul></div>{% endif %}
+  <p class="helper">Access descriptions can change. Cost, region and availability are unknown unless stated. Access does not establish rights or reuse permission.</p>
+  <a href="{% url 'suggest-access' work.pk %}">Suggest an access link</a>
+</section>

@@ -2,6 +2,7 @@ from django.urls import path
 from . import views, library_views
 
 urlpatterns = [
+    path("works/<int:pk>/suggest-access/", views.suggest_access, name="suggest-access"),
     path("me/library/action/<str:action>/<int:pk>/", library_views.library_action, name="library-action"),
     path("me/library/resume/", library_views.resume, name="library-resume"),
     path("health/", views.health, name="health"),

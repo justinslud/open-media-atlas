@@ -64,3 +64,12 @@
 @media (max-width: 640px) {
   .result-end { flex-basis: 100%; padding-left: 56px; }
 }
+
+/* Access destinations remain a compact text list, separate from reference evidence. */
+.access-section { margin-block: 1.5rem; }
+.access-section h3 { font-size: 1rem; margin-block: 1rem .5rem; }
+.access-list { padding-left: 1.25rem; margin-block: .5rem; }
+.access-list li { margin-block: .65rem; overflow-wrap: anywhere; }
+.access-list p { margin-block: .3rem; }
+.access-reference, .access-search { border-top: 1px solid var(--rule); margin-top: 1rem; padding-top: .75rem; }
+.access-reference summary { cursor: pointer; }
