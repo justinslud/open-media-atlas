@@ -7,7 +7,7 @@ from django.test import TestCase
 from django.utils import timezone
 
 from .dates import wikidata_date_for_medium
-from .importers.wikidata import run_import
+from .importers.wikidata import run_import, work_type_spec
 from .management.commands.backfill_wikipedia_dates import parse_infobox_dates
 from .management.commands.discover_wikidata_stage_candidates import build_candidate_rows
 from .management.commands.import_performing_arts_dates import idu_productions, spap_performances
@@ -447,6 +447,16 @@ class CurationCommandTests(TestCase):
         self.assertEqual(rerun_stats["relationships_proposed"], 0)
         self.assertEqual(rerun_stats["relationships_already_proposed"], 1)
         self.assertEqual(ImportRelationshipProposal.objects.count(), 1)
+
+    def test_common_screen_subclasses_resolve_to_specific_types(self):
+        def entity(qid):
+            return {"claims": {"P31": [{"rank": "normal", "mainsnak": {"datavalue": {"value": {"id": qid, "entity-type": "item"}}}}]}}
+
+        self.assertEqual(work_type_spec(entity("Q24869"))[0], "film")
+        self.assertEqual(work_type_spec(entity("Q506240"))[0], "film")
+        self.assertEqual(work_type_spec(entity("Q1259759"))[0], "television-series")
+        self.assertEqual(work_type_spec(entity("Q1261214"))[0], "television-program")
+        self.assertEqual(work_type_spec(entity("Q1194583"))[0], "play")
 
     def test_proposal_triage_green_requires_specific_dated_sourced_edge(self):
         def proposal(**work_overrides):

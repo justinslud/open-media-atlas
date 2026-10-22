@@ -128,7 +128,7 @@ Review these three specifically before treating the set as settled:
 
 ### Remaining pending dates
 
-Pending proposals with an undated endpoint: **36 of 224**. Stage slice A’s Dorian Gray opera and the television `Daai Bo Fuk` are approved but remain drafts because they have no date; stage slice B is fully dated.
+Pending proposals with an undated endpoint: **36 of 157**. Stage slice A’s Dorian Gray opera and the television `Daai Bo Fuk` are approved but remain drafts because they have no date; stage slice B is fully dated.
 
 - 25 of the original 37 have a Wikipedia sitelink; 12 have none.
 - 9 have at least one restricted external ID.
@@ -294,17 +294,18 @@ Stopped treating each media slice as a separate manual review. `triage_proposals
 
 ### Applied result
 
-- 364 candidates triaged: **140 green, 222 amber, 2 red**.
-- 140 proposals approved and 140 works published.
-- Green types: film 77, musical 17, play 12, novel 11, opera 11, video-game 7, album 4, song 1.
-- Red: duplicate accepted `Roméo et Juliette` (6447) and the self-linked/multi-QID Hamlet record (6004).
-- Amber reason tags overlap: generic type 168, no sitelink 82, unverified date 53, no year 36, title collision 1.
-- 362 pending records had no image warning; this did not block publication.
+- First pass: 364 candidates triaged: **140 green, 222 amber, 2 red**; 140 proposals approved and 140 works published.
+- Red cleanup: rejected the duplicate accepted `Roméo et Juliette` (6447) and the self-linked/multi-QID Hamlet record (6004).
+- Added clear screen subtype mappings: television film, animated film, feature film, short film, anime film, animated/miniseries/anime TV series, TV special, one-act play, short novel.
+- Second pass: 222 candidates: **65 green, 157 amber, 0 red**; 65 proposals approved, 62 works published (3 were already public).
+- Green types across both passes: film 121, musical 17, television series 19, play 12, novel 12, opera 11, video-game 7, album 4, television program 1, song 1.
+- Amber reason tags overlap: generic type 94, no sitelink 82, unverified date 53, no year 36.
+- 222 pending records had no image warning; this did not block publication.
 
 ### Current limits
 
-- Public non-demo works: **266**; public works without a year: **0**.
-- 224 proposals remain pending; 36 have an undated endpoint.
+- Public non-demo works: **328**; public works without a year: **0**.
+- 157 proposals remain pending; all are amber, and 36 have an undated endpoint.
 - 66 original adaptations have no Commons `P18`; newly published adaptations mostly use placeholders. No licensed image is available locally for them.
 - Restricted film databases are not scraped. The remaining pending-date records are mostly records with no infobox date or only restricted IDs; use the report before spending time on them.
 

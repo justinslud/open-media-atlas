@@ -82,6 +82,21 @@ TYPE_MAP = {
     "Q15416": ("television-program", "Television program", "screen"), "Q7366": ("song", "Song", "audio"),
     "Q482994": ("album", "Album", "audio"), "Q7889": ("video-game", "Video game", "interactive"),
     "Q47461344": ("written-work", "Written work", "text"), "Q17537576": ("creative-work", "Creative work", "other"),
+    # Clear screen subclasses; do not map broad production/adaptation classes.
+    "Q506240": ("film", "Film", "screen"),  # television film
+    "Q202866": ("film", "Film", "screen"),  # animated film
+    "Q17517379": ("film", "Film", "screen"),  # animated short film
+    "Q24869": ("film", "Film", "screen"),  # feature film
+    "Q24862": ("film", "Film", "screen"),  # short film
+    "Q20650540": ("film", "Film", "screen"),  # anime film
+    "Q117467246": ("television-series", "Television series", "screen"),  # animated television series
+    "Q1259759": ("television-series", "Television series", "screen"),  # miniseries
+    "Q63952888": ("television-series", "Television series", "screen"),  # anime television series
+    "Q1261214": ("television-program", "Television program", "screen"),  # television special
+    "Q3744532": ("television-program", "Television program", "screen"),  # fiction television program
+    "Q21191270": ("television-program", "Television program", "screen"),  # television series episode
+    "Q1194583": ("play", "Play", "stage"),  # one-act play
+    "Q12799318": ("novel", "Novel", "text"),  # short novel
 }
 STAGE_TYPE_PRECEDENCE = {"opera": 0, "musical": 1, "ballet": 2, "play": 3}
 

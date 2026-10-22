@@ -1,38 +1,28 @@
 {
   "version": "2026-10-22-proposal-triage",
-  "generated_at": "2026-10-22T19:12:35.673816+00:00",
+  "generated_at": "2026-10-22T19:33:34.275445+00:00",
   "dry_run": false,
   "reviewer": "admin",
-  "candidate_count": 364,
+  "candidate_count": 222,
   "summary": {
     "decisions": {
-      "green": 140,
-      "amber": 222,
-      "red": 2
+      "amber": 157,
+      "green": 65
     },
     "green_types": {
-      "musical": 17,
-      "play": 12,
-      "video-game": 7,
-      "film": 77,
-      "novel": 11,
-      "opera": 11,
-      "album": 4,
-      "song": 1
+      "film": 44,
+      "television-series": 19,
+      "television-program": 1,
+      "novel": 1
     },
     "reasons": {
       "no_sitelink": 82,
-      "generic_type": 168,
+      "generic_type": 94,
       "date_unverified": 53,
-      "no_year": 36,
-      "already_accepted": 1,
-      "multiple_qids": 1,
-      "entity_mismatch": 1,
-      "self_link": 1,
-      "title_collision": 1
+      "no_year": 36
     },
     "warnings": {
-      "no_image": 362
+      "no_image": 222
     }
   },
   "rules": {
@@ -42,28 +32,6 @@
     "images": "missing images are warnings, not publication blockers; placeholders remain"
   },
   "rows": [
-    {
-      "proposal_id": 230,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6393,
-      "qid": "Q65117582",
-      "title": "& Juliet",
-      "type": "musical",
-      "year": 2019,
-      "date_text": "2019",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 6,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
     {
       "proposal_id": 111,
       "run_id": 5,
@@ -89,72 +57,6 @@
       "seed_id": 6019,
       "seed": "Les Misérables",
       "seed_year": 1862
-    },
-    {
-      "proposal_id": 333,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6313,
-      "qid": "Q3597601",
-      "title": "15-Minute Hamlet",
-      "type": "play",
-      "year": 1976,
-      "date_text": "1976",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 213,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6192,
-      "qid": "Q1491432",
-      "title": "56 csepp vér",
-      "type": "musical",
-      "year": 2006,
-      "date_text": "2006-10-19",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 35,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6226,
-      "qid": "Q17985365",
-      "title": "80 Days",
-      "type": "video-game",
-      "year": 2014,
-      "date_text": "2014",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 10,
-      "seed_id": 6018,
-      "seed": "Around the World in Eighty Days",
-      "seed_year": 1872
     },
     {
       "proposal_id": 34,
@@ -187,20 +89,16 @@
     {
       "proposal_id": 368,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6098,
       "qid": "Q12105673",
       "title": "A Carol Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": 2003,
       "date_text": "2003",
       "date_kind": "publication",
@@ -213,20 +111,16 @@
     {
       "proposal_id": 395,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6337,
       "qid": "Q4655736",
       "title": "A Carol for Another Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": 1964,
       "date_text": "1964",
       "date_kind": "publication",
@@ -269,20 +163,16 @@
     {
       "proposal_id": 372,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6148,
       "qid": "Q1323360",
       "title": "A Dennis the Menace Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": 2007,
       "date_text": "2007",
       "date_kind": "publication",
@@ -295,20 +185,16 @@
     {
       "proposal_id": 383,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6212,
       "qid": "Q16249082",
       "title": "A Diva's Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 2000,
       "date_text": "2000",
       "date_kind": "publication",
@@ -340,50 +226,6 @@
       "date_kind": "publication",
       "visibility": "draft",
       "sitelinks": 6,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 319,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6124,
-      "qid": "Q130646686",
-      "title": "A Herança",
-      "type": "film",
-      "year": 1971,
-      "date_text": "1971-08-26",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 384,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6213,
-      "qid": "Q16255961",
-      "title": "A Klingon Christmas Carol",
-      "type": "play",
-      "year": 2007,
-      "date_text": "2007",
-      "date_kind": "inception",
-      "visibility": "draft",
-      "sitelinks": 3,
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
@@ -443,28 +285,6 @@
       "seed_year": 1600
     },
     {
-      "proposal_id": 271,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6340,
-      "qid": "Q4658460",
-      "title": "A New Alice in the Old Wonderland",
-      "type": "novel",
-      "year": 1895,
-      "date_text": "1895",
-      "date_kind": "inception",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
       "proposal_id": 414,
       "run_id": 5,
       "decision": "amber",
@@ -491,39 +311,15 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 393,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6306,
-      "qid": "Q33284986",
-      "title": "A Quint-mas Carol",
-      "type": "film",
-      "year": 2016,
-      "date_text": "2016-12-24",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
       "proposal_id": 397,
       "run_id": 5,
       "decision": "amber",
       "reasons": [
         "no_year",
-        "generic_type",
         "date_unverified"
       ],
       "reason_details": [
         "adaptation has no year",
-        "public type is still generic",
         "date is marked unverified or has unknown meaning"
       ],
       "warnings": [
@@ -532,7 +328,7 @@
       "work_id": 6341,
       "qid": "Q4659743",
       "title": "A Special Sesame Street Christmas",
-      "type": "creative-work",
+      "type": "television-program",
       "year": null,
       "date_text": "",
       "date_kind": "unknown",
@@ -573,20 +369,16 @@
     {
       "proposal_id": 450,
       "run_id": 7,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6491,
       "qid": "Q15270742",
       "title": "Adventures of Mowgli",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1973,
       "date_text": "1973-07-31",
       "date_kind": "publication",
@@ -761,50 +553,6 @@
       "seed_year": 1865
     },
     {
-      "proposal_id": 244,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6058,
-      "qid": "Q111043927",
-      "title": "Alice in Bed",
-      "type": "opera",
-      "year": 2014,
-      "date_text": "2014-05-07",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
-      "proposal_id": 251,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6121,
-      "qid": "Q12835640",
-      "title": "Alice in Pornoland",
-      "type": "film",
-      "year": 1993,
-      "date_text": "1993",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
       "proposal_id": 257,
       "run_id": 5,
       "decision": "amber",
@@ -891,11 +639,9 @@
       "run_id": 5,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "no_sitelink"
       ],
       "reason_details": [
-        "public type is still generic",
         "adaptation has no Wikipedia sitelink"
       ],
       "warnings": [
@@ -904,7 +650,7 @@
       "work_id": 6172,
       "qid": "Q137600252",
       "title": "Alice in Wonderland: A XXX Parody",
-      "type": "creative-work",
+      "type": "film",
       "year": 2011,
       "date_text": "2011-05-31",
       "date_kind": "publication",
@@ -941,72 +687,6 @@
       "seed_year": 1865
     },
     {
-      "proposal_id": 277,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6443,
-      "qid": "Q85740736",
-      "title": "Alice's Adventures Under Ground",
-      "type": "opera",
-      "year": 2016,
-      "date_text": "2016-11-22",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
-      "proposal_id": 273,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6343,
-      "qid": "Q4725680",
-      "title": "Alice's Adventures in Wonderland retold in words of one syllable",
-      "type": "novel",
-      "year": 1905,
-      "date_text": "1905",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
-      "proposal_id": 265,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6218,
-      "qid": "Q17192021",
-      "title": "Alice's Lover",
-      "type": "musical",
-      "year": 2011,
-      "date_text": "2011-11-17",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
       "proposal_id": 255,
       "run_id": 5,
       "decision": "amber",
@@ -1031,72 +711,6 @@
       "seed_id": 6012,
       "seed": "Alice's Adventures in Wonderland",
       "seed_year": 1865
-    },
-    {
-      "proposal_id": 248,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6099,
-      "qid": "Q121788210",
-      "title": "Alice, Through the Looking: À La Recherche d'Un Lapin Perdu",
-      "type": "film",
-      "year": 2021,
-      "date_text": "2021-11-12",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
-      "proposal_id": 247,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6082,
-      "qid": "Q11685407",
-      "title": "Alicja w Krainie Czarów",
-      "type": "album",
-      "year": 1977,
-      "date_text": "1977",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
-      "proposal_id": 408,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6391,
-      "qid": "Q65048617",
-      "title": "All American Christmas Carol",
-      "type": "film",
-      "year": 2013,
-      "date_text": "2013-11-05",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
     },
     {
       "proposal_id": 199,
@@ -1125,28 +739,6 @@
       "seed_id": 6005,
       "seed": "Romeo and Juliet",
       "seed_year": 1597
-    },
-    {
-      "proposal_id": 270,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6339,
-      "qid": "Q465689",
-      "title": "American McGee's Alice",
-      "type": "video-game",
-      "year": 2000,
-      "date_text": "2000-12-05",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 29,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
     },
     {
       "proposal_id": 310,
@@ -1179,20 +771,16 @@
     {
       "proposal_id": 392,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6277,
       "qid": "Q2629768",
       "title": "An All Dogs Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 1998,
       "date_text": "1998-11-17",
       "date_kind": "publication",
@@ -1203,71 +791,23 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 370,
+      "proposal_id": 398,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
       "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6122,
-      "qid": "Q129601",
-      "title": "An American Carol",
-      "type": "film",
-      "year": 2008,
-      "date_text": "2008",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 12,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 398,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
       "warnings": [
         "no_image"
       ],
       "work_id": 6346,
       "qid": "Q4749754",
       "title": "An American Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 1979,
       "date_text": "1979-12-16",
       "date_kind": "publication",
       "visibility": "draft",
       "sitelinks": 3,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 399,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6347,
-      "qid": "Q4749874",
-      "title": "An Easter Carol",
-      "type": "film",
-      "year": 2004,
-      "date_text": "2004-02-10",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
@@ -1297,28 +837,6 @@
       "seed_id": 6019,
       "seed": "Les Misérables",
       "seed_year": 1862
-    },
-    {
-      "proposal_id": 83,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6234,
-      "qid": "Q18786493",
-      "title": "Army of Frankensteins",
-      "type": "film",
-      "year": 2014,
-      "date_text": "2014",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
     },
     {
       "proposal_id": 41,
@@ -1401,20 +919,16 @@
     {
       "proposal_id": 48,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6440,
       "qid": "Q838313",
       "title": "Around the World with Willy Fog",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1984,
       "date_text": "1984-01-08",
       "date_kind": "inception",
@@ -1427,20 +941,16 @@
     {
       "proposal_id": 386,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6240,
       "qid": "Q1989562",
       "title": "Bah, Humduck! A Looney Tunes Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": 2006,
       "date_text": "2006-11-14",
       "date_kind": "publication",
@@ -1453,20 +963,16 @@
     {
       "proposal_id": 90,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6444,
       "qid": "Q860064",
       "title": "Bikini Frankenstein",
-      "type": "creative-work",
+      "type": "film",
       "year": 2010,
       "date_text": "2010",
       "date_kind": "publication",
@@ -1531,20 +1037,16 @@
     {
       "proposal_id": 400,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6356,
       "qid": "Q4922517",
       "title": "Blackadder's Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 1988,
       "date_text": "1988-12-23",
       "date_kind": "publication",
@@ -1553,94 +1055,6 @@
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
-    },
-    {
-      "proposal_id": 298,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6275,
-      "qid": "Q2609506",
-      "title": "Blood for Dracula",
-      "type": "film",
-      "year": 1974,
-      "date_text": "1974",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 20,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 226,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6357,
-      "qid": "Q4939863",
-      "title": "Bollywood Queen",
-      "type": "film",
-      "year": 2002,
-      "date_text": "2002",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 6,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 219,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6294,
-      "qid": "Q2911576",
-      "title": "Bossemans et Coppenolle",
-      "type": "play",
-      "year": 1938,
-      "date_text": "1938",
-      "date_kind": "inception",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 286,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6116,
-      "qid": "Q1254476",
-      "title": "Bram Stoker's Dracula's Curse",
-      "type": "film",
-      "year": 2006,
-      "date_text": "2006",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 6,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
     },
     {
       "proposal_id": 102,
@@ -1699,20 +1113,16 @@
     {
       "proposal_id": 401,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6358,
       "qid": "Q4986242",
       "title": "Bugs Bunny's Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 1979,
       "date_text": "1979",
       "date_kind": "publication",
@@ -1857,20 +1267,16 @@
     {
       "proposal_id": 388,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6250,
       "qid": "Q2153938",
       "title": "Chasing Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": 2005,
       "date_text": "2005",
       "date_kind": "publication",
@@ -1883,20 +1289,16 @@
     {
       "proposal_id": 387,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6244,
       "qid": "Q2056790",
       "title": "Christmas Cupid",
-      "type": "creative-work",
+      "type": "film",
       "year": 2010,
       "date_text": "2010",
       "date_kind": "publication",
@@ -1933,7 +1335,7 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 227,
+      "proposal_id": 302,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -1941,36 +1343,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6361,
-      "qid": "Q5139014",
-      "title": "Cobu 3D",
-      "type": "film",
-      "year": 2013,
-      "date_text": "2013",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 10,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 302,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6291,
       "qid": "Q2850168",
       "title": "Count Dracula",
-      "type": "creative-work",
+      "type": "film",
       "year": 1977,
       "date_text": "1977",
       "date_kind": "publication",
@@ -1983,20 +1359,16 @@
     {
       "proposal_id": 272,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6342,
       "qid": "Q47035212",
       "title": "Curious Alice",
-      "type": "creative-work",
+      "type": "film",
       "year": 1971,
       "date_text": "1971",
       "date_kind": "publication",
@@ -2033,44 +1405,18 @@
       "seed_year": 1897
     },
     {
-      "proposal_id": 428,
-      "run_id": 6,
+      "proposal_id": 52,
+      "run_id": 5,
       "decision": "green",
       "reasons": [],
       "reason_details": [],
       "warnings": [
         "no_image"
       ],
-      "work_id": 6469,
-      "qid": "Q20413990",
-      "title": "Deadly Jealousy",
-      "type": "film",
-      "year": 1982,
-      "date_text": "1982",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 52,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6109,
       "qid": "Q124323240",
       "title": "Dee & Friends in Oz",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 2024,
       "date_text": "2024-02-05",
       "date_kind": "inception",
@@ -2105,28 +1451,6 @@
       "seed_id": 6012,
       "seed": "Alice's Adventures in Wonderland",
       "seed_year": 1865
-    },
-    {
-      "proposal_id": 150,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6303,
-      "qid": "Q3221677",
-      "title": "Der Graf von Monte Christo",
-      "type": "film",
-      "year": 1979,
-      "date_text": "1979",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
     },
     {
       "proposal_id": 168,
@@ -2325,28 +1649,6 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 187,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6030,
-      "qid": "Q106299619",
-      "title": "Dorian Gray",
-      "type": "opera",
-      "year": 2013,
-      "date_text": "2013-11-08",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6022,
-      "seed": "The Picture of Dorian Gray",
-      "seed_year": 1890
-    },
-    {
       "proposal_id": 191,
       "run_id": 5,
       "decision": "amber",
@@ -2401,138 +1703,6 @@
       "seed_year": 1890
     },
     {
-      "proposal_id": 347,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6422,
-      "qid": "Q7685719",
-      "title": "Doubt",
-      "type": "film",
-      "year": 2009,
-      "date_text": "2009-09-16",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 305,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6353,
-      "qid": "Q484987",
-      "title": "Dracula 2000",
-      "type": "film",
-      "year": 2000,
-      "date_text": "2000",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 27,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 296,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6245,
-      "qid": "Q2058835",
-      "title": "Dracula 3D",
-      "type": "film",
-      "year": 2012,
-      "date_text": "2012",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 17,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 293,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6197,
-      "qid": "Q15284532",
-      "title": "Dracula 5: The Blood Legacy",
-      "type": "video-game",
-      "year": 2013,
-      "date_text": "2013-12-02",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 295,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6208,
-      "qid": "Q16155883",
-      "title": "Dracula Reborn",
-      "type": "film",
-      "year": 2012,
-      "date_text": "2012",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 300,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6285,
-      "qid": "Q27590084",
-      "title": "Dracula Sucks",
-      "type": "film",
-      "year": 1978,
-      "date_text": "1978",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
       "proposal_id": 287,
       "run_id": 5,
       "decision": "amber",
@@ -2554,160 +1724,6 @@
       "date_kind": "first_performance",
       "visibility": "draft",
       "sitelinks": 0,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 301,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6290,
-      "qid": "Q282276",
-      "title": "Dracula's Daughter",
-      "type": "film",
-      "year": 1936,
-      "date_text": "1936",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 29,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 297,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6273,
-      "qid": "Q2561725",
-      "title": "Dracula's Death",
-      "type": "film",
-      "year": 1921,
-      "date_text": "1921-02",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 18,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 284,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6114,
-      "qid": "Q125187519",
-      "title": "Dracula: A Love Tale",
-      "type": "film",
-      "year": 2025,
-      "date_text": "2025",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 27,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 285,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6115,
-      "qid": "Q1254469",
-      "title": "Dracula: Dead and Loving It",
-      "type": "film",
-      "year": 1995,
-      "date_text": "1995",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 33,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 306,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6364,
-      "qid": "Q5304682",
-      "title": "Dracula: Pages from a Virgin's Diary",
-      "type": "film",
-      "year": 2002,
-      "date_text": "2002",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 299,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6276,
-      "qid": "Q2625274",
-      "title": "Dracula: Resurrection",
-      "type": "video-game",
-      "year": 1999,
-      "date_text": "1999-10",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 13,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 304,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6352,
-      "qid": "Q4809431",
-      "title": "Drakula İstanbul'da",
-      "type": "film",
-      "year": 1953,
-      "date_text": "1953",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 7,
       "seed_id": 6008,
       "seed": "Dracula",
       "seed_year": 1897
@@ -2743,20 +1759,16 @@
     {
       "proposal_id": 125,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6265,
       "qid": "Q2437033",
       "title": "Dōbutsu Takarajima",
-      "type": "creative-work",
+      "type": "film",
       "year": 1971,
       "date_text": "1971",
       "date_kind": "publication",
@@ -2769,20 +1781,16 @@
     {
       "proposal_id": 402,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6365,
       "qid": "Q5331548",
       "title": "Ebbie",
-      "type": "creative-work",
+      "type": "film",
       "year": 1995,
       "date_text": "1995",
       "date_kind": "publication",
@@ -2795,47 +1803,21 @@
     {
       "proposal_id": 403,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6366,
-      "qid": "Q5331636",
-      "title": "Ebenezer",
-      "type": "creative-work",
-      "year": 1998,
-      "date_text": "1998",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 376,
-      "run_id": 5,
       "decision": "green",
       "reasons": [],
       "reason_details": [],
       "warnings": [
         "no_image"
       ],
-      "work_id": 6165,
-      "qid": "Q136650058",
-      "title": "Ebenezer: A Christmas Carol",
+      "work_id": 6366,
+      "qid": "Q5331636",
+      "title": "Ebenezer",
       "type": "film",
-      "year": 2026,
-      "date_text": "2026",
-      "date_kind": "release",
+      "year": 1998,
+      "date_text": "1998",
+      "date_kind": "publication",
       "visibility": "draft",
-      "sitelinks": 19,
+      "sitelinks": 1,
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
@@ -2899,20 +1881,16 @@
     {
       "proposal_id": 363,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6050,
       "qid": "Q109437993",
       "title": "Ein Weihnachtslied in Prosa oder Eine Geistergeschichte zum Christfest",
-      "type": "creative-work",
+      "type": "film",
       "year": 1960,
       "date_text": "1960-12-24",
       "date_kind": "publication",
@@ -2949,7 +1927,7 @@
       "seed_year": 1844
     },
     {
-      "proposal_id": 98,
+      "proposal_id": 2,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -2957,36 +1935,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6270,
-      "qid": "Q25218086",
-      "title": "Eligible",
-      "type": "novel",
-      "year": 2016,
-      "date_text": "2016-04-19",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6009,
-      "seed": "Pride and Prejudice",
-      "seed_year": 1813
-    },
-    {
-      "proposal_id": 2,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6027,
       "qid": "Q10483400",
       "title": "En midsommarnattsdröm",
-      "type": "creative-work",
+      "type": "film",
       "year": 1990,
       "date_text": "1990-01-03",
       "date_kind": "publication",
@@ -3055,28 +2007,6 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 86,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6363,
-      "qid": "Q527958",
-      "title": "Flesh for Frankenstein",
-      "type": "film",
-      "year": 1973,
-      "date_text": "1973",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 18,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
       "proposal_id": 75,
       "run_id": 5,
       "decision": "amber",
@@ -3103,154 +2033,18 @@
       "seed_year": 1818
     },
     {
-      "proposal_id": 81,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6222,
-      "qid": "Q1760713",
-      "title": "Frankenstein 90",
-      "type": "film",
-      "year": 1984,
-      "date_text": "1984",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 84,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6300,
-      "qid": "Q3082883",
-      "title": "Frankenstein General Hospital",
-      "type": "film",
-      "year": 1988,
-      "date_text": "1988",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 92,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6454,
-      "qid": "Q964239",
-      "title": "Frankenstein Must Be Destroyed",
-      "type": "film",
-      "year": 1969,
-      "date_text": "1969",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 18,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 80,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6209,
-      "qid": "Q16156235",
-      "title": "Frankenstein – A New Musical",
-      "type": "musical",
-      "year": 2007,
-      "date_text": "2007-11-01",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 85,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6314,
-      "qid": "Q37743414",
-      "title": "Frankenstein-project",
-      "type": "play",
-      "year": 2007,
-      "date_text": "2007-10-15",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 87,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6371,
-      "qid": "Q5490677",
-      "title": "Frankenstein: Day of the Beast",
-      "type": "film",
-      "year": 2011,
-      "date_text": "2011",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
       "proposal_id": 82,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6223,
       "qid": "Q1767760",
       "title": "Frankenstein: The True Story",
-      "type": "creative-work",
+      "type": "film",
       "year": 1973,
       "date_text": "1973-11-30",
       "date_kind": "publication",
@@ -3263,20 +2057,16 @@
     {
       "proposal_id": 258,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6143,
       "qid": "Q131795251",
       "title": "Fushigi no Kuni de Alice to: Dive in Wonderland",
-      "type": "creative-work",
+      "type": "film",
       "year": 2025,
       "date_text": "2025-08-29",
       "date_kind": "publication",
@@ -3287,7 +2077,7 @@
       "seed_year": 1865
     },
     {
-      "proposal_id": 57,
+      "proposal_id": 163,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -3295,36 +2085,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6173,
-      "qid": "Q137836691",
-      "title": "Gale: Yellow Brick Road",
-      "type": "film",
-      "year": 2026,
-      "date_text": "2026-02-11",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6013,
-      "seed": "The Wonderful Wizard of Oz",
-      "seed_year": 1900
-    },
-    {
-      "proposal_id": 163,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6446,
       "qid": "Q906811",
       "title": "Gankutsuou: The Count of Monte Cristo",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 2004,
       "date_text": "2004-10-06",
       "date_kind": "inception",
@@ -3359,28 +2123,6 @@
       "seed_id": 6004,
       "seed": "The Tragedy of Hamlet, Prince of Denmark",
       "seed_year": 1602
-    },
-    {
-      "proposal_id": 119,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6123,
-      "qid": "Q12964319",
-      "title": "Godspeed",
-      "type": "novel",
-      "year": 1990,
-      "date_text": "1990-07",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6015,
-      "seed": "Treasure Island",
-      "seed_year": 1883
     },
     {
       "proposal_id": 58,
@@ -3436,28 +2178,6 @@
       "year": null,
       "date_text": "",
       "date_kind": "unknown",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 311,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6049,
-      "qid": "Q109407787",
-      "title": "Hamlet",
-      "type": "play",
-      "year": 1966,
-      "date_text": "1966-03",
-      "date_kind": "first_performance",
       "visibility": "draft",
       "sitelinks": 1,
       "seed_id": 6004,
@@ -3581,20 +2301,16 @@
     {
       "proposal_id": 339,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6374,
       "qid": "Q5645468",
       "title": "Hamlet at Elsinore",
-      "type": "creative-work",
+      "type": "film",
       "year": 1964,
       "date_text": "1964",
       "date_kind": "publication",
@@ -3805,72 +2521,6 @@
       "seed_year": 1602
     },
     {
-      "proposal_id": 349,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6451,
-      "qid": "Q938067",
-      "title": "Hamletmachine",
-      "type": "play",
-      "year": 1978,
-      "date_text": "1978",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 7,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 430,
-      "run_id": 6,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6471,
-      "qid": "Q29828859",
-      "title": "Harlem Duet",
-      "type": "play",
-      "year": 1997,
-      "date_text": "1997",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 240,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6449,
-      "qid": "Q93314345",
-      "title": "Her & Him",
-      "type": "film",
-      "year": 2019,
-      "date_text": "2019",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 5,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
       "proposal_id": 14,
       "run_id": 5,
       "decision": "amber",
@@ -3925,72 +2575,6 @@
       "seed_year": 1902
     },
     {
-      "proposal_id": 308,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6453,
-      "qid": "Q96381322",
-      "title": "Hrabe Drakula",
-      "type": "film",
-      "year": 1971,
-      "date_text": "1971",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 438,
-      "run_id": 6,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6478,
-      "qid": "Q5903902",
-      "title": "Huapango",
-      "type": "film",
-      "year": 2004,
-      "date_text": "2004-10-01",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 198,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6034,
-      "qid": "Q1071307",
-      "title": "I Capuleti e i Montecchi",
-      "type": "opera",
-      "year": 1830,
-      "date_text": "1830",
-      "date_kind": "inception",
-      "visibility": "draft",
-      "sitelinks": 19,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
       "proposal_id": 154,
       "run_id": 5,
       "decision": "amber",
@@ -4021,20 +2605,16 @@
     {
       "proposal_id": 115,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6315,
       "qid": "Q3791024",
       "title": "I miserabili",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1964,
       "date_text": "1964",
       "date_kind": "publication",
@@ -4047,20 +2627,16 @@
     {
       "proposal_id": 151,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6316,
       "qid": "Q3793605",
       "title": "Il conte di Montecristo",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1966,
       "date_text": "1966",
       "date_kind": "publication",
@@ -4073,20 +2649,16 @@
     {
       "proposal_id": 152,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6317,
       "qid": "Q3793609",
       "title": "Il conto Montecristo",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1997,
       "date_text": "1997-06-22",
       "date_kind": "inception",
@@ -4097,37 +2669,13 @@
       "seed_year": 1844
     },
     {
-      "proposal_id": 32,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6141,
-      "qid": "Q131290635",
-      "title": "In 80 Tagen um die Welt",
-      "type": "opera",
-      "year": 2024,
-      "date_text": "2024-11-17",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6018,
-      "seed": "Around the World in Eighty Days",
-      "seed_year": 1872
-    },
-    {
       "proposal_id": 45,
       "run_id": 5,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "no_sitelink"
       ],
       "reason_details": [
-        "public type is still generic",
         "adaptation has no Wikipedia sitelink"
       ],
       "warnings": [
@@ -4136,7 +2684,7 @@
       "work_id": 6406,
       "qid": "Q69877993",
       "title": "Indian Fantasy",
-      "type": "creative-work",
+      "type": "film",
       "year": 1955,
       "date_text": "1955",
       "date_kind": "publication",
@@ -4147,71 +2695,23 @@
       "seed_year": 1872
     },
     {
-      "proposal_id": 391,
+      "proposal_id": 380,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
       "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6262,
-      "qid": "Q23781185",
-      "title": "Isten pénze",
-      "type": "musical",
-      "year": 1995,
-      "date_text": "1995-12-23",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 380,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
       "warnings": [
         "no_image"
       ],
       "work_id": 6194,
       "qid": "Q15045264",
       "title": "It's Christmas, Carol!",
-      "type": "creative-work",
+      "type": "film",
       "year": 2012,
       "date_text": "2012-11-18",
       "date_kind": "publication",
       "visibility": "draft",
       "sitelinks": 3,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 394,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6320,
-      "qid": "Q3878213",
-      "title": "It's Never Too Late",
-      "type": "film",
-      "year": 1953,
-      "date_text": "1953",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 5,
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
@@ -4243,72 +2743,6 @@
       "seed_id": 6019,
       "seed": "Les Misérables",
       "seed_year": 1862
-    },
-    {
-      "proposal_id": 171,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6214,
-      "qid": "Q1636272",
-      "title": "Jeff Wayne's Musical Version of The War of the Worlds",
-      "type": "album",
-      "year": 1975,
-      "date_text": "1975",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 15,
-      "seed_id": 6017,
-      "seed": "The War of the Worlds",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 178,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6384,
-      "qid": "Q6175237",
-      "title": "Jeff Wayne's Musical Version of The War of the Worlds – The New Generation",
-      "type": "album",
-      "year": 2012,
-      "date_text": "2012",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6017,
-      "seed": "The War of the Worlds",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 177,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6311,
-      "qid": "Q3494344",
-      "title": "Jeff Wayne's The War of the Worlds",
-      "type": "video-game",
-      "year": 1998,
-      "date_text": "1998",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
-      "seed_id": 6017,
-      "seed": "The War of the Worlds",
-      "seed_year": 1897
     },
     {
       "proposal_id": 126,
@@ -4346,13 +2780,11 @@
       "decision": "amber",
       "reasons": [
         "no_year",
-        "generic_type",
         "date_unverified",
         "no_sitelink"
       ],
       "reason_details": [
         "adaptation has no year",
-        "public type is still generic",
         "date is marked unverified or has unknown meaning",
         "adaptation has no Wikipedia sitelink"
       ],
@@ -4362,7 +2794,7 @@
       "work_id": 6394,
       "qid": "Q65122488",
       "title": "John Grin's Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": null,
       "date_text": "",
       "date_kind": "unknown",
@@ -4373,132 +2805,18 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 307,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6386,
-      "qid": "Q6272379",
-      "title": "Jonathan",
-      "type": "film",
-      "year": 1970,
-      "date_text": "1970-05-15",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 5,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 225,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6348,
-      "qid": "Q47509134",
-      "title": "Julia",
-      "type": "opera",
-      "year": 1991,
-      "date_text": "1991-04-23",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 208,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6147,
-      "qid": "Q132146913",
-      "title": "Juliet & Romeo",
-      "type": "film",
-      "year": 2025,
-      "date_text": "2025-05-09",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 217,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6271,
-      "qid": "Q25410693",
-      "title": "Juliet and Romeo",
-      "type": "film",
-      "year": 1996,
-      "date_text": "1996",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 451,
-      "run_id": 7,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6492,
-      "qid": "Q19376597",
-      "title": "Jungelboka",
-      "type": "musical",
-      "year": 1989,
-      "date_text": "1989-11",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6484,
-      "seed": "The Jungle Book",
-      "seed_year": 1894
-    },
-    {
       "proposal_id": 455,
       "run_id": 7,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6496,
       "qid": "Q2296189",
       "title": "Jungle Book Shounen Mowgli",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1989,
       "date_text": "1989-10-02",
       "date_kind": "inception",
@@ -4509,7 +2827,7 @@
       "seed_year": 1894
     },
     {
-      "proposal_id": 342,
+      "proposal_id": 407,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -4517,36 +2835,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6387,
-      "qid": "Q6372724",
-      "title": "Karmayogi",
-      "type": "film",
-      "year": 2012,
-      "date_text": "2012",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 407,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6388,
       "qid": "Q6373380",
       "title": "Karroll's Christmas",
-      "type": "creative-work",
+      "type": "film",
       "year": 2004,
       "date_text": "2004",
       "date_kind": "publication",
@@ -4561,11 +2853,9 @@
       "run_id": 5,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "date_unverified"
       ],
       "reason_details": [
-        "public type is still generic",
         "date is marked unverified or has unknown meaning"
       ],
       "warnings": [
@@ -4574,7 +2864,7 @@
       "work_id": 6196,
       "qid": "Q15103858",
       "title": "Kelly Clarkson's Cautionary Christmas Music Tale",
-      "type": "creative-work",
+      "type": "television-program",
       "year": 2013,
       "date_text": "2013-12-11",
       "date_kind": "release",
@@ -4693,28 +2983,6 @@
       "seed_year": 1894
     },
     {
-      "proposal_id": 229,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6385,
-      "qid": "Q62307501",
-      "title": "Kırık Kalpler Bankası",
-      "type": "film",
-      "year": 2017,
-      "date_text": "2017-04-13",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
       "proposal_id": 167,
       "run_id": 5,
       "decision": "amber",
@@ -4803,7 +3071,7 @@
       "seed_year": 1600
     },
     {
-      "proposal_id": 25,
+      "proposal_id": 113,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -4811,36 +3079,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6392,
-      "qid": "Q6508117",
-      "title": "Le songe d'une nuit d'été",
-      "type": "opera",
-      "year": 1850,
-      "date_text": "1850-04-20",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 6,
-      "seed_id": 6006,
-      "seed": "A Midsummer Night's Dream",
-      "seed_year": 1600
-    },
-    {
-      "proposal_id": 113,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6149,
       "qid": "Q1324552",
       "title": "Les Misérables: Shōjo Cosette",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 2007,
       "date_text": "2007-01-07",
       "date_kind": "inception",
@@ -4849,72 +3091,6 @@
       "seed_id": 6019,
       "seed": "Les Misérables",
       "seed_year": 1862
-    },
-    {
-      "proposal_id": 78,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6205,
-      "qid": "Q1609358",
-      "title": "Life Without Soul",
-      "type": "film",
-      "year": 1915,
-      "date_text": "1915",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 9,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 106,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6326,
-      "qid": "Q42896058",
-      "title": "Longbourn",
-      "type": "novel",
-      "year": 2013,
-      "date_text": "2013",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6009,
-      "seed": "Pride and Prejudice",
-      "seed_year": 1813
-    },
-    {
-      "proposal_id": 263,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6176,
-      "qid": "Q1392258",
-      "title": "Malice in Lalaland",
-      "type": "film",
-      "year": 2010,
-      "date_text": "2010",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
     },
     {
       "proposal_id": 448,
@@ -4945,7 +3121,7 @@
       "seed_year": 1894
     },
     {
-      "proposal_id": 73,
+      "proposal_id": 382,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -4953,36 +3129,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6089,
-      "qid": "Q117374720",
-      "title": "Mer de glace",
-      "type": "opera",
-      "year": 1991,
-      "date_text": "1991-10-03",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 382,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6198,
       "qid": "Q1539739",
       "title": "Mickey's Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 1983,
       "date_text": "1983",
       "date_kind": "publication",
@@ -5019,28 +3169,6 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 135,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6052,
-      "qid": "Q110202816",
-      "title": "Monte Cristo",
-      "type": "play",
-      "year": 1848,
-      "date_text": "1848-12-25",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 411,
       "run_id": 5,
       "decision": "amber",
@@ -5069,59 +3197,13 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 91,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6452,
-      "qid": "Q947600",
-      "title": "My Name Is Bruce",
-      "type": "film",
-      "year": 2007,
-      "date_text": "2007",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
-      "proposal_id": 323,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6185,
-      "qid": "Q141433877",
-      "title": "Nagy Feró: Hamlet",
-      "type": "album",
-      "year": 1986,
-      "date_text": "1986",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
       "proposal_id": 412,
       "run_id": 5,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "date_unverified"
       ],
       "reason_details": [
-        "public type is still generic",
         "date is marked unverified or has unknown meaning"
       ],
       "warnings": [
@@ -5130,7 +3212,7 @@
       "work_id": 6404,
       "qid": "Q6962159",
       "title": "Nan's Christmas Carol",
-      "type": "creative-work",
+      "type": "television-program",
       "year": 2009,
       "date_text": "2009-12-25",
       "date_kind": "first_release",
@@ -5277,20 +3359,16 @@
     {
       "proposal_id": 104,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6308,
       "qid": "Q3356203",
       "title": "Orgoglio e Pregiudizio",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1957,
       "date_text": "1957",
       "date_kind": "publication",
@@ -5303,20 +3381,16 @@
     {
       "proposal_id": 105,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6309,
       "qid": "Q3356253",
       "title": "Orgullo y Prejuicio",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1966,
       "date_text": "1966",
       "date_kind": "publication",
@@ -5329,47 +3403,21 @@
     {
       "proposal_id": 418,
       "run_id": 6,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6459,
-      "qid": "Q1057816",
-      "title": "Otello",
-      "type": "creative-work",
-      "year": 1906,
-      "date_text": "1906",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 11,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 440,
-      "run_id": 6,
       "decision": "green",
       "reasons": [],
       "reason_details": [],
       "warnings": [
         "no_image"
       ],
-      "work_id": 6480,
-      "qid": "Q6054456",
-      "title": "Otelo",
-      "type": "musical",
-      "year": 2009,
-      "date_text": "2009-01-09",
-      "date_kind": "first_performance",
+      "work_id": 6459,
+      "qid": "Q1057816",
+      "title": "Otello",
+      "type": "film",
+      "year": 1906,
+      "date_text": "1906",
+      "date_kind": "publication",
       "visibility": "draft",
-      "sitelinks": 1,
+      "sitelinks": 11,
       "seed_id": 6457,
       "seed": "The Tragedy of Othello, The Moor of Venice",
       "seed_year": 1622
@@ -5597,28 +3645,6 @@
       "seed_year": 1622
     },
     {
-      "proposal_id": 158,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6407,
-      "qid": "Q7123303",
-      "title": "Padayottam",
-      "type": "film",
-      "year": 1982,
-      "date_text": "1982",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 120,
       "run_id": 5,
       "decision": "amber",
@@ -5671,72 +3697,6 @@
       "seed_year": 1602
     },
     {
-      "proposal_id": 100,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6279,
-      "qid": "Q2659311",
-      "title": "Pride and Prejudice and Zombies",
-      "type": "novel",
-      "year": 2009,
-      "date_text": "2009-04",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 13,
-      "seed_id": 6009,
-      "seed": "Pride and Prejudice",
-      "seed_year": 1813
-    },
-    {
-      "proposal_id": 328,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6230,
-      "qid": "Q1865423",
-      "title": "Prince of the Himalayas",
-      "type": "film",
-      "year": 2006,
-      "date_text": "2006",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 26,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6411,
-      "qid": "Q7258238",
-      "title": "Puck",
-      "type": "opera",
-      "year": 1949,
-      "date_text": "1949-01-29",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6006,
-      "seed": "A Midsummer Night's Dream",
-      "seed_year": 1600
-    },
-    {
       "proposal_id": 236,
       "run_id": 5,
       "decision": "amber",
@@ -5767,28 +3727,6 @@
       "seed_year": 1597
     },
     {
-      "proposal_id": 159,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6413,
-      "qid": "Q7285365",
-      "title": "Raj Tilak",
-      "type": "film",
-      "year": 1958,
-      "date_text": "1958",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 283,
       "run_id": 5,
       "decision": "amber",
@@ -5817,66 +3755,18 @@
       "seed_year": 1897
     },
     {
-      "proposal_id": 426,
-      "run_id": 6,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6467,
-      "qid": "Q14755260",
-      "title": "Rebellion",
-      "type": "film",
-      "year": 1973,
-      "date_text": "1973",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 157,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6380,
-      "qid": "Q6051909",
-      "title": "Reyhan",
-      "type": "film",
-      "year": 1969,
-      "date_text": "1969",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 415,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6414,
       "qid": "Q7323336",
       "title": "Rich Little's Christmas Carol",
-      "type": "creative-work",
+      "type": "television-program",
       "year": 1978,
       "date_text": "1978",
       "date_kind": "publication",
@@ -5885,50 +3775,6 @@
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
-    },
-    {
-      "proposal_id": 241,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6455,
-      "qid": "Q97234692",
-      "title": "Romeo & Julia",
-      "type": "musical",
-      "year": 2006,
-      "date_text": "2006-08-25",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 204,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6070,
-      "qid": "Q114357203",
-      "title": "Romeo & Julia – Liebe ist alles",
-      "type": "musical",
-      "year": 2023,
-      "date_text": "2023",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
     },
     {
       "proposal_id": 197,
@@ -6009,7 +3855,7 @@
       "seed_year": 1597
     },
     {
-      "proposal_id": 207,
+      "proposal_id": 201,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -6017,36 +3863,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6087,
-      "qid": "Q117265624",
-      "title": "Romeo and Juliet: A Love Song",
-      "type": "film",
-      "year": 2013,
-      "date_text": "2013",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 201,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6060,
       "qid": "Q111279892",
       "title": "Romeo and Juliet: Beyond Words",
-      "type": "creative-work",
+      "type": "film",
       "year": 2019,
       "date_text": "2019",
       "date_kind": "publication",
@@ -6075,28 +3895,6 @@
       "type": "creative-work",
       "year": 1865,
       "date_text": "1865-10-24",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 239,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6448,
-      "qid": "Q9313082",
-      "title": "Romeo i Julia",
-      "type": "musical",
-      "year": 2004,
-      "date_text": "2004-10-08",
       "date_kind": "first_performance",
       "visibility": "draft",
       "sitelinks": 1,
@@ -6161,20 +3959,16 @@
     {
       "proposal_id": 212,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6186,
       "qid": "Q1416758",
       "title": "Romeo × Juliet",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 2007,
       "date_text": "2007-04-04",
       "date_kind": "inception",
@@ -6185,61 +3979,13 @@
       "seed_year": 1597
     },
     {
-      "proposal_id": 237,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6445,
-      "qid": "Q87070591",
-      "title": "Romulo & Julita",
-      "type": "film",
-      "year": 2020,
-      "date_text": "2020",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 238,
-      "run_id": 5,
-      "decision": "red",
-      "reasons": [
-        "already_accepted"
-      ],
-      "reason_details": [
-        "an accepted edge already exists"
-      ],
-      "warnings": [],
-      "work_id": 6447,
-      "qid": "Q918714",
-      "title": "Roméo et Juliette",
-      "type": "opera",
-      "year": 1867,
-      "date_text": "1867-04-27",
-      "date_kind": "first_performance",
-      "visibility": "public",
-      "sitelinks": 22,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
       "proposal_id": 202,
       "run_id": 5,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "no_sitelink"
       ],
       "reason_details": [
-        "public type is still generic",
         "adaptation has no Wikipedia sitelink"
       ],
       "warnings": [
@@ -6248,100 +3994,12 @@
       "work_id": 6061,
       "qid": "Q111513596",
       "title": "Roméo et Juliette de William Shakespeare",
-      "type": "creative-work",
+      "type": "play",
       "year": 2007,
       "date_text": "2007",
       "date_kind": "publication",
       "visibility": "draft",
       "sitelinks": 0,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 214,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6216,
-      "qid": "Q1670602",
-      "title": "Roméo et Juliette, de la Haine à l'Amour",
-      "type": "musical",
-      "year": 2001,
-      "date_text": "2001",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 14,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 344,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6415,
-      "qid": "Q7368547",
-      "title": "Rosencrantz and Guildenstern",
-      "type": "play",
-      "year": 1874,
-      "date_text": "1874",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 331,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6269,
-      "qid": "Q2517513",
-      "title": "Rosencrantz and Guildenstern Are Dead",
-      "type": "play",
-      "year": 1967,
-      "date_text": "1967",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 24,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 218,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6281,
-      "qid": "Q27038216",
-      "title": "Rwanda & Juliet",
-      "type": "film",
-      "year": 2016,
-      "date_text": "2016",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
       "seed_id": 6005,
       "seed": "Romeo and Juliet",
       "seed_year": 1597
@@ -6375,20 +4033,16 @@
     {
       "proposal_id": 280,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6044,
       "qid": "Q108875352",
       "title": "Salute, Jonathan!",
-      "type": "creative-work",
+      "type": "novel",
       "year": 2019,
       "date_text": "2019-07-20",
       "date_kind": "publication",
@@ -6397,72 +4051,6 @@
       "seed_id": 6008,
       "seed": "Dracula",
       "seed_year": 1897
-    },
-    {
-      "proposal_id": 439,
-      "run_id": 6,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6479,
-      "qid": "Q59660713",
-      "title": "Saubhagya Sundari",
-      "type": "play",
-      "year": 1901,
-      "date_text": "1901-10-19",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 361,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6029,
-      "qid": "Q1058952",
-      "title": "Scrooge",
-      "type": "film",
-      "year": 1951,
-      "date_text": "1951",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 15,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 406,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6383,
-      "qid": "Q61459841",
-      "title": "Scrooge!",
-      "type": "play",
-      "year": 2011,
-      "date_text": "2011-12-21",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
     },
     {
       "proposal_id": 373,
@@ -6493,20 +4081,16 @@
     {
       "proposal_id": 364,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6075,
       "qid": "Q115091011",
       "title": "Scrooge: A Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 2022,
       "date_text": "2022-12-02",
       "date_kind": "publication",
@@ -6519,20 +4103,16 @@
     {
       "proposal_id": 6,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6094,
       "qid": "Q11946359",
       "title": "Scruff in 'A Midsummer Night's Dream'",
-      "type": "creative-work",
+      "type": "film",
       "year": 2011,
       "date_text": "2011",
       "date_kind": "publication",
@@ -6545,20 +4125,16 @@
     {
       "proposal_id": 22,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6296,
       "qid": "Q30321732",
       "title": "Sen noci svatojánské",
-      "type": "creative-work",
+      "type": "film",
       "year": 1973,
       "date_text": "1973-04-14",
       "date_kind": "publication",
@@ -6599,20 +4175,16 @@
     {
       "proposal_id": 21,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6295,
       "qid": "Q3005588",
       "title": "Shakespeare: The Animated Tales",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1992,
       "date_text": "1992",
       "date_kind": "publication",
@@ -6625,20 +4197,16 @@
     {
       "proposal_id": 220,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6295,
       "qid": "Q3005588",
       "title": "Shakespeare: The Animated Tales",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1992,
       "date_text": "1992",
       "date_kind": "publication",
@@ -6651,20 +4219,16 @@
     {
       "proposal_id": 332,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6295,
       "qid": "Q3005588",
       "title": "Shakespeare: The Animated Tales",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1992,
       "date_text": "1992",
       "date_kind": "publication",
@@ -6677,20 +4241,16 @@
     {
       "proposal_id": 431,
       "run_id": 6,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6295,
       "qid": "Q3005588",
       "title": "Shakespeare: The Animated Tales",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1992,
       "date_text": "1992",
       "date_kind": "publication",
@@ -6755,20 +4315,16 @@
     {
       "proposal_id": 353,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6193,
       "qid": "Q15039527",
       "title": "Sherlock Holmes and the Baskerville Curse",
-      "type": "creative-work",
+      "type": "film",
       "year": 1983,
       "date_text": "1983-01-13",
       "date_kind": "publication",
@@ -6777,28 +4333,6 @@
       "seed_id": 6011,
       "seed": "The Hound of the Baskervilles",
       "seed_year": 1902
-    },
-    {
-      "proposal_id": 118,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6106,
-      "qid": "Q12342763",
-      "title": "Skatteøen",
-      "type": "musical",
-      "year": 1986,
-      "date_text": "1986",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6015,
-      "seed": "Treasure Island",
-      "seed_year": 1883
     },
     {
       "proposal_id": 345,
@@ -6857,7 +4391,7 @@
       "seed_year": 1600
     },
     {
-      "proposal_id": 362,
+      "proposal_id": 385,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -6865,36 +4399,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6039,
-      "qid": "Q107463341",
-      "title": "Spirited",
-      "type": "film",
-      "year": 2022,
-      "date_text": "2022-11-11",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 17,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 385,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6227,
       "qid": "Q1810461",
       "title": "Springtime with Roo",
-      "type": "creative-work",
+      "type": "film",
       "year": 2004,
       "date_text": "2004",
       "date_kind": "publication",
@@ -6931,28 +4439,6 @@
       "seed_year": 1813
     },
     {
-      "proposal_id": 19,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6263,
-      "qid": "Q23823172",
-      "title": "Szentivánéji álom",
-      "type": "musical",
-      "year": 2008,
-      "date_text": "2008-07-25",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6006,
-      "seed": "A Midsummer Night's Dream",
-      "seed_year": 1600
-    },
-    {
       "proposal_id": 375,
       "run_id": 5,
       "decision": "amber",
@@ -6977,50 +4463,6 @@
       "seed_id": 6021,
       "seed": "A Christmas Carol",
       "seed_year": 1843
-    },
-    {
-      "proposal_id": 348,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6424,
-      "qid": "Q7713773",
-      "title": "The Angel of Vengeance – The Female Hamlet",
-      "type": "film",
-      "year": 1977,
-      "date_text": "1977",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 74,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6091,
-      "qid": "Q118985",
-      "title": "The Bride",
-      "type": "film",
-      "year": 1985,
-      "date_text": "1985",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 19,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
     },
     {
       "proposal_id": 94,
@@ -7051,28 +4493,6 @@
       "seed_year": 1813
     },
     {
-      "proposal_id": 148,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6286,
-      "qid": "Q27590134",
-      "title": "The Count of Monte Cristo - Part 2: Retribution",
-      "type": "film",
-      "year": 1943,
-      "date_text": "1943",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 13,
       "run_id": 5,
       "decision": "amber",
@@ -7101,88 +4521,18 @@
       "seed_year": 1600
     },
     {
-      "proposal_id": 17,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6257,
-      "qid": "Q2342350",
-      "title": "The Enchanted Island",
-      "type": "opera",
-      "year": 2011,
-      "date_text": "2011",
-      "date_kind": "inception",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6006,
-      "seed": "A Midsummer Night's Dream",
-      "seed_year": 1600
-    },
-    {
-      "proposal_id": 20,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6284,
-      "qid": "Q2743188",
-      "title": "The Fairy-Queen",
-      "type": "opera",
-      "year": 1692,
-      "date_text": "1692-05-02",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 18,
-      "seed_id": 6006,
-      "seed": "A Midsummer Night's Dream",
-      "seed_year": 1600
-    },
-    {
-      "proposal_id": 89,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6425,
-      "qid": "Q7735161",
-      "title": "The Frankenstein Syndrome",
-      "type": "film",
-      "year": 2010,
-      "date_text": "2010",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
-    },
-    {
       "proposal_id": 174,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6232,
       "qid": "Q18703145",
       "title": "The Great Martian War 1913 - 1917",
-      "type": "creative-work",
+      "type": "film",
       "year": 2013,
       "date_text": "2013",
       "date_kind": "publication",
@@ -7219,7 +4569,7 @@
       "seed_year": 1890
     },
     {
-      "proposal_id": 282,
+      "proposal_id": 357,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -7227,36 +4577,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6092,
-      "qid": "Q1194357",
-      "title": "The Historian",
-      "type": "novel",
-      "year": 2005,
-      "date_text": "2005",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 18,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 357,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6332,
       "qid": "Q4425718",
       "title": "The Hound of the Baskervilles (1971 film)",
-      "type": "creative-work",
+      "type": "film",
       "year": 1971,
       "date_text": "1971",
       "date_kind": "publication",
@@ -7295,20 +4619,16 @@
     {
       "proposal_id": 454,
       "run_id": 7,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6495,
       "qid": "Q221947",
       "title": "The Jungle Book 2",
-      "type": "creative-work",
+      "type": "film",
       "year": 2003,
       "date_text": "2003",
       "date_kind": "publication",
@@ -7353,11 +4673,9 @@
       "run_id": 7,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "no_sitelink"
       ],
       "reason_details": [
-        "public type is still generic",
         "adaptation has no Wikipedia sitelink"
       ],
       "warnings": [
@@ -7366,7 +4684,7 @@
       "work_id": 6486,
       "qid": "Q116123248",
       "title": "The Jungle Book: Rumble in the Jungle",
-      "type": "creative-work",
+      "type": "film",
       "year": 2013,
       "date_text": "2013",
       "date_kind": "publication",
@@ -7377,66 +4695,18 @@
       "seed_year": 1894
     },
     {
-      "proposal_id": 279,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6038,
-      "qid": "Q107394970",
-      "title": "The Last Voyage of the Demeter",
-      "type": "film",
-      "year": 2023,
-      "date_text": "2023",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 22,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 289,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6144,
-      "qid": "Q131842",
-      "title": "The Legend of the 7 Golden Vampires",
-      "type": "film",
-      "year": 1974,
-      "date_text": "1974",
-      "date_kind": "release",
-      "visibility": "draft",
-      "sitelinks": 24,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
       "proposal_id": 124,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6254,
       "qid": "Q2240576",
       "title": "The Legends of Treasure Island",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1993,
       "date_text": "1993",
       "date_kind": "publication",
@@ -7449,20 +4719,16 @@
     {
       "proposal_id": 215,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6236,
       "qid": "Q191803",
       "title": "The Lion King II: Simba's Pride",
-      "type": "creative-work",
+      "type": "film",
       "year": 1998,
       "date_text": "1998",
       "date_kind": "publication",
@@ -7499,28 +4765,6 @@
       "seed_year": 1813
     },
     {
-      "proposal_id": 137,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6056,
-      "qid": "Q110952552",
-      "title": "The Lost Treasure",
-      "type": "film",
-      "year": 1939,
-      "date_text": "1939-06-19",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 12,
       "run_id": 5,
       "decision": "amber",
@@ -7549,28 +4793,6 @@
       "seed_id": 6006,
       "seed": "A Midsummer Night's Dream",
       "seed_year": 1600
-    },
-    {
-      "proposal_id": 79,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6206,
-      "qid": "Q1609592",
-      "title": "The Monster of Frankenstein",
-      "type": "film",
-      "year": 1920,
-      "date_text": "1920",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
     },
     {
       "proposal_id": 442,
@@ -7683,20 +4905,16 @@
     {
       "proposal_id": 153,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6334,
       "qid": "Q4469881",
       "title": "The Prisoner of Château d'If",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1988,
       "date_text": "1988",
       "date_kind": "inception",
@@ -7765,20 +4983,16 @@
     {
       "proposal_id": 390,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6258,
       "qid": "Q2349825",
       "title": "The Smurfs: A Christmas Carol",
-      "type": "creative-work",
+      "type": "film",
       "year": 2011,
       "date_text": "2011",
       "date_kind": "publication",
@@ -7791,20 +5005,16 @@
     {
       "proposal_id": 416,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6429,
       "qid": "Q7766542",
       "title": "The Stingiest Man in Town",
-      "type": "creative-work",
+      "type": "film",
       "year": 1978,
       "date_text": "1978",
       "date_kind": "publication",
@@ -7815,52 +5025,18 @@
       "seed_year": 1843
     },
     {
-      "proposal_id": 336,
-      "run_id": 5,
-      "decision": "red",
-      "reasons": [
-        "multiple_qids",
-        "entity_mismatch",
-        "self_link",
-        "title_collision"
-      ],
-      "reason_details": [
-        "adaptation has multiple Wikidata QIDs",
-        "P144 entity does not match the adaptation QID",
-        "work is linked to itself",
-        "adaptation title matches the source title"
-      ],
-      "warnings": [],
-      "work_id": 6004,
-      "qid": "Q41567",
-      "title": "The Tragedy of Hamlet, Prince of Denmark",
-      "type": "play",
-      "year": 1602,
-      "date_text": "1602",
-      "date_kind": "publication",
-      "visibility": "public",
-      "sitelinks": 143,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
       "proposal_id": 121,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6195,
       "qid": "Q15071803",
       "title": "The Treasure Planet",
-      "type": "creative-work",
+      "type": "film",
       "year": 1982,
       "date_text": "1982",
       "date_kind": "publication",
@@ -7869,72 +5045,6 @@
       "seed_id": 6015,
       "seed": "Treasure Island",
       "seed_year": 1883
-    },
-    {
-      "proposal_id": 146,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6246,
-      "qid": "Q20649960",
-      "title": "The Viscount of Monte Cristo",
-      "type": "film",
-      "year": 1954,
-      "date_text": "1954-10-07",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
-      "proposal_id": 147,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6261,
-      "qid": "Q23755525",
-      "title": "The Wife of Monte Cristo",
-      "type": "film",
-      "year": 1946,
-      "date_text": "1946-04-23",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
-      "proposal_id": 62,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6293,
-      "qid": "Q2855727",
-      "title": "The Wiz",
-      "type": "musical",
-      "year": 1975,
-      "date_text": "1975",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 12,
-      "seed_id": 6013,
-      "seed": "The Wonderful Wizard of Oz",
-      "seed_year": 1900
     },
     {
       "proposal_id": 54,
@@ -7961,94 +5071,6 @@
       "seed_id": 6013,
       "seed": "The Wonderful Wizard of Oz",
       "seed_year": 1900
-    },
-    {
-      "proposal_id": 68,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6431,
-      "qid": "Q7775379",
-      "title": "The Wizard of Oz: Beyond the Yellow Brick Road",
-      "type": "video-game",
-      "year": 2008,
-      "date_text": "2008-12-25",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 6,
-      "seed_id": 6013,
-      "seed": "The Wonderful Wizard of Oz",
-      "seed_year": 1900
-    },
-    {
-      "proposal_id": 51,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6097,
-      "qid": "Q1198166",
-      "title": "The Wizard of the Emerald City",
-      "type": "novel",
-      "year": 1939,
-      "date_text": "1939",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 11,
-      "seed_id": 6013,
-      "seed": "The Wonderful Wizard of Oz",
-      "seed_year": 1900
-    },
-    {
-      "proposal_id": 69,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6432,
-      "qid": "Q7775678",
-      "title": "The Wonderful Wizard of Ha's",
-      "type": "film",
-      "year": 2007,
-      "date_text": "2007-10-06",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6013,
-      "seed": "The Wonderful Wizard of Oz",
-      "seed_year": 1900
-    },
-    {
-      "proposal_id": 132,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6031,
-      "qid": "Q1063587",
-      "title": "Tiger! Tiger!",
-      "type": "novel",
-      "year": 1956,
-      "date_text": "1956",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 17,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
     },
     {
       "proposal_id": 15,
@@ -8103,7 +5125,7 @@
       "seed_year": 1600
     },
     {
-      "proposal_id": 325,
+      "proposal_id": 65,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -8111,36 +5133,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6211,
-      "qid": "Q16205233",
-      "title": "To Be or Not to Be",
-      "type": "novel",
-      "year": 2013,
-      "date_text": "2013",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6004,
-      "seed": "The Tragedy of Hamlet, Prince of Denmark",
-      "seed_year": 1602
-    },
-    {
-      "proposal_id": 65,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6333,
       "qid": "Q4460119",
       "title": "Tom and Jerry and the Wizard of Oz",
-      "type": "creative-work",
+      "type": "film",
       "year": 2011,
       "date_text": "2011-08-23",
       "date_kind": "publication",
@@ -8209,7 +5205,7 @@
       "seed_year": 1900
     },
     {
-      "proposal_id": 123,
+      "proposal_id": 129,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -8217,36 +5213,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6251,
-      "qid": "Q2197045",
-      "title": "Treasure Island Dizzy",
-      "type": "video-game",
-      "year": 1988,
-      "date_text": "1988-12",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 7,
-      "seed_id": 6015,
-      "seed": "Treasure Island",
-      "seed_year": 1883
-    },
-    {
-      "proposal_id": 129,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6322,
       "qid": "Q392530",
       "title": "Treasure Planet",
-      "type": "creative-work",
+      "type": "film",
       "year": 2002,
       "date_text": "2002-11-27",
       "date_kind": "publication",
@@ -8257,7 +5227,7 @@
       "seed_year": 1883
     },
     {
-      "proposal_id": 205,
+      "proposal_id": 40,
       "run_id": 5,
       "decision": "green",
       "reasons": [],
@@ -8265,36 +5235,10 @@
       "warnings": [
         "no_image"
       ],
-      "work_id": 6078,
-      "qid": "Q1158741",
-      "title": "Tromeo and Juliet",
-      "type": "film",
-      "year": 1996,
-      "date_text": "1996",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 9,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 40,
-      "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
       "work_id": 6323,
       "qid": "Q3991955",
       "title": "Tweety's High-Flying Adventure",
-      "type": "creative-work",
+      "type": "film",
       "year": 2000,
       "date_text": "2000-09-12",
       "date_kind": "publication",
@@ -8303,50 +5247,6 @@
       "seed_id": 6018,
       "seed": "Around the World in Eighty Days",
       "seed_year": 1872
-    },
-    {
-      "proposal_id": 366,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6084,
-      "qid": "Q116960462",
-      "title": "Una Navidad con Samantha Hudson",
-      "type": "film",
-      "year": 2021,
-      "date_text": "2021-12-19",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6021,
-      "seed": "A Christmas Carol",
-      "seed_year": 1843
-    },
-    {
-      "proposal_id": 160,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6434,
-      "qid": "Q7915051",
-      "title": "Vanjikottai Valiban",
-      "type": "film",
-      "year": 1958,
-      "date_text": "1958",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
     },
     {
       "proposal_id": 228,
@@ -8379,50 +5279,6 @@
       "seed_id": 6005,
       "seed": "Romeo and Juliet",
       "seed_year": 1597
-    },
-    {
-      "proposal_id": 161,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6435,
-      "qid": "Q7923544",
-      "title": "Veta",
-      "type": "film",
-      "year": 1986,
-      "date_text": "1986",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
-      "proposal_id": 70,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6035,
-      "qid": "Q10715021",
-      "title": "Victor Frankenstein",
-      "type": "film",
-      "year": 1977,
-      "date_text": "1977",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 4,
-      "seed_id": 6007,
-      "seed": "Frankenstein",
-      "seed_year": 1818
     },
     {
       "proposal_id": 72,
@@ -8533,50 +5389,6 @@
       "seed_year": 1897
     },
     {
-      "proposal_id": 173,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6228,
-      "qid": "Q18170654",
-      "title": "War of the Worlds - The True Story",
-      "type": "film",
-      "year": 2012,
-      "date_text": "2012",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 3,
-      "seed_id": 6017,
-      "seed": "The War of the Worlds",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 170,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6202,
-      "qid": "Q1577564",
-      "title": "War of the Worlds 2: The Next Wave",
-      "type": "film",
-      "year": 2008,
-      "date_text": "2008",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 8,
-      "seed_id": 6017,
-      "seed": "The War of the Worlds",
-      "seed_year": 1897
-    },
-    {
       "proposal_id": 164,
       "run_id": 5,
       "decision": "amber",
@@ -8607,20 +5419,16 @@
     {
       "proposal_id": 176,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6280,
       "qid": "Q2681286",
       "title": "War of the Worlds: Goliath",
-      "type": "creative-work",
+      "type": "film",
       "year": 2012,
       "date_text": "2012",
       "date_kind": "publication",
@@ -8629,50 +5437,6 @@
       "seed_id": 6017,
       "seed": "The War of the Worlds",
       "seed_year": 1897
-    },
-    {
-      "proposal_id": 233,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6410,
-      "qid": "Q72322448",
-      "title": "We Are Neither Romeo Nor Juliet",
-      "type": "film",
-      "year": 1969,
-      "date_text": "1969",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 231,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6397,
-      "qid": "Q669010",
-      "title": "West Side Story",
-      "type": "musical",
-      "year": 1957,
-      "date_text": "1957-09-26",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 43,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
     },
     {
       "proposal_id": 196,
@@ -8759,66 +5523,18 @@
       "seed_year": 1897
     },
     {
-      "proposal_id": 246,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6069,
-      "qid": "Q1138361",
-      "title": "White Rabbit",
-      "type": "song",
-      "year": 1967,
-      "date_text": "1967-06-24",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 26,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
-    },
-    {
-      "proposal_id": 59,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6220,
-      "qid": "Q1735754",
-      "title": "Wicked",
-      "type": "novel",
-      "year": 1995,
-      "date_text": "1995",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 20,
-      "seed_id": 6013,
-      "seed": "The Wonderful Wizard of Oz",
-      "seed_year": 1900
-    },
-    {
       "proposal_id": 36,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6229,
       "qid": "Q18431094",
       "title": "Willy Fog Around the World in 80 Days",
-      "type": "creative-work",
+      "type": "film",
       "year": 1995,
       "date_text": "1995-01-01",
       "date_kind": "publication",
@@ -8827,28 +5543,6 @@
       "seed_id": 6018,
       "seed": "Around the World in Eighty Days",
       "seed_year": 1872
-    },
-    {
-      "proposal_id": 266,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6241,
-      "qid": "Q19954948",
-      "title": "Wonder.land",
-      "type": "musical",
-      "year": 2015,
-      "date_text": "2015-07-02",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 2,
-      "seed_id": 6012,
-      "seed": "Alice's Adventures in Wonderland",
-      "seed_year": 1865
     },
     {
       "proposal_id": 276,
@@ -8903,59 +5597,13 @@
       "seed_year": 1872
     },
     {
-      "proposal_id": 303,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6297,
-      "qid": "Q3038555",
-      "title": "Zinda Laash",
-      "type": "film",
-      "year": 1967,
-      "date_text": "1967",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 7,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
-      "proposal_id": 291,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6171,
-      "qid": "Q137585096",
-      "title": "Дракула. Сквозь века",
-      "type": "musical",
-      "year": 2023,
-      "date_text": "2023-10-14",
-      "date_kind": "first_performance",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6008,
-      "seed": "Dracula",
-      "seed_year": 1897
-    },
-    {
       "proposal_id": 130,
       "run_id": 5,
       "decision": "amber",
       "reasons": [
-        "generic_type",
         "no_sitelink"
       ],
       "reason_details": [
-        "public type is still generic",
         "adaptation has no Wikipedia sitelink"
       ],
       "warnings": [
@@ -8964,7 +5612,7 @@
       "work_id": 6327,
       "qid": "Q4338880",
       "title": "Остров сокровищ",
-      "type": "creative-work",
+      "type": "film",
       "year": 1999,
       "date_text": "1999",
       "date_kind": "publication",
@@ -8977,20 +5625,16 @@
     {
       "proposal_id": 64,
       "run_id": 5,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
       "warnings": [
         "no_image"
       ],
       "work_id": 6329,
       "qid": "Q4378451",
       "title": "Приключения в Изумрудном городе",
-      "type": "creative-work",
+      "type": "television-series",
       "year": 1999,
       "date_text": "1999-11-30",
       "date_kind": "inception",
@@ -9059,72 +5703,6 @@
       "seed_year": 1597
     },
     {
-      "proposal_id": 421,
-      "run_id": 6,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6462,
-      "qid": "Q113551457",
-      "title": "الشك القاتل",
-      "type": "film",
-      "year": 1953,
-      "date_text": "1953-04-12",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6457,
-      "seed": "The Tragedy of Othello, The Moor of Venice",
-      "seed_year": 1622
-    },
-    {
-      "proposal_id": 203,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6066,
-      "qid": "Q113505435",
-      "title": "العلمين",
-      "type": "film",
-      "year": 1965,
-      "date_text": "1965-02-03",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6005,
-      "seed": "Romeo and Juliet",
-      "seed_year": 1597
-    },
-    {
-      "proposal_id": 140,
-      "run_id": 5,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 6076,
-      "qid": "Q115537318",
-      "title": "صائد الجبابرة",
-      "type": "film",
-      "year": 1991,
-      "date_text": "1991-11-25",
-      "date_kind": "publication",
-      "visibility": "draft",
-      "sitelinks": 1,
-      "seed_id": 6020,
-      "seed": "The Count of Monte Cristo",
-      "seed_year": 1844
-    },
-    {
       "proposal_id": 423,
       "run_id": 6,
       "decision": "amber",
@@ -9184,149 +5762,71 @@
     }
   ],
   "applied": {
-    "approved_proposals": 140,
-    "published_works": 140,
+    "approved_proposals": 65,
+    "published_works": 62,
     "published_work_ids": [
-      6029,
-      6030,
-      6031,
-      6034,
-      6035,
-      6038,
-      6039,
-      6049,
-      6052,
-      6056,
-      6058,
-      6066,
-      6069,
-      6070,
-      6076,
-      6078,
-      6082,
-      6084,
-      6087,
-      6089,
-      6091,
-      6092,
-      6097,
-      6099,
-      6106,
-      6114,
-      6115,
-      6116,
-      6121,
-      6122,
-      6123,
-      6124,
-      6141,
-      6144,
-      6147,
-      6165,
-      6171,
-      6173,
-      6176,
-      6185,
-      6192,
-      6197,
-      6202,
-      6205,
-      6206,
-      6208,
-      6209,
-      6211,
-      6213,
-      6214,
-      6216,
-      6218,
-      6220,
-      6222,
-      6226,
-      6228,
-      6230,
-      6234,
-      6241,
-      6245,
-      6246,
-      6251,
-      6257,
-      6261,
-      6262,
-      6263,
-      6269,
-      6270,
-      6271,
-      6273,
-      6275,
-      6276,
-      6279,
-      6281,
-      6284,
-      6285,
-      6286,
-      6290,
-      6293,
-      6294,
-      6297,
-      6300,
-      6303,
-      6306,
-      6311,
-      6313,
-      6314,
-      6320,
-      6326,
-      6339,
-      6340,
-      6343,
-      6347,
-      6348,
-      6352,
-      6353,
-      6357,
-      6361,
-      6363,
-      6364,
-      6371,
-      6380,
-      6383,
-      6384,
-      6385,
-      6386,
-      6387,
-      6391,
-      6392,
-      6393,
-      6397,
-      6407,
-      6410,
-      6411,
-      6413,
-      6415,
-      6422,
-      6424,
-      6425,
-      6431,
-      6432,
-      6434,
-      6435,
-      6443,
-      6445,
-      6448,
-      6449,
-      6451,
-      6452,
-      6453,
-      6454,
-      6455,
-      6462,
-      6467,
-      6469,
-      6471,
-      6478,
-      6479,
-      6480,
-      6492
+      6027,
+      6044,
+      6050,
+      6060,
+      6075,
+      6094,
+      6098,
+      6109,
+      6143,
+      6148,
+      6149,
+      6186,
+      6193,
+      6194,
+      6195,
+      6198,
+      6212,
+      6223,
+      6227,
+      6229,
+      6232,
+      6236,
+      6240,
+      6244,
+      6250,
+      6254,
+      6258,
+      6265,
+      6277,
+      6280,
+      6291,
+      6295,
+      6296,
+      6308,
+      6309,
+      6315,
+      6316,
+      6317,
+      6322,
+      6323,
+      6329,
+      6332,
+      6333,
+      6334,
+      6337,
+      6342,
+      6346,
+      6356,
+      6358,
+      6365,
+      6366,
+      6374,
+      6388,
+      6414,
+      6429,
+      6440,
+      6444,
+      6446,
+      6459,
+      6491,
+      6495,
+      6496
     ],
     "approve_only": false
   }
