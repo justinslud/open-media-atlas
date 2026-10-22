@@ -1,6 +1,6 @@
 # Wikidata relationship-enrichment pilot
 
-This is a bounded **staging** job, not a crawler. It discovers only non-deprecated inbound `P144` (“based on”) statements for the 50 pinned work entities in `data/wikidata-pilot-seeds.json`, stops at 300 related works, and fetches entity metadata in batches of 50. It does not recurse. The query and entity JSON are cached in `SourceRecord`; a rerun is identifier-based and idempotent. Public pages never call Wikidata.
+This is a bounded **staging** job, not a crawler. It discovers only non-deprecated inbound `P144` (“based on”) statements for the pinned work entities in `data/wikidata-pilot-seeds.json`, stops at the configured related-work cap (default 1,000; safety ceiling 5,000), and fetches entity metadata in batches of 50. It does not recurse. The query and entity JSON are cached in `SourceRecord`; a rerun is identifier-based and idempotent. Public pages never call Wikidata.
 
 ## Access and semantic decisions
 
@@ -8,7 +8,7 @@ Checked 2026-09-25 against the official [Wikidata Query Service user manual](htt
 
 `P144` maps to the deliberately broad OMA term **Based on / Inspired or adapted works**. It does not map to “faithful adaptation.” Direction is derived work → source work. Rank, statement ID, property ID, qualifiers, references, entity revision and retrieval time remain on the staged proposal and, after approval, its relationship. Deprecated statements are excluded. “Wikidata asserted this” is distinct from editor acceptance, and no rights, license, or public-domain conclusion is made.
 
-The manifest is reproducible and labels why each QID was selected. It includes individual Shakespeare plays and Sherlock Holmes works rather than characters/franchises, plus recognizable novels across periods. The API remains authoritative: missing/redirected/type-changed identifiers are reported rather than replaced by title. Exact Wikidata ID wins, then an explicit Open Library work ID; titles only produce a conflict for review. Existing records are never supplier-updated by this pilot. New works are drafts; aliases and all unsupported/richer fields remain available in raw source JSON. Work type, description, dates (with precision retained in raw JSON), original language, Open Library IDs, Wikidata links, and explicitly stated author (`P50`) or director (`P57`) credits are staged where supported.
+The manifest is reproducible and labels why each QID was selected. It includes individual Shakespeare plays and Sherlock Holmes works rather than characters/franchises, plus recognizable novels across periods. The API remains authoritative: missing/redirected/type-changed identifiers are reported rather than replaced by title. Exact Wikidata ID wins, then an explicit Open Library work ID; titles only produce a conflict for review. Existing records are not supplier-updated by the discovery path. The explicit candidate path may refresh type, a first-performance date, or a `P1476` title only for a draft index record with the same exact QID and a generic type. New works are drafts; aliases and all unsupported/richer fields remain available in raw source JSON. Work type, description, dates (with precision retained in raw JSON), original language, Open Library IDs, Wikidata links, and explicitly stated author (`P50`) or director (`P57`) credits are staged where supported.
 
 ## Run one bounded Render job
 
@@ -21,7 +21,7 @@ python manage.py run_wikidata_enrichment --dry-run
 The normal bounded job is:
 
 ```bash
-python manage.py run_wikidata_enrichment --seed-limit 50 --related-limit 300 --request-limit 250 --timeout 30 --max-runtime 1800
+python manage.py run_wikidata_enrichment --seed-limit 50 --related-limit 1000 --request-limit 500 --timeout 30 --max-runtime 1800
 ```
 
 From a trusted terminal (not the Render shell), launch that exact command as a Render one-off job:
@@ -31,10 +31,47 @@ curl --fail-with-body --silent --show-error \
   --request POST "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/jobs" \
   --header "Authorization: Bearer ${RENDER_API_KEY}" \
   --header "Content-Type: application/json" \
-  --data '{"startCommand":"python manage.py run_wikidata_enrichment --seed-limit 50 --related-limit 300 --request-limit 250 --timeout 30 --max-runtime 1800"}'
+  --data '{"startCommand":"python manage.py run_wikidata_enrichment --seed-limit 50 --related-limit 1000 --request-limit 500 --timeout 30 --max-runtime 1800"}'
 ```
 
 Logs show the run ID, limits, progress summary, and final report. `ImportRun.stats` persists seeds attempted, matched/new entities, proposed relationships, ambiguous matches, failures, skipped statements, network requests, elapsed time, truncation, and coverage limitations. A failed run retains already cached source records/items; the same command is safe to rerun, though this initial command creates a separately auditable run.
+
+## Candidate-manifest mode
+
+The stage slice used an explicit candidate JSON file to avoid depending on Wikidata Query Service during its outage. It is the same staging pipeline, not a separate manual import:
+
+```bash
+python manage.py run_wikidata_enrichment \
+  --manifest data/wikidata-golden-20.json \
+  --candidates data/stage-adaptations-2026-10-22.json \
+  --seed-limit 20 --related-limit 20 --request-limit 60
+```
+
+The candidate manifest supplies exact QIDs, an expected seed, and optional expected type/year for automated checks. The importer still fetches each entity with `wbgetentities` and requires a non-deprecated `P144` claim to a selected seed. A candidate with no such claim is recorded as unmatched; no edge is inferred from a title.
+
+Stage-specific type mappings are now:
+
+- `Q1344` → `opera`
+- `Q2743` → `musical`
+- `Q15079786` → `ballet`
+- `Q25379` → `play`
+
+When multiple stage classifications exist, precedence is opera, musical, ballet, play. Stage dates are selected with the medium-aware order (`P1191` first performance before `P571` inception) at staging time.
+
+Title collisions are allowed only for explicit candidate QIDs, so an adaptation that shares a title with its source still becomes a separate draft. Exact-ID candidate matches can refresh a generic draft’s type/date/title; public and editorial records are untouched. Reruns skip an existing pending or approved proposal for the same statement and edge, so they do not multiply the review queue.
+
+### Generating the candidate bundle
+
+`discover_wikidata_stage_candidates` queries non-deprecated inbound `P144` for opera, musical, and ballet types, fetches the candidates, excludes exact QIDs already in the catalog, and writes a candidate manifest. It stages nothing:
+
+```bash
+python manage.py discover_wikidata_stage_candidates \
+  --manifest data/wikidata-golden-20.json \
+  --output data/stage-candidates-discovered-2026-10-22.json \
+  --limit 30
+```
+
+The output records expected type, expected year, date property, and whether the QID already exists. Feed it to `run_wikidata_enrichment --candidates` only after reviewing the bundle. This is the bridge to a larger automated process: discovery emits candidates, staging remains bounded, and approval stays separate.
 
 ## Review and promote
 
@@ -50,7 +87,7 @@ Logs show the run ID, limits, progress summary, and final report. `ImportRun.sta
 
 ## Coverage and matching limitations
 
-Coverage is whatever Wikidata currently asserts with non-deprecated `P144`; it is neither a complete adaptations list nor independent verification. The report says when the 300-row cap truncates discovery. Some adaptations use other properties, link an edition/episode/series, lack `P144`, or have ambiguous modeling, and this pilot intentionally skips them. It does not recursively crawl, merge titles, resolve conflicting identifiers, infer rights, download images, or overwrite human edits. Date precision, aliases, and unmodeled claims remain in cached source JSON. Reviewers must check entity granularity and references before approval.
+Coverage is whatever Wikidata currently asserts with non-deprecated `P144`; it is neither a complete adaptations list nor independent verification. The report says when the configured row cap truncates discovery. Some adaptations use other properties, link an edition/episode/series, lack `P144`, or have ambiguous modeling, and this pilot intentionally skips them. It does not recursively crawl, merge titles, resolve conflicting identifiers, infer rights, download images, or overwrite human edits. Date precision, aliases, and unmodeled claims remain in cached source JSON. Reviewers must check entity granularity and references before approval.
 
 ## Justin's next steps
 

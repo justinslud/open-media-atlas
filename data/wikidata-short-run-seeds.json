@@ -1,0 +1,16 @@
+{
+  "version": "2026-10-21-local-short-run",
+  "notes": "Ten diverse public-domain works for a bounded local Wikidata enrichment test. QIDs are copied from data/wikidata-pilot-seeds.json; no title matching. Staged records and relationship proposals require review and are never auto-published.",
+  "seeds": [
+    {"qid": "Q179182", "label": "Siddhartha"},
+    {"qid": "Q150827", "label": "Frankenstein"},
+    {"qid": "Q41542", "label": "Dracula"},
+    {"qid": "Q170583", "label": "Pride and Prejudice"},
+    {"qid": "Q223131", "label": "A Study in Scarlet"},
+    {"qid": "Q92640", "label": "Alice's Adventures in Wonderland"},
+    {"qid": "Q130295", "label": "The Wonderful Wizard of Oz"},
+    {"qid": "Q226468", "label": "Peter Pan"},
+    {"qid": "Q185118", "label": "Treasure Island"},
+    {"qid": "Q627333", "label": "The Time Machine"}
+  ]
+}

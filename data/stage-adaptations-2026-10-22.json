@@ -1,0 +1,87 @@
+{
+  "version": "2026-10-22-stage-a",
+  "notes": "Bounded stage/opera/musical/ballet probe against the golden 20. Every candidate is an exact Wikidata QID with a non-deprecated P144 (based on) claim to a selected seed. Expected type/year are automated-check expectations, not approval. The importer stages drafts and pending proposals only.",
+  "source_policy": "Wikidata CC0 for identity, P144, P31/P7937, and date claims; Wikipedia CC BY-SA 4.0 only for an explicit infobox date with revision provenance; Wikimedia Commons for licensed images. No IMDb, TMDB, or other restricted databases.",
+  "candidates": [
+    {
+      "qid": "Q172324",
+      "seed_qid": "Q26833",
+      "label": "Otello",
+      "expected_type": "opera",
+      "expected_year": 1887,
+      "evidence": "Verdi opera; P144=Q26833; P1191=1887-02-05"
+    },
+    {
+      "qid": "Q918714",
+      "seed_qid": "Q83186",
+      "label": "Roméo et Juliette",
+      "expected_type": "opera",
+      "expected_year": 1867,
+      "evidence": "Gounod opera; P144=Q83186; P1191=1867-04-27"
+    },
+    {
+      "qid": "Q911487",
+      "seed_qid": "Q83186",
+      "label": "Romeo and Juliet",
+      "expected_type": "ballet",
+      "expected_year": 1938,
+      "evidence": "Prokofiev ballet; P144=Q83186; P1191=1938-12-30"
+    },
+    {
+      "qid": "Q631016",
+      "seed_qid": "Q41567",
+      "label": "Hamlet",
+      "expected_type": "opera",
+      "expected_year": 1868,
+      "evidence": "Thomas opera; P144=Q41567; P1191=1868-03-09"
+    },
+    {
+      "qid": "Q605750",
+      "seed_qid": "Q104871",
+      "label": "A Midsummer Night's Dream",
+      "expected_type": "opera",
+      "expected_year": 1960,
+      "evidence": "Britten opera; P144=Q104871; P1191=1960-06-11"
+    },
+    {
+      "qid": "Q830581",
+      "seed_qid": "Q180736",
+      "label": "Les Misérables",
+      "expected_type": "musical",
+      "expected_year": 1980,
+      "evidence": "Schönberg/Boublil musical; P144=Q180736; P1191=1980-09"
+    },
+    {
+      "qid": "Q2622554",
+      "seed_qid": "Q191838",
+      "label": "The Count of Monte Cristo",
+      "expected_type": "musical",
+      "expected_year": 2009,
+      "evidence": "Wildhorn musical; P144=Q191838; P577=2009"
+    },
+    {
+      "qid": "Q3990060",
+      "seed_qid": "Q130295",
+      "label": "The Wizard of Oz",
+      "expected_type": "musical",
+      "expected_year": 1902,
+      "evidence": "1902 musical extravaganza; P144=Q130295; P577=1902"
+    },
+    {
+      "qid": "Q4725679",
+      "seed_qid": "Q92640",
+      "label": "Alice's Adventures in Wonderland",
+      "expected_type": "ballet",
+      "expected_year": 2011,
+      "evidence": "Wheeldon ballet; P144=Q92640; P1191=2011-02-28"
+    },
+    {
+      "qid": "Q7757061",
+      "seed_qid": "Q82464",
+      "label": "The Picture of Dorian Gray",
+      "expected_type": "opera",
+      "expected_year": null,
+      "evidence": "Liebermann opera; P144=Q82464; no Wikidata performance date; Wikipedia infobox pass may fill it."
+    }
+  ]
+}

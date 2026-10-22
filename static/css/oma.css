@@ -73,3 +73,38 @@
 .access-list p { margin-block: .3rem; }
 .access-reference, .access-search { border-top: 1px solid var(--rule); margin-top: 1rem; padding-top: .75rem; }
 .access-reference summary { cursor: pointer; }
+
+.work-cover-image { margin: 0; width: 100%; }
+.work-cover-image img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; background: #e9e2ed; border: 1px solid #cec1d5; border-radius: 2px; }
+.work-cover-image figcaption { margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.3; }
+.work-cover-image figcaption a { color: inherit; }
+
+/* Accepted connections as a compact chronological timeline. */
+.timeline-section { background: var(--surface); border: 1px solid var(--rule); padding: 18px 20px; margin-block: 1.5rem; }
+.timeline { list-style: none; margin: 1.1rem 0 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 3.55rem; top: .35rem; bottom: .55rem; width: 2px; background: var(--rule); }
+.timeline-event { display: grid; grid-template-columns: 3rem 1.1rem minmax(0, 1fr); gap: .7rem; align-items: start; padding-bottom: 1rem; position: relative; }
+.timeline-year { color: var(--accent); font: 700 15px/1.5 Georgia, serif; text-align: right; white-space: nowrap; }
+.timeline-marker { width: .7rem; height: .7rem; margin: .35rem auto 0; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--surface); position: relative; z-index: 1; }
+.timeline-copy { min-width: 0; padding-top: .1rem; }
+.timeline-copy a { color: var(--ink); text-decoration: none; }
+.timeline-copy a:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+.timeline-copy strong { font: 700 17px/1.3 Georgia, serif; }
+.timeline-copy p { margin: .15rem 0 0; color: var(--muted); font-size: .875rem; }
+.timeline-label { color: var(--accent); font-weight: 700; }
+@media (max-width: 700px) {
+  .timeline-section { margin-inline: -14px; padding: 16px 14px; }
+  .timeline::before { left: .35rem; }
+  .timeline-event { grid-template-columns: 1.1rem minmax(0, 1fr); gap: .6rem; }
+  .timeline-year { grid-column: 2; grid-row: 1; text-align: left; padding-bottom: .1rem; }
+  .timeline-marker { grid-column: 1; grid-row: 1 / span 2; margin-top: .45rem; }
+  .timeline-copy { grid-column: 2; grid-row: 2; }
+}
+
+/* Adaptation stills and logos should not be cropped like book covers. */
+.work-cover-image-adaptation img { aspect-ratio: 4 / 3; object-fit: contain; background: #f0ede7; }
+
+/* The timeline is the overview; the evidence list is a deliberate drill-down. */
+.connection-details { margin-top: .8rem; }
+.connection-details > summary { cursor: pointer; font-weight: 700; padding: .55rem 0; }
+.connection-details > summary .helper { font-weight: 400; }

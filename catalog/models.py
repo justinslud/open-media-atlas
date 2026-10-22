@@ -29,11 +29,16 @@ class Work(models.Model):
     description = models.TextField(blank=True)
     first_publication_date_text = models.CharField(max_length=80, blank=True)
     first_publication_year = models.IntegerField(null=True, blank=True)
+    image_url = models.URLField(max_length=500, blank=True, help_text="Remote image URL; never assume rights from availability.")
+    image_source_url = models.URLField(max_length=500, blank=True, help_text="Page that documents the image and its rights.")
+    image_attribution = models.CharField(max_length=300, blank=True)
+    image_license = models.CharField(max_length=120, blank=True, help_text="Recorded license or 'unknown; link only'.")
     date_kind = models.CharField(max_length=30, default="unknown", choices=[
         ("unknown", "Meaning unverified"), ("publication", "Source publication date"),
         ("release", "Source release date"), ("inception", "Creation date"),
         ("edition", "Edition date"), ("first_publication", "First published"),
-        ("first_release", "First released"),
+        ("first_release", "First released"), ("first_performance", "First performance date"),
+        ("production", "Production date"), ("recording", "Recording date"),
     ])
     date_evidence = models.JSONField(default=dict, blank=True)
     completion_status = models.CharField(max_length=30, default="unknown")
@@ -101,7 +106,9 @@ class Work(models.Model):
     def date_label(self):
         evidence = self.date_evidence if isinstance(self.date_evidence, dict) else {}
         # Stale evidence after a manual edit must not support a stronger claim.
-        if self.date_kind == "unknown" or evidence.get("date_text") != self.first_publication_date_text or not evidence.get("source_url"):
+        if (self.date_kind == "unknown" or evidence.get("meaning_unverified")
+                or evidence.get("date_text") != self.first_publication_date_text
+                or not evidence.get("source_url")):
             return "Date (meaning unverified)"
         return dict(self._meta.get_field("date_kind").choices).get(self.date_kind, "Date (meaning unverified)")
 

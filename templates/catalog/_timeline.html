@@ -1,0 +1,20 @@
+{% if timeline_events %}
+<section id="timeline" class="content-section timeline-section" aria-labelledby="timeline-heading">
+  <p class="eyebrow">CONNECTION TIMELINE</p>
+  <h2 id="timeline-heading">How this work travels</h2>
+  <p class="section-deck">{% if timeline_start == timeline_end %}{{ timeline_start }}{% else %}{{ timeline_start }}–{{ timeline_end }}{% endif %} · {{ timeline_events|length }} accepted connection{{ timeline_events|length|pluralize }} with a recorded year{% if timeline_undated %} · {{ timeline_undated }} undated{% endif %}.</p>
+  <p class="helper">Earliest recorded year first. A date can describe publication, release, or creation; open a work to see its stated date meaning.</p>
+  <ol class="timeline">
+    {% for event in timeline_events %}
+    <li class="timeline-event">
+      <span class="timeline-year">{{ event.year }}</span>
+      <span class="timeline-marker" aria-hidden="true"></span>
+      <div class="timeline-copy">
+        <a href="{{ event.work.get_absolute_url }}"><strong>{{ event.work.display_title }}</strong></a>
+        <p>{{ event.type }} · <span class="timeline-label">{{ event.label }}</span>{% if event.other_relationships %} · +{{ event.other_relationships }} more relationship{{ event.other_relationships|pluralize }}{% endif %}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}

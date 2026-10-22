@@ -1,0 +1,92 @@
+{
+  "version": "2026-10-22-stage-discovery",
+  "generated_at": "2026-10-22T15:19:16.808381+00:00",
+  "seed_manifest": "data/wikidata-golden-20.json",
+  "seed_count": 20,
+  "stage_types": [
+    "Q1344",
+    "Q2743",
+    "Q15079786"
+  ],
+  "query": "non-deprecated inbound P144; P31 in opera/musical/ballet; no recursive traversal",
+  "source_policy": "Wikidata CC0 for identity, P144, P31, and date claims. Discovery only; no works or proposals are created.",
+  "candidate_count": 5,
+  "truncated": false,
+  "candidates": [
+    {
+      "qid": "Q7108564",
+      "seed_qid": "Q26833",
+      "seed_label": "Othello",
+      "label": "Othello",
+      "title_language": "en",
+      "title_basis": "label",
+      "expected_type": "ballet",
+      "expected_year": null,
+      "date": "",
+      "date_kind": "unknown",
+      "date_property": "",
+      "precision": null,
+      "already_in_catalog": false
+    },
+    {
+      "qid": "Q2819816",
+      "seed_qid": "Q104871",
+      "seed_label": "A Midsummer Night's Dream",
+      "label": "A Midsummer Night's Dream",
+      "title_language": "en",
+      "title_basis": "label",
+      "expected_type": "ballet",
+      "expected_year": 1962,
+      "date": "1962-01-17",
+      "date_kind": "first_performance",
+      "date_property": "P1191",
+      "precision": 11,
+      "already_in_catalog": false
+    },
+    {
+      "qid": "Q130725341",
+      "seed_qid": "Q189509",
+      "seed_label": "The Jungle Book",
+      "label": "Mauglí",
+      "title_language": "cs",
+      "title_basis": "label",
+      "expected_type": "ballet",
+      "expected_year": null,
+      "date": "",
+      "date_kind": "unknown",
+      "date_property": "",
+      "precision": null,
+      "already_in_catalog": false
+    },
+    {
+      "qid": "Q130725236",
+      "seed_qid": "Q1219561",
+      "seed_label": "Around the World in Eighty Days",
+      "label": "Cesta kolem světa za 80 dní",
+      "title_language": "cs",
+      "title_basis": "label",
+      "expected_type": "ballet",
+      "expected_year": null,
+      "date": "",
+      "date_kind": "unknown",
+      "date_property": "",
+      "precision": null,
+      "already_in_catalog": false
+    },
+    {
+      "qid": "Q5297786",
+      "seed_qid": "Q82464",
+      "seed_label": "The Picture of Dorian Gray",
+      "label": "Dorian Gray",
+      "title_language": "en",
+      "title_basis": "label",
+      "expected_type": "ballet",
+      "expected_year": 2008,
+      "date": "2008-08",
+      "date_kind": "first_performance",
+      "date_property": "P1191",
+      "precision": 10,
+      "already_in_catalog": false
+    }
+  ]
+}

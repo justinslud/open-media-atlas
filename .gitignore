@@ -1,4 +1,5 @@
 .env
+CURRENT.md
 .venv/
 __pycache__/
 *.py[cod]

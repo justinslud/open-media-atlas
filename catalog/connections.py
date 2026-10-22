@@ -92,6 +92,27 @@ def connections_context(request, work, public):
         priorities[other] = min(priorities.get(other, 2), priority)
     related = list(public.filter(pk__in=by_work).select_related('work_type').prefetch_related('source_records', 'credits__agent'))
     types = {w.public_type_code: w.public_type_label for w in related}
+    timeline_events = []
+    for item in related:
+        if not item.first_publication_year:
+            continue
+        keys = by_work[item.pk]
+        primary = next(
+            (key for key in ('in:adapted-from', 'out:adapted-from') if key in keys),
+            sorted(keys)[0],
+        )
+        timeline_events.append({
+            'work': item,
+            'year': item.first_publication_year,
+            'date': item.first_publication_date_text,
+            'label': choices[primary],
+            'other_relationships': max(len(keys) - 1, 0),
+            'type': item.public_type_label,
+        })
+    timeline_events.sort(key=lambda event: (
+        event['year'], normalize_search(event['work'].display_title), event['work'].pk
+    ))
+    timeline_years = [event['year'] for event in timeline_events]
     query = request.GET.get('connection_q', '').strip()[:200]
     relationship = request.GET.get('connection_relationship', '')
     work_type = request.GET.get('connection_type', '')
@@ -142,4 +163,8 @@ def connections_context(request, work, public):
         'connection_previous': page_url(page.previous_page_number()) if page.has_previous() else '',
         'connection_next': page_url(page.next_page_number()) if page.has_next() else '',
         'has_relationships': bool(related),
+        'timeline_events': timeline_events,
+        'timeline_undated': len(related) - len(timeline_events),
+        'timeline_start': timeline_years[0] if timeline_years else None,
+        'timeline_end': timeline_years[-1] if timeline_years else None,
     }

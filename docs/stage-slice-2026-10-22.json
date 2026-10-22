@@ -1,0 +1,172 @@
+{
+  "run_id": 10,
+  "candidate_manifest": "data/stage-adaptations-2026-10-22.json",
+  "pending_proposals": 10,
+  "accepted_proposals": 0,
+  "dated": 9,
+  "imaged": 8,
+  "works": [
+    {
+      "qid": "Q605750",
+      "work": 6503,
+      "title": "A Midsummer Night's Dream",
+      "type": "opera",
+      "year": 1960,
+      "date": "1960-06-11",
+      "date_kind": "first_performance",
+      "image": true,
+      "image_license": "CC0",
+      "seed": "A Midsummer Night's Dream",
+      "proposal_status": "pending",
+      "statement_id": "Q605750$2107be46-4df3-1fd3-4d63-b556396eb533"
+    },
+    {
+      "qid": "Q4725679",
+      "work": 6502,
+      "title": "Alice's Adventures in Wonderland",
+      "type": "ballet",
+      "year": 2011,
+      "date": "2011-02-28",
+      "date_kind": "first_performance",
+      "image": false,
+      "image_license": "",
+      "seed": "Alice's Adventures in Wonderland",
+      "proposal_status": "pending",
+      "statement_id": "Q4725679$34c5dae0-4e12-6b59-dd94-98599e922b22"
+    },
+    {
+      "qid": "Q631016",
+      "work": 6504,
+      "title": "Hamlet",
+      "type": "opera",
+      "year": 1868,
+      "date": "1868-03-09",
+      "date_kind": "first_performance",
+      "image": true,
+      "image_license": "Public domain",
+      "seed": "The Tragedy of Hamlet, Prince of Denmark",
+      "proposal_status": "pending",
+      "statement_id": "q631016$A63130A1-AAC7-4C47-8527-FB3B251FD3E0"
+    },
+    {
+      "qid": "Q830581",
+      "work": 6506,
+      "title": "Les Misérables",
+      "type": "musical",
+      "year": 1980,
+      "date": "1980-09",
+      "date_kind": "first_performance",
+      "image": true,
+      "image_license": "Public domain",
+      "seed": "Les Misérables",
+      "proposal_status": "pending",
+      "statement_id": "q830581$9DE57AD7-D825-4E84-8749-502F79988076"
+    },
+    {
+      "qid": "Q172324",
+      "work": 6499,
+      "title": "Otello",
+      "type": "opera",
+      "year": 1887,
+      "date": "1887-02-05",
+      "date_kind": "first_performance",
+      "image": true,
+      "image_license": "Public domain",
+      "seed": "The Tragedy of Othello, The Moor of Venice",
+      "proposal_status": "pending",
+      "statement_id": "Q172324$B140973B-C4A5-4729-A296-5E558553ACF3"
+    },
+    {
+      "qid": "Q911487",
+      "work": 6507,
+      "title": "Romeo and Juliet",
+      "type": "ballet",
+      "year": 1938,
+      "date": "1938-12-30",
+      "date_kind": "first_performance",
+      "image": true,
+      "image_license": "Public domain",
+      "seed": "Romeo and Juliet",
+      "proposal_status": "pending",
+      "statement_id": "q911487$88FD3527-D5B8-4F2F-827A-B6474F35467A"
+    },
+    {
+      "qid": "Q918714",
+      "work": 6447,
+      "title": "Roméo et Juliette",
+      "type": "opera",
+      "year": 1867,
+      "date": "1867-04-27",
+      "date_kind": "first_performance",
+      "image": true,
+      "image_license": "CC BY-SA 4.0",
+      "seed": "Romeo and Juliet",
+      "proposal_status": "pending",
+      "statement_id": "q918714$71495C22-4E5A-488E-B26F-284AC7D756E4"
+    },
+    {
+      "qid": "Q2622554",
+      "work": 6500,
+      "title": "The Count of Monte Cristo",
+      "type": "musical",
+      "year": 2009,
+      "date": "2009",
+      "date_kind": "publication",
+      "image": true,
+      "image_license": "CC BY 3.0",
+      "seed": "The Count of Monte Cristo",
+      "proposal_status": "pending",
+      "statement_id": "Q2622554$22e72f0b-4425-8509-b21d-9b0feb7281a4"
+    },
+    {
+      "qid": "Q7757061",
+      "work": 6505,
+      "title": "The Picture of Dorian Gray",
+      "type": "opera",
+      "year": null,
+      "date": "",
+      "date_kind": "unknown",
+      "image": false,
+      "image_license": "",
+      "seed": "The Picture of Dorian Gray",
+      "proposal_status": "pending",
+      "statement_id": "Q7757061$EA878AC3-0555-4C56-AB53-8D89032BBDF0"
+    },
+    {
+      "qid": "Q3990060",
+      "work": 6501,
+      "title": "The Wizard of Oz",
+      "type": "musical",
+      "year": 1902,
+      "date": "1902",
+      "date_kind": "publication",
+      "image": true,
+      "image_license": "Public domain",
+      "seed": "The Wonderful Wizard of Oz",
+      "proposal_status": "pending",
+      "statement_id": "Q3990060$B28D2738-0C58-4928-8A30-03CF556F5026"
+    }
+  ],
+  "exceptions": [
+    {
+      "work": 6505,
+      "reason": "No Wikidata date and no machine-readable infobox date; Wikipedia prose premiere deliberately not scraped."
+    },
+    {
+      "work": 6500,
+      "reason": "Only year-level P577; date_kind publication, not first-performance evidence."
+    },
+    {
+      "work": 6501,
+      "reason": "Only year-level P577; date_kind publication, not first-performance evidence."
+    },
+    {
+      "work": 6502,
+      "reason": "No Commons P18 image."
+    },
+    {
+      "work": 6505,
+      "reason": "No Commons P18 image."
+    }
+  ]
+}

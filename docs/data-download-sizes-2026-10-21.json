@@ -1,0 +1,170 @@
+[
+  {
+    "dataset": "imdb",
+    "file": "name.basics.tsv.gz",
+    "url": "https://datasets.imdbws.com/name.basics.tsv.gz",
+    "bytes": 311678270
+  },
+  {
+    "dataset": "imdb",
+    "file": "title.akas.tsv.gz",
+    "url": "https://datasets.imdbws.com/title.akas.tsv.gz",
+    "bytes": 518525431
+  },
+  {
+    "dataset": "imdb",
+    "file": "title.basics.tsv.gz",
+    "url": "https://datasets.imdbws.com/title.basics.tsv.gz",
+    "bytes": 228953488
+  },
+  {
+    "dataset": "imdb",
+    "file": "title.crew.tsv.gz",
+    "url": "https://datasets.imdbws.com/title.crew.tsv.gz",
+    "bytes": 83688943
+  },
+  {
+    "dataset": "imdb",
+    "file": "title.episode.tsv.gz",
+    "url": "https://datasets.imdbws.com/title.episode.tsv.gz",
+    "bytes": 55104557
+  },
+  {
+    "dataset": "imdb",
+    "file": "title.principals.tsv.gz",
+    "url": "https://datasets.imdbws.com/title.principals.tsv.gz",
+    "bytes": 787668375
+  },
+  {
+    "dataset": "imdb",
+    "file": "title.ratings.tsv.gz",
+    "url": "https://datasets.imdbws.com/title.ratings.tsv.gz",
+    "bytes": 8706741
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-cdstubs.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-cdstubs.tar.bz2",
+    "bytes": 64388015
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-cover-art-archive.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-cover-art-archive.tar.bz2",
+    "bytes": 169883652
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-derived.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-derived.tar.bz2",
+    "bytes": 525165896
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-documentation.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-documentation.tar.bz2",
+    "bytes": 26808
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-edit.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-edit.tar.bz2",
+    "bytes": 16990496917
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-editor.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-editor.tar.bz2",
+    "bytes": 85577922
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-event-art-archive.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-event-art-archive.tar.bz2",
+    "bytes": 582492
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-stats.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-stats.tar.bz2",
+    "bytes": 121593030
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump-wikidocs.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump-wikidocs.tar.bz2",
+    "bytes": 7308
+  },
+  {
+    "dataset": "musicbrainz_sql",
+    "file": "mbdump.tar.bz2",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/fullexport/20261021-002201/mbdump.tar.bz2",
+    "bytes": 7649166882
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "area.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/area.tar.xz",
+    "bytes": 35926988
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "artist.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/artist.tar.xz",
+    "bytes": 1769265448
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "event.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/event.tar.xz",
+    "bytes": 49928240
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "instrument.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/instrument.tar.xz",
+    "bytes": 476852
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "label.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/label.tar.xz",
+    "bytes": 186030068
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "place.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/place.tar.xz",
+    "bytes": 154159292
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "recording.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/recording.tar.xz",
+    "bytes": 35331488
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "release-group.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/release-group.tar.xz",
+    "bytes": 1277333320
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "release.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/release.tar.xz",
+    "bytes": 24622468488
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "series.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/series.tar.xz",
+    "bytes": 32728952
+  },
+  {
+    "dataset": "musicbrainz_json",
+    "file": "work.tar.xz",
+    "url": "https://data.metabrainz.org/pub/musicbrainz/data/json-dumps/20261021-001001/work.tar.xz",
+    "bytes": 708190384
+  }
+]

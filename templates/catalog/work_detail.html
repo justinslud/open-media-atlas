@@ -4,7 +4,8 @@
 {% if work.is_demo %}<div class="demo-banner"><strong>Demonstration record</strong> — This work and all associated facts and sources are fictional.</div>{% endif %}
 <article>
   <header class="work-header">
-    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.public_type_label }} title card for {{ work.display_title }}"><span>{{ work.public_type_label }}</span><strong title="{{ work.display_title }}">{{ work.display_title|truncatechars:42 }}</strong></div>
+    {% if work.image_url %}<figure class="work-cover-image{% if work.depth == 'index' %} work-cover-image-adaptation{% endif %}"><a href="{{ work.image_source_url|default:work.image_url }}" rel="nofollow noopener noreferrer"><img src="{{ work.image_url }}" alt="Image for {{ work.display_title }}" loading="lazy"></a><figcaption>{% if work.image_license %}{{ work.image_license }}{% else %}Image license not recorded{% endif %}{% if work.image_attribution %} · {{ work.image_attribution|truncatechars:46 }}{% endif %}</figcaption></figure>{% else %}
+    <div class="work-cover format-{{ work.work_type.medium }}" role="img" aria-label="No cover available; {{ work.public_type_label }} title card for {{ work.display_title }}"><span>{{ work.public_type_label }}</span><strong title="{{ work.display_title }}">{{ work.display_title|truncatechars:42 }}</strong></div>{% endif %}
     <div class="work-identity">
       <p class="eyebrow">{{ work.public_type_label|upper }}{% if work.date_summary %} · {{ work.date_summary|upper }}{% endif %}</p>
       <h1>{{ work.display_title }}</h1>
@@ -16,18 +17,20 @@
       <div class="work-actions">
         {% library_control work "save" %}{% library_control work "follow-work" %}
         <a class="primary-action" href="#access">{{ access_heading }}</a>
-        {% if has_relationships %}<a class="secondary-action" href="#connections">Explore connections</a>{% endif %}
+        {% if has_relationships %}<a class="secondary-action" href="{% if timeline_events %}#timeline{% else %}#connections{% endif %}">Explore connections</a>{% endif %}
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'add-to-list' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'add-to-list' work.pk %}{% endif %}">Add to collection</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-correction' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-correction' work.pk %}{% endif %}">Suggest a correction</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-relationship' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-relationship' work.pk %}{% endif %}">Suggest a relationship</a>
         <a class="secondary-action" href="{% if user.is_authenticated %}{% url 'suggest-term' work.pk %}{% else %}{% url 'accounts:login' %}?next={% url 'suggest-term' work.pk %}{% endif %}">Suggest a term</a>
       </div>
       <p class="helper">Save keeps this work in your private library. Follow shows accepted relationship changes inside OMA.</p>
-      <nav class="section-jumps" aria-label="On this page"><span>On this page</span><a href="#access">{{ access_heading }}</a><a href="#connections">Connections</a>{% if work.description %}<a href="#description">Description</a>{% endif %}<a href="#details">Details</a>{% if work.credits.all %}<a href="#creators">Creators</a>{% endif %}{% if work.versions.all %}<a href="#versions">Editions &amp; versions</a>{% endif %}{% if work.source_links.all or work.identifiers.all %}<a href="#sources">Sources</a>{% endif %}</nav>
+      <nav class="section-jumps" aria-label="On this page"><span>On this page</span><a href="#access">{{ access_heading }}</a>{% if timeline_events %}<a href="#timeline">Timeline</a>{% endif %}<a href="#connections">Connections</a>{% if work.description %}<a href="#description">Description</a>{% endif %}<a href="#details">Details</a>{% if work.credits.all %}<a href="#creators">Creators</a>{% endif %}{% if work.versions.all %}<a href="#versions">Editions &amp; versions</a>{% endif %}{% if work.source_links.all or work.identifiers.all %}<a href="#sources">Sources</a>{% endif %}</nav>
     </div>
   </header>
 
   {% include "catalog/_access.html" %}
+
+  {% include "catalog/_timeline.html" %}
 
   {% include "catalog/_connections.html" %}
 

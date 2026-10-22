@@ -1,0 +1,7 @@
+{
+  "version": "2026-10-21-golden-20-othello",
+  "notes": "One exact seed added to replace a title-conflicted Macbeth candidate.",
+  "seeds": [
+    {"qid": "Q26833", "label": "Othello"}
+  ]
+}

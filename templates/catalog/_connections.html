@@ -2,7 +2,8 @@
   <p class="eyebrow">DIRECT CATALOG CONNECTIONS</p><h2>Connections</h2>
   <p class="section-deck">{{ connection_total }} connected work{{ connection_total|pluralize }} · {{ connection_assertions }} accepted relationship{{ connection_assertions|pluralize }}. Only direct, accepted connections to public records are shown.</p>
   <p class="helper">Source works come first, then adaptations, then other connections. Each work appears once; all recorded relationships to it remain visible. Acceptance is the catalog review state; a source link alone does not establish human verification.</p>
-  {% if connection_total %}
+  {% if connection_total %}<details class="connection-details"{% if not timeline_events or connection_has_filters %} open{% endif %}>
+  <summary>Detailed connection list and evidence <span class="helper">({{ connection_total }} work{{ connection_total|pluralize }})</span></summary>
   <form method="get" action="{{ work.get_absolute_url }}#connections" class="connection-filters" aria-label="Filter connected works">
     <div><label for="connection-q">Search connected works</label><input id="connection-q" type="search" name="connection_q" value="{{ connection_q }}" placeholder="Title or record ID" maxlength="200"></div>
     <div><label for="connection-relationship">Relationship to this work</label><select id="connection-relationship" name="connection_relationship"><option value="">All relationships</option>{% for value, label in connection_choices %}<option value="{{ value }}" {% if connection_relationship == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
@@ -36,4 +37,5 @@
     {% empty %}<div class="empty compact">{% if connection_total %}<strong>No connected works match these filters.</strong> <a href="{{ work.get_absolute_url }}#connections">Reset view</a>.{% else %}<strong>No connections recorded yet.</strong> This does not mean that no connections exist. <a href="{% url 'suggest-relationship' work.pk %}">Suggest a relationship</a>.{% endif %}</div>{% endfor %}
   </div>
   {% if connection_page.has_other_pages %}<nav class="pagination" aria-label="Connections pages">{% if connection_previous %}<a href="{{ connection_previous }}">Previous</a>{% endif %}<span>Page {{ connection_page.number }} of {{ connection_page.paginator.num_pages }}</span>{% if connection_next %}<a href="{{ connection_next }}">Next connected works →</a>{% endif %}</nav>{% endif %}
+  {% if connection_total %}</details>{% endif %}
 </section>

@@ -1,0 +1,23 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_stats %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+  .oma-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:0 0 22px; }
+  .oma-stat { background:var(--body-bg,#fff); border:1px solid var(--hairline-color,#ddd); border-radius:4px; padding:10px 12px; }
+  .oma-stat strong { display:block; font-size:22px; line-height:1.1; }
+  .oma-stat span { color:var(--body-quiet-color,#666); font-size:12px; }
+  .oma-links { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; }
+  .oma-links a { background:var(--primary,#417690); color:#fff; padding:7px 10px; border-radius:3px; text-decoration:none; font-weight:600; }
+  .oma-links a.secondary { background:var(--body-bg,#fff); color:var(--link-fg,#447e9b); border:1px solid var(--hairline-color,#ddd); }
+  .oma-note { color:var(--body-quiet-color,#666); font-size:12px; margin:-10px 0 22px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  {% oma_admin_summary %}
+  {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+</div>
+{% endblock %}

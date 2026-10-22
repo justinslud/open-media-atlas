@@ -1,0 +1,31 @@
+<div class="oma-stats" aria-label="Catalog summary">
+  <div class="oma-stat"><strong>{{ works_public }}</strong><span>Public works</span></div>
+  <div class="oma-stat"><strong>{{ works_editorial }}</strong><span>Golden seeds</span></div>
+  <div class="oma-stat"><strong>{{ works_adaptations }}</strong><span>Public adaptations</span></div>
+  <div class="oma-stat"><strong>{{ relationships_golden }}</strong><span>Accepted golden edges</span></div>
+  <div class="oma-stat"><strong>{{ works_undated }}</strong><span>Public works without year</span></div>
+  <div class="oma-stat"><strong>{{ works_with_image }}</strong><span>Works with image</span></div>
+  <div class="oma-stat"><strong>{{ works_without_image }}</strong><span>Works without image</span></div>
+  <div class="oma-stat"><strong>{{ proposals_pending }}</strong><span>Pending proposals</span></div>
+  <div class="oma-stat"><strong>{{ proposals_golden_pending }}</strong><span>Pending golden proposals</span></div>
+  <div class="oma-stat"><strong>{{ proposals_undated_pending }}</strong><span>Pending with undated endpoint</span></div>
+  <div class="oma-stat"><strong>{{ works_draft }}</strong><span>Draft works</span></div>
+  <div class="oma-stat"><strong>{{ source_records }}</strong><span>Source records</span></div>
+</div>
+<div class="oma-links">
+  <a href="{% url 'admin:catalog_work_changelist' %}?depth=editorial&is_demo__exact=0">Golden seeds</a>
+  <a href="{% url 'admin:catalog_work_changelist' %}?visibility=public&depth=index">Public adaptations</a>
+  <a href="{% url 'admin:catalog_workrelationship_changelist' %}?review_status=accepted&golden=yes">Accepted golden edges</a>
+  <a href="{% url 'admin:catalog_importrelationshipproposal_changelist' %}?status=pending&golden=yes">Pending golden proposals</a>
+  <a class="secondary" href="{% url 'admin:catalog_importrelationshipproposal_changelist' %}?status=pending&undated_endpoint=yes">Pending undated endpoints</a>
+  <a class="secondary" href="{% url 'admin:catalog_work_changelist' %}?visibility=public&has_date=no">Missing public dates</a>
+  <a class="secondary" href="{% url 'admin:catalog_work_changelist' %}?has_image=no">Missing images</a>
+  <a class="secondary" href="{% url 'admin:catalog_work_changelist' %}?visibility=draft">Draft works</a>
+  <a class="secondary" href="{% url 'admin:catalog_importrelationshipproposal_changelist' %}?status=pending">All pending proposals</a>
+  <a class="secondary" href="{% url 'admin:catalog_importrun_changelist' %}">Import runs</a>
+  <a class="secondary" href="{% url 'admin:catalog_sourcerecord_changelist' %}">Source records</a>
+  {% if golden_list %}<a class="secondary" href="{{ golden_list.get_absolute_url }}">Public “Golden 20”</a>{% endif %}
+</div>
+{% if latest_run %}
+<p class="oma-note">Latest import: <a href="{% url 'admin:catalog_importrun_change' latest_run.pk %}">run {{ latest_run.pk }}</a> · {{ latest_run.source.title }} · {{ latest_run.get_status_display }} · {{ latest_run.started_at }}</p>
+{% endif %}

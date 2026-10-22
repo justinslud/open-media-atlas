@@ -118,6 +118,27 @@ class ConnectionsTests(TestCase):
             self.assertEqual([r['work'].first_publication_year for r in rows], expected)
         self.assertEqual(len(self.get().context['connection_rows']), 3)
 
+    def test_timeline_orders_dated_connections_and_counts_undated(self):
+        later = self.make_work('Later adaptation', first_publication_year=2010)
+        earlier = self.make_work('Earlier adaptation', first_publication_year=1990)
+        undated = self.make_work('Undated adaptation')
+        self.relate(later, self.work)
+        self.relate(earlier, self.work)
+        self.relate(earlier, self.work, self.inspired)
+        self.relate(undated, self.work)
+        response = self.get()
+        self.assertEqual(
+            [event['work'].pk for event in response.context['timeline_events']],
+            [earlier.pk, later.pk],
+        )
+        self.assertEqual(response.context['timeline_start'], 1990)
+        self.assertEqual(response.context['timeline_end'], 2010)
+        self.assertEqual(response.context['timeline_undated'], 1)
+        self.assertContains(response, 'id="timeline"')
+        self.assertContains(response, '1990')
+        self.assertContains(response, '2010')
+        self.assertContains(response, '1 undated')
+
     def test_visibility_review_and_unconnected_catalog_are_excluded(self):
         for state in ['draft', 'suppressed']:
             hidden = self.make_work(state)
