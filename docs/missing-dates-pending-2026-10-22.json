@@ -117,6 +117,19 @@
     "restricted_sources": ""
   },
   {
+    "work_id": 6582,
+    "title": "Frankenstein",
+    "type": "Television series",
+    "qid": "Q2574066",
+    "wikidata_url": "https://www.wikidata.org/wiki/Q2574066",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Frankenstein_%28miniseries%29",
+    "pending_targets": "Frankenstein",
+    "date_properties_present": "",
+    "external_ids": "IMDb (P345=tt0368730, restricted): https://www.imdb.com/title/tt0368730/ | Kinopoisk (P2603=84672, restricted): https://www.kinopoisk.ru/film/84672/ | ČSFD (P2529=136003, restricted): https://www.csfd.cz/film/136003/ | TheTVDB series (P4835=361683, restricted): https://thetvdb.com/series/361683 | TMDB TV (P4983=40165, restricted): https://www.themoviedb.org/tv/40165 | Letterboxd (P6127=frankenstein-2004, restricted): https://letterboxd.com/film/frankenstein-2004/ | LUMIERE (P4282=172460, restricted): https://lumiere.obs.coe.int/web/film_info/?id=172460 | Trakt (P8013=shows/frankenstein-2004, restricted): https://trakt.tv/movies/shows/frankenstein-2004 | Douban (P4529=1892211, restricted): https://movie.douban.com/subject/1892211/",
+    "permissive_sources": "Wikipedia",
+    "restricted_sources": "Douban, IMDb, Kinopoisk, LUMIERE, Letterboxd, TMDB TV, TheTVDB series, Trakt, ČSFD"
+  },
+  {
     "work_id": 6182,
     "title": "Godzilla’s Monsterpiece Theatre Presents: The Kaiju of Oz",
     "type": "Creative work",
@@ -180,6 +193,19 @@
     "external_ids": "IMDb (P345=tt0124702, restricted): https://www.imdb.com/title/tt0124702/ | TMDB movie (P4947=245814, restricted): https://www.themoviedb.org/movie/245814",
     "permissive_sources": "Wikidata",
     "restricted_sources": "IMDb, TMDB movie"
+  },
+  {
+    "work_id": 6561,
+    "title": "Hamlet: For the Love of Ophelia",
+    "type": "Film",
+    "qid": "Q140422226",
+    "wikidata_url": "https://www.wikidata.org/wiki/Q140422226",
+    "wikipedia_url": "",
+    "pending_targets": "The Tragedy of Hamlet, Prince of Denmark",
+    "date_properties_present": "",
+    "external_ids": "TMDB movie (P4947=245814, restricted): https://www.themoviedb.org/movie/245814 | Letterboxd (P6127=hamlet-for-the-love-of-ophelia, restricted): https://letterboxd.com/film/hamlet-for-the-love-of-ophelia/",
+    "permissive_sources": "Wikidata",
+    "restricted_sources": "Letterboxd, TMDB movie"
   },
   {
     "work_id": 6181,

@@ -31,7 +31,8 @@ Filter by relationship type, source, or golden endpoint. Use the public page tim
 <http://127.0.0.1:8000/admin/catalog/importrelationshipproposal/?status=pending&golden=yes>
 
 - This is the review queue, not a to-do list that must be cleared.
-- Approve one proposal at a time after checking both endpoints and the evidence.
+- Current state: **161 pending proposals, all amber**, after the general-discovery pass. **38** have an undated endpoint.
+- Use `triage_proposals` for the rolling green/amber/red classification; review exception groups, not every row.
 - Leave weak or obscure proposals pending. Do not use the bulk action on the whole queue.
 
 ### Stage slice review queues
@@ -48,7 +49,7 @@ The television slice (runs 5 and 7) is approved: 14 dated endpoints are public, 
 
 <http://127.0.0.1:8000/admin/catalog/work/?visibility=public&has_date=no>
 
-Public works: **0 without a year**. The two year-only records are now displayed but explicitly marked unverified:
+Public works: **424**, **0 without a year**. The two year-only records are now displayed but explicitly marked unverified:
 
 - `Midsummer Mechanicals` (6085), 2022
 - `The Picture of Dorian Gray (Broadway, 2025)` (6160), 2025
@@ -128,12 +129,12 @@ Review these three specifically before treating the set as settled:
 
 ### Remaining pending dates
 
-Pending proposals with an undated endpoint: **36 of 157**. Stage slice A’s Dorian Gray opera and the television `Daai Bo Fuk` are approved but remain drafts because they have no date; stage slice B is fully dated.
+Pending proposals with an undated endpoint: **38 of 161**. Stage slice A’s Dorian Gray opera and the television `Daai Bo Fuk` are approved but remain drafts because they have no date; stage slice B is fully dated.
 
-- 25 of the original 37 have a Wikipedia sitelink; 12 have none.
-- 9 have at least one restricted external ID.
+- The 38 include two new discovery rows with no date claim: `Frankenstein` (6582, television series) and `Hamlet: For the Love of Ophelia` (6561, film).
+- Many undated rows still have a Wikipedia sitelink, but no usable machine-readable date field was found in the permissive passes.
 - No permissive general film database was found. IMDb, TMDB, ČSFD, Kinopoisk, Douban, Trakt, Letterboxd, TheTVDB, IBDB, Goodreads, EIDR, and LUMIERE are treated as restricted; do not scrape them.
-- The regenerated review list is `docs/missing-dates-pending-2026-10-22.csv` and `.json` (36 rows; it excludes the approved-but-draft Dorian Gray opera and `Daai Bo Fuk`).
+- The regenerated review list is `docs/missing-dates-pending-2026-10-22.csv` and `.json` (38 rows; it excludes approved-but-draft records).
 
 Regenerate it with:
 
@@ -159,7 +160,7 @@ Open any golden book's public page and use the **Read** section.
 
 ## 6. Adaptation images
 
-Adaptation records now use a Commons `P18` image only when the cached Wikidata entity has one. 12 of 78 adaptations have one; the rest keep the typographic placeholder. These are free Commons files, not IMDb or TMDB artwork and not guaranteed posters.
+Adaptation records now use a Commons `P18` image only when the cached Wikidata entity has one. 21 of 404 public adaptations have one; the rest keep the typographic placeholder. These are free Commons files, not IMDb or TMDB artwork and not guaranteed posters.
 
 ## 7. Timeline
 
@@ -238,6 +239,51 @@ This found **5 new ballets**, staged as run 11. All 5 have dates and are now app
 | A Midsummer Night's Dream | 6510 | 1962-01-17 | first_performance | A Midsummer Night's Dream |
 | Dorian Gray | 6511 | 2008-08 | first_performance | The Picture of Dorian Gray |
 | Othello | 6512 | 1998-06-02 | release | Othello |
+
+## 9. General candidate discovery — 2026-10-22
+
+Generalized the stage-only discovery probe into a bounded all-media feed. It still writes only a candidate manifest; staging and triage remain separate reviewed steps.
+
+```bash
+.venv/bin/python manage.py discover_wikidata_candidates \
+  --manifest data/wikidata-golden-20.json \
+  --output data/wikidata-candidates-discovered-2026-10-22.json \
+  --types all --limit 100 --request-limit 30
+
+.venv/bin/python manage.py run_wikidata_enrichment \
+  --candidates data/wikidata-candidates-discovered-2026-10-22.json
+
+.venv/bin/python manage.py triage_proposals --output docs/proposal-triage-latest.json
+.venv/bin/python manage.py triage_proposals --output docs/proposal-triage-latest.json --confirm
+```
+
+The query selects non-deprecated inbound `P144` for the golden seeds, restricts `P31` to supported specific types, and does not traverse recursively. The manifest is capped at 100 rows and is currently **truncated**, so more candidates remain available by raising `--limit` or adding seeds.
+
+### Applied result
+
+- 100 candidates staged in run 13: 100 proposals, 0 ambiguous matches after the date fix.
+- Triage: **96 green, 4 amber, 0 red**.
+- 96 proposals approved and 96 works published.
+- Public state: **424 non-demo works, 411 accepted edges, 0 public works without a year**.
+- Pending: **161 proposals, all amber**; 38 have an undated endpoint.
+- Candidate mix: film 86, television series 8, video game 4, album 1, television program 1.
+
+### New amber rows
+
+| Work | ID | Reason |
+|---|---:|---|
+| Alice in Wonderland | 6559 | no Wikipedia sitelink |
+| Frankenstein | 6582 | no year, date unverified, title collision |
+| Frankenstein | 6632 | no Wikipedia sitelink |
+| Hamlet: For the Love of Ophelia | 6561 | no year, date unverified, no sitelink |
+
+### Pipeline changes
+
+- `catalog/candidate_discovery.py` now holds the shared candidate-row builder; the stage command imports it instead of keeping a private copy.
+- `discover_wikidata_candidates` supports `--types` (public type codes or `all`), `--limit`, `--request-limit`, `--manifest`, `--output`, and `--include-existing`.
+- Staging now uses the same medium-aware date selector as discovery for every medium, not only stage. This recovered years for candidates whose Wikidata entity has several release assertions.
+- Title collisions are amber only when the adaptation and source share a type, share a year, or lack a year. An eponymous adaptation with a distinct type and year is green with an `eponymous_title` warning. Exact `P144`, QID, date, and sitelink remain required.
+- Discovery remains CC0 Wikidata-only for identity and edges. No restricted sites are scraped and no rights are inferred from credits.
 
 Exceptions:
 

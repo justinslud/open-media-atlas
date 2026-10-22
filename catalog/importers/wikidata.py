@@ -179,11 +179,8 @@ def stage_entity(entity, source, run, *, supporting_entities=None, existing_only
     title=(resolved_title or qid)[:300]
     created = not matched
     spec=work_type_spec(entity)
-    from catalog.dates import wikidata_date, wikidata_date_for_medium
-    if spec[2]=="stage":
-        date,year,precision,kind,evidence=wikidata_date_for_medium(entity,spec[2])
-    else:
-        date,year,precision,kind,evidence=wikidata_date(entity)
+    from catalog.dates import wikidata_date_for_medium
+    date,year,precision,kind,evidence=wikidata_date_for_medium(entity,spec[2])
     if created:
         candidates=Work.objects.filter(title__iexact=title)
         if candidates.exists() and not allow_title_collision:

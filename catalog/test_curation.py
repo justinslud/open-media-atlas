@@ -9,7 +9,8 @@ from django.utils import timezone
 from .dates import wikidata_date_for_medium
 from .importers.wikidata import run_import, work_type_spec
 from .management.commands.backfill_wikipedia_dates import parse_infobox_dates
-from .management.commands.discover_wikidata_stage_candidates import build_candidate_rows
+from .candidate_discovery import build_candidate_rows
+from .management.commands.discover_wikidata_candidates import parse_types
 from .management.commands.import_performing_arts_dates import idu_productions, spap_performances
 from .management.commands.triage_proposals import evaluate_proposal
 from .models import (
@@ -448,6 +449,12 @@ class CurationCommandTests(TestCase):
         self.assertEqual(rerun_stats["relationships_already_proposed"], 1)
         self.assertEqual(ImportRelationshipProposal.objects.count(), 1)
 
+    def test_general_discovery_type_parser(self):
+        self.assertEqual(parse_types("all"), {"film", "television-series", "television-program", "play", "opera", "musical", "ballet", "video-game", "album", "song", "novel"})
+        self.assertEqual(parse_types("film,television-series"), {"film", "television-series"})
+        with self.assertRaises(Exception):
+            parse_types("film,not-a-type")
+
     def test_common_screen_subclasses_resolve_to_specific_types(self):
         def entity(qid):
             return {"claims": {"P31": [{"rank": "normal", "mainsnak": {"datavalue": {"value": {"id": qid, "entity-type": "item"}}}}]}}
@@ -482,6 +489,7 @@ class CurationCommandTests(TestCase):
                 visibility="public",
                 depth="editorial",
                 has_known_title=True,
+                public_type_code="novel",
             )
             return SimpleNamespace(
                 pk=1,
@@ -515,6 +523,25 @@ class CurationCommandTests(TestCase):
         self.assertEqual(decision, "amber")
         self.assertIn("generic_type", reasons)
 
+        decision, reasons, warnings = evaluate_proposal(
+            proposal(title="Example source"), "Q10", 1, "", 1, 2026, 2
+        )
+        self.assertEqual(decision, "green")
+        self.assertNotIn("title_collision", reasons)
+        self.assertIn("eponymous_title", warnings)
+
+        decision, reasons, _ = evaluate_proposal(
+            proposal(title="Example source", public_type_code="novel"), "Q10", 1, "", 1, 2026, 2
+        )
+        self.assertEqual(decision, "amber")
+        self.assertIn("title_collision", reasons)
+
+        decision, reasons, _ = evaluate_proposal(
+            proposal(title="Example source", first_publication_year=1900), "Q10", 1, "", 1, 2026, 2
+        )
+        self.assertEqual(decision, "amber")
+        self.assertIn("title_collision", reasons)
+
         decision, reasons, _ = evaluate_proposal(proposal(), "Q10", 1, "accepted", 1, 2026, 2)
         self.assertEqual(decision, "red")
         self.assertIn("already_accepted", reasons)
@@ -539,11 +566,17 @@ class CurationCommandTests(TestCase):
                 },
             },
         }
-        rows = build_candidate_rows(entities, ["Q83186"], seed_labels={"Q83186": "Romeo and Juliet"})
+        rows = build_candidate_rows(
+            entities, ["Q83186"], {"opera", "musical", "ballet"},
+            seed_labels={"Q83186": "Romeo and Juliet"},
+        )
         self.assertEqual(len(rows), 1)
         self.assertEqual((rows[0]["qid"], rows[0]["expected_type"], rows[0]["expected_year"]), ("Q900", "opera", 1900))
         self.assertEqual(rows[0]["seed_label"], "Romeo and Juliet")
-        self.assertEqual(build_candidate_rows(entities, ["Q83186"], existing_qids={"Q900"}), [])
+        self.assertEqual(
+            build_candidate_rows(entities, ["Q83186"], {"opera", "musical", "ballet"}, existing_qids={"Q900"}),
+            [],
+        )
 
     def test_exact_candidate_can_refresh_generic_draft_type_and_date(self):
         seed = Work.objects.create(

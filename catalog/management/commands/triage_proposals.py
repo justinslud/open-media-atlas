@@ -57,6 +57,7 @@ AMBER_REASONS = {
 
 WARNING_REASONS = {
     "no_image": "no licensed image; placeholder will remain",
+    "eponymous_title": "same title as the source; distinct type and year keep the identity unambiguous",
 }
 
 
@@ -68,6 +69,14 @@ def sitelink_count(work):
             if isinstance(sitelinks, dict):
                 return len(sitelinks)
     return 0
+
+
+def _same_title(work, seed):
+    return (
+        work.has_known_title
+        and seed.has_known_title
+        and slugify(work.title) == slugify(seed.title)
+    )
 
 
 def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks):
@@ -115,7 +124,12 @@ def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, tod
         amber.append("seed_no_year")
     if work.public_type_code in GENERIC_TYPES:
         amber.append("generic_type")
-    if work.has_known_title and seed.has_known_title and slugify(work.title) == slugify(seed.title):
+    if _same_title(work, seed) and (
+        work.public_type_code == getattr(seed, "public_type_code", None)
+        or work.first_publication_year == seed.first_publication_year
+        or not work.first_publication_year
+        or not seed.first_publication_year
+    ):
         amber.append("title_collision")
     date_evidence = work.date_evidence if isinstance(work.date_evidence, dict) else {}
     if work.date_kind == "unknown" or date_evidence.get("meaning_unverified"):
@@ -142,6 +156,8 @@ def evaluate_proposal(
     warnings = []
     if not proposal.from_work.image_url:
         warnings.append("no_image")
+    if _same_title(proposal.from_work, proposal.to_work) and "title_collision" not in amber:
+        warnings.append("eponymous_title")
     if red:
         decision = "red"
     elif amber:
