@@ -1,4 +1,5 @@
 from io import StringIO
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from django.core.management import call_command
@@ -10,6 +11,7 @@ from .importers.wikidata import run_import
 from .management.commands.backfill_wikipedia_dates import parse_infobox_dates
 from .management.commands.discover_wikidata_stage_candidates import build_candidate_rows
 from .management.commands.import_performing_arts_dates import idu_productions, spap_performances
+from .management.commands.triage_proposals import evaluate_proposal
 from .models import (
     AccessLink,
     ExternalIdentifier,
@@ -445,6 +447,67 @@ class CurationCommandTests(TestCase):
         self.assertEqual(rerun_stats["relationships_proposed"], 0)
         self.assertEqual(rerun_stats["relationships_already_proposed"], 1)
         self.assertEqual(ImportRelationshipProposal.objects.count(), 1)
+
+    def test_proposal_triage_green_requires_specific_dated_sourced_edge(self):
+        def proposal(**work_overrides):
+            work_values = {
+                "pk": 10,
+                "title": "Example film",
+                "first_publication_year": 2000,
+                "first_publication_date_text": "2000",
+                "date_kind": "release",
+                "date_evidence": {},
+                "visibility": "draft",
+                "is_demo": False,
+                "has_known_title": True,
+                "public_type_code": "film",
+                "image_url": "",
+            }
+            work_values.update(work_overrides)
+            work = SimpleNamespace(**work_values)
+            seed = SimpleNamespace(
+                pk=20,
+                title="Example source",
+                first_publication_year=1900,
+                visibility="public",
+                depth="editorial",
+                has_known_title=True,
+            )
+            return SimpleNamespace(
+                pk=1,
+                run_id=1,
+                from_work=work,
+                to_work=seed,
+                relationship_type=SimpleNamespace(code="based-on"),
+                evidence={
+                    "property_id": "P144",
+                    "entity_id": "Q10",
+                    "rank": "normal",
+                    "statement_id": "Q10$statement",
+                },
+                statement_id="Q10$statement",
+            )
+
+        decision, reasons, warnings = evaluate_proposal(proposal(), "Q10", 1, "", 1, 2026, 2)
+        self.assertEqual(decision, "green")
+        self.assertEqual(reasons, [])
+        self.assertEqual(warnings, ["no_image"])
+
+        decision, reasons, _ = evaluate_proposal(
+            proposal(first_publication_year=None), "Q10", 1, "", 1, 2026, 2
+        )
+        self.assertEqual(decision, "amber")
+        self.assertIn("no_year", reasons)
+
+        decision, reasons, _ = evaluate_proposal(
+            proposal(public_type_code="creative-work"), "Q10", 1, "", 1, 2026, 2
+        )
+        self.assertEqual(decision, "amber")
+        self.assertIn("generic_type", reasons)
+
+        decision, reasons, _ = evaluate_proposal(proposal(), "Q10", 1, "accepted", 1, 2026, 2)
+        self.assertEqual(decision, "red")
+        self.assertIn("already_accepted", reasons)
 
     def test_stage_candidate_discovery_requires_p144_and_stage_type(self):
         entities = {

@@ -128,7 +128,7 @@ Review these three specifically before treating the set as settled:
 
 ### Remaining pending dates
 
-Pending proposals with an undated endpoint: **36 of 364**. Stage slice A’s Dorian Gray opera and the television `Daai Bo Fuk` are approved but remain drafts because they have no date; stage slice B is fully dated.
+Pending proposals with an undated endpoint: **36 of 224**. Stage slice A’s Dorian Gray opera and the television `Daai Bo Fuk` are approved but remain drafts because they have no date; stage slice B is fully dated.
 
 - 25 of the original 37 have a Wikipedia sitelink; 12 have none.
 - 9 have at least one restricted external ID.
@@ -278,10 +278,33 @@ The pending television proposals from the golden runs form a bounded next slice.
 
 `Daai Bo Fuk` (6048) has an exact `P144` edge but no Wikidata date and no recognised infobox date. Its edge is approved; the work stays draft so the public “0 works without a year” invariant holds.
 
-## Current limits
+## 10. Batch proposal triage — 2026-10-22
 
-- 66 original adaptations have no Commons `P18`; the 13 new public TV works also use placeholders. No licensed image is available locally for them.
-- Public works without a year: 0.
-- 364 proposals remain pending; 36 have an undated endpoint.
+Stopped treating each media slice as a separate manual review. `triage_proposals` now classifies the whole pending queue in one pass and applies only fully supported edges.
+
+```bash
+.venv/bin/python manage.py triage_proposals \
+  --output docs/proposal-triage-latest.json
+```
+
+- **Green** requires exact non-deprecated `P144`, `based-on`, a dated adaptation, a specific public type, at least one Wikipedia sitelink, a public editorial seed, no conflicting edge, and valid date order.
+- **Amber** stays pending: missing year, unverified date, generic type, no sitelink, title collision, or duplicate pending edge.
+- **Red** is excluded: bad evidence, identity conflict, self-link, unsupported target, or an existing edge.
+- Missing images are warnings, not publication blockers; placeholders remain.
+
+### Applied result
+
+- 364 candidates triaged: **140 green, 222 amber, 2 red**.
+- 140 proposals approved and 140 works published.
+- Green types: film 77, musical 17, play 12, novel 11, opera 11, video-game 7, album 4, song 1.
+- Red: duplicate accepted `Roméo et Juliette` (6447) and the self-linked/multi-QID Hamlet record (6004).
+- Amber reason tags overlap: generic type 168, no sitelink 82, unverified date 53, no year 36, title collision 1.
+- 362 pending records had no image warning; this did not block publication.
+
+### Current limits
+
+- Public non-demo works: **266**; public works without a year: **0**.
+- 224 proposals remain pending; 36 have an undated endpoint.
+- 66 original adaptations have no Commons `P18`; newly published adaptations mostly use placeholders. No licensed image is available locally for them.
 - Restricted film databases are not scraped. The remaining pending-date records are mostly records with no infobox date or only restricted IDs; use the report before spending time on them.
 
