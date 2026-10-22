@@ -1,0 +1,12 @@
+<ol class="timeline">
+  {% for event in events %}
+  <li class="timeline-event">
+    <span class="timeline-year">{{ event.year }}</span>
+    <span class="timeline-marker" aria-hidden="true"></span>
+    <div class="timeline-copy">
+      <a href="{{ event.work.get_absolute_url }}"><strong>{{ event.work.display_title }}</strong></a>
+      <p>{{ event.type }}{% if event.language %} · {{ event.language }}{% endif %}{% if show_labels %} · <span class="timeline-label">{{ event.label }}</span>{% endif %}{% if event.other_relationships %} · +{{ event.other_relationships }} more relationship{{ event.other_relationships|pluralize }}{% endif %}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>

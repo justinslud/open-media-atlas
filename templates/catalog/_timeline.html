@@ -2,19 +2,15 @@
 <section id="timeline" class="content-section timeline-section" aria-labelledby="timeline-heading">
   <p class="eyebrow">CONNECTION TIMELINE</p>
   <h2 id="timeline-heading">How this work travels</h2>
-  <p class="section-deck">{% if timeline_start == timeline_end %}{{ timeline_start }}{% else %}{{ timeline_start }}–{{ timeline_end }}{% endif %} · {{ timeline_events|length }} accepted connection{{ timeline_events|length|pluralize }} with a recorded year{% if timeline_undated %} · {{ timeline_undated }} undated{% endif %}.</p>
-  <p class="helper">Earliest recorded year first. A date can describe publication, release, or creation; open a work to see its stated date meaning.</p>
-  <ol class="timeline">
-    {% for event in timeline_events %}
-    <li class="timeline-event">
-      <span class="timeline-year">{{ event.year }}</span>
-      <span class="timeline-marker" aria-hidden="true"></span>
-      <div class="timeline-copy">
-        <a href="{{ event.work.get_absolute_url }}"><strong>{{ event.work.display_title }}</strong></a>
-        <p>{{ event.type }} · <span class="timeline-label">{{ event.label }}</span>{% if event.other_relationships %} · +{{ event.other_relationships }} more relationship{{ event.other_relationships|pluralize }}{% endif %}</p>
-      </div>
-    </li>
-    {% endfor %}
-  </ol>
+  <p class="section-deck">{% if timeline_start == timeline_end %}{{ timeline_start }}{% else %}{{ timeline_start }}–{{ timeline_end }}{% endif %} · {{ timeline_events|length }} dated connection{{ timeline_events|length|pluralize }}{% if timeline_has_highlights %} · showing {{ timeline_highlight_events|length }} highlights{% endif %}{% if timeline_undated %} · {{ timeline_undated }} undated{% endif %}.</p>
+  <p class="helper">{% if timeline_uniform_label %}All dated connections use the recorded meaning “{{ timeline_uniform_label }}”. {% endif %}Highlights favour well-documented records and different work types. Open the full list below for every dated connection. Dates retain their recorded meaning: publication, release, performance, or creation.</p>
+  {% if timeline_has_highlights %}<p class="timeline-highlight-note">Showing {{ timeline_highlight_events|length }} of {{ timeline_events|length }}. <a href="#timeline-all">See the full timeline</a>.</p>{% endif %}
+  {% include "catalog/_timeline_list.html" with events=timeline_highlight_events show_labels=timeline_show_labels %}
+  {% if timeline_has_highlights %}
+  <details id="timeline-all" class="timeline-all">
+    <summary>Full timeline <span class="helper">({{ timeline_events|length }} dated connection{{ timeline_events|length|pluralize }})</span></summary>
+    {% include "catalog/_timeline_list.html" with events=timeline_events show_labels=timeline_show_labels %}
+  </details>
+  {% endif %}
 </section>
 {% endif %}

@@ -134,7 +134,7 @@ class WikidataPilotTests(TestCase):
         relationship.from_work.visibility=relationship.to_work.visibility="public"
         relationship.from_work.save(); relationship.to_work.save()
         self.assertContains(self.client.get(relationship.from_work.get_absolute_url()),"Based on")
-        self.assertContains(self.client.get(relationship.to_work.get_absolute_url()),"Inspired or adapted works")
+        self.assertContains(self.client.get(relationship.to_work.get_absolute_url()),"Works based on this")
 
     def test_admin_can_bulk_approve_imported_relationships(self):
         run_import(self.run, ["Q1"], related_limit=5, client=FakeWikidataClient())

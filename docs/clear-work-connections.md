@@ -23,7 +23,7 @@ in the current work's accepted neighborhood.
 rows, filter choices and evidence details. `adapted-from` reads **Based on** from
 the derived work and **Adapted into** from its source. All other codes preserve
 stored forward/inverse wording, including Wikidata P144's deliberately broader
-**Inspired or adapted works** inverse. That assertion alone cannot safely be
+**Works based on this** inverse. That assertion alone cannot safely be
 reclassified as a verified adaptation, inspiration, or remake.
 
 ## Browsing and evidence

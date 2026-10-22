@@ -6,7 +6,7 @@ from django.test.utils import CaptureQueriesContext
 from django.utils import timezone
 
 from .connections import PAGE_SIZE, direction_label
-from .models import RelationshipType, Source, SourceRecord, Work, WorkRelationship, WorkType
+from .models import RelationshipType, Source, SourceRecord, Version, Work, WorkRelationship, WorkType
 
 
 class ConnectionsTests(TestCase):
@@ -53,7 +53,7 @@ class ConnectionsTests(TestCase):
             ('sequel-to', 'Sequel to', 'Followed by', 'sequence'),
             ('part-of', 'Part of', 'Contains', 'composition'),
             ('shared-universe', 'Shares universe with', 'Shares universe with', 'association'),
-            ('based-on', 'Based on', 'Inspired or adapted works', 'derivation'),
+            ('based-on', 'Based on', 'Works based on this', 'derivation'),
         ]:
             kind, _ = RelationshipType.objects.get_or_create(code=code, defaults=dict(label=label, inverse_label=inverse, category=category))
             edge = self.relate(child, self.work, kind)
@@ -117,6 +117,29 @@ class ConnectionsTests(TestCase):
             rows = self.get(connection_sort=sort).context['connection_rows']
             self.assertEqual([r['work'].first_publication_year for r in rows], expected)
         self.assertEqual(len(self.get().context['connection_rows']), 3)
+
+    def test_language_year_filters_and_compact_highlights(self):
+        english = self.make_work("English film", first_publication_year=2000)
+        french = self.make_work("French film", first_publication_year=2010)
+        unknown = self.make_work("Unknown language", first_publication_year=2015)
+        Version.objects.create(work=english, label="Original work", kind="original", language="English")
+        Version.objects.create(work=french, label="Original work", kind="original", language="French")
+        self.relate(english, self.work)
+        self.relate(french, self.work)
+        self.relate(unknown, self.work)
+        self.assertEqual(self.get(connection_language="English").context["connection_matching"], 1)
+        self.assertEqual(self.get(connection_year_from="2005").context["connection_matching"], 2)
+        self.assertEqual(self.get(connection_year_to="2005").context["connection_matching"], 1)
+        self.assertEqual(self.get(connection_language="__unknown__").context["connection_matching"], 1)
+        self.assertEqual(self.get(connection_sort="prominence").context["connection_rows"][0]["work"], english)
+
+        for index in range(14):
+            self.relate(self.make_work(f"Later {index:02}", first_publication_year=2020 + index), self.work)
+        response = self.get()
+        self.assertTrue(response.context["timeline_has_highlights"])
+        self.assertEqual(len(response.context["timeline_highlight_events"]), 12)
+        self.assertEqual(len(response.context["timeline_events"]), 17)
+        self.assertContains(response, "See the full timeline")
 
     def test_timeline_orders_dated_connections_and_counts_undated(self):
         later = self.make_work('Later adaptation', first_publication_year=2010)

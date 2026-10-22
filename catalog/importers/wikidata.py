@@ -327,7 +327,7 @@ def run_import(run, seeds, *, related_limit=DEFAULT_RELATED_LIMIT, client=None, 
         ImportItem.objects.update_or_create(run=run,external_key=qid,defaults={"status":status,"work":work,"message":message})
     for qid in stats.get("candidates_unmatched",[]):
         ImportItem.objects.update_or_create(run=run,external_key=qid,defaults={"status":"failed","message":"no non-deprecated P144 claim to a selected seed"})
-    reltype,_=RelationshipType.objects.update_or_create(code="based-on",defaults={"label":"Based on","inverse_label":"Inspired or adapted works","category":"derivation"})
+    reltype,_=RelationshipType.objects.update_or_create(code="based-on",defaults={"label":"Based on","inverse_label":"Works based on this","category":"derivation"})
     retrieved=timezone.now().isoformat()
     for row in bindings:
         derived=row["derived"]["value"].rsplit("/",1)[-1]; seed=row["seed"]["value"].rsplit("/",1)[-1]

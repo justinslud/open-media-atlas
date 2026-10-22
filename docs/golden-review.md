@@ -162,9 +162,21 @@ Open any golden book's public page and use the **Read** section.
 
 Adaptation records now use a Commons `P18` image only when the cached Wikidata entity has one. 21 of 404 public adaptations have one; the rest keep the typographic placeholder. These are free Commons files, not IMDb or TMDB artwork and not guaranteed posters.
 
-## 7. Timeline
+## 7. Timeline and connection browsing
 
-Public pages now show an **accepted connection timeline** at `#timeline`, earliest year first, with undated connections counted separately. The detailed connection list and evidence are a collapsible drill-down below it.
+Public pages show an **accepted connection timeline** at `#timeline`, earliest year first, with undated connections counted separately. A `based-on` edge is displayed from the source page as **“Works based on this.”**
+
+The timeline is now the **human overview**:
+
+- It shows up to **12 highlights** when a work has more connections.
+- Highlights favour metadata-rich records, different work types, and avoid duplicate display titles.
+- The **full dated timeline** remains available in a disclosure for research.
+- A filter panel above the timeline applies to both the timeline and the detailed list.
+- Visible filters: title/record search, relationship, work type, language, year range, and sort.
+- The detailed list is paginated at 12 works per page and remains the evidence/research view.
+- Work titles have a hover/focus tooltip with type, year, language, and metadata richness.
+
+**Metadata richness** is deliberately separate from triage. It is a transparent ordering signal built from sitelinks, licensed image, description, language, date precision, specific type, and known title. It is not an editorial quality score and never changes publication state.
 
 ## 8. Stage slice A — opera, musical, ballet
 

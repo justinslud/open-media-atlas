@@ -21,6 +21,7 @@ from catalog.models import (
     Work,
     WorkRelationship,
 )
+from catalog.ranking import sitelink_count
 
 GENERIC_TYPES = {"book", "creative-work", "literary-work", "written-work", "unknown"}
 MIN_YEAR = 1400
@@ -59,16 +60,6 @@ WARNING_REASONS = {
     "no_image": "no licensed image; placeholder will remain",
     "eponymous_title": "same title as the source; distinct type and year keep the identity unambiguous",
 }
-
-
-def sitelink_count(work):
-    for record in work.source_records.all():
-        payload = record.raw_payload if isinstance(record.raw_payload, dict) else {}
-        if str(payload.get("id", "")).startswith("Q"):
-            sitelinks = payload.get("sitelinks", {})
-            if isinstance(sitelinks, dict):
-                return len(sitelinks)
-    return 0
 
 
 def _same_title(work, seed):

@@ -30,6 +30,8 @@
 
   {% include "catalog/_access.html" %}
 
+  {% if connection_total %}{% include "catalog/_connection_filters.html" %}{% endif %}
+
   {% include "catalog/_timeline.html" %}
 
   {% include "catalog/_connections.html" %}
