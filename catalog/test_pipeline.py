@@ -539,3 +539,76 @@ class ImportWikidataBooksTests(TestCase):
 
         work = Work.objects.get(identifiers__scheme="wikidata", identifiers__value="Q500")
         self.assertEqual(work.visibility, Work.Visibility.DRAFT)
+
+
+class TitleAndSeedSelectionTests(TestCase):
+    def setUp(self):
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+
+    def work(self, title, **kwargs):
+        defaults = {"slug": f"work-{Work.objects.count()}", "work_type": self.book,
+                    "visibility": Work.Visibility.PUBLIC, "first_publication_year": 1900}
+        defaults.update(kwargs)
+        return Work.objects.create(title=title, **defaults)
+
+    def test_strip_wrapping_quotes_removes_only_one_pair(self):
+        from .importers.wikidata import strip_wrapping_quotes
+
+        self.assertEqual(strip_wrapping_quotes('"Quoted Title"'), "Quoted Title")
+        self.assertEqual(strip_wrapping_quotes("\u201cCurly Title\u201d"), "Curly Title")
+        self.assertEqual(strip_wrapping_quotes("Plain Title"), "Plain Title")
+        self.assertEqual(strip_wrapping_quotes('"Unbalanced'), '"Unbalanced')
+        self.assertEqual(strip_wrapping_quotes('""'), '""')
+
+    def test_clean_quoted_titles_requires_matching_supplier_text(self):
+        quoted = self.work('"A Quoted Book"', slug="quoted-book")
+        self.snapshot("Q1", {"id": "Q1", "claims": {"P1476": [
+            {"mainsnak": {"datavalue": {"value": {"text": '"A Quoted Book"', "language": "en"}}}}
+        ]}}, work=quoted)
+        editorial = self.work('"Editor Wrote This"', slug="editorial-title")
+        self.snapshot("Q2", {"id": "Q2", "claims": {"P1476": [
+            {"mainsnak": {"datavalue": {"value": {"text": "Different Title", "language": "en"}}}}
+        ]}}, work=editorial)
+
+        call_command("clean_quoted_titles", confirm=True)
+
+        quoted.refresh_from_db()
+        editorial.refresh_from_db()
+        self.assertEqual(quoted.title, "A Quoted Book")
+        self.assertEqual(editorial.title, '"Editor Wrote This"')
+
+    def snapshot(self, key, payload, work):
+        return SourceRecord.objects.create(
+            source=self.source, external_key=key, matched_work=work, raw_payload=payload,
+            payload_hash=key, retrieved_at=timezone.now(),
+        )
+
+    def test_build_seed_manifest_selects_by_sitelinks_and_requires_ids(self):
+        rich = self.work("Well Known Book", slug="rich")
+        ExternalIdentifier.objects.create(work=rich, scheme="wikidata", value="Q100")
+        self.snapshot("Q100", {"id": "Q100", "sitelinks": {f"site{i}wiki": {} for i in range(25)}}, work=rich)
+        thin = self.work("Obscure Book", slug="thin")
+        ExternalIdentifier.objects.create(work=thin, scheme="wikidata", value="Q101")
+        self.snapshot("Q101", {"id": "Q101", "sitelinks": {"enwiki": {}}}, work=thin)
+        no_qid = self.work("Unlinked Book", slug="unlinked")
+
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / "seeds.json"
+            call_command("build_seed_manifest", output=output, min_sitelinks=10, limit=10)
+            data = json.loads(output.read_text())
+
+        self.assertEqual([row["qid"] for row in data["seeds"]], ["Q100"])
+
+    def test_promote_works_selects_known_works_by_sitelinks(self):
+        known = self.work("Known Ambient Book", slug="known-ambient", depth="ambient")
+        self.snapshot("Q200", {"id": "Q200", "sitelinks": {f"site{i}wiki": {} for i in range(30)}}, work=known)
+        obscure = self.work("Obscure Ambient Book", slug="obscure-ambient", depth="ambient")
+        self.snapshot("Q201", {"id": "Q201", "sitelinks": {"enwiki": {}}}, work=obscure)
+
+        call_command("promote_works", from_depth="ambient", min_sitelinks=10, depth="index", confirm=True)
+
+        known.refresh_from_db()
+        obscure.refresh_from_db()
+        self.assertEqual((known.visibility, known.depth), (Work.Visibility.PUBLIC, "index"))
+        self.assertEqual(obscure.depth, "ambient")

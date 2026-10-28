@@ -125,13 +125,31 @@ def first_claim(entity, prop):
     claims=entity.get("claims", {}).get(prop, [])
     return claims[0].get("mainsnak", {}).get("datavalue", {}).get("value") if claims else None
 
+WRAPPING_QUOTES = "\"\'\u201c\u201d\u2018\u2019\u201e\u00ab\u00bb\u300c\u300d"
+
+
+def strip_wrapping_quotes(text):
+    """Drop one pair of supplier quotation marks around a title.
+
+    Wikidata P1476 sometimes stores a title as a quoted string. The quotes are
+    typography, not part of the title, but only one matched pair is removed and
+    the raw payload keeps the original text.
+    """
+    text = (text or "").strip()
+    if len(text) > 2 and text[0] in WRAPPING_QUOTES and text[-1] in WRAPPING_QUOTES:
+        inner = text[1:-1].strip()
+        if inner:
+            return inner
+    return text
+
+
 def title_from_entity(entity):
     """Return (title, language, basis), without inventing a translation."""
     titles=[]
     for claim in entity.get("claims",{}).get("P1476",[]):
         value=claim.get("mainsnak",{}).get("datavalue",{}).get("value")
         if isinstance(value,dict) and value.get("text"):
-            titles.append((value["text"].strip(),value.get("language","") or "und","P1476"))
+            titles.append((strip_wrapping_quotes(value["text"]),value.get("language","") or "und","P1476"))
     for preferred in ("en","mul"):
         match=next((row for row in titles if row[1]==preferred),None)
         if match: return match
@@ -140,7 +158,7 @@ def title_from_entity(entity):
     if titles: return titles[0]
     labels=entity.get("labels",{})
     for preferred in ("en","mul"):
-        value=labels.get(preferred,{}).get("value","").strip()
+        value=strip_wrapping_quotes(labels.get(preferred,{}).get("value",""))
         if value: return value,preferred,"label"
     # Prefer a language with a Wikipedia article, then deterministic label order.
     for site in sorted(entity.get("sitelinks",{})):

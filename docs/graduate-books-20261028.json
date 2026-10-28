@@ -1,0 +1,9064 @@
+{
+  "confirm": true,
+  "depth": "index",
+  "require": [
+    "no_date"
+  ],
+  "force": false,
+  "selected": 1324,
+  "promoted": [
+    {
+      "work": 7868,
+      "title": "القرآن",
+      "year": 631,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7875,
+      "title": "Le Petit Prince",
+      "year": 1943,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7876,
+      "title": "The Lord of the Rings",
+      "year": 1954,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7877,
+      "title": "Das Kommunistische Manifest",
+      "year": 1848,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7878,
+      "title": "Nineteen Eighty-Four",
+      "year": 1949,
+      "warnings": []
+    },
+    {
+      "work": 7881,
+      "title": "Divine Comedy",
+      "year": 1320,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7883,
+      "title": "The Book of Mormon",
+      "year": 1830,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7884,
+      "title": "Animal Farm",
+      "year": 1945,
+      "warnings": []
+    },
+    {
+      "work": 7885,
+      "title": "紅樓夢",
+      "year": 1792,
+      "warnings": []
+    },
+    {
+      "work": 7886,
+      "title": "The Hobbit",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 7889,
+      "title": "Encyclopædia Britannica",
+      "year": 1768,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7890,
+      "title": "Anna Karenina",
+      "year": 1877,
+      "warnings": []
+    },
+    {
+      "work": 7891,
+      "title": "Преступленіе и наказаніе",
+      "year": 1866,
+      "warnings": []
+    },
+    {
+      "work": 7892,
+      "title": "Den lille Havfrue",
+      "year": 1837,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7893,
+      "title": "Guinness World Records",
+      "year": 1955,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7894,
+      "title": "Harry Potter and the Philosopher's Stone",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 7895,
+      "title": "My battle",
+      "year": 1925,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7896,
+      "title": "Πολιτεία",
+      "year": 1963,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7897,
+      "title": "Il principe",
+      "year": 1532,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7898,
+      "title": "Cien años de soledad",
+      "year": 1967,
+      "warnings": []
+    },
+    {
+      "work": 7900,
+      "title": "Kalevala",
+      "year": 1835,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7901,
+      "title": "The Life and Strange Surprizing Adventures of Robinson Crusoe, of York, Mariner: Who lived Eight and Twenty Years, all alone in an un-inhabited Island on the Coast of America, near the Mouth of the Great River of Oroonoque; Having been cast on Shore by Shipwreck, wherein all the Men perished but him",
+      "year": 1719,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7902,
+      "title": "War and Peace",
+      "year": 1869,
+      "warnings": []
+    },
+    {
+      "work": 7903,
+      "title": "Schneewittchen",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7904,
+      "title": "Harry Potter and the Chamber of Secrets",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 7907,
+      "title": "The Alchemist",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 7908,
+      "title": "Harry Potter and the Order of the Phoenix",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7909,
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7910,
+      "title": "Братья Карамазовы",
+      "year": 1880,
+      "warnings": []
+    },
+    {
+      "work": 7911,
+      "title": "The Old Man and the Sea",
+      "year": 1952,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7912,
+      "title": "Harry Potter and the Goblet of Fire",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7913,
+      "title": "Harry Potter and the Half-Blood Prince",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7914,
+      "title": "Harry Potter and the Deathly Hallows",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7915,
+      "title": "Das Kapital",
+      "year": 1867,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7916,
+      "title": "L'Étranger",
+      "year": 1942,
+      "warnings": []
+    },
+    {
+      "work": 7917,
+      "title": "The Catcher in the Rye",
+      "year": 1951,
+      "warnings": []
+    },
+    {
+      "work": 7918,
+      "title": "Travels into Several Remote Nations of the World, in Four Parts. By Lemuel Gulliver, First a Surgeon, and then a Captain of several Ships",
+      "year": 1726,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7919,
+      "title": "Faust",
+      "year": 1808,
+      "warnings": []
+    },
+    {
+      "work": 7920,
+      "title": "The Da Vinci Code",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7921,
+      "title": "On the origin of species by means of natural selection, or the preservation of favored races in the struggle for life",
+      "year": 1859,
+      "warnings": [
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 7922,
+      "title": "The Metamorphosis",
+      "year": 1915,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7923,
+      "title": "The Great Gatsby",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 7924,
+      "title": "Ulysses",
+      "year": 1922,
+      "warnings": []
+    },
+    {
+      "work": 7925,
+      "title": "Le avventure di Pinocchio",
+      "year": 1883,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7926,
+      "title": "Charlotte’s Web",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 7927,
+      "title": "Also sprach Zarathustra",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 7928,
+      "title": "Diary of Anne Frank",
+      "year": 1947,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7929,
+      "title": "Philosophiæ Naturalis Principia Mathematica.",
+      "year": 1687,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7930,
+      "title": "Мастер и Маргарита",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 7931,
+      "title": "En attendant Godot",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 7932,
+      "title": "西遊記",
+      "year": 1592,
+      "warnings": []
+    },
+    {
+      "work": 7935,
+      "title": "Lolita",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 7936,
+      "title": "Dune",
+      "year": 1965,
+      "warnings": []
+    },
+    {
+      "work": 7937,
+      "title": "Notre-Dame de Paris",
+      "year": 1831,
+      "warnings": []
+    },
+    {
+      "work": 7938,
+      "title": "The Adventures of Tom Sawyer",
+      "year": 1876,
+      "warnings": []
+    },
+    {
+      "work": 7942,
+      "title": "Brave New World",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 7943,
+      "title": "Madame Bovary",
+      "year": 1857,
+      "warnings": []
+    },
+    {
+      "work": 7944,
+      "title": "Hänsel und Gretel",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7945,
+      "title": "Paradise Lost",
+      "year": 1667,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7946,
+      "title": "The Adventures Of Huckleberry Finn",
+      "year": 1884,
+      "warnings": []
+    },
+    {
+      "work": 7947,
+      "title": "The Raven",
+      "year": 1845,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7948,
+      "title": "Der Prozeß",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 7951,
+      "title": "The Canterbury Tales",
+      "year": 1387,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7952,
+      "title": "The Idiot",
+      "year": 1869,
+      "warnings": []
+    },
+    {
+      "work": 7953,
+      "title": "Евгеній Онѣгинъ",
+      "year": 1825,
+      "warnings": []
+    },
+    {
+      "work": 7955,
+      "title": "The Merchant of Venice",
+      "year": 1600,
+      "warnings": []
+    },
+    {
+      "work": 7956,
+      "title": "To Kill a Mockingbird",
+      "year": 1960,
+      "warnings": []
+    },
+    {
+      "work": 7957,
+      "title": "Fahrenheit 451",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 7958,
+      "title": "All quiet on the western front",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 7959,
+      "title": "For Whom the Bell Tolls",
+      "year": 1940,
+      "warnings": []
+    },
+    {
+      "work": 7960,
+      "title": "An Inquiry into the Nature and Causes of the Wealth of Nations",
+      "year": 1776,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7962,
+      "title": "The Silmarillion",
+      "year": 1977,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7963,
+      "title": "古事記",
+      "year": 712,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7964,
+      "title": "Il nome della rosa",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 7965,
+      "title": "Candide, ou l’Optimisme",
+      "year": 1759,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7966,
+      "title": "The Grapes of Wrath",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 7967,
+      "title": "The Sorrows of Young Werther",
+      "year": 1774,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7968,
+      "title": "The Satanic Verses",
+      "year": 1988,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7969,
+      "title": "Gone with the Wind",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 7971,
+      "title": "Angels & Demons",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7972,
+      "title": "The Fellowship of the Ring",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 7973,
+      "title": "Asasin",
+      "year": 1999,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7974,
+      "title": "Lord of the Flies",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 7975,
+      "title": "The Plague",
+      "year": 1947,
+      "warnings": []
+    },
+    {
+      "work": 7976,
+      "title": "A Game of Thrones",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 7978,
+      "title": "Twilight",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7979,
+      "title": "The kite runner",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7980,
+      "title": "Мёртвые души",
+      "year": 1842,
+      "warnings": []
+    },
+    {
+      "work": 7981,
+      "title": "Le Papa Goriot",
+      "year": 1835,
+      "warnings": []
+    },
+    {
+      "work": 7983,
+      "title": "The Snow Queen",
+      "year": 1844,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7985,
+      "title": "Siddharta",
+      "year": 1922,
+      "warnings": []
+    },
+    {
+      "work": 7987,
+      "title": "Kejserens nye Klæder",
+      "year": 1837,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7988,
+      "title": "Of Mice and Men",
+      "year": 1937,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7989,
+      "title": "Prose Edda",
+      "year": 1225,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7990,
+      "title": "A Brief History of Time",
+      "year": 1988,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7991,
+      "title": "Leviathan",
+      "year": 1651,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7992,
+      "title": "Critique of Pure Reason",
+      "year": 1781,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7993,
+      "title": "Heart of Darkness",
+      "year": 1899,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7994,
+      "title": "La vida es sueño",
+      "year": 1635,
+      "warnings": []
+    },
+    {
+      "work": 7996,
+      "title": "Steppenwolf",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 7997,
+      "title": "The Return of the King",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 7998,
+      "title": "Die Bremer Stadtmusikanten",
+      "year": 1819,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7999,
+      "title": "The Gulag Archipelago",
+      "year": 1973,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8002,
+      "title": "A Farewell to Arms",
+      "year": 1929,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8003,
+      "title": "Fight Club",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 8004,
+      "title": "Naturalis historia",
+      "year": 74,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8005,
+      "title": "Nesnesitelná lehkost bytí",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8006,
+      "title": "The Clash of Civilizations",
+      "year": 1996,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8007,
+      "title": "Fantastic Beasts and Where to Find Them",
+      "year": 2001,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8008,
+      "title": "Charlie and the Chocolate Factory",
+      "year": 1964,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8009,
+      "title": "The Second Sex",
+      "year": 1949,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8012,
+      "title": "Доктор Живаго",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8013,
+      "title": "The Good Soldier Švejk",
+      "year": 1921,
+      "warnings": []
+    },
+    {
+      "work": 8014,
+      "title": "The Hunger Games",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8015,
+      "title": "Watchmen",
+      "year": 1986,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8016,
+      "title": "The Tales of Beedle the Bard",
+      "year": 2008,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8017,
+      "title": "El amor en los tiempos del cólera",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8019,
+      "title": "Ten Little Niggers",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 8020,
+      "title": "Solaris",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 8021,
+      "title": "Catch-22",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 8022,
+      "title": "Moriae Encomium, sive Stultitiae Laus",
+      "year": 1511,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8024,
+      "title": "Бѣсы",
+      "year": 1871,
+      "warnings": []
+    },
+    {
+      "work": 8025,
+      "title": "Sofies verden.....",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 8026,
+      "title": "Libellus vere aureus, nec minus salutaris quam festivus, de optimo rei publicae statu deque nova insula Utopia",
+      "year": 1516,
+      "warnings": [
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 8027,
+      "title": "Eragon",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8028,
+      "title": "Le Rouge et le Noir",
+      "year": 1830,
+      "warnings": []
+    },
+    {
+      "work": 8029,
+      "title": "Les Fleurs du mal",
+      "year": 1857,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8030,
+      "title": "The Godfather",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8031,
+      "title": "The Last of the Mohicans",
+      "year": 1824,
+      "warnings": []
+    },
+    {
+      "work": 8032,
+      "title": "A Clockwork Orange",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8033,
+      "title": "Heidi",
+      "year": 1880,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8034,
+      "title": "The God Delusion",
+      "year": 2006,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8035,
+      "title": "New Moon",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8036,
+      "title": "Shakespeare's sonnets",
+      "year": 1609,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8038,
+      "title": "The Sun Also Rises",
+      "year": 1926,
+      "warnings": []
+    },
+    {
+      "work": 8040,
+      "title": "Quotations from Chairman Mao Tse-tung",
+      "year": 1964,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8041,
+      "title": "Ivanhoe",
+      "year": 1819,
+      "warnings": []
+    },
+    {
+      "work": 8043,
+      "title": "Bluebeard",
+      "year": 1697,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8044,
+      "title": "Quidditch Through the Ages",
+      "year": 2001,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8045,
+      "title": "ვეფხისტყაოსანი",
+      "year": 1180,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8046,
+      "title": "The Fault in Our Stars",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 8048,
+      "title": "Записки изъ подполья",
+      "year": 1864,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8049,
+      "title": "Murder on the Orient Express",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 8053,
+      "title": "The Lost Symbol",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8054,
+      "title": "Eclipse",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8055,
+      "title": "Prince Caspianː The Return to Narnia",
+      "year": 1951,
+      "warnings": []
+    },
+    {
+      "work": 8056,
+      "title": "Игрок",
+      "year": 1867,
+      "warnings": []
+    },
+    {
+      "work": 8057,
+      "title": "Emma",
+      "year": 1815,
+      "warnings": []
+    },
+    {
+      "work": 8058,
+      "title": "The Tell-Tale Heart",
+      "year": 1843,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8059,
+      "title": "Breaking dawn",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8060,
+      "title": "Cancer",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 8061,
+      "title": "Martin Eden",
+      "year": 1909,
+      "warnings": []
+    },
+    {
+      "work": 8063,
+      "title": "Systema Naturae",
+      "year": 1735,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8064,
+      "title": "Ревизоръ",
+      "year": 1836,
+      "warnings": []
+    },
+    {
+      "work": 8067,
+      "title": "Fifty Shades of Grey",
+      "year": 2011,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8068,
+      "title": "Buddenbrooks",
+      "year": 1901,
+      "warnings": []
+    },
+    {
+      "work": 8069,
+      "title": "Voyage au bout de la nuit",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 8070,
+      "title": "Ἀνάβασις",
+      "year": 1859,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8071,
+      "title": "Life of Pi",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8073,
+      "title": "East of Eden",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8075,
+      "title": "Kalevipoeg",
+      "year": 1857,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8076,
+      "title": "Бедные люди",
+      "year": 1846,
+      "warnings": []
+    },
+    {
+      "work": 8077,
+      "title": "Kinder- und Hausmärchen",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8078,
+      "title": "The Murder of Roger Ackroyd",
+      "year": 1926,
+      "warnings": []
+    },
+    {
+      "work": 8079,
+      "title": "The castle",
+      "year": 1926,
+      "warnings": []
+    },
+    {
+      "work": 8080,
+      "title": "Slaughterhouse-Five",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8081,
+      "title": "On the Road",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8082,
+      "title": "Jurassic Park",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 8083,
+      "title": "Tommelise",
+      "year": 1835,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8084,
+      "title": "Fathers and Sons",
+      "year": 1862,
+      "warnings": []
+    },
+    {
+      "work": 8085,
+      "title": "Rumpelstiltskin",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8086,
+      "title": "الكتاب الأخضر‎‎‎",
+      "year": 1975,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8087,
+      "title": "The Tenant of Wildfell Hall",
+      "year": 1848,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8088,
+      "title": "Белые ночи",
+      "year": 1848,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8089,
+      "title": "Le Mythe de Sisyphe",
+      "year": 1942,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8090,
+      "title": "Midnight's Children",
+      "year": 1981,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8092,
+      "title": "A Portrait of the Artist as a Young Man",
+      "year": 1918,
+      "warnings": []
+    },
+    {
+      "work": 8093,
+      "title": "The Magican's Nephew",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 8094,
+      "title": "The magic Mountain",
+      "year": 1924,
+      "warnings": []
+    },
+    {
+      "work": 8095,
+      "title": "The Pilgrim’s Progress from this world, to That which is to come",
+      "year": 1678,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8096,
+      "title": "Le Fantôme de l'Opéra",
+      "year": 1910,
+      "warnings": []
+    },
+    {
+      "work": 8097,
+      "title": "Lady Chatterley's Lover",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 8098,
+      "title": "ノルウェイの森",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8099,
+      "title": "Persuasion",
+      "year": 1817,
+      "warnings": []
+    },
+    {
+      "work": 8100,
+      "title": "Demian",
+      "year": 1919,
+      "warnings": []
+    },
+    {
+      "work": 8101,
+      "title": "Walden; or, Life in the Woods",
+      "year": 1854,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8102,
+      "title": "Atlas Shrugged",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8103,
+      "title": "Der Tod in Venedig",
+      "year": 1912,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8105,
+      "title": "The Hitchhiker's Guide to the Galaxy",
+      "year": 1979,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8106,
+      "title": "Inferno",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 8107,
+      "title": "Catechismus Catholicae Ecclesiae",
+      "year": 1994,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8109,
+      "title": "Dubliners",
+      "year": 1914,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8110,
+      "title": "Deception Point",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8111,
+      "title": "Historia regum Britanniae",
+      "year": 1136,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8112,
+      "title": "Nils Holgerssons underbara resa genom Sverige",
+      "year": 1906,
+      "warnings": []
+    },
+    {
+      "work": 8113,
+      "title": "A Clash of Kings",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 8114,
+      "title": "The Black Book of Communism",
+      "year": 1997,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8115,
+      "title": "Quo vadis",
+      "year": 1896,
+      "warnings": []
+    },
+    {
+      "work": 8116,
+      "title": "A Thousand Splendid Suns",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8117,
+      "title": "De la Terre à la Lune",
+      "year": 1865,
+      "warnings": []
+    },
+    {
+      "work": 8118,
+      "title": "The Cat in the Hat",
+      "year": 1957,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8120,
+      "title": "The Handmaid's Tale",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8122,
+      "title": "Golden Legend",
+      "year": 1298,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8123,
+      "title": "The Sound and the Fury",
+      "year": 1929,
+      "warnings": []
+    },
+    {
+      "work": 8124,
+      "title": "Капитанская дочка",
+      "year": 1836,
+      "warnings": []
+    },
+    {
+      "work": 8125,
+      "title": "Воскресение",
+      "year": 1899,
+      "warnings": []
+    },
+    {
+      "work": 8126,
+      "title": "The Neverending Story",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 8127,
+      "title": "Ἀλεξιάς",
+      "year": 1148,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8129,
+      "title": "The Shining",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 8130,
+      "title": "The Mysterious Affair at Styles",
+      "year": 1920,
+      "warnings": []
+    },
+    {
+      "work": 8131,
+      "title": "To the Lighthouse",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 8132,
+      "title": "La Nausée",
+      "year": 1938,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8133,
+      "title": "Heimskringla",
+      "year": 1225,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8134,
+      "title": "Die Traumdeutung",
+      "year": 1900,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8135,
+      "title": "海辺のカフカ",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 8136,
+      "title": "Orlando furioso",
+      "year": 1516,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8137,
+      "title": "Mortal Engines",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8138,
+      "title": "Jonathan Livingston Seagull",
+      "year": 1970,
+      "warnings": []
+    },
+    {
+      "work": 8139,
+      "title": "I, Robot.",
+      "year": 1950,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8140,
+      "title": "Death of a Salesman",
+      "year": 1949,
+      "warnings": []
+    },
+    {
+      "work": 8141,
+      "title": "Собачье сердце",
+      "year": 1987,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8142,
+      "title": "Inferno",
+      "year": 1304,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8143,
+      "title": "Du contrat social, ou Principes du droit politique",
+      "year": 1762,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8144,
+      "title": "Germinal",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 8145,
+      "title": "The Horse and His Boy",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8146,
+      "title": "The Murders in the Rue Morgue",
+      "year": 1841,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8147,
+      "title": "Historia ecclesiastica gentis Anglorum",
+      "year": 731,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8149,
+      "title": "Dē imitātiōne Christī",
+      "year": 1418,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8150,
+      "title": "Digital Fortress",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 8151,
+      "title": "Terminologia Anatomica",
+      "year": 1998,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8153,
+      "title": "Jenseits von Gut und Böse",
+      "year": 1886,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8154,
+      "title": "Мы",
+      "year": 1924,
+      "warnings": []
+    },
+    {
+      "work": 8156,
+      "title": "Ethics",
+      "year": 1677,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8157,
+      "title": "The Prince and the Pauper",
+      "year": 1881,
+      "warnings": []
+    },
+    {
+      "work": 8158,
+      "title": "Do Androids Dream of Electric Sheep?",
+      "year": 1968,
+      "warnings": []
+    },
+    {
+      "work": 8159,
+      "title": "Vanity Fair",
+      "year": 1848,
+      "warnings": []
+    },
+    {
+      "work": 8160,
+      "title": "Cinq semaines en ballon",
+      "year": 1863,
+      "warnings": []
+    },
+    {
+      "work": 8161,
+      "title": "Ensayo sobre a ceguera",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 8162,
+      "title": "Catching Fire",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8163,
+      "title": "Тарас Бульба",
+      "year": 1835,
+      "warnings": []
+    },
+    {
+      "work": 8164,
+      "title": "The Selfish Gene",
+      "year": 1976,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8167,
+      "title": "Discours de la méthode pour bien conduire sa raison, et chercher la vérité dans les sciences",
+      "year": 1637,
+      "warnings": [
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 8168,
+      "title": "A Scandal in Bohemia",
+      "year": 1892,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8169,
+      "title": "The Man in the High Castle",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8170,
+      "title": "Mrs Dalloway",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 8171,
+      "title": "The Princess and the Pea",
+      "year": 1835,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8172,
+      "title": "The Voyage of the Dawn Treader",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8173,
+      "title": "The Silver Chair",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8174,
+      "title": "Carrie",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 8176,
+      "title": "Записки из Мёртвого дома",
+      "year": 1862,
+      "warnings": []
+    },
+    {
+      "work": 8177,
+      "title": "De l’esprit des loix",
+      "year": 1748,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8179,
+      "title": "Sapiens",
+      "year": 2011,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8180,
+      "title": "De origine et situ Germanorum",
+      "year": 98,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8181,
+      "title": "A Storm of Swords",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 8182,
+      "title": "Perfume",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8183,
+      "title": "МаTь",
+      "year": 1907,
+      "warnings": []
+    },
+    {
+      "work": 8184,
+      "title": "1Q84",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8185,
+      "title": "Jabberwocky",
+      "year": 1871,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8186,
+      "title": "The Lightning Thief",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8187,
+      "title": "Finnegans Wake",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 8188,
+      "title": "The Wolf and the Seven Little Kids",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8189,
+      "title": "A Dance with Dragons",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8190,
+      "title": "La Celestina",
+      "year": 1500,
+      "warnings": []
+    },
+    {
+      "work": 8191,
+      "title": "Ecce Homo",
+      "year": 1888,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8192,
+      "title": "El coronel no tiene quien le escriba.",
+      "year": 1961,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8193,
+      "title": "Death on the Nile",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 8194,
+      "title": "A Streetcar Named Desire",
+      "year": 1947,
+      "warnings": []
+    },
+    {
+      "work": 8195,
+      "title": "L'Être et le Néant",
+      "year": 1943,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8197,
+      "title": "A Vindication of the Rights of Woman",
+      "year": 1792,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8198,
+      "title": "Silent Spring",
+      "year": 1962,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8200,
+      "title": "Federalist Papers",
+      "year": 1788,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8202,
+      "title": "The Red-Headed League",
+      "year": 1891,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8203,
+      "title": "Benim Adım Kırmızı",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 8204,
+      "title": "The Last Battle",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 8206,
+      "title": "金瓶梅",
+      "year": 1610,
+      "warnings": []
+    },
+    {
+      "work": 8207,
+      "title": "The tin drum",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 8208,
+      "title": "Émile ou De l’éducation",
+      "year": 1762,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8209,
+      "title": "King Solomon's Mines",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 8210,
+      "title": "Le Journal d'une femme de chambre",
+      "year": 1900,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8211,
+      "title": "Ender's Game",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8212,
+      "title": "The Remains of the Day",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 8213,
+      "title": "Flowers for Algernon",
+      "year": 1959,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8214,
+      "title": "Die fröhliche Wissenschaft",
+      "year": 1882,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8215,
+      "title": "The Road",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8216,
+      "title": "A Feast for Crows",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8217,
+      "title": "Rich Dad Poor Dad",
+      "year": 1997,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8219,
+      "title": "The Stand",
+      "year": 1978,
+      "warnings": []
+    },
+    {
+      "work": 8220,
+      "title": "Un capitaine de quinze ans",
+      "year": 1878,
+      "warnings": []
+    },
+    {
+      "work": 8222,
+      "title": "Homage to Catalonia",
+      "year": 1938,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8223,
+      "title": "Lord Jim",
+      "year": 1900,
+      "warnings": []
+    },
+    {
+      "work": 8224,
+      "title": "Eldest",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8225,
+      "title": "The Valley of Fear",
+      "year": 1915,
+      "warnings": []
+    },
+    {
+      "work": 8226,
+      "title": "The Gold-Bug",
+      "year": 1842,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8227,
+      "title": "枕草子 cebuanooooo",
+      "year": 1002,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8228,
+      "title": "Michel Strogoff",
+      "year": 1876,
+      "warnings": []
+    },
+    {
+      "work": 8229,
+      "title": "Смерть Ивана Ильича",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 8230,
+      "title": "Casino Royale",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8231,
+      "title": "Guns, Germs, and Steel",
+      "year": 1997,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8232,
+      "title": "Der Judenstaat",
+      "year": 1896,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8233,
+      "title": "Der Antichrist",
+      "year": 1889,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8234,
+      "title": "Le Livre de Marco Polo",
+      "year": 1298,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8236,
+      "title": "De Revolutionibus Orbium Coelestium",
+      "year": 1543,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8237,
+      "title": "Il pendolo di Foucault",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 8238,
+      "title": "三國遺事",
+      "year": 1279,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8239,
+      "title": "Starship Troopers",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 8240,
+      "title": "The Rime of the Ancyent Marinere",
+      "year": 1798,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8241,
+      "title": "Salome",
+      "year": 1905,
+      "warnings": []
+    },
+    {
+      "work": 8242,
+      "title": "Один день Ивана Денисовича",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8243,
+      "title": "Struwwelpeter",
+      "year": 1845,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8244,
+      "title": "I promessi sposi",
+      "year": 1827,
+      "warnings": []
+    },
+    {
+      "work": 8246,
+      "title": "Les Liaisons dangereuses",
+      "year": 1782,
+      "warnings": []
+    },
+    {
+      "work": 8247,
+      "title": "Bleak House",
+      "year": 1853,
+      "warnings": []
+    },
+    {
+      "work": 8248,
+      "title": "Misery",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8249,
+      "title": "Cat on a Hot Tin Roof",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 8250,
+      "title": "Things Fall Apart",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 8251,
+      "title": "The Prophet",
+      "year": 1923,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8252,
+      "title": "Na Drini ćuprija",
+      "year": 1945,
+      "warnings": []
+    },
+    {
+      "work": 8253,
+      "title": "The Mousetrap",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8254,
+      "title": "Gerusalemme liberata",
+      "year": 1580,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8255,
+      "title": "Die Geburt der Tragödie aus dem Geiste der Musik",
+      "year": 1872,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8256,
+      "title": "The Adventure of the Speckled Band",
+      "year": 1891,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8257,
+      "title": "Monkey Planet",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8258,
+      "title": "The Road to Serfdom",
+      "year": 1944,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8259,
+      "title": "Go, Dog. Go!",
+      "year": 1961,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8260,
+      "title": "The Limits to Growth",
+      "year": 1972,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8261,
+      "title": "Die protestantische Ethik und der Geist des Kapitalismus",
+      "year": 1905,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8262,
+      "title": "On liberty",
+      "year": 1859,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8263,
+      "title": "Encyclopaedia of Islam",
+      "year": 1913,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8265,
+      "title": "System der Wissenschaft. Erster Theil, die Phänomenologie des Geistes",
+      "year": 1807,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8266,
+      "title": "Leaves of Grass",
+      "year": 1855,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8267,
+      "title": "The Green Mile",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 8268,
+      "title": "Tess of the d'Urbervilles",
+      "year": 1891,
+      "warnings": []
+    },
+    {
+      "work": 8269,
+      "title": "Двенадцать стульев",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 8270,
+      "title": "The Caves of Steel",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8271,
+      "title": "Män som hatar kvinnor",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8272,
+      "title": "The Murder at the Vicarage",
+      "year": 1930,
+      "warnings": []
+    },
+    {
+      "work": 8273,
+      "title": "The Island of Doctor Moreau",
+      "year": 1895,
+      "warnings": []
+    },
+    {
+      "work": 8274,
+      "title": "The A.B.C. Murders",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 8275,
+      "title": "'Salem's Lot",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 8276,
+      "title": "Foundation",
+      "year": 1951,
+      "warnings": []
+    },
+    {
+      "work": 8277,
+      "title": "The Adventures of Tom Bombadil",
+      "year": 1962,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8278,
+      "title": "De consolatione philosophiae",
+      "year": 524,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8279,
+      "title": "The Mask of the Red Death",
+      "year": 1842,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8280,
+      "title": "Mockingjay",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 8281,
+      "title": "The Martian Chronicles",
+      "year": 1950,
+      "warnings": []
+    },
+    {
+      "work": 8282,
+      "title": "Meditationes de prima philosophia",
+      "year": 1641,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8283,
+      "title": "Never Let Me Go",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8284,
+      "title": "Parzival",
+      "year": 1200,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8285,
+      "title": "Divergent",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8286,
+      "title": "Ben-Hur",
+      "year": 1880,
+      "warnings": []
+    },
+    {
+      "work": 8287,
+      "title": "Sinuhe egyptiläinen",
+      "year": 1945,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8288,
+      "title": "Breakfast at Tiffany's",
+      "year": 1958,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8289,
+      "title": "Hunger",
+      "year": 1890,
+      "warnings": []
+    },
+    {
+      "work": 8290,
+      "title": "Βίος και Πολιτεία του Αλέξη Ζορμπά",
+      "year": 1946,
+      "warnings": []
+    },
+    {
+      "work": 8291,
+      "title": "Matilda",
+      "year": 1986,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8292,
+      "title": "A Room of One’s Own",
+      "year": 1929,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8293,
+      "title": "The Waste Land",
+      "year": 1922,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8295,
+      "title": "Northanger Abbey",
+      "year": 1818,
+      "warnings": []
+    },
+    {
+      "work": 8297,
+      "title": "The Decline of the West",
+      "year": 1918,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8298,
+      "title": "Black Beauty",
+      "year": 1877,
+      "warnings": []
+    },
+    {
+      "work": 8299,
+      "title": "Cat's Cradle",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8300,
+      "title": "Maus",
+      "year": 1980,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8301,
+      "title": "Mother Courage and her children",
+      "year": 1941,
+      "warnings": []
+    },
+    {
+      "work": 8302,
+      "title": "Униженные и оскорблённые",
+      "year": 1861,
+      "warnings": []
+    },
+    {
+      "work": 8303,
+      "title": "Watership Down",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 8304,
+      "title": "The God of Small Things",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 8306,
+      "title": "The Book Thief",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8307,
+      "title": "Common Sense",
+      "year": 1776,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8308,
+      "title": "Pan Tadeusz",
+      "year": 1834,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8309,
+      "title": "Подросток",
+      "year": 1875,
+      "warnings": []
+    },
+    {
+      "work": 8311,
+      "title": "Kim",
+      "year": 1901,
+      "warnings": []
+    },
+    {
+      "work": 8312,
+      "title": "Die Räuber",
+      "year": 1782,
+      "warnings": []
+    },
+    {
+      "work": 8313,
+      "title": "American Psycho",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 8314,
+      "title": "Neuromancer",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8315,
+      "title": "The History of Tom Jones, a Foundling",
+      "year": 1749,
+      "warnings": []
+    },
+    {
+      "work": 8317,
+      "title": "Brisingr",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8318,
+      "title": "Flatland",
+      "year": 1884,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8319,
+      "title": "Pet Sematary",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 8320,
+      "title": "A Murder is Announced",
+      "year": 1950,
+      "warnings": []
+    },
+    {
+      "work": 8321,
+      "title": "The Casual Vacancy",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 8322,
+      "title": "The Children of Húrin",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8323,
+      "title": "The grey gentleman",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 8324,
+      "title": "The Legend of Sleepy Hollow",
+      "year": 1819,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8326,
+      "title": "Обломов",
+      "year": 1859,
+      "warnings": []
+    },
+    {
+      "work": 8327,
+      "title": "Götzen-Dämmerung oder wie man mit dem Hammer philosophirt",
+      "year": 1889,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8328,
+      "title": "The Bell Jar",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8329,
+      "title": "The Big Sleep",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 8330,
+      "title": "The Left Hand of Darkness",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8331,
+      "title": "Peter Pan; or, the Boy Who Wouldn't Grow Up",
+      "year": 1911,
+      "warnings": []
+    },
+    {
+      "work": 8332,
+      "title": "The Cathedral and the Bazaar",
+      "year": 1997,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8335,
+      "title": "Salammbô",
+      "year": 1862,
+      "warnings": []
+    },
+    {
+      "work": 8336,
+      "title": "The Vagina Monologues",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 8337,
+      "title": "Coraline",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 8338,
+      "title": "The Golden Bough",
+      "year": 1890,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8339,
+      "title": "Tender Is the Night",
+      "year": 1934,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8340,
+      "title": "Onze Minutos",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8341,
+      "title": "Государство и революция",
+      "year": 1918,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8342,
+      "title": "I Am Legend",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8344,
+      "title": "Die Welt als Wille und Vorstellung",
+      "year": 1819,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8345,
+      "title": "Unfinished Tales of Númenor and Middle-earth",
+      "year": 1980,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8346,
+      "title": "The Reader",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 8348,
+      "title": "The Brave Little Tailor",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8349,
+      "title": "Bel-Ami",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 8350,
+      "title": "One Flew Over the Cuckoo's Nest",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8351,
+      "title": "The Curious Incident of the Dog in the Night-Time",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8352,
+      "title": "Totem und Tabu",
+      "year": 1910,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8353,
+      "title": "Stranger in a Strange Land",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 8354,
+      "title": "The Three-Body Problem",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8355,
+      "title": "Le Morte Darthur",
+      "year": 1485,
+      "warnings": []
+    },
+    {
+      "work": 8356,
+      "title": "Veronika decide morrer",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 8357,
+      "title": "The man without qualities",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 8358,
+      "title": "The Pit and the Pendulum",
+      "year": 1842,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8360,
+      "title": "L'Éducation sentimentale",
+      "year": 1869,
+      "warnings": []
+    },
+    {
+      "work": 8361,
+      "title": "Rebecca",
+      "year": 1938,
+      "warnings": []
+    },
+    {
+      "work": 8362,
+      "title": "Drei Kameraden",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 8363,
+      "title": "The Call of Cthulhu",
+      "year": 1928,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8365,
+      "title": "The life and opinions of Tristram Shandy",
+      "year": 1759,
+      "warnings": []
+    },
+    {
+      "work": 8366,
+      "title": "Двойник",
+      "year": 1846,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8367,
+      "title": "Il Gattopardo",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 8368,
+      "title": "The Age of Reason",
+      "year": 1794,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8369,
+      "title": "Пиковая дама",
+      "year": 1834,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8370,
+      "title": "Opticks, or a Treatise of the Reflections, Refractions, Inflections and Colours of Light",
+      "year": 1704,
+      "warnings": [
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 8372,
+      "title": "Tropic of Cancer",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 8373,
+      "title": "Le Capital au XXIe siècle",
+      "year": 2013,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8374,
+      "title": "American Gods",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8375,
+      "title": "The Spy Who Came In from the Cold",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8376,
+      "title": "La Chute",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 8377,
+      "title": "The Body in the Library",
+      "year": 1942,
+      "warnings": []
+    },
+    {
+      "work": 8378,
+      "title": "Nussknacker und Mausekönig",
+      "year": 1816,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8379,
+      "title": "Das Schloss von Otranto",
+      "year": 1764,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8380,
+      "title": "Tirant lo Blanch",
+      "year": 1490,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8381,
+      "title": "Resistance to Civil Government",
+      "year": 1849,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8382,
+      "title": "El món perdut",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 8383,
+      "title": "Lost in America",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 8384,
+      "title": "La sombra del viento",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8385,
+      "title": "How the Steel Was Tempered",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 8386,
+      "title": "Max Havelaar",
+      "year": 1940,
+      "warnings": []
+    },
+    {
+      "work": 8387,
+      "title": "Что дѣлать?",
+      "year": 1902,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8388,
+      "title": "New Atlantis",
+      "year": 1627,
+      "warnings": []
+    },
+    {
+      "work": 8389,
+      "title": "Elephants Can Remember",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 8390,
+      "title": "Cyrano de Bergerac",
+      "year": 1897,
+      "warnings": []
+    },
+    {
+      "work": 8391,
+      "title": "Good Omens",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 8392,
+      "title": "The Adventure of the Blue Carbuncle",
+      "year": 1892,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8393,
+      "title": "Histoire du chevalier des Grieux et de Manon Lescaut",
+      "year": 1731,
+      "warnings": []
+    },
+    {
+      "work": 8394,
+      "title": "The Adventure of the Musgrave Ritual",
+      "year": 1893,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8395,
+      "title": "La Chartreuse de Parme",
+      "year": 1839,
+      "warnings": []
+    },
+    {
+      "work": 8396,
+      "title": "Pollyanna",
+      "year": 1913,
+      "warnings": []
+    },
+    {
+      "work": 8397,
+      "title": "Predator's Gold",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8398,
+      "title": "Laudato si'",
+      "year": 2015,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8399,
+      "title": "How to Win Friends and Influence People",
+      "year": 1936,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8401,
+      "title": "Vom Kriege",
+      "year": 1832,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8403,
+      "title": "La città del sole",
+      "year": 1623,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8405,
+      "title": "The Robots of Dawn",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 8406,
+      "title": "Interview with the Vampire",
+      "year": 1976,
+      "warnings": []
+    },
+    {
+      "work": 8407,
+      "title": "The Dead Zone",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 8408,
+      "title": "The Naked Sun",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8409,
+      "title": "Murder in Mesopotamia",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 8410,
+      "title": "資治通鑑",
+      "year": 1084,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8411,
+      "title": "Zur Genealogie der Moral",
+      "year": 1887,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8412,
+      "title": "Deux ans de vacances",
+      "year": 1888,
+      "warnings": []
+    },
+    {
+      "work": 8413,
+      "title": "To Have and Have Not",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 8415,
+      "title": "The Glass Menagerie",
+      "year": 1944,
+      "warnings": []
+    },
+    {
+      "work": 8416,
+      "title": "Curtain",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 8417,
+      "title": "Cuore",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 8418,
+      "title": "Where the Wild Things Are",
+      "year": 1963,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8419,
+      "title": "Vita nuova",
+      "year": 1295,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8420,
+      "title": "Novum organum scientiarum",
+      "year": 1620,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8421,
+      "title": "Atonement",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8422,
+      "title": "Dumb Witness",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 8423,
+      "title": "Who’s Afraid of Virginia Woolf?",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8425,
+      "title": "The Colour of Magic",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 8426,
+      "title": "The Tragical History of the Life and Death of Doctor Faustus",
+      "year": 1604,
+      "warnings": []
+    },
+    {
+      "work": 8427,
+      "title": "Death in the Clouds",
+      "year": 1935,
+      "warnings": []
+    },
+    {
+      "work": 8428,
+      "title": "The Case-Book of Sherlock Holmes",
+      "year": 1927,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8430,
+      "title": "Henry IV, Part 2",
+      "year": 1598,
+      "warnings": []
+    },
+    {
+      "work": 8431,
+      "title": "L'existentialisme est un humanisme",
+      "year": 1946,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8432,
+      "title": "Memoirs of a Geisha",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 8433,
+      "title": "The glass bead game",
+      "year": 1943,
+      "warnings": []
+    },
+    {
+      "work": 8434,
+      "title": "Пикник на обочине",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 8435,
+      "title": "La Peau de chagrin",
+      "year": 1831,
+      "warnings": []
+    },
+    {
+      "work": 8436,
+      "title": "Крейцерова соната",
+      "year": 1889,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8437,
+      "title": "Ubu Roi",
+      "year": 1896,
+      "warnings": []
+    },
+    {
+      "work": 8438,
+      "title": "Memoirs of a Woman of Pleasure",
+      "year": 1748,
+      "warnings": []
+    },
+    {
+      "work": 8439,
+      "title": "Pedro Páramo",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 8440,
+      "title": "Дама с собачкой",
+      "year": 1899,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8441,
+      "title": "A Wizard of Earthsea",
+      "year": 1968,
+      "warnings": []
+    },
+    {
+      "work": 8442,
+      "title": "Two Treatises of Government",
+      "year": 1690,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8443,
+      "title": "El otoño del patriarca",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 8445,
+      "title": "God is Not Great",
+      "year": 2007,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8446,
+      "title": "The German Ideology",
+      "year": 1932,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8447,
+      "title": "Tintin au Tibet",
+      "year": 1960,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8448,
+      "title": "Le Vicomte de Bragelonne",
+      "year": 1847,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8449,
+      "title": "The Universe in a Nutshell",
+      "year": 2001,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8450,
+      "title": "After the Funeral",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8451,
+      "title": "Dune Messiah",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8452,
+      "title": "The Host",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8453,
+      "title": "Northern Lights",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 8454,
+      "title": "Le Cid",
+      "year": 1636,
+      "warnings": []
+    },
+    {
+      "work": 8455,
+      "title": "11/22/63",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8456,
+      "title": "Cards on the Table",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 8457,
+      "title": "The Big Four",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 8458,
+      "title": "Lyrical Ballads, with a Few Other Poems",
+      "year": 1798,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8459,
+      "title": "Rendezvous with Rama",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 8460,
+      "title": "Life, the Universe and Everything",
+      "year": 1982,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8461,
+      "title": "五輪書",
+      "year": 1642,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8462,
+      "title": "Herrn Eugen Dührings Umwälzung der Wissenschaft",
+      "year": 1877,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8463,
+      "title": "The Lost World",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 8464,
+      "title": "The Tale of Peter Rabbit",
+      "year": 1902,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8465,
+      "title": "Five Little Pigs",
+      "year": 1942,
+      "warnings": []
+    },
+    {
+      "work": 8466,
+      "title": "Middlemarch",
+      "year": 1871,
+      "warnings": []
+    },
+    {
+      "work": 8467,
+      "title": "Cloud Atlas",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 8469,
+      "title": "Boule de Suif",
+      "year": 1880,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8470,
+      "title": "Cat Among the Pigeons",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 8471,
+      "title": "Les Cinq cents millions de la Bégum",
+      "year": 1879,
+      "warnings": []
+    },
+    {
+      "work": 8472,
+      "title": "Crónica de una muerte anunciada",
+      "year": 1981,
+      "warnings": []
+    },
+    {
+      "work": 8473,
+      "title": "Ubik",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8474,
+      "title": "Sad Cypress",
+      "year": 1940,
+      "warnings": []
+    },
+    {
+      "work": 8475,
+      "title": "Gesta Hungarorum",
+      "year": 1200,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8476,
+      "title": "The Fall of the House of Usher",
+      "year": 1839,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8477,
+      "title": "The origin of the family, private property and the state",
+      "year": 1884,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8478,
+      "title": "La Cantatrice chauve",
+      "year": 1950,
+      "warnings": []
+    },
+    {
+      "work": 8480,
+      "title": "Firestarter",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 8482,
+      "title": "2001: A Space Odyssey",
+      "year": 1968,
+      "warnings": []
+    },
+    {
+      "work": 8483,
+      "title": "Cujo",
+      "year": 1981,
+      "warnings": []
+    },
+    {
+      "work": 8484,
+      "title": "A Connecticut Yankee in King Arthur's Court",
+      "year": 1889,
+      "warnings": []
+    },
+    {
+      "work": 8485,
+      "title": "The Scarlet Pimpernel",
+      "year": 1905,
+      "warnings": []
+    },
+    {
+      "work": 8486,
+      "title": "The Adventure of Silver Blaze",
+      "year": 1892,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8487,
+      "title": "The Pearl",
+      "year": 1947,
+      "warnings": []
+    },
+    {
+      "work": 8488,
+      "title": "The Witches",
+      "year": 1983,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8489,
+      "title": "As I Lay Dying",
+      "year": 1930,
+      "warnings": []
+    },
+    {
+      "work": 8490,
+      "title": "Sans famille",
+      "year": 1878,
+      "warnings": []
+    },
+    {
+      "work": 8491,
+      "title": "羊をめぐる冒険",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8492,
+      "title": "Winnie-the-Pooh",
+      "year": 1926,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8493,
+      "title": "Infernal Devices",
+      "year": 2005,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8494,
+      "title": "The Cuckoo's Calling",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 8495,
+      "title": "Les Faux-monnayeurs",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 8496,
+      "title": "Man's Search for Meaning",
+      "year": 1946,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8497,
+      "title": "The 7 Habits of Highly Effective People",
+      "year": 1989,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8498,
+      "title": "Scouting for boys",
+      "year": 1908,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8499,
+      "title": "A Darkling Plain",
+      "year": 2006,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8500,
+      "title": "4.50 from Paddington",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8501,
+      "title": "Crooked House",
+      "year": 1949,
+      "warnings": []
+    },
+    {
+      "work": 8502,
+      "title": "The Dispossessed",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 8503,
+      "title": "Cell",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8504,
+      "title": "L'Écume des jours",
+      "year": 1947,
+      "warnings": []
+    },
+    {
+      "work": 8506,
+      "title": "Sleeping Murder",
+      "year": 1976,
+      "warnings": []
+    },
+    {
+      "work": 8507,
+      "title": "Dom Karlos. Infant von Spanien",
+      "year": 1787,
+      "warnings": []
+    },
+    {
+      "work": 8508,
+      "title": "Materialism and Empirio-criticism",
+      "year": 1909,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8509,
+      "title": "The Giver",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 8510,
+      "title": "Appointment with Death",
+      "year": 1938,
+      "warnings": []
+    },
+    {
+      "work": 8511,
+      "title": "Dr. No",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 8512,
+      "title": "Ten Days that Shook the World",
+      "year": 1919,
+      "warnings": []
+    },
+    {
+      "work": 8513,
+      "title": "Murder on the links",
+      "year": 1923,
+      "warnings": []
+    },
+    {
+      "work": 8514,
+      "title": "Another",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8515,
+      "title": "The Restaurant at the End of the Universe",
+      "year": 1980,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8516,
+      "title": "The Maltese Falcon",
+      "year": 1929,
+      "warnings": []
+    },
+    {
+      "work": 8517,
+      "title": "Philosophical investigations",
+      "year": 1953,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8518,
+      "title": "Нос",
+      "year": 1836,
+      "warnings": []
+    },
+    {
+      "work": 8519,
+      "title": "Baudolino",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 8520,
+      "title": "The Sea of Monsters",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8521,
+      "title": "Discorsi sopra la prima deca di Tito Livio",
+      "year": 1531,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8522,
+      "title": "Paper Towns",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8524,
+      "title": "Hercule Poirot's Christmas",
+      "year": 1938,
+      "warnings": []
+    },
+    {
+      "work": 8526,
+      "title": "Doktor Faustus",
+      "year": 1947,
+      "warnings": []
+    },
+    {
+      "work": 8527,
+      "title": "Little Lord Fauntleroy",
+      "year": 1885,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8528,
+      "title": "The Good Earth",
+      "year": 1931,
+      "warnings": []
+    },
+    {
+      "work": 8529,
+      "title": "Белая гвардия",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 8530,
+      "title": "La casa de Bernarda Alba",
+      "year": 1945,
+      "warnings": []
+    },
+    {
+      "work": 8531,
+      "title": "The Adventure of the Second Stain",
+      "year": 1904,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8532,
+      "title": "The \"Gloria Scott\"",
+      "year": 1893,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8533,
+      "title": "The Adventure of the Yellow Face",
+      "year": 1893,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8534,
+      "title": "Robur le Conquérant",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 8535,
+      "title": "Lettres persanes",
+      "year": 1721,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8536,
+      "title": "Bröderna Lejonhjärta",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 8537,
+      "title": "In Cold Blood",
+      "year": 1966,
+      "warnings": []
+    },
+    {
+      "work": 8538,
+      "title": "A Case of Identity",
+      "year": 1891,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8539,
+      "title": "The Pillars of the Earth",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 8540,
+      "title": "From Russia, with Love",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8541,
+      "title": "Eugénie Grandet",
+      "year": 1833,
+      "warnings": []
+    },
+    {
+      "work": 8542,
+      "title": "The Moon Is a Harsh Mistress",
+      "year": 1966,
+      "warnings": []
+    },
+    {
+      "work": 8543,
+      "title": "Orientalism",
+      "year": 1978,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8544,
+      "title": "Kar",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 8545,
+      "title": "Dialogo Doue ne i congreſſi di quattro giornate ſi discorre ſopra i due massimi sistemi del mondo Tolemaico, e Copernicappellano",
+      "year": 1632,
+      "warnings": [
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 8546,
+      "title": "La Reine Margot",
+      "year": 1845,
+      "warnings": []
+    },
+    {
+      "work": 8547,
+      "title": "The Moonstone",
+      "year": 1868,
+      "warnings": []
+    },
+    {
+      "work": 8548,
+      "title": "Origin",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 8549,
+      "title": "The Open Society and Its Enemies",
+      "year": 1945,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8550,
+      "title": "The Descent of Man, and Selection in Relation to Sex",
+      "year": 1871,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8552,
+      "title": "Under the Dome",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8553,
+      "title": "Children of Dune",
+      "year": 1976,
+      "warnings": []
+    },
+    {
+      "work": 8554,
+      "title": "Diamonds Are Forever",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 8555,
+      "title": "Christine",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 8556,
+      "title": "Agnes Grey",
+      "year": 1847,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8557,
+      "title": "Carmen",
+      "year": 1847,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8558,
+      "title": "Three Act Tragedy",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 8559,
+      "title": "Der Zauberlehrling",
+      "year": 1797,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8560,
+      "title": "Thérèse Raquin",
+      "year": 1869,
+      "warnings": []
+    },
+    {
+      "work": 8561,
+      "title": "The Clocks",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8562,
+      "title": "A Pocket Full of Rye",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8563,
+      "title": "Max und Moritz",
+      "year": 1865,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8564,
+      "title": "Sons and Lovers",
+      "year": 1913,
+      "warnings": []
+    },
+    {
+      "work": 8565,
+      "title": "L'Homme qui rit",
+      "year": 1869,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8567,
+      "title": "Bonjour tristesse",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8568,
+      "title": "Shrek!",
+      "year": 1990,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8569,
+      "title": "Moll Flanders",
+      "year": 1722,
+      "warnings": []
+    },
+    {
+      "work": 8570,
+      "title": "The Narrative of Arthur Gordon Pym of Nantucket",
+      "year": 1838,
+      "warnings": []
+    },
+    {
+      "work": 8571,
+      "title": "Flickan som lekte med elden",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8572,
+      "title": "Nana",
+      "year": 1880,
+      "warnings": []
+    },
+    {
+      "work": 8573,
+      "title": "Three Men in a Boat",
+      "year": 1889,
+      "warnings": []
+    },
+    {
+      "work": 8574,
+      "title": "The Black Arrow: A Tale of the Two Roses",
+      "year": 1889,
+      "warnings": []
+    },
+    {
+      "work": 8575,
+      "title": "L'Assommoir",
+      "year": 1876,
+      "warnings": []
+    },
+    {
+      "work": 8576,
+      "title": "Der 18te Brumaire des Louis FILIPH Napoleon",
+      "year": 1852,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8577,
+      "title": "Live and Let Die",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8578,
+      "title": "Christianae religionis institutio",
+      "year": 1536,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8579,
+      "title": "The First Men in the Moon",
+      "year": 1901,
+      "warnings": []
+    },
+    {
+      "work": 8580,
+      "title": "The Hollow",
+      "year": 1946,
+      "warnings": []
+    },
+    {
+      "work": 8581,
+      "title": "Se questo è un uomo",
+      "year": 1946,
+      "warnings": []
+    },
+    {
+      "work": 8582,
+      "title": "Foundation and Empire",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8583,
+      "title": "The Lost Honour of Katharina Blum",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 8584,
+      "title": "羅生門",
+      "year": 1915,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8585,
+      "title": "Little Thumb",
+      "year": 1697,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8586,
+      "title": "Les Confessions",
+      "year": 1782,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8588,
+      "title": "The English Patient",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8590,
+      "title": "The Joke",
+      "year": 1967,
+      "warnings": []
+    },
+    {
+      "work": 8591,
+      "title": "The Man in the Brown Suit",
+      "year": 1924,
+      "warnings": []
+    },
+    {
+      "work": 8592,
+      "title": "Золотой телёнок",
+      "year": 1931,
+      "warnings": []
+    },
+    {
+      "work": 8593,
+      "title": "Империализм, как высшая стадия капитализма",
+      "year": 1916,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8594,
+      "title": "Orlando: A Biography",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 8595,
+      "title": "Неточка Незванова",
+      "year": 1849,
+      "warnings": []
+    },
+    {
+      "work": 8596,
+      "title": "منطق‌الطیر",
+      "year": 1177,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8597,
+      "title": "I Have No Mouth, and I Must Scream",
+      "year": 1967,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8598,
+      "title": "Call Me by Your Name",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8599,
+      "title": "The Perks Of Being A Wallflower",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 8600,
+      "title": "Why Nations Fail",
+      "year": 2012,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8601,
+      "title": "The Girl on the Train",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 8602,
+      "title": "A Theory of Justice",
+      "year": 1971,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8603,
+      "title": "The Art of Loving",
+      "year": 1956,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8604,
+      "title": "Memoria de mis putas tristes",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 8605,
+      "title": "Die Deutsche Rechtschreibung",
+      "year": 1880,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8606,
+      "title": "Tintin au pays des Soviets",
+      "year": 1929,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8607,
+      "title": "Il deserto dei Tartari",
+      "year": 1940,
+      "warnings": []
+    },
+    {
+      "work": 8610,
+      "title": "Gödel, Escher, Bach: an Eternal Golden Braid",
+      "year": 1979,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8611,
+      "title": "Childhood’s End",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8612,
+      "title": "The End of Eternity",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 8613,
+      "title": "The Light Fantastic",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 8614,
+      "title": "The Eyes of the Dragon",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8615,
+      "title": "She: A History of Adventure",
+      "year": 1887,
+      "warnings": []
+    },
+    {
+      "work": 8616,
+      "title": "Mathias Sandorf",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 8617,
+      "title": "An Essay Concerning Human Understanding",
+      "year": 1690,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8618,
+      "title": "Kabale und Liebe",
+      "year": 1784,
+      "warnings": []
+    },
+    {
+      "work": 8619,
+      "title": "Une saison en enfer",
+      "year": 1873,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8620,
+      "title": "A Caribbean Mystery",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 8621,
+      "title": "The Hundred and One Dalmatians",
+      "year": 1956,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8622,
+      "title": "Село Степанчиково и его обитатели",
+      "year": 1859,
+      "warnings": []
+    },
+    {
+      "work": 8623,
+      "title": "Little Dorrit",
+      "year": 1857,
+      "warnings": []
+    },
+    {
+      "work": 8624,
+      "title": "They Do It with Mirrors",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8625,
+      "title": "The Sittaford Mystery",
+      "year": 1931,
+      "warnings": []
+    },
+    {
+      "work": 8626,
+      "title": "At Bertram's Hotel",
+      "year": 1965,
+      "warnings": []
+    },
+    {
+      "work": 8627,
+      "title": "Second Foundation",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8628,
+      "title": "Жамийла",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 8629,
+      "title": "Sparkling Cyanide",
+      "year": 1945,
+      "warnings": []
+    },
+    {
+      "work": 8630,
+      "title": "The Happy Prince and Other Tales",
+      "year": 1888,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8631,
+      "title": "The Naval Treaty",
+      "year": 1893,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8632,
+      "title": "世界の終りとハードボイルド・ワンダーランド",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8633,
+      "title": "Dead Man's Folly",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 8634,
+      "title": "The Structure of Scientific Revolutions",
+      "year": 1962,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8635,
+      "title": "Peril at End House",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 8636,
+      "title": "Beloved",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8637,
+      "title": "War with the newts",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 8638,
+      "title": "The Turn of the Screw",
+      "year": 1898,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8639,
+      "title": "Vol de Nuit",
+      "year": 1931,
+      "warnings": []
+    },
+    {
+      "work": 8640,
+      "title": "Le Rayon vert",
+      "year": 1882,
+      "warnings": []
+    },
+    {
+      "work": 8641,
+      "title": "La Monadologie",
+      "year": 1720,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8642,
+      "title": "Une ville flottante",
+      "year": 1871,
+      "warnings": []
+    },
+    {
+      "work": 8643,
+      "title": "The End of History and the Last Man",
+      "year": 1992,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8644,
+      "title": "Hard Times – For These Times",
+      "year": 1854,
+      "warnings": []
+    },
+    {
+      "work": 8645,
+      "title": "Human, All Too Human",
+      "year": 1878,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8646,
+      "title": "人間失格",
+      "year": 1948,
+      "warnings": []
+    },
+    {
+      "work": 8647,
+      "title": "The Poverty of Philosophy",
+      "year": 1847,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8648,
+      "title": "The Gift of the Magi",
+      "year": 1906,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8649,
+      "title": "The Resident Patient",
+      "year": 1893,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8650,
+      "title": "Les Tribulations d'un Chinois en Chine",
+      "year": 1879,
+      "warnings": []
+    },
+    {
+      "work": 8651,
+      "title": "The Moving Finger",
+      "year": 1942,
+      "warnings": []
+    },
+    {
+      "work": 8652,
+      "title": "Needful Things",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 8653,
+      "title": "L'Heptaméron",
+      "year": 1558,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8654,
+      "title": "Mr Puntila and his man Matti",
+      "year": 1948,
+      "warnings": []
+    },
+    {
+      "work": 8655,
+      "title": "The BFG",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8656,
+      "title": "Death and the lover",
+      "year": 1930,
+      "warnings": []
+    },
+    {
+      "work": 8657,
+      "title": "In the penal colony",
+      "year": 1919,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8659,
+      "title": "Fantastic Mr Fox",
+      "year": 1970,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8660,
+      "title": "The Proletarian Revolution and the Renegade Kautsky",
+      "year": 1918,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8661,
+      "title": "沈黙",
+      "year": 1966,
+      "warnings": []
+    },
+    {
+      "work": 8662,
+      "title": "色彩を持たない多崎つくると、彼の巡礼の年",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 8663,
+      "title": "Trainspotting",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 8664,
+      "title": "Ökonomisch-philosophischen Manuskripte aus dem Jahre 1844",
+      "year": 1932,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8665,
+      "title": "The Blind Watchmaker",
+      "year": 1986,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8667,
+      "title": "The 48 Laws of Power",
+      "year": 2000,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8668,
+      "title": "Lady Susan",
+      "year": 1871,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8669,
+      "title": "Tintin au Congo",
+      "year": 1931,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8670,
+      "title": "The Origins of Totalitarianism",
+      "year": 1951,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8671,
+      "title": "Pensées",
+      "year": 1670,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8672,
+      "title": "Julie ou la Nouvelle Héloïse",
+      "year": 1761,
+      "warnings": []
+    },
+    {
+      "work": 8673,
+      "title": "I, Claudius",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 8674,
+      "title": "Les Indes noires",
+      "year": 1877,
+      "warnings": []
+    },
+    {
+      "work": 8675,
+      "title": "The Seven Dials Mystery",
+      "year": 1929,
+      "warnings": []
+    },
+    {
+      "work": 8676,
+      "title": "The Help",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8677,
+      "title": "Farmer Giles of Ham",
+      "year": 1949,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8678,
+      "title": "L'isola del giorno prima",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 8679,
+      "title": "Third Girl",
+      "year": 1966,
+      "warnings": []
+    },
+    {
+      "work": 8680,
+      "title": "Historia Langobardorum",
+      "year": 790,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8681,
+      "title": "Zum ewigen Frieden",
+      "year": 1795,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8682,
+      "title": "Eichmann in Jerusalem",
+      "year": 1963,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8683,
+      "title": "Berlin Alexanderplatz",
+      "year": 1929,
+      "warnings": []
+    },
+    {
+      "work": 8684,
+      "title": "The Jungle",
+      "year": 1905,
+      "warnings": []
+    },
+    {
+      "work": 8685,
+      "title": "The Canterville Ghost",
+      "year": 1887,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8686,
+      "title": "Bag of Bones",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 8687,
+      "title": "The Running Man",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8688,
+      "title": "Nōlī mē tangere",
+      "year": 1887,
+      "warnings": []
+    },
+    {
+      "work": 8689,
+      "title": "The Portrait of a Lady",
+      "year": 1881,
+      "warnings": []
+    },
+    {
+      "work": 8690,
+      "title": "Bodas de sangre",
+      "year": 1933,
+      "warnings": []
+    },
+    {
+      "work": 8691,
+      "title": "Fear and Loathing in Las Vegas",
+      "year": 1971,
+      "warnings": []
+    },
+    {
+      "work": 8692,
+      "title": "The Urantia Book",
+      "year": 1955,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8693,
+      "title": "Paris au XXe siècle",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 8694,
+      "title": "Inhiritance",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8695,
+      "title": "Ogniem i mieczem",
+      "year": 1884,
+      "warnings": []
+    },
+    {
+      "work": 8696,
+      "title": "An American Tragedy",
+      "year": 1925,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8697,
+      "title": "The Secret Adversary",
+      "year": 1922,
+      "warnings": []
+    },
+    {
+      "work": 8698,
+      "title": "Long Day's Journey into Night",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 8699,
+      "title": "Jacques le Fataliste et son maître",
+      "year": 1796,
+      "warnings": []
+    },
+    {
+      "work": 8700,
+      "title": "The Sea-Wolf",
+      "year": 1904,
+      "warnings": []
+    },
+    {
+      "work": 8701,
+      "title": "Niezwyciężony",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 8702,
+      "title": "The Long Walk",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 8703,
+      "title": "Le suicide",
+      "year": 1897,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8704,
+      "title": "God Emperor of Dune",
+      "year": 1981,
+      "warnings": []
+    },
+    {
+      "work": 8705,
+      "title": "Fasti",
+      "year": 8,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8706,
+      "title": "La Maison à vapeur",
+      "year": 1880,
+      "warnings": []
+    },
+    {
+      "work": 8707,
+      "title": "Murder Is Easy",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 8708,
+      "title": "Peau d'âne",
+      "year": 1694,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8709,
+      "title": "Taken at the Flood",
+      "year": 1948,
+      "warnings": []
+    },
+    {
+      "work": 8710,
+      "title": "Justine ou les Malheurs de la vertu",
+      "year": 1791,
+      "warnings": []
+    },
+    {
+      "work": 8711,
+      "title": "The Titan's Curse",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8712,
+      "title": "Why Didn't They Ask Evans?",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 8713,
+      "title": "The Devil's Dictionary",
+      "year": 1911,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8714,
+      "title": "Первая любовь",
+      "year": 1860,
+      "warnings": []
+    },
+    {
+      "work": 8716,
+      "title": "The Day of the Triffids",
+      "year": 1951,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8717,
+      "title": "Вечный муж",
+      "year": 1870,
+      "warnings": []
+    },
+    {
+      "work": 8718,
+      "title": "Sidereus nuncius magna longeque admirabilia spectacula pandens, suspiciendaque proponens vnicuique praesertim vero philosophis",
+      "year": 1610,
+      "warnings": [
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 8719,
+      "title": "Gerdanlık",
+      "year": 1884,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8720,
+      "title": "Goldfinger",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 8721,
+      "title": "The Adventure of Charles Augustus Milverton",
+      "year": 1904,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8722,
+      "title": "Discourse on Voluntary Servitude",
+      "year": 1576,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8723,
+      "title": "The Conquest of Bread",
+      "year": 1892,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8724,
+      "title": "The Maze Runner",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8725,
+      "title": "Red Dragon",
+      "year": 1981,
+      "warnings": []
+    },
+    {
+      "work": 8726,
+      "title": "Project Hail Mary",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 8727,
+      "title": "A History of Western Philosophy",
+      "year": 1945,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8728,
+      "title": "Discours sur l'origine et les fondements de l'inégalité parmi les hommes",
+      "year": 1755,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8730,
+      "title": "Light in August",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 8731,
+      "title": "L'Amant",
+      "year": 1984,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8732,
+      "title": "Into the Wild",
+      "year": 1996,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8734,
+      "title": "Getting Things Done",
+      "year": 2001,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8736,
+      "title": "N or M?",
+      "year": 1941,
+      "warnings": []
+    },
+    {
+      "work": 8737,
+      "title": "The Tommyknockers",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8738,
+      "title": "The Talented Mr. Ripley",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 8739,
+      "title": "The Subtle Knife",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 8740,
+      "title": "Under the Moons of Mars",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 8741,
+      "title": "Tarzan of the Apes",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 8742,
+      "title": "Fröken Julie",
+      "year": 1889,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8743,
+      "title": "Hallowe'en Party",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8744,
+      "title": "Terre des hommes",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 8745,
+      "title": "Venus im Pelz",
+      "year": 1870,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8746,
+      "title": "The Bad Beginning",
+      "year": 1999,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8747,
+      "title": "The visit",
+      "year": 1956,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8748,
+      "title": "Der Abentheuerliche Simplicissimus Teutsch",
+      "year": 1669,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8750,
+      "title": "Thinner",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8751,
+      "title": "A modest proposal",
+      "year": 1729,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8752,
+      "title": "The Song of Hiawatha",
+      "year": 1855,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8753,
+      "title": "Roots: The Saga of an American Family",
+      "year": 1976,
+      "warnings": []
+    },
+    {
+      "work": 8754,
+      "title": "The Day of the Jackal",
+      "year": 1971,
+      "warnings": []
+    },
+    {
+      "work": 8755,
+      "title": "At the Mountains of Madness",
+      "year": 1936,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8756,
+      "title": "Foundation's Edge",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8757,
+      "title": "The Thirteen Problems",
+      "year": 1932,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8758,
+      "title": "A Passage to India",
+      "year": 1924,
+      "warnings": []
+    },
+    {
+      "work": 8759,
+      "title": "Великій инквизитор",
+      "year": 1879,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8760,
+      "title": "The Shock Doctrine",
+      "year": 2007,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8761,
+      "title": "The C Programming Language",
+      "year": 1978,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8762,
+      "title": "Wilhelm Tell",
+      "year": 1804,
+      "warnings": []
+    },
+    {
+      "work": 8763,
+      "title": "Off on a Comet",
+      "year": 1877,
+      "warnings": []
+    },
+    {
+      "work": 8764,
+      "title": "Tractatus Theologico-Politicus",
+      "year": 1670,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8765,
+      "title": "The Dream of a Ridiculous Man",
+      "year": 1877,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8766,
+      "title": "Pebble in the Sky",
+      "year": 1950,
+      "warnings": []
+    },
+    {
+      "work": 8767,
+      "title": "The Gods Themselves",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 8769,
+      "title": "Beantwortung der Frage: Was ist Aufklärung?",
+      "year": 1784,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8770,
+      "title": "Bridge to Terabithia",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 8771,
+      "title": "Mort",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8772,
+      "title": "Travailleurs de la Mer",
+      "year": 1866,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8773,
+      "title": "ねじまき鳥クロニクル",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 8774,
+      "title": "Down and Out in Paris and London",
+      "year": 1933,
+      "warnings": []
+    },
+    {
+      "work": 8775,
+      "title": "Daddy-Long-Legs",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 8776,
+      "title": "Fyrtøiet",
+      "year": 1835,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8777,
+      "title": "La casa de los espíritus",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8778,
+      "title": "The Time Traveler's Wife",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8779,
+      "title": "La Jangada – Huit Cents lieues sur l’Amazone",
+      "year": 1881,
+      "warnings": []
+    },
+    {
+      "work": 8780,
+      "title": "The Dark Tower: The Gunslinger",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8782,
+      "title": "Sophie's Choice",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 8783,
+      "title": "The Lovely Bones",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8784,
+      "title": "Ficciones",
+      "year": 1944,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8785,
+      "title": "Anthem",
+      "year": 1938,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8786,
+      "title": "A Moveable Feast",
+      "year": 1964,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8787,
+      "title": "Illusions perdues",
+      "year": 1837,
+      "warnings": []
+    },
+    {
+      "work": 8788,
+      "title": "Brideshead Revisited",
+      "year": 1945,
+      "warnings": []
+    },
+    {
+      "work": 8789,
+      "title": "A Little Princess",
+      "year": 1905,
+      "warnings": []
+    },
+    {
+      "work": 8790,
+      "title": "The Grand Design",
+      "year": 2010,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8793,
+      "title": "The Feminine Mystique",
+      "year": 1963,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8794,
+      "title": "A Treatise of Human Nature",
+      "year": 1739,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8795,
+      "title": "A Writer's Diary",
+      "year": 1873,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8796,
+      "title": "Roman Martyrology",
+      "year": 1583,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8797,
+      "title": "Zur Farbenlehre",
+      "year": 1810,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8798,
+      "title": "Why I Am Not a Christian",
+      "year": 1957,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8799,
+      "title": "Maria Stuart",
+      "year": 1801,
+      "warnings": []
+    },
+    {
+      "work": 8800,
+      "title": "The Hero with a Thousand Faces",
+      "year": 1949,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8801,
+      "title": "Face au drapeau",
+      "year": 1896,
+      "warnings": []
+    },
+    {
+      "work": 8802,
+      "title": "Smith of Wootton Major",
+      "year": 1967,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8803,
+      "title": "The Very Hungry Caterpillar",
+      "year": 1969,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8804,
+      "title": "Night Shift",
+      "year": 1978,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8805,
+      "title": "Rage",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 8806,
+      "title": "The judgement",
+      "year": 1913,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8807,
+      "title": "La biblioteca de Babel",
+      "year": 1944,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8808,
+      "title": "Forrest Gump",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 8809,
+      "title": "Dreamcatcher",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 8810,
+      "title": "The Fisherman and His Wife",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8811,
+      "title": "聊齋誌異",
+      "year": 1740,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8812,
+      "title": "13 Reasons Why",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8813,
+      "title": "Breakfast of Champions",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 8814,
+      "title": "Thérèse Desqueyroux",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 8815,
+      "title": "Darkness at Noon",
+      "year": 1940,
+      "warnings": []
+    },
+    {
+      "work": 8816,
+      "title": "The Labours of Hercules",
+      "year": 1947,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8817,
+      "title": "O diário de um mago",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8818,
+      "title": "Le Phare du Bout du Monde",
+      "year": 1905,
+      "warnings": []
+    },
+    {
+      "work": 8819,
+      "title": "The Rebel",
+      "year": 1951,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8820,
+      "title": "The Secret History",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8822,
+      "title": "Mémoires d'Hadrien",
+      "year": 1951,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8824,
+      "title": "Wikinomics",
+      "year": 2006,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8825,
+      "title": "Mrs McGinty's Dead",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8826,
+      "title": "The Dark Half",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 8827,
+      "title": "Dolores Claiborne",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8828,
+      "title": "The Short Second Life of Bree Tanner",
+      "year": 2010,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8829,
+      "title": "The Hunting of the Snark",
+      "year": 1876,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8830,
+      "title": "Le Grand Meaulnes",
+      "year": 1913,
+      "warnings": []
+    },
+    {
+      "work": 8831,
+      "title": "The Last Day of a Condemned",
+      "year": 1829,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8833,
+      "title": "Anne of the Island",
+      "year": 1915,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8834,
+      "title": "Kritik des Gothaer Programms",
+      "year": 1875,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8835,
+      "title": "Escape from Freedom",
+      "year": 1941,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8836,
+      "title": "La Tulipe noire",
+      "year": 1850,
+      "warnings": []
+    },
+    {
+      "work": 8837,
+      "title": "Salomé",
+      "year": 1891,
+      "warnings": []
+    },
+    {
+      "work": 8838,
+      "title": "Hickory Dickory Dock",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 8839,
+      "title": "The Pale Horse",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 8840,
+      "title": "Stardust",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 8841,
+      "title": "Nemesis",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 8842,
+      "title": "The Cossacks",
+      "year": 1863,
+      "warnings": []
+    },
+    {
+      "work": 8843,
+      "title": "Ostatnie życzenie",
+      "year": 1993,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8844,
+      "title": "The Color Purple",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8845,
+      "title": "O Zahir",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8846,
+      "title": "Le Livre de la Cité des Dames",
+      "year": 1405,
+      "warnings": []
+    },
+    {
+      "work": 8847,
+      "title": "The Well of Loneliness",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 8848,
+      "title": "A Canticle for Leibowitz",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 8849,
+      "title": "The Battle of the Labyrinth",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8850,
+      "title": "The Old Curiosity Shop",
+      "year": 1840,
+      "warnings": []
+    },
+    {
+      "work": 8851,
+      "title": "The Iron Heel",
+      "year": 1908,
+      "warnings": []
+    },
+    {
+      "work": 8852,
+      "title": "2010: Odyssey Two",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 8853,
+      "title": "Burmese Days",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 8854,
+      "title": "Wyrd Sisters",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 8856,
+      "title": "A bruxa de Portobello",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8857,
+      "title": "Folie et déraison",
+      "year": 1961,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8858,
+      "title": "The Scarlet Plague",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 8859,
+      "title": "Doctor Sleep",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 8860,
+      "title": "Ready Player One",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8861,
+      "title": "Far from the Madding Crowd",
+      "year": 1874,
+      "warnings": []
+    },
+    {
+      "work": 8862,
+      "title": "채식주의자",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 8863,
+      "title": "It Ends with Us",
+      "year": 2016,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8864,
+      "title": "Josefine Mutzenbacher",
+      "year": 1906,
+      "warnings": []
+    },
+    {
+      "work": 8865,
+      "title": "Surveiller et punir",
+      "year": 1975,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8866,
+      "title": "Sex",
+      "year": 1992,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8867,
+      "title": "アフターダーク",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 8869,
+      "title": "Kunstformen der Natur",
+      "year": 1904,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8870,
+      "title": "Brief einer Unbekannten",
+      "year": 1922,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8871,
+      "title": "The Subjection of Women",
+      "year": 1869,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8872,
+      "title": "Heretics of Dune",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8873,
+      "title": "Holes",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 8874,
+      "title": "Mio, min Mio",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8875,
+      "title": "The Adventure of the Dying Detective",
+      "year": 1913,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8876,
+      "title": "Different Seasons",
+      "year": 1982,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8878,
+      "title": "Fatelessness",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 8879,
+      "title": "Der Mythus des 20. Jahrhunderts",
+      "year": 1930,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8880,
+      "title": "Der Schweizerische Robinson",
+      "year": 1812,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8881,
+      "title": "Charlie and the Great Glass Elevator",
+      "year": 1972,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8882,
+      "title": "Nathan der Weise",
+      "year": 1783,
+      "warnings": []
+    },
+    {
+      "work": 8883,
+      "title": "Hearts in Atlantis",
+      "year": 1999,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8884,
+      "title": "World War Z",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8885,
+      "title": "Novelas ejemplares",
+      "year": 1613,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8886,
+      "title": "La Chasse au météore",
+      "year": 1908,
+      "warnings": []
+    },
+    {
+      "work": 8887,
+      "title": "Un di Velt Hot Geshvign",
+      "year": 1956,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8888,
+      "title": "Purgatorio",
+      "year": 1316,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8889,
+      "title": "Maître du monde",
+      "year": 1904,
+      "warnings": []
+    },
+    {
+      "work": 8890,
+      "title": "The Revolt of the Masses",
+      "year": 1929,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8891,
+      "title": "Of Human Bondage",
+      "year": 1915,
+      "warnings": []
+    },
+    {
+      "work": 8892,
+      "title": "The Collector",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8893,
+      "title": "Robots and Empire",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8894,
+      "title": "La Misteriosa fiamma della Regina Loana",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 8895,
+      "title": "The Red Badge of Courage",
+      "year": 1894,
+      "warnings": []
+    },
+    {
+      "work": 8896,
+      "title": "Steve Jobs",
+      "year": 2011,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8897,
+      "title": "Darkly Dreaming Dexter",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 8899,
+      "title": "Rights of Man",
+      "year": 1791,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8900,
+      "title": "Midnight Sun",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 8901,
+      "title": "A Short History of Nearly Everything",
+      "year": 2003,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8902,
+      "title": "The French Lieutenant's Woman",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 8903,
+      "title": "How Much Land Does a Man Need?",
+      "year": 1886,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8905,
+      "title": "Luftslottet som sprängdes",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 8906,
+      "title": "The Crucible",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 8907,
+      "title": "Rhinocéros",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 8908,
+      "title": "雪国",
+      "year": 1935,
+      "warnings": []
+    },
+    {
+      "work": 8909,
+      "title": "Poirot Investigates",
+      "year": 1924,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8910,
+      "title": "The Turner Diaries",
+      "year": 1978,
+      "warnings": []
+    },
+    {
+      "work": 8911,
+      "title": "Hyperion",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 8912,
+      "title": "Dandelion Wine",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 8913,
+      "title": "Ringworld",
+      "year": 1970,
+      "warnings": []
+    },
+    {
+      "work": 8914,
+      "title": "Yvain ou le Chevalier au Lion",
+      "year": 1170,
+      "warnings": []
+    },
+    {
+      "work": 8915,
+      "title": "Thunderball",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 8916,
+      "title": "Micromégas",
+      "year": 1752,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8917,
+      "title": "Rayuela",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 8918,
+      "title": "The Adventure of the Missing Three-Quarter",
+      "year": 1904,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8919,
+      "title": "Хазарски речник",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8920,
+      "title": "The Last Olympian",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8921,
+      "title": "Krew elfów",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 8922,
+      "title": "Barnaby Rudge",
+      "year": 1840,
+      "warnings": []
+    },
+    {
+      "work": 8923,
+      "title": "ダンス・ダンス・ダンス",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 8924,
+      "title": "Shantaram",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 8926,
+      "title": "Les Contes de ma mère l'Oye",
+      "year": 1697,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8927,
+      "title": "The Forty Rules of Love",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 8928,
+      "title": "砂の女",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8930,
+      "title": "Miss Peregrine's Home for Peculiar Children",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8931,
+      "title": "Чернобыльская молитва",
+      "year": 1997,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8932,
+      "title": "The Snows of Kilimanjaro",
+      "year": 1936,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8933,
+      "title": "Mr. Mercedes",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 8934,
+      "title": "Soumission",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 8935,
+      "title": "Fire and Fury",
+      "year": 2018,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8938,
+      "title": "Sieben Jahre in Tibet. Mein Leben am Hofe des Dalai Lama",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8939,
+      "title": "Tuesdays with Morrie``",
+      "year": 1997,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8940,
+      "title": "The End of Faith",
+      "year": 2004,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8941,
+      "title": "Disquisitiones Arithmeticae",
+      "year": 1801,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8942,
+      "title": "Long Walk to Freedom",
+      "year": 1994,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8943,
+      "title": "The Garden of Eden",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 8944,
+      "title": "Six Thinking Hats",
+      "year": 1985,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8945,
+      "title": "A Room with a View",
+      "year": 1908,
+      "warnings": []
+    },
+    {
+      "work": 8946,
+      "title": "The Amber Spyglass",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 8947,
+      "title": "Zadig; or, The Book of Fate",
+      "year": 1747,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8948,
+      "title": "1001 Albums You Must Hear Before You Die",
+      "year": 2005,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8949,
+      "title": "Nostromo",
+      "year": 1904,
+      "warnings": []
+    },
+    {
+      "work": 8950,
+      "title": "Postern of Fate",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 8951,
+      "title": "Mostly Harmless",
+      "year": 1992,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 8952,
+      "title": "国境の南、太陽の西",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8953,
+      "title": "The Adventure of the Christmas Pudding",
+      "year": 1960,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8955,
+      "title": "Zur Judenfrage",
+      "year": 1843,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8956,
+      "title": "Anarchy, State, and Utopia",
+      "year": 1974,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8957,
+      "title": "The Father Christmas Letters",
+      "year": 1976,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8958,
+      "title": "Waverley; or, 'Tis Sixty Years Since",
+      "year": 1814,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8959,
+      "title": "Tonio Kröger",
+      "year": 1903,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8961,
+      "title": "The Life and Morals of Jesus of Nazareth",
+      "year": 1819,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8962,
+      "title": "Chapterhouse: Dune",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 8963,
+      "title": "A life of Galileo",
+      "year": 1943,
+      "warnings": []
+    },
+    {
+      "work": 8964,
+      "title": "El Aleph",
+      "year": 1949,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8965,
+      "title": "The good person of Sichuan",
+      "year": 1943,
+      "warnings": []
+    },
+    {
+      "work": 8966,
+      "title": "Equal Rites",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 8967,
+      "title": "The Caucasian chalk circle",
+      "year": 1954,
+      "warnings": []
+    },
+    {
+      "work": 8968,
+      "title": "Snow Crash",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8969,
+      "title": "Bartleby, the Scrivener",
+      "year": 1853,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8970,
+      "title": "No Logo",
+      "year": 1999,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8971,
+      "title": "The Golden Notebook",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8972,
+      "title": "The Currents of Space",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 8973,
+      "title": "Der Sandmann",
+      "year": 1817,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8974,
+      "title": "Desperation",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 8975,
+      "title": "スプートニクの恋人",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 8976,
+      "title": "The Girl Who Loved Tom Gordon",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 8977,
+      "title": "Insomnia",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 8978,
+      "title": "The Dark Forest",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 8979,
+      "title": "Florentine Codex",
+      "year": 1569,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8980,
+      "title": "Lisey's Story",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 8981,
+      "title": "Disgrace",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 8982,
+      "title": "The Sicilian",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 8983,
+      "title": "The King in Yellow",
+      "year": 1895,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8984,
+      "title": "The Waves",
+      "year": 1931,
+      "warnings": []
+    },
+    {
+      "work": 8985,
+      "title": "Pale Fire",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 8986,
+      "title": "Gerald's Game",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8987,
+      "title": "Fatherland",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 8988,
+      "title": "The Shadow Over Innsmouth",
+      "year": 1936,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8989,
+      "title": "Dialectic of enlightenment",
+      "year": 1944,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8990,
+      "title": "The Colour Out of Space",
+      "year": 1927,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8991,
+      "title": "The Age of Innocence",
+      "year": 1920,
+      "warnings": []
+    },
+    {
+      "work": 8992,
+      "title": "Jaws",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 8993,
+      "title": "Libro de los exemplos del Conde Lucanor et de Patronio",
+      "year": 1335,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8997,
+      "title": "The Son of Neptune",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 8998,
+      "title": "Looking for Alaska",
+      "year": 2005,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 8999,
+      "title": "La Princesse de Clèves",
+      "year": 1678,
+      "warnings": []
+    },
+    {
+      "work": 9000,
+      "title": "The Mystery of Edwin Drood",
+      "year": 1870,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9001,
+      "title": "The work of art in the age of its technological reproducibility",
+      "year": 1936,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9002,
+      "title": "Daß Narrenſchyff Ad Narragoniā",
+      "year": 1494,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9003,
+      "title": "El juego del ángel",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 9004,
+      "title": "Il cimitero di Praga",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 9005,
+      "title": "The General in His Labyrinth",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 9006,
+      "title": "Cosmos",
+      "year": 1980,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9007,
+      "title": "Кроткая",
+      "year": 1876,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9008,
+      "title": "Pippi Långstrump",
+      "year": 1945,
+      "warnings": []
+    },
+    {
+      "work": 9009,
+      "title": "Poirot's Early Cases",
+      "year": 1974,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9010,
+      "title": "A Visit from St. Nicholas",
+      "year": 1823,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9011,
+      "title": "Absalom, Absalom!",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 9012,
+      "title": "Schindler's Ark",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 9013,
+      "title": "Markens Grøde",
+      "year": 1917,
+      "warnings": []
+    },
+    {
+      "work": 9014,
+      "title": "Reaper Man",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 9015,
+      "title": "Nord contre Sud",
+      "year": 1887,
+      "warnings": []
+    },
+    {
+      "work": 9016,
+      "title": "O Captain! My Captain!",
+      "year": 1865,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9017,
+      "title": "Sourcery",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 9018,
+      "title": "The Devil Wears Prada",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 9019,
+      "title": "The Sirens of Titan",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 9020,
+      "title": "Хаджи-Мурат",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 9021,
+      "title": "Guards! Guards!",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 9022,
+      "title": "Half of a Yellow Sun",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 9023,
+      "title": "バトル・ロワイアル",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 9024,
+      "title": "Beren and Lúthien",
+      "year": 2017,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9025,
+      "title": "The Hunt for Red October",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 9026,
+      "title": "The Goldfinch",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 9027,
+      "title": "Me Before You",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 9028,
+      "title": "12 Rules for Life",
+      "year": 2018,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9029,
+      "title": "Discours sur les sciences et les arts",
+      "year": 1750,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9030,
+      "title": "Zur Kritik der Politischen Oekonomie",
+      "year": 1859,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9031,
+      "title": "The World Is Flat",
+      "year": 2005,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9032,
+      "title": "A Guide to the Project Management Body of Knowledge",
+      "year": 1996,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9033,
+      "title": "Das Unbehagen in der Kultur",
+      "year": 1930,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9034,
+      "title": "Romancero gitano",
+      "year": 1928,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9035,
+      "title": "A Mathematician's Apology",
+      "year": 1940,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9037,
+      "title": "Concordia",
+      "year": 1580,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9038,
+      "title": "The Forsyte Saga",
+      "year": 1906,
+      "warnings": []
+    },
+    {
+      "work": 9039,
+      "title": "La Condition humaine",
+      "year": 1933,
+      "warnings": []
+    },
+    {
+      "work": 9040,
+      "title": "For Your Eyes Only",
+      "year": 1960,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9041,
+      "title": "Altneuland",
+      "year": 1902,
+      "warnings": []
+    },
+    {
+      "work": 9042,
+      "title": "How the Grinch Stole Christmas!",
+      "year": 1957,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9043,
+      "title": "The Talisman",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 9044,
+      "title": "The Stars, Like Dust",
+      "year": 1951,
+      "warnings": []
+    },
+    {
+      "work": 9045,
+      "title": "Silas Marner",
+      "year": 1861,
+      "warnings": []
+    },
+    {
+      "work": 9046,
+      "title": "When The Sleeper Wakes",
+      "year": 1899,
+      "warnings": []
+    },
+    {
+      "work": 9047,
+      "title": "Leaf by Niggle",
+      "year": 1945,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9048,
+      "title": "2666",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 9049,
+      "title": "Socialism: Utopian and Scientific",
+      "year": 1880,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9050,
+      "title": "Grundrisse",
+      "year": 1939,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9051,
+      "title": "Duino elegies",
+      "year": 1923,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9052,
+      "title": "Artemis Fowl",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 9053,
+      "title": "Joseph and his brothers",
+      "year": 1943,
+      "warnings": []
+    },
+    {
+      "work": 9054,
+      "title": "Откровенные рассказы странника духовному своему отцу",
+      "year": 1884,
+      "warnings": []
+    },
+    {
+      "work": 9055,
+      "title": "Tom Thumb",
+      "year": 1819,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9056,
+      "title": "Blood Meridian",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 9057,
+      "title": "Вечера на хуторе близ Диканьки",
+      "year": 1830,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9058,
+      "title": "Across the River and into the Trees",
+      "year": 1950,
+      "warnings": []
+    },
+    {
+      "work": 9059,
+      "title": "À rebours",
+      "year": 1884,
+      "warnings": []
+    },
+    {
+      "work": 9061,
+      "title": "The Right to be Lazy",
+      "year": 1880,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9062,
+      "title": "City of Bones",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 9063,
+      "title": "The Mists of Avalon",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 9064,
+      "title": "Die Jungfrau von Orleans",
+      "year": 1801,
+      "warnings": []
+    },
+    {
+      "work": 9065,
+      "title": "The Marriage of Heaven and Hell",
+      "year": 1793,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9066,
+      "title": "Yerma",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 9067,
+      "title": "Cycle of the Werewolf",
+      "year": 1983,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9068,
+      "title": "Coming Up for Air",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 9069,
+      "title": "The Once and Future King",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 9070,
+      "title": "The Name of the Wind",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 9071,
+      "title": "Naked Lunch",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 9072,
+      "title": "The world of yesterday",
+      "year": 1942,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9073,
+      "title": "The Twits",
+      "year": 1980,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9074,
+      "title": "The Secret Agent",
+      "year": 1907,
+      "warnings": []
+    },
+    {
+      "work": 9075,
+      "title": "The Star Rover",
+      "year": 1915,
+      "warnings": []
+    },
+    {
+      "work": 9076,
+      "title": "Раковый корпус",
+      "year": 1967,
+      "warnings": []
+    },
+    {
+      "work": 9077,
+      "title": "La mort heureuse",
+      "year": 1971,
+      "warnings": []
+    },
+    {
+      "work": 9078,
+      "title": "The black obelisk",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 9079,
+      "title": "The Quiet American",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 9080,
+      "title": "Lost Horizon",
+      "year": 1933,
+      "warnings": []
+    },
+    {
+      "work": 9081,
+      "title": "Gravity's Rainbow",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 9082,
+      "title": "Thinking, Fast and Slow",
+      "year": 2011,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9083,
+      "title": "Foundation and Earth",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 9084,
+      "title": "Small Gods",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 9085,
+      "title": "氷菓",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 9086,
+      "title": "The Dark Tower II: The Drawing of the Three",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 9087,
+      "title": "Sister Carrie",
+      "year": 1900,
+      "warnings": []
+    },
+    {
+      "work": 9088,
+      "title": "Un drame en Livonie",
+      "year": 1904,
+      "warnings": []
+    },
+    {
+      "work": 9089,
+      "title": "The Mysterious Mr Quin",
+      "year": 1930,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9090,
+      "title": "The Graveyard Book",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 9091,
+      "title": "Altered Carbon",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 9092,
+      "title": "The Woman in White",
+      "year": 1860,
+      "warnings": []
+    },
+    {
+      "work": 9093,
+      "title": "The Doors of Perception",
+      "year": 1954,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9094,
+      "title": "Метро 2034",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 9095,
+      "title": "James and The Giant Peach",
+      "year": 1961,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9096,
+      "title": "Howl",
+      "year": 1955,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9097,
+      "title": "Waiting for the Barbarians",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 9098,
+      "title": "The Moon and Sixpence",
+      "year": 1919,
+      "warnings": []
+    },
+    {
+      "work": 9100,
+      "title": "The Life and Adventures of Martin Chuzzlewit",
+      "year": 1844,
+      "warnings": []
+    },
+    {
+      "work": 9101,
+      "title": "Franny and Zooey",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 9102,
+      "title": "El la araba",
+      "year": 1858,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9104,
+      "title": "Morgenröthe",
+      "year": 1881,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9105,
+      "title": "Invisible Man",
+      "year": 1952,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9106,
+      "title": "What Is to Be Done?",
+      "year": 1863,
+      "warnings": []
+    },
+    {
+      "work": 9107,
+      "title": "The Screwtape Letters",
+      "year": 1942,
+      "warnings": []
+    },
+    {
+      "work": 9108,
+      "title": "Beyaz Kale",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 9109,
+      "title": "Pyramids",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 9110,
+      "title": "Norske Folkeeventyr",
+      "year": 1841,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9111,
+      "title": "Крокодил",
+      "year": 1865,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9112,
+      "title": "Ham on Rye",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 9113,
+      "title": "The Amazing Maurice and his Educated Rodents",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 9115,
+      "title": "Kidnapped",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 9116,
+      "title": "Insurgent",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 9117,
+      "title": "Trump: The Art of the Deal",
+      "year": 1987,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9118,
+      "title": "Emil and the detectives",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 9119,
+      "title": "君の膵臓をたべたい",
+      "year": 2015,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9120,
+      "title": "Fire & Blood",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 9121,
+      "title": "Where the Crawdads Sing",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 9122,
+      "title": "Tintin au pays de l'or noir",
+      "year": 1950,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9123,
+      "title": "mol",
+      "year": 1934,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9124,
+      "title": "The Secret Doctrine",
+      "year": 1888,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9125,
+      "title": "Plena Ilustrita Vortaro de Esperanto",
+      "year": 1970,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9126,
+      "title": "Enten – Eller",
+      "year": 1843,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9127,
+      "title": "Animal Liberation",
+      "year": 1975,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9128,
+      "title": "SCUM Manifesto (Society for Cutting Up Men Manifesto)",
+      "year": 1967,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9129,
+      "title": "The Man with the Golden Gun",
+      "year": 1965,
+      "warnings": []
+    },
+    {
+      "work": 9130,
+      "title": "La société du spectacle",
+      "year": 1967,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9131,
+      "title": "On Her Majesty's Secret Service",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 9133,
+      "title": "You Only Live Twice",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 9134,
+      "title": "Le Livre noir du capitalisme",
+      "year": 1998,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9135,
+      "title": "仮面の告白",
+      "year": 1949,
+      "warnings": []
+    },
+    {
+      "work": 9136,
+      "title": "Micrographia",
+      "year": 1665,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9137,
+      "title": "On Writing",
+      "year": 2000,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9138,
+      "title": "The Theory of Moral Sentiments",
+      "year": 1759,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9139,
+      "title": "Under the Volcano",
+      "year": 1947,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9140,
+      "title": "走ることについて語るときに僕の語ること",
+      "year": 2007,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9141,
+      "title": "The Extended Phenotype",
+      "year": 1982,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9142,
+      "title": "Future Shock",
+      "year": 1970,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9143,
+      "title": "Zen and the Art of Motorcycle Maintenance",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 9144,
+      "title": "Rose Madder",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 9145,
+      "title": "The Anatomy of Melancholy",
+      "year": 1621,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9147,
+      "title": "Les Mots",
+      "year": 1964,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9148,
+      "title": "方丈記",
+      "year": 1212,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9149,
+      "title": "The Secret",
+      "year": 2006,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9150,
+      "title": "Записки сумасшедшего",
+      "year": 1835,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9151,
+      "title": "Wizard and Glass",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 9152,
+      "title": "The Second World War",
+      "year": 1948,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9153,
+      "title": "2061: Odyssey Three",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 9154,
+      "title": "Lohnarbeit und Kapital",
+      "year": 1849,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9156,
+      "title": "The clown",
+      "year": 1963,
+      "warnings": []
+    },
+    {
+      "work": 9157,
+      "title": "A General History of the Pyrates",
+      "year": 1724,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9158,
+      "title": "Roverandom",
+      "year": 1998,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9159,
+      "title": "De Bello Civili",
+      "year": 65,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9160,
+      "title": "Men at Arms",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 9161,
+      "title": "The Sum of All Fears",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 9162,
+      "title": "Del amor y otros demonios",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 9163,
+      "title": "The Bridges of Madison County",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 9164,
+      "title": "Hannibal Rising",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 9165,
+      "title": "Lord of Light",
+      "year": 1967,
+      "warnings": []
+    },
+    {
+      "work": 9166,
+      "title": "Contact",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 9167,
+      "title": "The Goose Girl",
+      "year": 1815,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9168,
+      "title": "The Case of Charles Dexter Ward",
+      "year": 1943,
+      "warnings": []
+    },
+    {
+      "work": 9169,
+      "title": "LTI – Lingua Tertii Imperii",
+      "year": 1947,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9170,
+      "title": "Tinker, Tailor, Soldier, Spy",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 9171,
+      "title": "Le Bateau ivre",
+      "year": 1871,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9172,
+      "title": "Neverwhere",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 9173,
+      "title": "Skeleton Crew",
+      "year": 1985,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9174,
+      "title": "Angela's Ashes",
+      "year": 1996,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9175,
+      "title": "A Sentimental Journey Through France and Italy",
+      "year": 1768,
+      "warnings": []
+    },
+    {
+      "work": 9176,
+      "title": "The Gruffalo",
+      "year": 2000,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9177,
+      "title": "Nine Stories",
+      "year": 1953,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9178,
+      "title": "Emily of New Moon",
+      "year": 1923,
+      "warnings": []
+    },
+    {
+      "work": 9179,
+      "title": "The Dark Tower: The Wind Through the Keyhole",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 9180,
+      "title": "The Radetzky march",
+      "year": 1932,
+      "warnings": []
+    },
+    {
+      "work": 9181,
+      "title": "Forward the Foundation",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 9182,
+      "title": "La Bête humaine",
+      "year": 1890,
+      "warnings": []
+    },
+    {
+      "work": 9183,
+      "title": "Die Wahlverwandtschaften",
+      "year": 1809,
+      "warnings": []
+    },
+    {
+      "work": 9184,
+      "title": "Life Is Elsewhere",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 9185,
+      "title": "Dearest father",
+      "year": 1952,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9186,
+      "title": "The First Man",
+      "year": 1994,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9187,
+      "title": "A Confederacy of Dunces",
+      "year": 1980,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9188,
+      "title": "Les Bienveillantes",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 9190,
+      "title": "Free Culture",
+      "year": 2004,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9191,
+      "title": "La Folle Journée, ou le Mariage de Figaro",
+      "year": 1778,
+      "warnings": []
+    },
+    {
+      "work": 9192,
+      "title": "The Last Question",
+      "year": 1956,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9193,
+      "title": "If on a Winter’s Night a Traveler",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 9194,
+      "title": "So Long, and Thanks for All the Fish",
+      "year": 1984,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 9195,
+      "title": "Un Billet de loterie",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 9196,
+      "title": "The Sense of an Ending",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 9197,
+      "title": "Equus",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 9198,
+      "title": "Đoạn Trường Tân Thanh",
+      "year": 1820,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9199,
+      "title": "Harry Potter prequel",
+      "year": 2008,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9200,
+      "title": "Le Testament d'un excentrique",
+      "year": 1899,
+      "warnings": []
+    },
+    {
+      "work": 9201,
+      "title": "The Ego and His Own",
+      "year": 1844,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9202,
+      "title": "Villette",
+      "year": 1853,
+      "warnings": []
+    },
+    {
+      "work": 9203,
+      "title": "Il barone rampante",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 9204,
+      "title": "The Rape of the Lock",
+      "year": 1712,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9205,
+      "title": "Tintenherz",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 9206,
+      "title": "Le Horla",
+      "year": 1886,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9207,
+      "title": "The Reptile Room",
+      "year": 1999,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9208,
+      "title": "Men Are from Mars, Women Are from Venus",
+      "year": 1994,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9209,
+      "title": "Голова профессора Доуэля",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 9210,
+      "title": "The World According to Garp",
+      "year": 1978,
+      "warnings": []
+    },
+    {
+      "work": 9211,
+      "title": "Na margem do rio Piedra eu sentei e chorei",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 9212,
+      "title": "Czas pogardy",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 9213,
+      "title": "Speaker for the Dead",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 9214,
+      "title": "風の歌を聴け",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 9215,
+      "title": "White Noise",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 9216,
+      "title": "Hundraåringen som klev ut genom fönstret och försvann",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 9217,
+      "title": "And the Mountains Echoed",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 9218,
+      "title": "The Silkworm",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 9219,
+      "title": "En man som heter Ove",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 9220,
+      "title": "騎士団長殺し",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 9221,
+      "title": "21 מחשבות על המאה ה-21",
+      "year": 2018,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9222,
+      "title": "Papillon",
+      "year": 1969,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9223,
+      "title": "Pedagogy of the Oppressed",
+      "year": 1970,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9224,
+      "title": "North and South",
+      "year": 1855,
+      "warnings": []
+    },
+    {
+      "work": 9225,
+      "title": "The Chicago Manual of Style",
+      "year": 1906,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9226,
+      "title": "千羽鶴",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 9227,
+      "title": "The Anarchist Cookbook",
+      "year": 1971,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9228,
+      "title": "The Greatest Show on Earth: The Evidence for Evolution",
+      "year": 2009,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9229,
+      "title": "Reflections on the Revolution in France",
+      "year": 1790,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9230,
+      "title": "Frygt og Bæven",
+      "year": 1843,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9231,
+      "title": "The Road to Wigan Pier",
+      "year": 1937,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9232,
+      "title": "Peter Camenzind",
+      "year": 1904,
+      "warnings": []
+    },
+    {
+      "work": 9233,
+      "title": "Columbia Encyclopedia",
+      "year": 1935,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9234,
+      "title": "The World Without Us",
+      "year": 2007,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9235,
+      "title": "Drei Abhandlungen zur Sexualtheorie",
+      "year": 1905,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9236,
+      "title": "Les Mots et les Choses",
+      "year": 1966,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9237,
+      "title": "L’Anti-Œdipe",
+      "year": 1972,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9239,
+      "title": "Philosophical Essays Concerning Human Understanding",
+      "year": 1748,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9240,
+      "title": "Hitlers Zweites Buch",
+      "year": 1961,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9241,
+      "title": "Fables de La Fontaine",
+      "year": 1668,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9242,
+      "title": "Blue Ocean Strategy",
+      "year": 2005,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9243,
+      "title": "Diary of a Wimpy Kid",
+      "year": 2007,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9244,
+      "title": "De materia medica",
+      "year": 50,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9245,
+      "title": "The Yellow Wall Paper",
+      "year": 1892,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9246,
+      "title": "Undine",
+      "year": 1811,
+      "warnings": []
+    },
+    {
+      "work": 9247,
+      "title": "Le Superbe Orénoque",
+      "year": 1898,
+      "warnings": []
+    },
+    {
+      "work": 9248,
+      "title": "Old Possum’s Book of Practical Cats",
+      "year": 1939,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9249,
+      "title": "Трудно быть богом",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 9250,
+      "title": "3001: The Final Odyssey",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 9251,
+      "title": "Zur Kritik der Hegelschen Rechtsphilosophie",
+      "year": 1844,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9252,
+      "title": "Black House",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 9253,
+      "title": "Wolves of the Calla",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 9254,
+      "title": "The Andromeda Strain",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 9255,
+      "title": "Michael Kohlhaas",
+      "year": 1810,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9256,
+      "title": "Daisy Miller",
+      "year": 1879,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9257,
+      "title": "Le Ventre de Paris",
+      "year": 1873,
+      "warnings": []
+    },
+    {
+      "work": 9258,
+      "title": "The Fall of Gondolin",
+      "year": 2018,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9259,
+      "title": "Flow My Tears, the Policeman Said",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 9260,
+      "title": "Prelude to Foundation",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 9261,
+      "title": "Duma Key",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 9262,
+      "title": "One-Dimensional Man",
+      "year": 1964,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9263,
+      "title": "Eric",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 9264,
+      "title": "Hannibal",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 9265,
+      "title": "Going Postal",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 9266,
+      "title": "Tortilla Flat",
+      "year": 1935,
+      "warnings": []
+    },
+    {
+      "work": 9267,
+      "title": "Рудин",
+      "year": 1856,
+      "warnings": []
+    },
+    {
+      "work": 9268,
+      "title": "Hernani",
+      "year": 1830,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 9269,
+      "title": "When Nietzsche Wept",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 9270,
+      "title": "Nightfall",
+      "year": 1941,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9272,
+      "title": "Die Aufzeichnungen des Malte Laurids Brigge",
+      "year": 1910,
+      "warnings": []
+    },
+    {
+      "work": 9273,
+      "title": "A Scanner Darkly",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 9274,
+      "title": "The City and the Stars",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 9275,
+      "title": "Patriot Games",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 9276,
+      "title": "Confessions of an Economic Hit Man",
+      "year": 2004,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9277,
+      "title": "Dirty Hands",
+      "year": 1948,
+      "warnings": []
+    },
+    {
+      "work": 9278,
+      "title": "West-östlicher Divan",
+      "year": 1819,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9279,
+      "title": "Blaze",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 9280,
+      "title": "Infinite Jest",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 9281,
+      "title": "La Religieuse",
+      "year": 1796,
+      "warnings": []
+    },
+    {
+      "work": 9282,
+      "title": "Freakonomics",
+      "year": 2005,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9283,
+      "title": "Blind Owl",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 9284,
+      "title": "Le Pont de la Rivière Kwai",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 9285,
+      "title": "The Cyberiad",
+      "year": 1965,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9286,
+      "title": "Looking Backward",
+      "year": 1888,
+      "warnings": []
+    },
+    {
+      "work": 9287,
+      "title": "Dr. Ox's Experiment",
+      "year": 1872,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9288,
+      "title": "Passenger to Frankfurt",
+      "year": 1970,
+      "warnings": []
+    },
+    {
+      "work": 9289,
+      "title": "De Profundis",
+      "year": 1905,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9290,
+      "title": "Gender Trouble",
+      "year": 1990,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9292,
+      "title": "The Case of Wagner",
+      "year": 1888,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9293,
+      "title": "Le Volcan d'or",
+      "year": 1906,
+      "warnings": []
+    },
+    {
+      "work": 9294,
+      "title": "Les Chants de Maldoror",
+      "year": 1870,
+      "warnings": []
+    },
+    {
+      "work": 9295,
+      "title": "The Body",
+      "year": 1982,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9296,
+      "title": "World Without End",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 9297,
+      "title": "God and the State",
+      "year": 1882,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9298,
+      "title": "Extremely Loud & Incredibly Close",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 9300,
+      "title": "The logic of scientific discover",
+      "year": 1934,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9301,
+      "title": "Mutual Aid",
+      "year": 1902,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9302,
+      "title": "The Dark Tower III: The Waste Lands",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 9303,
+      "title": "Le Colonel Chabert",
+      "year": 1829,
+      "warnings": []
+    },
+    {
+      "work": 9304,
+      "title": "Como agua para chocolate",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 9305,
+      "title": "Kanteletar",
+      "year": 1840,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9306,
+      "title": "Wrinkle in Time",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 9307,
+      "title": "金閣寺",
+      "year": 1956,
+      "warnings": []
+    },
+    {
+      "work": 9308,
+      "title": "Surely You're Joking, Mr. Feynman!",
+      "year": 1985,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9309,
+      "title": "Moving Pictures",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 9310,
+      "title": "O Demônio e a srta Prym",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 9311,
+      "title": "Gjenerali i ushtrisë së vdekur",
+      "year": 1963,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9312,
+      "title": "The Mayor of Casterbridge: The Life and Death of a Man of Character",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 9313,
+      "title": "Lords and Ladies",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 9314,
+      "title": "Miecz przeznaczenia",
+      "year": 1992,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9315,
+      "title": "The Lost Hero",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 9316,
+      "title": "Anansi Boys",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 9317,
+      "title": "The Mysteries of Udolpho",
+      "year": 1794,
+      "warnings": []
+    },
+    {
+      "work": 9318,
+      "title": "Trollkarlens hatt",
+      "year": 1948,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9319,
+      "title": "The Thirty-nine Steps",
+      "year": 1915,
+      "warnings": []
+    },
+    {
+      "work": 9320,
+      "title": "Livro do Desassossego",
+      "year": 1982,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9321,
+      "title": "Ruy Blas",
+      "year": 1839,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 9322,
+      "title": "Chrzest ognia",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 9323,
+      "title": "Wonder",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 9324,
+      "title": "All the Light We Cannot See",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 9325,
+      "title": "The Naked Ape",
+      "year": 1967,
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9327,
+      "title": "The Spy Who Loved Me",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 9328,
+      "title": "Utilitarianism",
+      "year": 1861,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9329,
+      "title": "Syntactic Structures",
+      "year": 1957,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9330,
+      "title": "A Course In Miracles",
+      "year": 1976,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9331,
+      "title": "Autobiography of a Yogi",
+      "year": 1946,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9332,
+      "title": "Il Cortegiano",
+      "year": 1528,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9333,
+      "title": "Stupeur et tremblements",
+      "year": 1999,
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 9334,
+      "title": "The Problems of Philosophy",
+      "year": 1912,
+      "warnings": [
+        "generic_type"
+      ]
+    }
+  ],
+  "blocked": [],
+  "skipped": []
+}

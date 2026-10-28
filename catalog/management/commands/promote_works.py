@@ -25,6 +25,10 @@ class Command(BaseCommand):
         parser.add_argument("--depth", choices=("index", "editorial", "ambient"), default="index")
         parser.add_argument("--require", default="", help="Comma-separated warnings that must block, e.g. no_date,no_creator")
         parser.add_argument("--force", action="store_true", help="Promote even when blocking warnings remain")
+        parser.add_argument("--from-depth", choices=("index", "editorial", "ambient"),
+                            help="Select works currently at this depth")
+        parser.add_argument("--work-type", help="Select works of this work type code")
+        parser.add_argument("--min-sitelinks", type=int, help="Select works with at least this many sitelinks")
         parser.add_argument("--limit", type=int, default=0)
         parser.add_argument("--report", type=Path)
         parser.add_argument("--confirm", action="store_true")
@@ -94,6 +98,8 @@ class Command(BaseCommand):
 
     def _collect_ids(self, options):
         ids = []
+        if options["from_depth"] or options["work_type"] or options["min_sitelinks"] is not None:
+            ids.extend(self._selected_ids(options))
         if options["ids"]:
             for value in options["ids"].split(","):
                 value = value.strip()
@@ -115,3 +121,17 @@ class Command(BaseCommand):
             report = json.loads(options["from_triage_report"].read_text())
             ids.extend(row["work_id"] for row in report.get("rows", []) if row.get("decision") in wanted)
         return list(dict.fromkeys(pk for pk in ids if pk))
+
+    def _selected_ids(self, options):
+        """Select works by catalog state, for slices such as "best-known books"."""
+        from catalog.ranking import sitelink_count
+
+        works = Work.objects.all()
+        if options["from_depth"]:
+            works = works.filter(depth=options["from_depth"])
+        if options["work_type"]:
+            works = works.filter(work_type_id=options["work_type"])
+        if options["min_sitelinks"] is not None:
+            works = works.prefetch_related("source_records")
+            return [work.pk for work in works if sitelink_count(work) >= options["min_sitelinks"]]
+        return list(works.values_list("pk", flat=True))

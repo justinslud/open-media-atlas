@@ -1,0 +1,26 @@
+{
+  "confirm": true,
+  "candidates": 4,
+  "sample": [
+    {
+      "work": 9308,
+      "before": "“Surely You're Joking, Mr. Feynman!”",
+      "after": "Surely You're Joking, Mr. Feynman!"
+    },
+    {
+      "work": 9466,
+      "before": "\"Futility, or the Wreck of the Titan\"",
+      "after": "Futility, or the Wreck of the Titan"
+    },
+    {
+      "work": 9896,
+      "before": "\"Teleny, or The Reverse of the Medal\"",
+      "after": "Teleny, or The Reverse of the Medal"
+    },
+    {
+      "work": 10074,
+      "before": "\"PS, I Love You\"",
+      "after": "PS, I Love You"
+    }
+  ]
+}
