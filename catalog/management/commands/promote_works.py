@@ -46,8 +46,8 @@ class Command(BaseCommand):
 
         promoted, blocked, skipped = [], [], []
         for work in works:
-            if work.visibility == Work.Visibility.PUBLIC:
-                skipped.append({"work": work.pk, "reason": "already public"})
+            if work.visibility == Work.Visibility.PUBLIC and work.depth == options["depth"]:
+                skipped.append({"work": work.pk, "reason": f"already public at depth {work.depth}"})
                 continue
             if work.visibility == Work.Visibility.SUPPRESSED:
                 skipped.append({"work": work.pk, "reason": "suppressed"})

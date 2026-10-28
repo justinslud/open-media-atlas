@@ -1,0 +1,79 @@
+{
+  "dry_run": false,
+  "cache_only": false,
+  "candidate_works": 664,
+  "with_cached_payload": 656,
+  "works_filled": 456,
+  "works_without_claims": 208,
+  "agents_resolved_from_cache": 862,
+  "agents_fetched": 862,
+  "agents_missing_label": 11,
+  "network_requests": 36,
+  "sample": [
+    {
+      "work": 6019,
+      "credits": [
+        {
+          "agent": "Émile Bayard",
+          "role": "illustrator",
+          "qid": "Q274909"
+        }
+      ]
+    },
+    {
+      "work": 6030,
+      "credits": [
+        {
+          "agent": "Ľubica Čekovská",
+          "role": "composer",
+          "qid": "Q13371125"
+        }
+      ]
+    },
+    {
+      "work": 6034,
+      "credits": [
+        {
+          "agent": "William Shakespeare",
+          "role": "screenwriter",
+          "qid": "Q692"
+        },
+        {
+          "agent": "Vincenzo Bellini",
+          "role": "composer",
+          "qid": "Q170209"
+        }
+      ]
+    },
+    {
+      "work": 6045,
+      "credits": [
+        {
+          "agent": "William Shakespeare",
+          "role": "screenwriter",
+          "qid": "Q692"
+        },
+        {
+          "agent": "Mario Zafred",
+          "role": "composer",
+          "qid": "Q3849251"
+        }
+      ]
+    },
+    {
+      "work": 6046,
+      "credits": [
+        {
+          "agent": "William Shakespeare",
+          "role": "screenwriter",
+          "qid": "Q692"
+        },
+        {
+          "agent": "Ambroise Thomas",
+          "role": "composer",
+          "qid": "Q297717"
+        }
+      ]
+    }
+  ]
+}

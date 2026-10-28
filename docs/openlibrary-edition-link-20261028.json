@@ -1,0 +1,13 @@
+{
+  "run_id": 34,
+  "unlinked_works": 499,
+  "editions_queried": 598,
+  "edition_links_found": 0,
+  "works_linked": 0,
+  "works_refreshed": 0,
+  "ambiguous": [],
+  "no_work_claim": 0,
+  "failures": 0,
+  "network_requests": 8,
+  "elapsed_seconds": 4.88
+}

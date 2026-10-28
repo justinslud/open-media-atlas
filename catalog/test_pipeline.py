@@ -22,6 +22,7 @@ from .models import (
     ImportRun,
     RelationshipType,
     Source,
+    SourceRecord,
     Work,
     WorkType,
 )
@@ -313,3 +314,135 @@ class ResolveWikidataRelationshipsTests(TestCase):
         with patch.object(module, "WikidataClient", FakeWikidataClient):
             with self.assertRaises(CommandError):
                 call_command("resolve_wikidata_relationships", manifest=self.manifest, seed_limit=1, limit=5)
+
+
+class LinkOpenLibraryEditionsTests(TestCase):
+    def setUp(self):
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+        self.work = Work.objects.create(title="Edition Linked Work", slug="edition-linked",
+                                        work_type=self.book, visibility=Work.Visibility.DRAFT)
+        ExternalIdentifier.objects.create(work=self.work, scheme="ol_work", value="OL1W")
+        self.folder = tempfile.TemporaryDirectory()
+        self.extract = Path(self.folder.name)
+        (self.extract / "records.jsonl").write_text(json.dumps({
+            "work": {"key": "/works/OL1W"},
+            "editions": [{"key": "/books/OL2M", "publish_date": "2001"}],
+        }) + "\n")
+
+    def tearDown(self):
+        self.folder.cleanup()
+
+    def test_edition_p629_target_links_the_work(self):
+        from unittest.mock import patch
+        from .management.commands import link_openlibrary_editions as module
+
+        class Client(FakeWikidataClient):
+            def get_json(self, url, params, attempts=1):
+                self.requests += 1
+                return {"results": {"bindings": [{
+                    "edition": {"value": "http://www.wikidata.org/entity/Q10"},
+                    "olid": {"value": "OL2M"},
+                    "work": {"value": "http://www.wikidata.org/entity/Q42"},
+                }]}}
+
+            def payload(self, qid):
+                base = super().payload(qid)
+                base["claims"] = {"P648": [{"mainsnak": {"datavalue": {"value": "OL1W"}}}]}
+                return base
+
+        with patch.object(module, "WikidataClient", Client):
+            call_command("link_openlibrary_editions", extract=self.extract)
+
+        self.assertTrue(ExternalIdentifier.objects.filter(work=self.work, scheme="wikidata", value="Q42").exists())
+
+    def test_ambiguous_work_claims_are_not_linked(self):
+        from unittest.mock import patch
+        from .management.commands import link_openlibrary_editions as module
+
+        class Client(FakeWikidataClient):
+            def get_json(self, url, params, attempts=1):
+                self.requests += 1
+                return {"results": {"bindings": [
+                    {"edition": {"value": "http://www.wikidata.org/entity/Q10"},
+                     "olid": {"value": "OL2M"}, "work": {"value": "http://www.wikidata.org/entity/Q42"}},
+                    {"edition": {"value": "http://www.wikidata.org/entity/Q11"},
+                     "olid": {"value": "OL2M"}, "work": {"value": "http://www.wikidata.org/entity/Q43"}},
+                ]}}
+
+        with patch.object(module, "WikidataClient", Client):
+            call_command("link_openlibrary_editions", extract=self.extract)
+
+        self.assertFalse(ExternalIdentifier.objects.filter(work=self.work, scheme="wikidata").exists())
+
+
+class BackfillWikidataCreditsTests(TestCase):
+    def setUp(self):
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+        self.work = Work.objects.create(title="Creditless Work", slug="creditless", work_type=self.book,
+                                        visibility=Work.Visibility.PUBLIC, first_publication_year=1900)
+
+    def snapshot(self, key, payload, work=None):
+        return SourceRecord.objects.create(
+            source=self.source, external_key=key, matched_work=work, raw_payload=payload,
+            payload_hash=key, retrieved_at=timezone.now(),
+        )
+
+    def test_cached_creator_claims_become_credits(self):
+        claim = {"rank": "normal", "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": "Q535"}}}}
+        self.snapshot("Q100", {"id": "Q100", "claims": {"P50": [claim]}}, work=self.work)
+        self.snapshot("Q535", {"id": "Q535", "labels": {"en": {"value": "A Cached Author"}}})
+        call_command("backfill_wikidata_credits", cache_only=True)
+
+        credit = Credit.objects.get(work=self.work)
+        self.assertEqual((credit.agent.name, credit.role), ("A Cached Author", "author"))
+
+    def test_works_with_credits_are_left_alone(self):
+        existing = Agent.objects.create(name="Existing Author", kind="person")
+        Credit.objects.create(work=self.work, agent=existing, role="author")
+        claim = {"rank": "normal", "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": "Q999"}}}}
+        self.snapshot("Q100", {"id": "Q100", "claims": {"P50": [claim]}}, work=self.work)
+        self.snapshot("Q999", {"id": "Q999", "labels": {"en": {"value": "Another Author"}}})
+        call_command("backfill_wikidata_credits", cache_only=True)
+
+        self.assertEqual(Credit.objects.filter(work=self.work).count(), 1)
+
+
+class RejectProposalsTests(TestCase):
+    def setUp(self):
+        from django.contrib.auth import get_user_model
+
+        get_user_model().objects.create_user(username="admin", password="x")
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+        self.reltype = RelationshipType.objects.create(
+            code="based-on", label="Based on", inverse_label="Works based on this", category="derivation"
+        )
+        self.run = ImportRun.objects.create(source=self.source, requested_keys=["Q1"])
+        self.seed = Work.objects.create(title="Seed Work", slug="seed-work", work_type=self.book,
+                                        visibility=Work.Visibility.PUBLIC, depth="editorial",
+                                        first_publication_year=1600)
+        self.work = Work.objects.create(title="Self Linked", slug="self-linked", work_type=self.book,
+                                        visibility=Work.Visibility.DRAFT, first_publication_year=1990)
+
+    def proposal(self, statement):
+        return ImportRelationshipProposal.objects.create(
+            run=self.run, statement_id=statement, from_work=self.work, to_work=self.seed,
+            relationship_type=self.reltype, source=self.source, evidence={"property_id": "P144"},
+        )
+
+    def test_only_deterministic_faults_are_rejected(self):
+        broken = self.proposal("Q2$self")
+        repairable = self.proposal("Q2$year")
+        with tempfile.TemporaryDirectory() as folder:
+            report = Path(folder) / "triage.json"
+            report.write_text(json.dumps({"rows": [
+                {"proposal_id": broken.pk, "decision": "red", "reasons": ["self_link"]},
+                {"proposal_id": repairable.pk, "decision": "red", "reasons": ["year_inversion"]},
+            ]}))
+            call_command("reject_proposals", report=report, deterministic=True, confirm=True)
+
+        broken.refresh_from_db()
+        repairable.refresh_from_db()
+        self.assertEqual(broken.status, ImportRelationshipProposal.Status.REJECTED)
+        self.assertEqual(repairable.status, ImportRelationshipProposal.Status.PENDING)

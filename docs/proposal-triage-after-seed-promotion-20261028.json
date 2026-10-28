@@ -1,0 +1,2038 @@
+{
+  "version": "2026-10-22-proposal-triage",
+  "generated_at": "2026-10-28T19:40:41.092364+00:00",
+  "dry_run": true,
+  "reviewer": null,
+  "candidate_count": 73,
+  "summary": {
+    "decisions": {
+      "red": 24,
+      "amber": 49
+    },
+    "green_types": {},
+    "reasons": {
+      "year_inversion": 24,
+      "generic_type": 43,
+      "no_year": 16,
+      "title_collision": 3,
+      "date_unverified": 16,
+      "no_sitelink": 20
+    },
+    "warnings": {
+      "no_image": 72,
+      "eponymous_title": 10
+    }
+  },
+  "rules": {
+    "green": "exact P144, based-on, dated, specific type, at least one sitelink, seed within --seed-scope, no edge conflict, date order valid",
+    "amber": "needs human review: missing year/date confidence, generic type, no sitelink, title collision, or duplicate pending edge",
+    "red": "excluded from auto-publish: bad evidence, identity conflict, unsupported type, or existing edge",
+    "images": "missing images are warnings, not publication blockers; placeholders remain"
+  },
+  "rows": [
+    {
+      "proposal_id": 1034,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7019,
+      "qid": "Q219457",
+      "title": "A Journey to the Center of the Earth",
+      "type": "novel",
+      "year": 1864,
+      "date_text": "1864-11-25",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 64,
+      "seed_id": 6522,
+      "seed": "Journey to the Center of the Earth",
+      "seed_year": 1959
+    },
+    {
+      "proposal_id": 2052,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7225,
+      "qid": "Q1305214",
+      "title": "A Midsummer Night's Dream",
+      "type": "creative-work",
+      "year": 1842,
+      "date_text": "1842",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 18,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 2058,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7332,
+      "qid": "Q55873489",
+      "title": "A Midsummer Night's Dream",
+      "type": "literary-work",
+      "year": 1807,
+      "date_text": "1807",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 2,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 995,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [],
+      "work_id": 6010,
+      "qid": "Q223131",
+      "title": "A Study in Scarlet",
+      "type": "novel",
+      "year": 1887,
+      "date_text": "1887",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 61,
+      "seed_id": 6518,
+      "seed": "The Sign of the Four",
+      "seed_year": 1890
+    },
+    {
+      "proposal_id": 1171,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "title_collision",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "adaptation title matches the source title",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7044,
+      "qid": "Q3209782",
+      "title": "Anne of Green Gables",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 844,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6887,
+      "qid": "Q4768925",
+      "title": "Anne of Green Gables—The Musical",
+      "type": "musical",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 2060,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7234,
+      "qid": "Q1660599",
+      "title": "Around the World in 80 Days",
+      "type": "creative-work",
+      "year": 1989,
+      "date_text": "1989",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 13,
+      "seed_id": 6018,
+      "seed": "Around the World in Eighty Days",
+      "seed_year": 1872
+    },
+    {
+      "proposal_id": 1169,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7074,
+      "qid": "Q385502",
+      "title": "Before Green Gables",
+      "type": "written-work",
+      "year": 2008,
+      "date_text": "2008",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 6,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1321,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7189,
+      "qid": "Q99",
+      "title": "California",
+      "type": "creative-work",
+      "year": 1850,
+      "date_text": "1850-09-09",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 287,
+      "seed_id": 6537,
+      "seed": "The Call of the Wild",
+      "seed_year": 1903
+    },
+    {
+      "proposal_id": 1687,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7207,
+      "qid": "Q1043792",
+      "title": "Carmilla",
+      "type": "novel",
+      "year": 1872,
+      "date_text": "1872",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 31,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1735,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7280,
+      "qid": "Q3233990",
+      "title": "Cecilia",
+      "type": "novel",
+      "year": 1782,
+      "date_text": "1782",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 890,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6787,
+      "qid": "Q17491260",
+      "title": "D",
+      "type": "creative-work",
+      "year": 1867,
+      "date_text": "1867",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1219,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7187,
+      "qid": "Q963659",
+      "title": "Dealings with the Firm of Dombey and Son: Wholesale, Retail and for Export",
+      "type": "novel",
+      "year": 1848,
+      "date_text": "1848",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 19,
+      "seed_id": 6530,
+      "seed": "David Copperfield or The Personal History, Adventures, Experience and Observation of David Copperfield the Younger of Blunderstone Rookery (Which He Never Meant to Publish on Any Account)",
+      "seed_year": 1850
+    },
+    {
+      "proposal_id": 1685,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7248,
+      "qid": "Q21043442",
+      "title": "Der Fremde",
+      "type": "novel",
+      "year": 1844,
+      "date_text": "1844",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 882,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6740,
+      "qid": "Q130713112",
+      "title": "Dobrodružství Dona Quijota",
+      "type": "play",
+      "year": 2006,
+      "date_text": "2006-10-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 887,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6755,
+      "qid": "Q13196042",
+      "title": "Don Chisciotti e Sanciu Panza",
+      "type": "creative-work",
+      "year": 1785,
+      "date_text": "1785",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 886,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6752,
+      "qid": "Q130735620",
+      "title": "Don Kichot",
+      "type": "literary-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 888,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6762,
+      "qid": "Q135621738",
+      "title": "Don Quichotte de la Manche",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 916,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6943,
+      "qid": "Q84056590",
+      "title": "Don Quichotte et Sancho Pança",
+      "type": "creative-work",
+      "year": 1864,
+      "date_text": "1864",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 881,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6731,
+      "qid": "Q1239463",
+      "title": "Don Quixote",
+      "type": "ballet",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 26,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1133,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7038,
+      "qid": "Q3035888",
+      "title": "Don Quixote",
+      "type": "creative-work",
+      "year": 1992,
+      "date_text": "1992-05-16",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1573,
+      "run_id": 24,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7038,
+      "qid": "Q3035888",
+      "title": "Don Quixote",
+      "type": "creative-work",
+      "year": 1992,
+      "date_text": "1992-05-16",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 911,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6910,
+      "qid": "Q606635",
+      "title": "Don Quixote: Phantastische Variationen über ein Thema ritterlichen Charakters",
+      "type": "creative-work",
+      "year": 1898,
+      "date_text": "1898",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 2053,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7311,
+      "qid": "Q47424487",
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1949,
+      "date_text": "1949-06-11",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 2054,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7312,
+      "qid": "Q47424535",
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1947,
+      "date_text": "1947-06-14",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 2055,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7313,
+      "qid": "Q47424599",
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1952,
+      "date_text": "1952-06-14",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 2056,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7314,
+      "qid": "Q47424677",
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1955,
+      "date_text": "1955-06-16",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 2057,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7315,
+      "qid": "Q47424730",
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1962,
+      "date_text": "1962-09-06",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6006,
+      "seed": "A Midsummer Night's Dream",
+      "seed_year": 1600
+    },
+    {
+      "proposal_id": 912,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6917,
+      "qid": "Q6784027",
+      "title": "Fasana-e-Azad",
+      "type": "literary-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 2070,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7212,
+      "qid": "Q114767471",
+      "title": "Frankenstein",
+      "type": "play",
+      "year": 2022,
+      "date_text": "2022-10-20",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6007,
+      "seed": "Frankenstein",
+      "seed_year": 1818
+    },
+    {
+      "proposal_id": 2071,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7239,
+      "qid": "Q17426473",
+      "title": "Frankenstein",
+      "type": "creative-work",
+      "year": 1973,
+      "date_text": "1973",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 3,
+      "seed_id": 6007,
+      "seed": "Frankenstein",
+      "seed_year": 1818
+    },
+    {
+      "proposal_id": 2072,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "title_collision",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "adaptation title matches the source title",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7268,
+      "qid": "Q3082890",
+      "title": "Frankenstein",
+      "type": "play",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "public",
+      "sitelinks": 5,
+      "seed_id": 6007,
+      "seed": "Frankenstein",
+      "seed_year": 1818
+    },
+    {
+      "proposal_id": 2113,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7290,
+      "qid": "Q3811269",
+      "title": "Jungle Book",
+      "type": "film",
+      "year": 1995,
+      "date_text": "1995",
+      "date_kind": "release",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6484,
+      "seed": "The Jungle Book",
+      "seed_year": 1894
+    },
+    {
+      "proposal_id": 883,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6743,
+      "qid": "Q130714013",
+      "title": "Komedie s Quiotem Podle slavného Cervantesova románu.",
+      "type": "play",
+      "year": 1982,
+      "date_text": "1982-12-17",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1690,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7271,
+      "qid": "Q3210879",
+      "title": "La Morte amoureuse",
+      "type": "literary-work",
+      "year": 1836,
+      "date_text": "1836",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 8,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1688,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7291,
+      "qid": "Q3821271",
+      "title": "La Vampire",
+      "type": "novel",
+      "year": 1865,
+      "date_text": "1865",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1689,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7349,
+      "qid": "Q768605",
+      "title": "Le Château des Carpathes",
+      "type": "novel",
+      "year": 1892,
+      "date_text": "1892",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 28,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 880,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6697,
+      "qid": "Q109242855",
+      "title": "Le chevalier imaginaire",
+      "type": "creative-work",
+      "year": 1992,
+      "date_text": "1992-01-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1014,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6969,
+      "qid": "Q1213902",
+      "title": "Les Enfants du capitaine Grant",
+      "type": "novel",
+      "year": 1864,
+      "date_text": "1864",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 47,
+      "seed_id": 6521,
+      "seed": "Twenty Thousand Leagues Under the Sea",
+      "seed_year": 1869
+    },
+    {
+      "proposal_id": 2087,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "title_collision",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "adaptation title matches the source title",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7287,
+      "qid": "Q3655415",
+      "title": "Les Misérables",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "public",
+      "sitelinks": 2,
+      "seed_id": 6019,
+      "seed": "Les Misérables",
+      "seed_year": 1862
+    },
+    {
+      "proposal_id": 2089,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7328,
+      "qid": "Q549722",
+      "title": "Les Misérables",
+      "type": "creative-work",
+      "year": 2000,
+      "date_text": "2000",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 13,
+      "seed_id": 6019,
+      "seed": "Les Misérables",
+      "seed_year": 1862
+    },
+    {
+      "proposal_id": 897,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6834,
+      "qid": "Q30056828",
+      "title": "Marodierende Soldaten mit Dirnen",
+      "type": "creative-work",
+      "year": 1750,
+      "date_text": "1750",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 898,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6836,
+      "qid": "Q30095116",
+      "title": "Marodierende Soldaten mit Dirnen (Kopie nach Rubens)",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1194,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7142,
+      "qid": "Q6815266",
+      "title": "Memoirs of Joseph Grimaldi",
+      "type": "novel",
+      "year": 1838,
+      "date_text": "1838",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6529,
+      "seed": "Oliver Twist",
+      "seed_year": 1839
+    },
+    {
+      "proposal_id": 1150,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7107,
+      "qid": "Q512137",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1998,
+      "date_text": "1998",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": 1851
+    },
+    {
+      "proposal_id": 1425,
+      "run_id": 24,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7107,
+      "qid": "Q512137",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1998,
+      "date_text": "1998",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": 1851
+    },
+    {
+      "proposal_id": 1143,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7145,
+      "qid": "Q6887419",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1971,
+      "date_text": "1971",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": 1851
+    },
+    {
+      "proposal_id": 1426,
+      "run_id": 24,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7145,
+      "qid": "Q6887419",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1971,
+      "date_text": "1971",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": 1851
+    },
+    {
+      "proposal_id": 892,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6800,
+      "qid": "Q2061344",
+      "title": "Monsignor Quixote",
+      "type": "literary-work",
+      "year": 1982,
+      "date_text": "1982-09-16",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 8,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 884,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6744,
+      "qid": "Q130714790",
+      "title": "Nod Quijote",
+      "type": "play",
+      "year": 2010,
+      "date_text": "2010-10-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1736,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7246,
+      "qid": "Q2048624",
+      "title": "Pamela; or, Virtue Rewarded",
+      "type": "novel",
+      "year": 1740,
+      "date_text": "1740",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 18,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 885,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6747,
+      "qid": "Q130715471",
+      "title": "Quijote!",
+      "type": "play",
+      "year": 2014,
+      "date_text": "2014-05-30",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1732,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7265,
+      "qid": "Q274744",
+      "title": "Sense and Sensibility",
+      "type": "novel",
+      "year": 1811,
+      "date_text": "1811",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 56,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 1006,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6976,
+      "qid": "Q12857071",
+      "title": "Sherlock Holmes novels",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6519,
+      "seed": "The Adventures of Sherlock Holmes",
+      "seed_year": 1892
+    },
+    {
+      "proposal_id": 1330,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6537,
+      "qid": "Q476871",
+      "title": "The Call of the Wild",
+      "type": "novel",
+      "year": 1903,
+      "date_text": "1903",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 54,
+      "seed_id": 6538,
+      "seed": "White Fang",
+      "seed_year": 1906
+    },
+    {
+      "proposal_id": 1865,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7323,
+      "qid": "Q510699",
+      "title": "The Coming Race",
+      "type": "novel",
+      "year": 1871,
+      "date_text": "1871",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 17,
+      "seed_id": 6016,
+      "seed": "The Time Machine",
+      "seed_year": 1895
+    },
+    {
+      "proposal_id": 894,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6818,
+      "qid": "Q2448770",
+      "title": "The History of Cardenio",
+      "type": "play",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 12,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1734,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7284,
+      "qid": "Q3521260",
+      "title": "The History of Sir Charles Grandison",
+      "type": "written-work",
+      "year": 1753,
+      "date_text": "1753",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 1005,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7178,
+      "qid": "Q860831",
+      "title": "The Memoirs of Sherlock Holmes",
+      "type": "literary-work",
+      "year": 1894,
+      "date_text": "1894",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 38,
+      "seed_id": 6519,
+      "seed": "The Adventures of Sherlock Holmes",
+      "seed_year": 1892
+    },
+    {
+      "proposal_id": 1762,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7178,
+      "qid": "Q860831",
+      "title": "The Memoirs of Sherlock Holmes",
+      "type": "literary-work",
+      "year": 1894,
+      "date_text": "1894",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 38,
+      "seed_id": 6011,
+      "seed": "The Hound of the Baskervilles",
+      "seed_year": 1902
+    },
+    {
+      "proposal_id": 1192,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7089,
+      "qid": "Q460583",
+      "title": "The Posthumous Papers of the Pickwick Club, Containing a Faithful Record of the Perambulations, Perils, Travels, Adventures and Sporting Transactions of the Corresponding Members",
+      "type": "novel",
+      "year": 1836,
+      "date_text": "1836-04",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 40,
+      "seed_id": 6529,
+      "seed": "Oliver Twist",
+      "seed_year": 1839
+    },
+    {
+      "proposal_id": 1004,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6518,
+      "qid": "Q500688",
+      "title": "The Sign of the Four",
+      "type": "novel",
+      "year": 1890,
+      "date_text": "1890-02",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 47,
+      "seed_id": 6519,
+      "seed": "The Adventures of Sherlock Holmes",
+      "seed_year": 1892
+    },
+    {
+      "proposal_id": 915,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6942,
+      "qid": "Q83506372",
+      "title": "The Story of Don Quixote",
+      "type": "creative-work",
+      "year": 1714,
+      "date_text": "1714",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1582,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7326,
+      "qid": "Q531630",
+      "title": "The Tragicall Historye of Romeus and Iuliet",
+      "type": "written-work",
+      "year": 1562,
+      "date_text": "1562",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6005,
+      "seed": "Romeo and Juliet",
+      "seed_year": 1597
+    },
+    {
+      "proposal_id": 1686,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7322,
+      "qid": "Q509070",
+      "title": "The Vampyre",
+      "type": "literary-work",
+      "year": 1819,
+      "date_text": "1819",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 22,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 2067,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7353,
+      "qid": "Q7775381",
+      "title": "The Wizard of Oz",
+      "type": "musical",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "public",
+      "sitelinks": 2,
+      "seed_id": 6013,
+      "seed": "The Wonderful Wizard of Oz",
+      "seed_year": 1900
+    },
+    {
+      "proposal_id": 2069,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7355,
+      "qid": "Q7775384",
+      "title": "The Wizard of Oz",
+      "type": "musical",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "public",
+      "sitelinks": 2,
+      "seed_id": 6013,
+      "seed": "The Wonderful Wizard of Oz",
+      "seed_year": 1900
+    },
+    {
+      "proposal_id": 2109,
+      "run_id": 32,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7358,
+      "qid": "Q796830",
+      "title": "Treasure Island",
+      "type": "creative-work",
+      "year": 2012,
+      "date_text": "2012",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 8,
+      "seed_id": 6015,
+      "seed": "Treasure Island",
+      "seed_year": 1883
+    },
+    {
+      "proposal_id": 1691,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7243,
+      "qid": "Q1987925",
+      "title": "Varney the Vampyre;",
+      "type": "novel",
+      "year": 1845,
+      "date_text": "1845",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 12,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 907,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6904,
+      "qid": "Q5785059",
+      "title": "continuations of Don Quixote",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1140,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7184,
+      "qid": "Q906512",
+      "title": "shipwrecking",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 48,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": 1851
+    },
+    {
+      "proposal_id": 901,
+      "run_id": 22,
+      "decision": "amber",
+      "reasons": [
+        "no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6851,
+      "qid": "Q3508079",
+      "title": "tilting at windmills",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": 1605
+    },
+    {
+      "proposal_id": 1227,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7042,
+      "qid": "Q308918",
+      "title": "دۄن شَہَرن ہِنٛز دٔلیٖل",
+      "type": "novel",
+      "year": 1859,
+      "date_text": "1859",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 65,
+      "seed_id": 6531,
+      "seed": "Great Expectations",
+      "seed_year": 1861
+    }
+  ]
+}

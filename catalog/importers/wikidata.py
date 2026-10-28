@@ -35,12 +35,13 @@ class WikidataClient:
     def get_json(self, url, params, attempts=4):
         if self.requests >= self.max_requests:
             raise WikidataError(f"request limit ({self.max_requests}) reached")
+        current = dict(params)
         for attempt in range(attempts):
             self.requests += 1
-            request = Request(f"{url}?{urlencode(params)}", headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+            request = Request(f"{url}?{urlencode(current)}", headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
             try:
                 with self.opener(request, timeout=self.timeout) as response:
-                    return json.load(response)
+                    data = json.load(response)
             except HTTPError as exc:
                 if exc.code not in (429, 500, 502, 503, 504) or attempt == attempts - 1:
                     raise WikidataError(f"HTTP {exc.code} from Wikidata") from exc
@@ -49,6 +50,18 @@ class WikidataClient:
             except (URLError, TimeoutError, json.JSONDecodeError) as exc:
                 if attempt == attempts - 1: raise WikidataError(f"Wikidata request failed: {exc}") from exc
                 delay = min(30, 2 ** attempt + random.random())
+            else:
+                # maxlag is a "server is busy, come back" signal, not a data error.
+                # Retry politely, then degrade: a permanently lagged query service
+                # must not block ordinary entity reads for hours.
+                error = data.get("error") if isinstance(data, dict) else None
+                if isinstance(error, dict) and error.get("code") == "maxlag" and attempt < attempts - 1:
+                    if "maxlag" in current:
+                        current.pop("maxlag")
+                        continue
+                    delay = min(30, 2 ** attempt + random.random())
+                else:
+                    return data
             self.sleep(delay)
 
     def discover(self, seeds, limit):
