@@ -26,6 +26,16 @@ def catalog_queryset(public):
     )
 
 
+# Ambient records stay public and reachable, but they are not browsing material:
+# a random Open Library slice is a reference tail, not a curated shelf.
+AMBIENT_DEPTH = "ambient"
+
+
+def browsable(works):
+    """Exclude ambient reference records from browsing surfaces."""
+    return works.exclude(depth=AMBIENT_DEPTH)
+
+
 DISCOVERY_ORDER = ('-selected', '-known_title', '-has_creator', '-editorial', '-reviewed_connection', 'title', 'id')
 
 

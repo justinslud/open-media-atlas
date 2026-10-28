@@ -1,0 +1,3111 @@
+{
+  "confirm": true,
+  "depth": "ambient",
+  "require": [
+    "no_date"
+  ],
+  "force": false,
+  "selected": 500,
+  "promoted": [
+    {
+      "work": 7368,
+      "title": "Local history",
+      "year": 1967,
+      "warnings": []
+    },
+    {
+      "work": 7369,
+      "title": "Mileage Log Book for Car Taxes / 176 Pages / Fuel and Expenses Tracking / Vehicle Conditions Checklist",
+      "year": 2022,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7370,
+      "title": "A Woman's Notebook",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 7371,
+      "title": "The British humanitarians and the Cape eastern frontier, 1834-1836",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 7372,
+      "title": "Acercamiento multidisciplinario sobre la adolescencia en el Caribe",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 7373,
+      "title": "Heath",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7374,
+      "title": "Federal and state weights and measures laws through 1949 enactments",
+      "year": 1951,
+      "warnings": []
+    },
+    {
+      "work": 7375,
+      "title": "Cyclic hope, cyclic pain",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 7376,
+      "title": "English Presbyterian Messenger; New Ser. , V. 12, No. 146, (feb. 1860)",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7377,
+      "title": "An investigation of the effects of unsteady inflow modeling on helicopter simulation",
+      "year": 1994,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7378,
+      "title": "The humble petition of the gentry, ministers and freeholders of the county of York",
+      "year": 1642,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7379,
+      "title": "I can",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 7380,
+      "title": "Pompeii, the electoral programmata, campaigns and politics, A.D. 71-79",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 7381,
+      "title": "The Merrill story",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 7382,
+      "title": "Heart Mountain screens",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7383,
+      "title": "Important questions of state, law, justice and prudence both civil and religious upon the late revolutions and present state of these nations",
+      "year": 1689,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7384,
+      "title": "Learning about Particles - 50 Privileged Years",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7385,
+      "title": "The poetry of Milton",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7386,
+      "title": "Meder's Smile - Joy to the World! A Gift from Heaven",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7387,
+      "title": "Casualties of Life",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7389,
+      "title": "Symmetry",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7390,
+      "title": "Public Lending Right Scheme 1982 (Commencement of Variations) Order 1990",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 7391,
+      "title": "Who Was Albert Einstein, over 70 Facts for Kids",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7392,
+      "title": "Petroleum Refining Chart",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7393,
+      "title": "Emma Monique",
+      "year": 2023,
+      "warnings": []
+    },
+    {
+      "work": 7394,
+      "title": "Apollo",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 7395,
+      "title": "Ketogenic Diet Side Dishes Cookbook",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7396,
+      "title": "Nanoelectronics",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7397,
+      "title": "Mechanical vibrations",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 7398,
+      "title": "Blue John Caverns and Blue John Mine, Castleton, Sheffield",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 7399,
+      "title": "Let Me Be Thankful",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7400,
+      "title": "Great Escapes",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 7401,
+      "title": "Ath : Crisis in the Middle East",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7402,
+      "title": "Nowhere",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 7403,
+      "title": "Easter Gift Coloring Book for Kids 1-4 and Toddlers",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7404,
+      "title": "freebird",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7405,
+      "title": "Living prayer",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 7406,
+      "title": "Report of a Special Subcommittee on Territorial and Insular Affairs of the Committee on Interior and Insular Affairs, House of Representatives, Eighty-third Congress, second session, pursuant to H. Res. 89. Guam, Mariana Islands",
+      "year": 1955,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7407,
+      "title": "Dinner on the grounds cookbook",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7408,
+      "title": "Quality of water on the Prairie Band Potawatomi Reservation, northeastern Kansas, May 2001 through August 2003",
+      "year": 2004,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7409,
+      "title": "Swim Workout Log",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7410,
+      "title": "Nutrition",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7411,
+      "title": "Death takes a wife",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 7412,
+      "title": "Jumbo Peppa Pig Coloring Book",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7413,
+      "title": "Etchbooks Kaitlin, Dots, Wide Rule",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7414,
+      "title": "Language and Culture on the Margins",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7415,
+      "title": "Letters from the distant past",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 7416,
+      "title": "House of Pomegranates Annotated",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7417,
+      "title": "The anthracite railroads",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 7418,
+      "title": "Celtic Metal Lyrics",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7419,
+      "title": "A rational view of the bible",
+      "year": 1800,
+      "warnings": []
+    },
+    {
+      "work": 7420,
+      "title": "Minimalist Living Made Easy",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7421,
+      "title": "Extending the limits of aesthetic representation",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7422,
+      "title": "Proposed arms sale to Morocco",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 7423,
+      "title": "A review of British trilobites, including a synoptic revision of Salter's monograph",
+      "year": 1988,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7424,
+      "title": "Flipping Domain Names for Profit",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7425,
+      "title": "Saga of a star-stallion",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 7426,
+      "title": "Biographical Supplement to Liberty of Conscience",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 7427,
+      "title": "Last Lady",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7428,
+      "title": "Sikh shrines in India",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 7429,
+      "title": "Commonwealth of Massachusetts",
+      "year": 1789,
+      "warnings": []
+    },
+    {
+      "work": 7430,
+      "title": "Becoming self-employed",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 7431,
+      "title": "Colton",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7432,
+      "title": "Cultural Emergence",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7433,
+      "title": "Dad For Daniel (Back To The Ranch) (Harlequin Romance, 3546",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7435,
+      "title": "The lost hall of Horsforth",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 7436,
+      "title": "Church reform in the late Byzantine Empire",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 7437,
+      "title": "Everything You Need to Know about Chemotherapy",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7438,
+      "title": "The devil's diary",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7439,
+      "title": "Thirteenth Symposium (International) on Combustion, at the University of Utah, Salt Lake City, Utah, August 23-29, 1970",
+      "year": 1971,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7440,
+      "title": "Economics for Business Decisions (The M & E higher business education series)",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7441,
+      "title": "My, ludy Narodów Zjednoczonych",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7442,
+      "title": "Park Days",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7443,
+      "title": "Industrial securities",
+      "year": 1921,
+      "warnings": []
+    },
+    {
+      "work": 7444,
+      "title": "Heaven's Destiny",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7445,
+      "title": "0037 Book of Common Prayer 1928 CL (Society Ed Exclusive)",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7446,
+      "title": "Parenting Tips for Oppositional Defiant Disorder : ODD in Children and Adults",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7447,
+      "title": "Wreaths and Garlands (Little Scented Library)",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7448,
+      "title": "The Visual Basic 5 Programmer's Reference",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 7449,
+      "title": "Signal Integrity - Simplified",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7450,
+      "title": "Jiddah's Recipes",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7451,
+      "title": "Look back to London",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 7452,
+      "title": "The seven knights; or, Tales of many lands",
+      "year": 1845,
+      "warnings": []
+    },
+    {
+      "work": 7453,
+      "title": "Ye last sweet thing in corners",
+      "year": 1880,
+      "warnings": []
+    },
+    {
+      "work": 7454,
+      "title": "Sleeping beauty",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7455,
+      "title": "Observations on the fisheries of the West Coast of Ireland",
+      "year": 1865,
+      "warnings": []
+    },
+    {
+      "work": 7456,
+      "title": "Smollett as poet",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 7457,
+      "title": "Basic Nuclear Engineering",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 7458,
+      "title": "A Wedding Ring Fit for the Finger",
+      "year": 1658,
+      "warnings": []
+    },
+    {
+      "work": 7459,
+      "title": "韓國文壇論考",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 7460,
+      "title": "Hidden Option",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7461,
+      "title": "Learning Moment",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7462,
+      "title": "Lancashire & North Wales",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 7463,
+      "title": "Don Quixote - Volume 2 : By Miguel de Cervantes",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7464,
+      "title": "Academic accountability",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7465,
+      "title": "Right of action in the Court of Claims",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 7466,
+      "title": "Everyname index to The Wheeling [W. Va.] blue book, an elite [social] directory and family register, 1901-1902",
+      "year": 2009,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7467,
+      "title": "I Love My Wiener",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7468,
+      "title": "You Can Respect Differences",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7469,
+      "title": "Effectiveness of core",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7470,
+      "title": "Gift and call",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 7471,
+      "title": "The greatest of expositions completely illustrated",
+      "year": 1904,
+      "warnings": []
+    },
+    {
+      "work": 7472,
+      "title": "The 2008-2013 Outlook for Exterior Rough Softwood Plywood in Greater China",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 7473,
+      "title": "Earthshock",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 7474,
+      "title": "Perspectives on poverty",
+      "year": 1974,
+      "warnings": []
+    },
+    {
+      "work": 7475,
+      "title": "Where Is Your Home?",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7476,
+      "title": "The physiology of evening parties",
+      "year": 1846,
+      "warnings": []
+    },
+    {
+      "work": 7477,
+      "title": "Teaching children to write",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7478,
+      "title": "Ripples of Consequence",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7479,
+      "title": "Seasonable Case of Submission to the Church-Government, As Now Re-established by Law, Briefly Stated and Determined",
+      "year": 2021,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7480,
+      "title": "Dayana",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7481,
+      "title": "A review of factors affecting the selection of steels for refining and petrochemical applications",
+      "year": 1971,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7482,
+      "title": "New Historical Relation of the Kingdom of Siam",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7483,
+      "title": "Non-linear dynamics in economic theory",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7484,
+      "title": "Rape",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 7485,
+      "title": "The fatal friendship",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7486,
+      "title": "Lucky dog",
+      "year": 1934,
+      "warnings": []
+    },
+    {
+      "work": 7487,
+      "title": "Twilight New Moon",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7488,
+      "title": "Gordon Pasha of the Sudan",
+      "year": 1958,
+      "warnings": []
+    },
+    {
+      "work": 7489,
+      "title": "Eat Healthy, Gain Your Life Back",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7490,
+      "title": "The household (of the Detroit free press)",
+      "year": 1886,
+      "warnings": []
+    },
+    {
+      "work": 7491,
+      "title": "Corporate Affairs",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7492,
+      "title": "Socio-political anthropology in Nepal",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7493,
+      "title": "Take 3! Relationships, Blue Level",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7494,
+      "title": "Beyond the Empire",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7495,
+      "title": "Report on equality of treatment for national and foreign workers as regards workmen's compensation for accidents",
+      "year": 1924,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7496,
+      "title": "Keto Meal Prep Cookbook for Beginners",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7497,
+      "title": "ACCA Advanced Taxation FA2019",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7498,
+      "title": "Bl. Carlo Acutis",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7499,
+      "title": "Thermomechanics of Phase Transition in Classical Field Theory",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7500,
+      "title": "An analysis of the fish and macrobenthos along the Sand Island deep ocean outfall, Oʻahu, Hawaiʻi, using remote video IV-- 1993",
+      "year": 1993,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7501,
+      "title": "The pageant of Siena",
+      "year": 1925,
+      "warnings": []
+    },
+    {
+      "work": 7502,
+      "title": "Gulf War and Health",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 7503,
+      "title": "Ivy and Roses",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7504,
+      "title": "John Henry Newman and the Abbe  Jager",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 7505,
+      "title": "Lab Activities for WWW, Annual Editions, Academic Year 1999-2000",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7506,
+      "title": "Thermal conductivity 33",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7507,
+      "title": "Health Eats Cookbook",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7508,
+      "title": "Sanctuary (Creating the North American Landscape)",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 7509,
+      "title": "Faith in Theory and Practice",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7510,
+      "title": "The trials at large of Robert Watt and David Downie, for high treason",
+      "year": 1794,
+      "warnings": []
+    },
+    {
+      "work": 7511,
+      "title": "Fermentation and Enzyme Technology (Techniques in Pure and Applied Microbiology)",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 7512,
+      "title": "Firecrackers - a Realistic Novel (Read & Co. Classic Editions);with the Introductory Essay 'the Jazz Age Literature of the Lost Generation '",
+      "year": 2022,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7513,
+      "title": "2022 IEEE 33rd Annual International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
+      "year": 2022,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7514,
+      "title": "Recreation",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 7515,
+      "title": "Poems",
+      "year": 1918,
+      "warnings": []
+    },
+    {
+      "work": 7516,
+      "title": "The physics of invisibility",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 7517,
+      "title": "La muette de Portici",
+      "year": 1828,
+      "warnings": []
+    },
+    {
+      "work": 7518,
+      "title": "Distant reading",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7519,
+      "title": "I Am Confident and Strong",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7520,
+      "title": "Earthquakes",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7521,
+      "title": "Splash! Splash!",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7522,
+      "title": "Making a difference in families",
+      "year": 2003,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7523,
+      "title": "Almost True",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7524,
+      "title": "The barbarian invasions of Italy",
+      "year": 1902,
+      "warnings": []
+    },
+    {
+      "work": 7525,
+      "title": "Under a willow tree",
+      "year": 1946,
+      "warnings": []
+    },
+    {
+      "work": 7526,
+      "title": "Pioneering in big business, 1882-1911",
+      "year": 1955,
+      "warnings": []
+    },
+    {
+      "work": 7527,
+      "title": "The American economy in a world habitat",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 7528,
+      "title": "The iron foxhole",
+      "year": 1968,
+      "warnings": []
+    },
+    {
+      "work": 7529,
+      "title": "STUDY the FRENCH LANGUAGE Grammatically",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7530,
+      "title": "Mothers in Faust",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 7531,
+      "title": "Ploetz' Manual of Universal History from the Dawn of Civilization to the Outbreak of the Great War Of 1914",
+      "year": 2018,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7532,
+      "title": "2018 Sugar Log",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7533,
+      "title": "In times of eroding cooperative security",
+      "year": 2020,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7534,
+      "title": "Idylls of the king",
+      "year": 1898,
+      "warnings": []
+    },
+    {
+      "work": 7535,
+      "title": "Demonism",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 7536,
+      "title": "A Better Man than I",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7537,
+      "title": "Daily Time Sheet Log Book",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7538,
+      "title": "Love",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7539,
+      "title": "世界",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7540,
+      "title": "Coping in the post BSE era",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 7541,
+      "title": "Cases brought in the Commerce Court. Letter from the Attorney General transmitting in response to Senate resolution of June 10, 1912, information relative to the cases brought in the United States Commerce Court",
+      "year": 1912,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7542,
+      "title": "Berkshires Cookbook",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7543,
+      "title": "Growing out of poverty",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 7544,
+      "title": "Endoluminal Ultrasound Vascular & Nonvascular Applications",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 7545,
+      "title": "How to Navigate Through Life : How to Gauge Where You Are in Life",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7546,
+      "title": "The mortar wreck in Mellieha Bay: plans and soundings",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 7547,
+      "title": "Spunky's first Christmas",
+      "year": 1997,
+      "warnings": []
+    },
+    {
+      "work": 7548,
+      "title": "Billi Gordon's You've Had Worse Things in Your Mouth Cookbook",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 7549,
+      "title": "Cooking of Paleo Diet Recipes : Discover How to Make Paleo Work for You",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7550,
+      "title": "Niño Inmigrante",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7551,
+      "title": "League of Legends : an Unofficial ESports Training Journal",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7552,
+      "title": "The immunological reactions of oidiomycosis (blastomycosis) in the guinea-pig ..",
+      "year": 1911,
+      "warnings": []
+    },
+    {
+      "work": 7553,
+      "title": "Persian self-taught",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7554,
+      "title": "A year in the Middle East",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 7555,
+      "title": "The Advances of Applied Mathematics and Mechanics in China",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 7556,
+      "title": "Simone Weil's Philosophy of Culture",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7557,
+      "title": "XOXO, Santa",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7558,
+      "title": "Old King Cole",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 7559,
+      "title": "Little Ernie loves rubber duckie",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 7560,
+      "title": "Agents of Change",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7561,
+      "title": "Exhibition of Japanese screens decorated by the old masters",
+      "year": 1914,
+      "warnings": []
+    },
+    {
+      "work": 7562,
+      "title": "Beavers",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 7563,
+      "title": "Reading 2011 Spanish Leveled Reader Grade 1 Unit 5 Week 5 on la Idea de Ines",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7564,
+      "title": "Primary Sources, Historical Collections : Recollections of a Russian Home",
+      "year": 2023,
+      "warnings": []
+    },
+    {
+      "work": 7565,
+      "title": "Private Members",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7566,
+      "title": "Le carnaval d'Aix",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 7567,
+      "title": "I Am Grateful",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7568,
+      "title": "Story Box Full of Regret",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 7569,
+      "title": "Talking pictures",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 7570,
+      "title": "By Their Side",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7571,
+      "title": "Research in teacher education",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7572,
+      "title": "Sustainability of Indian agriculture",
+      "year": 2009,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7573,
+      "title": "Paraclesis, or Consolations for a dying hour, from a review of the evidences of the renewed life, in a series of letters from a father to his children",
+      "year": 1802,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7574,
+      "title": "Max-plus methods for nonlinear control and estimation",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7575,
+      "title": "Testing the limits",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7576,
+      "title": "Vermont statutes relating to fish and game, 1953-1954 ...",
+      "year": 1953,
+      "warnings": []
+    },
+    {
+      "work": 7577,
+      "title": "Death",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7578,
+      "title": "The Indiana University Audio-Visual Center Film/Video Library",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 7579,
+      "title": "Ready Sex Go",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7580,
+      "title": "Deep Waters",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7581,
+      "title": "Braintree",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 7582,
+      "title": "Burke's Speech on Conciliation with Americ",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7583,
+      "title": "Conduct Disorders in Children and Adolescents",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 7584,
+      "title": "Gospel in the Stars, or, Prímeval Astronomy",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7585,
+      "title": "Complete Poetical Works of William Wordsworth; Volume 2",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7586,
+      "title": "They Are My Children, Too",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7587,
+      "title": "Claws and Paws, Grades Preschool-3",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 7588,
+      "title": "Straitjacket",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 7589,
+      "title": "Pumpkin Colors Books",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7590,
+      "title": "Understanding the University",
+      "year": 2026,
+      "warnings": []
+    },
+    {
+      "work": 7591,
+      "title": "the revival of natural law concepts",
+      "year": 1930,
+      "warnings": []
+    },
+    {
+      "work": 7592,
+      "title": "Cat Called Trap",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 7593,
+      "title": "Taking in Washing, Story",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7594,
+      "title": "Id-ul-Fitr",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 7595,
+      "title": "Interior Department appropriation bill, 1929",
+      "year": 1928,
+      "warnings": []
+    },
+    {
+      "work": 7596,
+      "title": "A consideration of data processing trends relevant to Maritime Union",
+      "year": 1970,
+      "warnings": []
+    },
+    {
+      "work": 7597,
+      "title": "How to study better and get higher marks",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 7598,
+      "title": "Fundamentals of a Cost System for Manufacturers, July 1 1916",
+      "year": 2023,
+      "warnings": []
+    },
+    {
+      "work": 7599,
+      "title": "Disney's Sleeping Beauty",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 7600,
+      "title": "Conversations with Thornton Wilder",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 7601,
+      "title": "Theoretical studies on photosynthesis",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 7602,
+      "title": "Jacopo Sansovino",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 7603,
+      "title": "From premises to conclusion",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 7604,
+      "title": "The Barra Settlement in Grand Narrows, Cape Breton",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7605,
+      "title": "Z I",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7606,
+      "title": "The priory of Llanthony Prima and Secunda in Ireland, 1172-1541",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 7607,
+      "title": "Treaty of peace and friendship, between the United States of America, and the kingdom of Tunis",
+      "year": 1798,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7608,
+      "title": "Monday",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7609,
+      "title": "The chosen",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7610,
+      "title": "The implementation of Title XX in Michigan",
+      "year": 1977,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7611,
+      "title": "Scarecrow in the garden",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7612,
+      "title": "What Caused World War II?",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7613,
+      "title": "Your Irregular Behavior Body Gesture Might Have Cost You to Be Unsuccessful in L",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7614,
+      "title": "On the Political",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7615,
+      "title": "My BackYard",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7616,
+      "title": "DeAth Takes a Holiday",
+      "year": 2026,
+      "warnings": []
+    },
+    {
+      "work": 7617,
+      "title": "CAS, CERN Accelerator School, third general accelerator physics course",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 7618,
+      "title": "12 photographers of the American social landscape",
+      "year": 1967,
+      "warnings": []
+    },
+    {
+      "work": 7619,
+      "title": "In Defense of Barbarism",
+      "year": 2025,
+      "warnings": []
+    },
+    {
+      "work": 7620,
+      "title": "Craftsman",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7621,
+      "title": "Sequel to a Witness to Life",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7622,
+      "title": "Scenes and adventures in Great Namaqualand",
+      "year": 1883,
+      "warnings": []
+    },
+    {
+      "work": 7623,
+      "title": "Honor Thy Father's Flesh",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7624,
+      "title": "Dallas",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7625,
+      "title": "#Charlottesville",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7626,
+      "title": "The law of injunctions",
+      "year": 1869,
+      "warnings": []
+    },
+    {
+      "work": 7627,
+      "title": "We are not alone",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7628,
+      "title": "Constitution and by-laws ... and list of members",
+      "year": 1896,
+      "warnings": []
+    },
+    {
+      "work": 7629,
+      "title": "Light",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7630,
+      "title": "A clear and comprehensive view of the being, nature, and attributes of God",
+      "year": 1756,
+      "warnings": []
+    },
+    {
+      "work": 7631,
+      "title": "Prayer Diary Power to Conquer",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7632,
+      "title": "Village Matters",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7633,
+      "title": "Tourism in Africa and the management of related resources",
+      "year": 1974,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7634,
+      "title": "A report of the Law Reform Commission on the law relating to evidence",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 7635,
+      "title": "Exercise Prescription - The Physiological Foundations",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 7636,
+      "title": "Lessons in elocution",
+      "year": 1865,
+      "warnings": []
+    },
+    {
+      "work": 7637,
+      "title": "Prayer for Brett",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7638,
+      "title": "Sava ser gehun",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 7639,
+      "title": "Targeting poverty",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7640,
+      "title": "Ashton Monogram Composition Book, Gold Stars Pattern Matte Cover, College Ruled Pages",
+      "year": 2020,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7641,
+      "title": "Causality and implication",
+      "year": 1937,
+      "warnings": []
+    },
+    {
+      "work": 7642,
+      "title": "The socialization of the elementary school vice-principal",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 7643,
+      "title": "American Gothic Pocket Address Book",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7644,
+      "title": "Santa's Christmas Box of Books",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7645,
+      "title": "Let the Bible Speak",
+      "year": 2025,
+      "warnings": []
+    },
+    {
+      "work": 7646,
+      "title": "My First Big Book of Activities",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7647,
+      "title": "Still eastward bound",
+      "year": 1940,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7648,
+      "title": "A study on the extent of involvement of the youth development leaders of MSSD in the family planning program implementation in Region XII",
+      "year": 1985,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7649,
+      "title": "Gold, the further rising of prices and the coming financial storm",
+      "year": 1913,
+      "warnings": []
+    },
+    {
+      "work": 7650,
+      "title": "Responsible Consumer Financial Protection Regulations Act of 2011",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7651,
+      "title": "Teaching reading strategies in the school library",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 7652,
+      "title": "Sustainability of microstates",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7653,
+      "title": "Death, Society and Human Experience : Pearson New International Edition Mylab Access Card",
+      "year": 2013,
+      "warnings": [
+        "no_creator",
+        "long_title"
+      ]
+    },
+    {
+      "work": 7654,
+      "title": "Profits, wages and wealth",
+      "year": 1961,
+      "warnings": []
+    },
+    {
+      "work": 7655,
+      "title": "Critical essays on Louise Bogan",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7656,
+      "title": "Book of Schemes",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7657,
+      "title": "Questioning Science in East Asian Contexts",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7658,
+      "title": "Numerology for Claire Danes",
+      "year": 2012,
+      "warnings": []
+    },
+    {
+      "work": 7659,
+      "title": "The gig economy",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7660,
+      "title": "Magistrates Court",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 7661,
+      "title": "Wanton",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7662,
+      "title": "Father Lacombe",
+      "year": 1912,
+      "warnings": []
+    },
+    {
+      "work": 7663,
+      "title": "Introduction to Global Social Change : (First Edition)",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7664,
+      "title": "Opkomst en verval van het britsche rijk",
+      "year": 1943,
+      "warnings": []
+    },
+    {
+      "work": 7665,
+      "title": "Splintered Divine",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7666,
+      "title": "Untersuchungen über Verstärkung und Sättigung im He-Ne-Laser",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 7667,
+      "title": "A study of critical state soil mechanics and the triaxial test",
+      "year": 1983,
+      "warnings": []
+    },
+    {
+      "work": 7668,
+      "title": "Wild Rover for Accordion and Bassoon - Pure Duet Sheet Music by Lars Christian Lundholm",
+      "year": 2015,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7669,
+      "title": "State planning and Federal grants",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 7670,
+      "title": "Conspectus incunabulorum",
+      "year": 1910,
+      "warnings": []
+    },
+    {
+      "work": 7671,
+      "title": "Mushroom Cultivation",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7672,
+      "title": "Notebook for Anna Magdalena Bach, Ukulele with Low G and Baritone Ukulele",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 7673,
+      "title": "In re--hearing on automobile insurance classifications and related methodologies",
+      "year": 1981,
+      "warnings": []
+    },
+    {
+      "work": 7674,
+      "title": "Far from over",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7675,
+      "title": "Labor in the New Economy",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7676,
+      "title": "Normative Theories of Society and Government in Five Medieval Thinkers",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7677,
+      "title": "Torah through a Zionist vision",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 7678,
+      "title": "Fotografias",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 7679,
+      "title": "Telescope",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7680,
+      "title": "Coursecompass Access Code Card",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7681,
+      "title": "The Way I Remember It",
+      "year": 1991,
+      "warnings": []
+    },
+    {
+      "work": 7682,
+      "title": "President John F. Kennedy in Germany",
+      "year": 1965,
+      "warnings": []
+    },
+    {
+      "work": 7683,
+      "title": "The correlation of zymotic diseases",
+      "year": 1871,
+      "warnings": []
+    },
+    {
+      "work": 7684,
+      "title": "Levels of social behavior",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 7685,
+      "title": "Married to a Drug Lord but the Plug Has My Heart",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7686,
+      "title": "The Relevance of general systems theory",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7687,
+      "title": "Encyclopaedia Londinensis, or, Universal dictionary of arts, sciences, and literature, comprehending, under one general alphabetical arrangement, all the words and substance of every kind of dictionary extant in the English language ... embellished by a ... set of copper-plate engravings ...",
+      "year": 1810,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7688,
+      "title": "Third Part of No Protestant Plot :  : with Observations on the Proceedings upon the Bill of Indictment Against the E. of Shaftsbury",
+      "year": 2020,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7689,
+      "title": "Saint Bernadine of Siena",
+      "year": 1906,
+      "warnings": []
+    },
+    {
+      "work": 7690,
+      "title": "Diversity and the new teacher",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 7691,
+      "title": "Guide to Set up YOUR NEW FREIGHT BROKER",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7692,
+      "title": "Layers of Life (Deep in the Amazon)",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7693,
+      "title": "Meeting the challenges of change in postgraduate education",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7694,
+      "title": "Seaweed",
+      "year": 2013,
+      "warnings": []
+    },
+    {
+      "work": 7695,
+      "title": "Lippincott's Maternity Nursing Video Series",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7696,
+      "title": "Western Tragedies",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7697,
+      "title": "Report on the family living conditions of the households in Delhi (Urban), 1971-72",
+      "year": 1973,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7698,
+      "title": "Domestic work and servitude in Malaysia",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7699,
+      "title": "Religion and US Foreign Policy",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7700,
+      "title": "Pocket Prince",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7701,
+      "title": "Peter Pan (Peter and Wendy) Illustared",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7702,
+      "title": "Communication and class struggle",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 7703,
+      "title": "Circle Of Fire",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7704,
+      "title": "Handwriting Practice Paper",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7705,
+      "title": "Catholic sermons of Cardinal Newman",
+      "year": 1957,
+      "warnings": []
+    },
+    {
+      "work": 7706,
+      "title": "The skinny on college success",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7707,
+      "title": "BUGS CAN HUM (MY TAKE HOME BOOKS SHORT U, 18)",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7708,
+      "title": "Regionalism and a post-Lomé Convention trade regime",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7709,
+      "title": "Geschichte der Bulgarischen Kunst",
+      "year": 1933,
+      "warnings": []
+    },
+    {
+      "work": 7710,
+      "title": "British sport",
+      "year": 1944,
+      "warnings": []
+    },
+    {
+      "work": 7711,
+      "title": "A study in survival",
+      "year": 1965,
+      "warnings": []
+    },
+    {
+      "work": 7712,
+      "title": "A Design to Deal with Data Partition and Aggregation in Dynamic Manner",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7714,
+      "title": "The crucible year",
+      "year": 1979,
+      "warnings": []
+    },
+    {
+      "work": 7715,
+      "title": "Drift from two shores",
+      "year": 1878,
+      "warnings": []
+    },
+    {
+      "work": 7716,
+      "title": "Supreme Teams: How to Make Teams Really Work",
+      "year": 1998,
+      "warnings": []
+    },
+    {
+      "work": 7717,
+      "title": "Superhero Josue",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7718,
+      "title": "Selected power reactor projects in Canada and the United States of America",
+      "year": 1964,
+      "warnings": []
+    },
+    {
+      "work": 7719,
+      "title": "Psychological Therapies with Older People",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7720,
+      "title": "Montana gun",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7721,
+      "title": "Laws concerning museum work in the Philippines",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 7722,
+      "title": "Opportunities in motion pictures",
+      "year": 1942,
+      "warnings": []
+    },
+    {
+      "work": 7723,
+      "title": "New Introduction to Geography OCR GCSE Specification A",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7724,
+      "title": "Welcome",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7725,
+      "title": "Bah Humbug",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7726,
+      "title": "I Love Being Granddaddy Red Plaid Truck Hearts Valentine's Saving Tracker",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7727,
+      "title": "Cruising for a Living",
+      "year": 1995,
+      "warnings": []
+    },
+    {
+      "work": 7728,
+      "title": "To the Castle!",
+      "year": 2026,
+      "warnings": []
+    },
+    {
+      "work": 7729,
+      "title": "The Team-Building Workshop",
+      "year": 2001,
+      "warnings": []
+    },
+    {
+      "work": 7730,
+      "title": "Models and Images of Catholicism in Italian Americana",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7731,
+      "title": "Marvel Comics Presents Vol. 1",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7732,
+      "title": "Perfect Dark",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7733,
+      "title": "The Southseaman",
+      "year": 1939,
+      "warnings": []
+    },
+    {
+      "work": 7734,
+      "title": "Seed of Chaos",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7735,
+      "title": "Decolonisation and Legal Knowledge",
+      "year": 2023,
+      "warnings": []
+    },
+    {
+      "work": 7736,
+      "title": "Captain's command",
+      "year": 1999,
+      "warnings": []
+    },
+    {
+      "work": 7737,
+      "title": "Health Implications of Exercise in Sports in the School Aged Child and Adolescent (Journal : Pediatrician, Volume 13, No. 1)",
+      "year": 1986,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7738,
+      "title": "Religion in the nineties",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7739,
+      "title": "Freud and the fantastic",
+      "year": 1987,
+      "warnings": []
+    },
+    {
+      "work": 7740,
+      "title": "スーパーヒーロー アクションフィギュア 110の魔法の写真",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7741,
+      "title": "Memorials of St James's Palace - Vol. Ii",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7742,
+      "title": "Condo Owner's Answer Book",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7743,
+      "title": "Too good to be true",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7744,
+      "title": "MEC142x ROM Description Addendum - Data Sheet",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7745,
+      "title": "Amending the act authorizing the establishment of the Congaree Swamp National Monument to provide that at such time as the principal visitor center is established, such center shall be designated as the \"Harry R.E. Hampton Visitor Center\"",
+      "year": 1984,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7746,
+      "title": "Paul, the Community, And Progressive Sanctification",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 7747,
+      "title": "Greek Island Hopping",
+      "year": 1983,
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7748,
+      "title": "Alternative systems of learning",
+      "year": 1968,
+      "warnings": []
+    },
+    {
+      "work": 7749,
+      "title": "Ninth Annual Report of the Department of Mines and Minerals of the Province of Alberta for the Fiscal Year Ended March 31st 1958; 1957/58",
+      "year": 2021,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7750,
+      "title": "Virtually Vertical",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7751,
+      "title": "The continuation of the Laws of Jamaica, passed by the Assembly, and confirmed by His Majesty in Council, December 26th, 1695",
+      "year": 1698,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7752,
+      "title": "Oh Pray My Wings Are Gonna Fit Me Well",
+      "year": 1975,
+      "warnings": []
+    },
+    {
+      "work": 7754,
+      "title": "Organization and structure of FAO, including titles of staff =",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7755,
+      "title": "Dropping out",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7756,
+      "title": "Economic Model Predictive Control",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7757,
+      "title": "Treating Child Sexual Abuse in Family, Group and Clinical Settings",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7758,
+      "title": "The little child's book",
+      "year": 1830,
+      "warnings": []
+    },
+    {
+      "work": 7759,
+      "title": "A study of the romance of the Seven sages with special reference to the Middle English versions",
+      "year": 1898,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7760,
+      "title": "Elements of intellectual philosophy",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 7761,
+      "title": "インドの財閥",
+      "year": 1962,
+      "warnings": []
+    },
+    {
+      "work": 7762,
+      "title": "Tree Giants (Interpreting the Great Outdoors)",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 7763,
+      "title": "Policy, politics, and the Treasury Board in Canadian government",
+      "year": 1970,
+      "warnings": []
+    },
+    {
+      "work": 7764,
+      "title": "Gold fever (Map adventures)",
+      "year": 1992,
+      "warnings": []
+    },
+    {
+      "work": 7765,
+      "title": "Precious Moment Coloring Book",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7766,
+      "title": "What Proust Heard",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7767,
+      "title": "The new Arab revolt",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7768,
+      "title": "Selected financial and other ratios",
+      "year": 1977,
+      "warnings": []
+    },
+    {
+      "work": 7769,
+      "title": "An  evaluation on the provision and the use of legal research materials of the People's Republic of China on the World Wide Web",
+      "year": 1997,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7770,
+      "title": "Murder at Pottsville",
+      "year": 1936,
+      "warnings": []
+    },
+    {
+      "work": 7771,
+      "title": "The Shepherd Who Didn't Run",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7772,
+      "title": "Healing the Severed Soul",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7773,
+      "title": "Trailblazer's Guide the 63 National Parks of USA",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7774,
+      "title": "Comet Jack 2",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7775,
+      "title": "Diagnosing and treating computer-related vision problems",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7776,
+      "title": "Extradition (supression of Terrorism) (amendment) (no. 2) Order 1986",
+      "year": 1986,
+      "warnings": []
+    },
+    {
+      "work": 7777,
+      "title": "Hepatology",
+      "year": 1985,
+      "warnings": []
+    },
+    {
+      "work": 7778,
+      "title": "Blank Book - Everything Awesome about Being Over 50",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7779,
+      "title": "Terrae Australes incognitae",
+      "year": 1960,
+      "warnings": []
+    },
+    {
+      "work": 7780,
+      "title": "Gwasanaeth o fawl yn Eglwys Bresbyteraidd Llanfairpwllgwyngyll, nos Sul, 16 Ionawr, 1977",
+      "year": 1977,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7781,
+      "title": "The Baby Uggs Are Hatching",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 7782,
+      "title": "Play-production for amateurs",
+      "year": 1927,
+      "warnings": []
+    },
+    {
+      "work": 7783,
+      "title": "Ministry",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7784,
+      "title": "Paul Valéry and the poetry of voice",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 7785,
+      "title": "Hymns to the silence",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7786,
+      "title": "THE GREAT MAGOO.",
+      "year": 1933,
+      "warnings": []
+    },
+    {
+      "work": 7787,
+      "title": "Third Thoughts",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7788,
+      "title": "Beautiful Unicorns Coloring Book Kids Age 4-8",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7789,
+      "title": "Pacific Mail Steamship Company",
+      "year": 1874,
+      "warnings": []
+    },
+    {
+      "work": 7790,
+      "title": "Financial structure and relations in the Turkish economy",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7791,
+      "title": "The Shelton Gang",
+      "year": 2005,
+      "warnings": []
+    },
+    {
+      "work": 7792,
+      "title": "Six months in South Australia, with some account of Port Philip and Portland Bay, in Australia Felix",
+      "year": 1962,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7793,
+      "title": "Little Britches",
+      "year": 1952,
+      "warnings": []
+    },
+    {
+      "work": 7794,
+      "title": "Stark Bro's prize fruits & trees",
+      "year": 1923,
+      "warnings": []
+    },
+    {
+      "work": 7795,
+      "title": "Billionaire Sadism 1 (a BDSM Proposition)",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7796,
+      "title": "Shou ge ren lei",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7797,
+      "title": "Valparaiso's First Century; a Centennial History of Valparaiso University",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7798,
+      "title": "Homesteaders",
+      "year": 2016,
+      "warnings": []
+    },
+    {
+      "work": 7799,
+      "title": "Bayard Taylor and German letters",
+      "year": 1959,
+      "warnings": []
+    },
+    {
+      "work": 7800,
+      "title": "Human Documents of the Age of the Forsytes / by E. Royston Pike",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 7801,
+      "title": "Iady-Era",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7802,
+      "title": "Educational policy and the crisis of the welfare state",
+      "year": 1990,
+      "warnings": []
+    },
+    {
+      "work": 7803,
+      "title": "Doing business with the Soviet Union",
+      "year": 1988,
+      "warnings": []
+    },
+    {
+      "work": 7804,
+      "title": "Integrating Human Rights and Gender Equality in Evaluation",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7805,
+      "title": "The theory of mind of Roger Bacon",
+      "year": 1910,
+      "warnings": []
+    },
+    {
+      "work": 7806,
+      "title": "Biostatistics",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7807,
+      "title": "Captain Dax and the Seven Dragons",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7808,
+      "title": "Learn Turkish 10000 Sentences with Useful 40 Topics",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7809,
+      "title": "Her So-Called Fiance",
+      "year": 2009,
+      "warnings": []
+    },
+    {
+      "work": 7810,
+      "title": "Patterns of diversification",
+      "year": 1993,
+      "warnings": []
+    },
+    {
+      "work": 7811,
+      "title": "Elemental Archer",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7812,
+      "title": "With a book in their hands",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7813,
+      "title": "Lambeth, Bristol, Dutch and other Delft pottery; armour, swords, firearms and German stoneware; a collection of fine old English furniture",
+      "year": 1927,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7814,
+      "title": "Daniel the prophet",
+      "year": 1885,
+      "warnings": []
+    },
+    {
+      "work": 7815,
+      "title": "Onion Lover's Cookbook with over 100 Recipes",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7816,
+      "title": "1978 census of agriculture, preliminary report, Butler County, Pa",
+      "year": 1980,
+      "warnings": []
+    },
+    {
+      "work": 7817,
+      "title": "Thoughts of Chairman Moore",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7818,
+      "title": "Twenty-One",
+      "year": 2017,
+      "warnings": []
+    },
+    {
+      "work": 7819,
+      "title": "Tiny diatoms are intricate",
+      "year": 1984,
+      "warnings": []
+    },
+    {
+      "work": 7820,
+      "title": "Fodor's Austria",
+      "year": 2007,
+      "warnings": []
+    },
+    {
+      "work": 7821,
+      "title": "Taxation of non-United Kingdom resident companies and their shareholders",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 7822,
+      "title": "Lecture on the action of the cholera poison on the body, and its nature and history outside the body",
+      "year": 1870,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7823,
+      "title": "Time on the grass",
+      "year": 1982,
+      "warnings": []
+    },
+    {
+      "work": 7824,
+      "title": "Wyoming, birds of southeastern Wyoming, Rawlins District",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 7825,
+      "title": "The Gowrie conspiracy and its official narrative",
+      "year": 1902,
+      "warnings": []
+    },
+    {
+      "work": 7826,
+      "title": "ACT Math Prep Book 2021 And 2022",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7827,
+      "title": "History of England from the Fall of Wolsey to the Death of Elizabeth;",
+      "year": 1870,
+      "warnings": []
+    },
+    {
+      "work": 7828,
+      "title": "Toxic Mold Litigation",
+      "year": 2004,
+      "warnings": []
+    },
+    {
+      "work": 7829,
+      "title": "Atmospheric radiation",
+      "year": 1989,
+      "warnings": []
+    },
+    {
+      "work": 7830,
+      "title": "\"Saddam is Iraq",
+      "year": 2002,
+      "warnings": []
+    },
+    {
+      "work": 7831,
+      "title": "Forests of Maine",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7832,
+      "title": "Rapid determination of aluminium in rocks by reactor neutron activation analysis",
+      "year": 1969,
+      "warnings": []
+    },
+    {
+      "work": 7833,
+      "title": "Soccer Goalkeeper Training for Beginners",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7834,
+      "title": "Teacher Planner",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7835,
+      "title": "Ben Carrivick Paintings 16",
+      "year": 2021,
+      "warnings": []
+    },
+    {
+      "work": 7836,
+      "title": "Last dance",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7837,
+      "title": "On Tolerance",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7838,
+      "title": "Code of Federal Regulations,TITLE 48 FEDERAL ACQUIS CH 29-END, Revised As of October 1 2022",
+      "year": 2023,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7839,
+      "title": "Nuboe.com",
+      "year": 2025,
+      "warnings": []
+    },
+    {
+      "work": 7840,
+      "title": "Handbook of Japan's Foreign and Domestic Policies During the Decade of Abe",
+      "year": 2025,
+      "warnings": []
+    },
+    {
+      "work": 7841,
+      "title": "Gender and trade liberalisation in Bangladesh",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 7842,
+      "title": "Jolly Old St. Nicholas",
+      "year": 2003,
+      "warnings": []
+    },
+    {
+      "work": 7843,
+      "title": "Ei bidhānābalī sammalitabhāre Bāṃlādeśa Nyāśanala Bilḍiṃ Koḍ",
+      "year": 2006,
+      "warnings": []
+    },
+    {
+      "work": 7844,
+      "title": "The Puritan tradition in America, 1620-1730",
+      "year": 1972,
+      "warnings": []
+    },
+    {
+      "work": 7845,
+      "title": "Sisters Keeping Sisters Bible Study Journal",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7846,
+      "title": "Decisions of questions discussed by the senior class in Yale College, in 1813 and 1814",
+      "year": 1833,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7847,
+      "title": "Oxygen transport during exercise in human subjects",
+      "year": 1973,
+      "warnings": []
+    },
+    {
+      "work": 7848,
+      "title": "Apud Edinburgh xxvii die mensis Decembris. Anno. Do. millesimo quingentesimo sexagesimo nono",
+      "year": 1800,
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7849,
+      "title": "Structured Notes and Derivative Embedded Securities",
+      "year": 1996,
+      "warnings": []
+    },
+    {
+      "work": 7850,
+      "title": "What's for supper?",
+      "year": 2000,
+      "warnings": []
+    },
+    {
+      "work": 7851,
+      "title": "The home, heaven, and mother party",
+      "year": 1994,
+      "warnings": []
+    },
+    {
+      "work": 7852,
+      "title": "Acting characters",
+      "year": 2008,
+      "warnings": []
+    },
+    {
+      "work": 7853,
+      "title": "Life after Death; Remembering Shamoda",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7854,
+      "title": "Legacy of Life",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7855,
+      "title": "Family ROI Experience",
+      "year": 2010,
+      "warnings": []
+    },
+    {
+      "work": 7856,
+      "title": "Kawaii - Adult Coloring Book - Part 1",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7857,
+      "title": "The days of wine and roses",
+      "year": 2014,
+      "warnings": []
+    },
+    {
+      "work": 7858,
+      "title": "History of Great Britain, under the House of Stuart",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7859,
+      "title": "Section 17",
+      "year": 2023,
+      "warnings": []
+    },
+    {
+      "work": 7860,
+      "title": "Compadre colonialism",
+      "year": 2020,
+      "warnings": []
+    },
+    {
+      "work": 7861,
+      "title": "Dead Nightmare",
+      "year": 2015,
+      "warnings": []
+    },
+    {
+      "work": 7862,
+      "title": "Workout Log Book and Fitness Journal 100 Days",
+      "year": 2018,
+      "warnings": []
+    },
+    {
+      "work": 7863,
+      "title": "Obstetric and gynæcological literature, 1876-1880",
+      "year": 1881,
+      "warnings": []
+    },
+    {
+      "work": 7864,
+      "title": "Coloring Book for Toddlers",
+      "year": 2019,
+      "warnings": []
+    },
+    {
+      "work": 7865,
+      "title": "Knights Templar - Medieval Cult or Modern Nemesis?",
+      "year": 2011,
+      "warnings": []
+    },
+    {
+      "work": 7866,
+      "title": "My Cookie",
+      "year": 2022,
+      "warnings": []
+    },
+    {
+      "work": 7867,
+      "title": "Report of the committeeon maladjusted children",
+      "year": 1955,
+      "warnings": []
+    }
+  ],
+  "blocked": [
+    {
+      "work": 7388,
+      "title": "An assessment of a daycare centre for the physically handicapped",
+      "reasons": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 7434,
+      "title": "Hur bör du leva?",
+      "reasons": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 7713,
+      "title": "Blame It On the WTO",
+      "reasons": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 7753,
+      "title": "Account of the life of George Raphel ...",
+      "reasons": [
+        "no_date"
+      ]
+    }
+  ],
+  "skipped": []
+}

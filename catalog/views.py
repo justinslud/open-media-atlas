@@ -10,7 +10,14 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 
 from accounts.models import EmailVerification
 from .connections import connections_context, direction_label
-from .discovery import CATALOG_PREFETCHES, DISCOVERY_ORDER, catalog_queryset, filter_public_type, search
+from .discovery import (
+    CATALOG_PREFETCHES,
+    DISCOVERY_ORDER,
+    browsable,
+    catalog_queryset,
+    filter_public_type,
+    search,
+)
 from .forms import EntryCommentaryForm, MediaListForm
 from .models import (
     AccessLink, FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship,
@@ -51,6 +58,20 @@ def health(request):
     return HttpResponse("ok", content_type="text/plain")
 
 
+def random_work(request):
+    """Send the visitor to one stored record; ambient ones are opt-in only."""
+    scope = request.GET.get("scope", "").strip()
+    works = public_works()
+    if scope == "ambient":
+        works = works.filter(depth="ambient")
+    elif scope != "all":
+        works = browsable(works)
+    work = works.order_by("?").first()
+    if not work:
+        raise Http404("No work available")
+    return redirect(work.get_absolute_url())
+
+
 def home(request):
     public = public_works()
     featured = (
@@ -65,7 +86,7 @@ def home(request):
     fallback_works = []
     if not featured:
         fallback_works = list(
-            catalog_queryset(public).prefetch_related(*CATALOG_PREFETCHES).order_by(*DISCOVERY_ORDER)[:6]
+            catalog_queryset(browsable(public)).prefetch_related(*CATALOG_PREFETCHES).order_by(*DISCOVERY_ORDER)[:6]
         )
 
     relationships = (
@@ -101,8 +122,10 @@ def discover(request):
     year_to = request.GET.get("year_to", "").strip()
     relationship = request.GET.get("relationship", "").strip()
     sort = request.GET.get("sort", "auto").strip()
+    depth = request.GET.get("depth", "").strip()
+    include_ambient = depth == "all"
     public = public_works()
-    works = catalog_queryset(public)
+    works = catalog_queryset(public if include_ambient else browsable(public))
     if creator:
         works = works.filter(credits__agent__name__icontains=creator).distinct()
     if year_from.isdigit():
@@ -150,7 +173,8 @@ def discover(request):
         "year_to": year_to,
         "selected_relationship": relationship,
         "selected_sort": sort,
-        "has_filters": any((query, media_type, creator, year_from, year_to, relationship)),
+        "include_ambient": include_ambient,
+        "has_filters": any((query, media_type, creator, year_from, year_to, relationship)) or include_ambient,
         "work_types": [{"pk": "book", "label": "Books (including novels)"},
                        {"pk": "unclassified", "label": "Unclassified works"},
                        {"pk": "written-work", "label": "Written works (type unspecified)"}] + [

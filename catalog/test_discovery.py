@@ -237,6 +237,27 @@ class TrustworthyCatalogTests(TestCase):
         punctuation = self.client.get(reverse('discover'), {'q': 'DArtagnan'})
         self.assertEqual([w.pk for w in punctuation.context['works']], [adaptation.pk])
 
+    def test_ambient_records_stay_out_of_browsing_until_requested(self):
+        curated = self.work('Curated Shelf Work', self.novel)
+        ambient = self.work('Long Tail Reference Work', self.book, depth='ambient')
+        ambient.save(update_fields=['depth'])
+
+        default = self.client.get(reverse('discover'))
+        self.assertIn(curated.pk, [work.pk for work in default.context['works']])
+        self.assertNotIn(ambient.pk, [work.pk for work in default.context['works']])
+        self.assertFalse(default.context['include_ambient'])
+
+        everything = self.client.get(reverse('discover'), {'depth': 'all'})
+        self.assertIn(ambient.pk, [work.pk for work in everything.context['works']])
+        self.assertTrue(everything.context['include_ambient'])
+
+    def test_random_record_redirects_within_the_requested_scope(self):
+        ambient = self.work('Only Ambient Work', self.book, depth='ambient')
+        ambient.save(update_fields=['depth'])
+        response = self.client.get(reverse('random-work'), {'scope': 'ambient'})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['Location'], ambient.get_absolute_url())
+
     def test_wide_result_sets_load_related_rows_without_sqlite_expression_depth_errors(self):
         # SQLite refuses expression trees deeper than 1000. A catalog-wide prefetch
         # of credits__agent used to build one OR term per agent and crash search.

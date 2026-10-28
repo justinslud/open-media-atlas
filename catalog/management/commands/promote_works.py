@@ -22,7 +22,7 @@ class Command(BaseCommand):
         parser.add_argument("--run-id", type=int, help="Promote the works created by an import run")
         parser.add_argument("--from-triage-report", type=Path, help="Use work_id values from a triage report")
         parser.add_argument("--decisions", default="green", help="Comma-separated triage decisions to take")
-        parser.add_argument("--depth", choices=("index", "editorial"), default="index")
+        parser.add_argument("--depth", choices=("index", "editorial", "ambient"), default="index")
         parser.add_argument("--require", default="", help="Comma-separated warnings that must block, e.g. no_date,no_creator")
         parser.add_argument("--force", action="store_true", help="Promote even when blocking warnings remain")
         parser.add_argument("--limit", type=int, default=0)

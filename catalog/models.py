@@ -43,7 +43,11 @@ class Work(models.Model):
     date_evidence = models.JSONField(default=dict, blank=True)
     completion_status = models.CharField(max_length=30, default="unknown")
     visibility = models.CharField(max_length=20, choices=Visibility.choices, default=Visibility.DRAFT, db_index=True)
-    depth = models.CharField(max_length=20, choices=[("index", "Index record"), ("editorial", "Editorial")], default="index")
+    depth = models.CharField(max_length=20, choices=[
+        ("index", "Index record"),
+        ("editorial", "Editorial"),
+        ("ambient", "Ambient reference record (reachable, not browsed)"),
+    ], default="index")
     is_demo = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

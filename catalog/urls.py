@@ -7,6 +7,7 @@ urlpatterns = [
     path("me/library/resume/", library_views.resume, name="library-resume"),
     path("health/", views.health, name="health"),
     path("", views.home, name="home"),
+    path("random/", views.random_work, name="random-work"),
     path("discover/", views.discover, name="discover"),
     path("works/<int:pk>/suggest-correction/", views.suggest_correction, name="suggest-correction"),
     path("works/<int:pk>/suggest-relationship/", views.suggest_relationship, name="suggest-relationship"),

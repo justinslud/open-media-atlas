@@ -8,8 +8,10 @@
   <div><label for="id-creator">Creator</label><input id="id-creator" name="creator" value="{{ creator }}" placeholder="Creator name"></div>
   <div class="year-range"><div><label for="id-year-from">Catalog year from</label><input id="id-year-from" name="year_from" inputmode="numeric" value="{{ year_from }}"></div><div><label for="id-year-to">Catalog year to</label><input id="id-year-to" name="year_to" inputmode="numeric" value="{{ year_to }}"></div></div>
   <div><label for="id-relationship">Adaptations</label><select id="id-relationship" name="relationship"><option value="">Any relationship</option><option value="has_adaptations" {% if selected_relationship == 'has_adaptations' %}selected{% endif %}>Has recorded adaptations</option><option value="is_adaptation" {% if selected_relationship == 'is_adaptation' %}selected{% endif %}>Is an adaptation</option></select></div>
+  <div class="depth-filter"><label for="id-depth">Records</label><select id="id-depth" name="depth"><option value="">Curated and index records</option><option value="all" {% if include_ambient %}selected{% endif %}>Include long-tail reference records</option></select></div>
   <div><label for="id-sort">Sort</label><select id="id-sort" name="sort"><option value="auto" {% if selected_sort == 'auto' %}selected{% endif %}>Discovery / query relevance</option><option value="title" {% if selected_sort == 'title' %}selected{% endif %}>Title (alphabetical)</option><option value="newest" {% if selected_sort == 'newest' %}selected{% endif %}>Catalog date: newest first</option><option value="oldest" {% if selected_sort == 'oldest' %}selected{% endif %}>Catalog date: oldest first</option></select></div>
   <button type="submit">Apply</button>
 </form>
+<p class="helper">Long-tail reference records are public and linkable, but they stay out of browsing unless you include them. <a href="{% url 'random-work' %}?scope=ambient">Open a random long-tail record</a>.</p>
 <div id="search-results" aria-live="polite">{% include "catalog/_results.html" %}</div>
 {% endblock %}
