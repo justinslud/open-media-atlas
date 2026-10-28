@@ -446,3 +446,96 @@ class RejectProposalsTests(TestCase):
         repairable.refresh_from_db()
         self.assertEqual(broken.status, ImportRelationshipProposal.Status.REJECTED)
         self.assertEqual(repairable.status, ImportRelationshipProposal.Status.PENDING)
+
+
+class WikidataBookDiscoveryTests(TestCase):
+    def test_manifest_skips_items_already_in_the_catalog(self):
+        from unittest.mock import patch
+        from .management.commands import discover_wikidata_books as module
+
+        book = WorkType.objects.create(code="book", label="Book", medium="text")
+        existing = Work.objects.create(title="Known Book", slug="known-book", work_type=book,
+                                        visibility=Work.Visibility.PUBLIC)
+        ExternalIdentifier.objects.create(work=existing, scheme="wikidata", value="Q1")
+
+        class Client(FakeWikidataClient):
+            def get_json(self, url, params, attempts=1):
+                self.requests += 1
+                return {"results": {"bindings": [
+                    {"item": {"value": "http://www.wikidata.org/entity/Q1"},
+                     "olid": {"value": "OL1W"}, "sitelinks": {"value": "20"}},
+                    {"item": {"value": "http://www.wikidata.org/entity/Q2"},
+                     "olid": {"value": "OL2W"}, "sitelinks": {"value": "10"}},
+                ]}}
+
+        with tempfile.TemporaryDirectory() as folder:
+            manifest = Path(folder) / "books.json"
+            with patch.object(module, "WikidataClient", Client):
+                call_command("discover_wikidata_books", limit=10, manifest=manifest)
+            data = json.loads(manifest.read_text())
+
+        self.assertEqual([row["qid"] for row in data["candidates"]], ["Q2"])
+        self.assertEqual(data["counts"]["skipped_already_present"], 1)
+
+
+class ImportWikidataBooksTests(TestCase):
+    def setUp(self):
+        self.folder = tempfile.TemporaryDirectory()
+        self.manifest = Path(self.folder.name) / "books.json"
+        self.manifest.write_text(json.dumps({"candidates": [{"qid": "Q500", "olid": "OL500W", "sitelinks": 5}]}))
+
+    def tearDown(self):
+        self.folder.cleanup()
+
+    def test_staged_book_publishes_as_ambient_with_a_creator(self):
+        from unittest.mock import patch
+        from .management.commands import import_wikidata_books as module
+
+        def item(qid):
+            return {"mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": qid}}}}
+
+        class Client(FakeWikidataClient):
+            def payload(self, qid):
+                if qid == "Q500":
+                    return {
+                        "id": "Q500",
+                        "labels": {"en": {"value": "A Discovered Book"}},
+                        "descriptions": {},
+                        "sitelinks": {},
+                        "lastrevid": 1,
+                        "claims": {
+                            "P31": [item("Q8261")],
+                            "P577": [{"mainsnak": {"datavalue": {"value": {"time": "+1901-01-01T00:00:00Z", "precision": 9}}}}],
+                            "P648": [{"mainsnak": {"datavalue": {"value": "OL500W"}}}],
+                            "P50": [item("Q501")],
+                        },
+                    }
+                return {"id": qid, "labels": {"en": {"value": "Discovered Author"}}, "claims": {}}
+
+        with patch.object(module, "WikidataClient", Client):
+            call_command("import_wikidata_books", manifest=self.manifest, publish=True, depth="ambient")
+
+        work = Work.objects.get(identifiers__scheme="wikidata", identifiers__value="Q500")
+        self.assertEqual((work.visibility, work.depth), (Work.Visibility.PUBLIC, "ambient"))
+        self.assertEqual(work.first_publication_year, 1901)
+        self.assertEqual(work.work_type_id, "novel")
+        self.assertEqual(work.credits.get().agent.name, "Discovered Author")
+        self.assertTrue(ExternalIdentifier.objects.filter(work=work, scheme="ol_work", value="OL500W").exists())
+
+    def test_undated_books_stay_draft(self):
+        from unittest.mock import patch
+        from .management.commands import import_wikidata_books as module
+
+        class Client(FakeWikidataClient):
+            def payload(self, qid):
+                return {
+                    "id": qid, "labels": {"en": {"value": "Undated Book"}},
+                    "descriptions": {}, "sitelinks": {}, "lastrevid": 1,
+                    "claims": {"P648": [{"mainsnak": {"datavalue": {"value": "OL500W"}}}]},
+                }
+
+        with patch.object(module, "WikidataClient", Client):
+            call_command("import_wikidata_books", manifest=self.manifest, publish=True, depth="ambient")
+
+        work = Work.objects.get(identifiers__scheme="wikidata", identifiers__value="Q500")
+        self.assertEqual(work.visibility, Work.Visibility.DRAFT)

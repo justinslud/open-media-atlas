@@ -1,0 +1,7 @@
+{
+  "manifest": "data/wikidata-books-discovered-20261028.json",
+  "candidates": 2421,
+  "skipped_already_present": 145,
+  "elapsed_seconds": 20.14,
+  "network_requests": 1
+}

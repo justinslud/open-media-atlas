@@ -1,0 +1,11 @@
+{
+  "run_id": 35,
+  "candidates": 2421,
+  "created": 2212,
+  "matched": 209,
+  "published": 2035,
+  "kept_draft": 0,
+  "failures": 0,
+  "network_requests": 49,
+  "elapsed_seconds": 173.89
+}

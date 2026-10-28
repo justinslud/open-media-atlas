@@ -1,0 +1,74 @@
+{
+  "dry_run": false,
+  "cache_only": false,
+  "candidate_works": 2243,
+  "with_cached_payload": 2235,
+  "works_filled": 1993,
+  "works_without_claims": 250,
+  "agents_resolved_from_cache": 1120,
+  "agents_fetched": 1120,
+  "agents_missing_label": 30,
+  "network_requests": 23,
+  "sample": [
+    {
+      "work": 7875,
+      "credits": [
+        {
+          "agent": "Antoine de Saint-Exupéry",
+          "role": "author",
+          "qid": "Q2908"
+        },
+        {
+          "agent": "Antoine de Saint-Exupéry",
+          "role": "illustrator",
+          "qid": "Q2908"
+        }
+      ]
+    },
+    {
+      "work": 7876,
+      "credits": [
+        {
+          "agent": "J. R. R. Tolkien",
+          "role": "author",
+          "qid": "Q892"
+        }
+      ]
+    },
+    {
+      "work": 7877,
+      "credits": [
+        {
+          "agent": "Karl Marx",
+          "role": "author",
+          "qid": "Q9061"
+        },
+        {
+          "agent": "Friedrich Engels",
+          "role": "author",
+          "qid": "Q34787"
+        }
+      ]
+    },
+    {
+      "work": 7878,
+      "credits": [
+        {
+          "agent": "George Orwell",
+          "role": "author",
+          "qid": "Q3335"
+        }
+      ]
+    },
+    {
+      "work": 7881,
+      "credits": [
+        {
+          "agent": "Dante Alighieri",
+          "role": "author",
+          "qid": "Q1067"
+        }
+      ]
+    }
+  ]
+}
