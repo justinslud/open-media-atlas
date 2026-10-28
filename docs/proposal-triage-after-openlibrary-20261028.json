@@ -1,0 +1,4379 @@
+{
+  "version": "2026-10-22-proposal-triage",
+  "generated_at": "2026-10-28T18:50:14.907956+00:00",
+  "dry_run": true,
+  "reviewer": null,
+  "candidate_count": 152,
+  "summary": {
+    "decisions": {
+      "red": 152
+    },
+    "green_types": {},
+    "reasons": {
+      "target_not_seed": 125,
+      "seed_no_year": 92,
+      "year_inversion": 23,
+      "no_year": 12,
+      "generic_type": 31,
+      "title_collision": 21,
+      "date_unverified": 12,
+      "no_sitelink": 13,
+      "multiple_qids": 5,
+      "duplicate_pending": 4,
+      "entity_mismatch": 3,
+      "self_link": 1
+    },
+    "warnings": {
+      "no_image": 150,
+      "eponymous_title": 12
+    }
+  },
+  "rules": {
+    "green": "exact P144, based-on, dated, specific type, at least one sitelink, public editorial seed, no edge conflict, date order valid",
+    "amber": "needs human review: missing year/date confidence, generic type, no sitelink, title collision, or duplicate pending edge",
+    "red": "excluded from auto-publish: bad evidence, identity conflict, unsupported type, or existing edge",
+    "images": "missing images are warnings, not publication blockers; placeholders remain"
+  },
+  "rows": [
+    {
+      "proposal_id": 1034,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7019,
+      "qid": "Q219457",
+      "title": "A Journey to the Center of the Earth",
+      "type": "novel",
+      "year": 1864,
+      "date_text": "1864-11-25",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 64,
+      "seed_id": 6522,
+      "seed": "Journey to the Center of the Earth",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 995,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [],
+      "work_id": 6010,
+      "qid": "Q223131",
+      "title": "A Study in Scarlet",
+      "type": "novel",
+      "year": 1887,
+      "date_text": "1887",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 61,
+      "seed_id": 6518,
+      "seed": "The Sign of the Four",
+      "seed_year": 1890
+    },
+    {
+      "proposal_id": 725,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6868,
+      "qid": "Q392328",
+      "title": "Age of the Dragons",
+      "type": "film",
+      "year": 2011,
+      "date_text": "2011",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 11,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 839,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6753,
+      "qid": "Q131292174",
+      "title": "Anne Shirley",
+      "type": "television-series",
+      "year": 2025,
+      "date_text": "2025-04-05",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 11,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1184,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6753,
+      "qid": "Q131292174",
+      "title": "Anne Shirley",
+      "type": "television-series",
+      "year": 2025,
+      "date_text": "2025-04-05",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 11,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1170,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6980,
+      "qid": "Q1331757",
+      "title": "Anne of Avonlea",
+      "type": "novel",
+      "year": 1909,
+      "date_text": "1909",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 28,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1173,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7029,
+      "qid": "Q264901",
+      "title": "Anne of Green Gables",
+      "type": "television-series",
+      "year": 1985,
+      "date_text": "1985-12-01",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 18,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1523,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7029,
+      "qid": "Q264901",
+      "title": "Anne of Green Gables",
+      "type": "television-series",
+      "year": 1985,
+      "date_text": "1985-12-01",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 18,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1171,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "generic_type",
+        "title_collision",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "public type is still generic",
+        "adaptation title matches the source title",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7044,
+      "qid": "Q3209782",
+      "title": "Anne of Green Gables",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1172,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7073,
+      "qid": "Q384524",
+      "title": "Anne of Green Gables",
+      "type": "film",
+      "year": 1934,
+      "date_text": "1934",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1524,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7073,
+      "qid": "Q384524",
+      "title": "Anne of Green Gables",
+      "type": "film",
+      "year": 1934,
+      "date_text": "1934",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1179,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7102,
+      "qid": "Q4768923",
+      "title": "Anne of Green Gables",
+      "type": "television-series",
+      "year": 1972,
+      "date_text": "1972",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1525,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7102,
+      "qid": "Q4768923",
+      "title": "Anne of Green Gables",
+      "type": "television-series",
+      "year": 1972,
+      "date_text": "1972",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1178,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7103,
+      "qid": "Q4768924",
+      "title": "Anne of Green Gables",
+      "type": "film",
+      "year": 1956,
+      "date_text": "1956",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1526,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7103,
+      "qid": "Q4768924",
+      "title": "Anne of Green Gables",
+      "type": "film",
+      "year": 1956,
+      "date_text": "1956",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1175,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7108,
+      "qid": "Q514043",
+      "title": "Anne of Green Gables",
+      "type": "television-series",
+      "year": 1979,
+      "date_text": "1979-01-07",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 22,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1527,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7108,
+      "qid": "Q514043",
+      "title": "Anne of Green Gables",
+      "type": "television-series",
+      "year": 1979,
+      "date_text": "1979-01-07",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 22,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1174,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7124,
+      "qid": "Q565949",
+      "title": "Anne of Green Gables",
+      "type": "film",
+      "year": 1919,
+      "date_text": "1919",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1528,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7124,
+      "qid": "Q565949",
+      "title": "Anne of Green Gables",
+      "type": "film",
+      "year": 1919,
+      "date_text": "1919",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 843,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6857,
+      "qid": "Q3617956",
+      "title": "Anne of Green Gables: The Animated Series",
+      "type": "television-series",
+      "year": 2001,
+      "date_text": "2001-09-02",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1176,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6857,
+      "qid": "Q3617956",
+      "title": "Anne of Green Gables: The Animated Series",
+      "type": "television-series",
+      "year": 2001,
+      "date_text": "2001-09-02",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 844,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6887,
+      "qid": "Q4768925",
+      "title": "Anne of Green Gables—The Musical",
+      "type": "musical",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 842,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6829,
+      "qid": "Q28091065",
+      "title": "Anne with an E",
+      "type": "television-series",
+      "year": 2017,
+      "date_text": "2017-03-19",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 29,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1181,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6829,
+      "qid": "Q28091065",
+      "title": "Anne with an E",
+      "type": "television-series",
+      "year": 2017,
+      "date_text": "2017-03-19",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 29,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 840,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6781,
+      "qid": "Q16517199",
+      "title": "Anne: Journey to Green Gables",
+      "type": "film",
+      "year": 2005,
+      "date_text": "2005",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1177,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6781,
+      "qid": "Q16517199",
+      "title": "Anne: Journey to Green Gables",
+      "type": "film",
+      "year": 2005,
+      "date_text": "2005",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 903,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6875,
+      "qid": "Q4166021",
+      "title": "Aventures de Don Quichotte de la Manche",
+      "type": "film",
+      "year": 1903,
+      "date_text": "1903",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1169,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7074,
+      "qid": "Q385502",
+      "title": "Before Green Gables",
+      "type": "written-work",
+      "year": 2008,
+      "date_text": "2008",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 6,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1321,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7189,
+      "qid": "Q99",
+      "title": "California",
+      "type": "creative-work",
+      "year": 1850,
+      "date_text": "1850-09-09",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 287,
+      "seed_id": 6537,
+      "seed": "The Call of the Wild",
+      "seed_year": 1903
+    },
+    {
+      "proposal_id": 723,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6860,
+      "qid": "Q368552",
+      "title": "Capitaine Achab",
+      "type": "film",
+      "year": 2007,
+      "date_text": "2007",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1687,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7207,
+      "qid": "Q1043792",
+      "title": "Carmilla",
+      "type": "novel",
+      "year": 1872,
+      "date_text": "1872",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 31,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1735,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7280,
+      "qid": "Q3233990",
+      "title": "Cecilia",
+      "type": "novel",
+      "year": 1782,
+      "date_text": "1782",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 890,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6787,
+      "qid": "Q17491260",
+      "title": "D",
+      "type": "creative-work",
+      "year": 1867,
+      "date_text": "1867",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1219,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7187,
+      "qid": "Q963659",
+      "title": "Dealings with the Firm of Dombey and Son: Wholesale, Retail and for Export",
+      "type": "novel",
+      "year": 1848,
+      "date_text": "1848",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 19,
+      "seed_id": 6530,
+      "seed": "David Copperfield or The Personal History, Adventures, Experience and Observation of David Copperfield the Younger of Blunderstone Rookery (Which He Never Meant to Publish on Any Account)",
+      "seed_year": 1850
+    },
+    {
+      "proposal_id": 1685,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7248,
+      "qid": "Q21043442",
+      "title": "Der Fremde",
+      "type": "novel",
+      "year": 1844,
+      "date_text": "1844",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 905,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6892,
+      "qid": "Q5274377",
+      "title": "Die Hochzeit des Camacho",
+      "type": "opera",
+      "year": 1827,
+      "date_text": "1827-04-29",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 882,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6740,
+      "qid": "Q130713112",
+      "title": "Dobrodružství Dona Quijota",
+      "type": "play",
+      "year": 2006,
+      "date_text": "2006-10-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 877,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6682,
+      "qid": "Q10267966",
+      "title": "Dom Quixote das Crianças",
+      "type": "novel",
+      "year": 1936,
+      "date_text": "1936",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 902,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6862,
+      "qid": "Q3713502",
+      "title": "Don Chisciotte e Sancio Panza",
+      "type": "film",
+      "year": 1968,
+      "date_text": "1968",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1128,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6862,
+      "qid": "Q3713502",
+      "title": "Don Chisciotte e Sancio Panza",
+      "type": "film",
+      "year": 1968,
+      "date_text": "1968",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 896,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6831,
+      "qid": "Q28228846",
+      "title": "Don Chisciotte in Sierra Morena",
+      "type": "opera",
+      "year": 1719,
+      "date_text": "1719-02-06",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 887,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6755,
+      "qid": "Q13196042",
+      "title": "Don Chisciotti e Sanciu Panza",
+      "type": "creative-work",
+      "year": 1785,
+      "date_text": "1785",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 886,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6752,
+      "qid": "Q130735620",
+      "title": "Don Kichot",
+      "type": "literary-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 913,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6925,
+      "qid": "Q727793",
+      "title": "Don Quichotte",
+      "type": "opera",
+      "year": 1910,
+      "date_text": "1910-02-19",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 14,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 906,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6895,
+      "qid": "Q5293355",
+      "title": "Don Quichotte chez la Duchesse",
+      "type": "opera",
+      "year": 1743,
+      "date_text": "1743-02-12",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 888,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6762,
+      "qid": "Q135621738",
+      "title": "Don Quichotte de la Manche",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 916,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6943,
+      "qid": "Q84056590",
+      "title": "Don Quichotte et Sancho Pança",
+      "type": "creative-work",
+      "year": 1864,
+      "date_text": "1864",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 900,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6849,
+      "qid": "Q33256741",
+      "title": "Don Quijote",
+      "type": "play",
+      "year": 1940,
+      "date_text": "1940-04-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 908,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6905,
+      "qid": "Q5813247",
+      "title": "Don Quijote cabalga de nuevo",
+      "type": "film",
+      "year": 1973,
+      "date_text": "1973-03-09",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1130,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6905,
+      "qid": "Q5813247",
+      "title": "Don Quijote cabalga de nuevo",
+      "type": "film",
+      "year": 1973,
+      "date_text": "1973-03-09",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1126,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7063,
+      "qid": "Q3713503",
+      "title": "Don Quijote de la Mancha",
+      "type": "film",
+      "year": 1947,
+      "date_text": "1947",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1575,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7063,
+      "qid": "Q3713503",
+      "title": "Don Quijote de la Mancha",
+      "type": "film",
+      "year": 1947,
+      "date_text": "1947",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 881,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6731,
+      "qid": "Q1239463",
+      "title": "Don Quixote",
+      "type": "ballet",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 26,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1124,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6999,
+      "qid": "Q16988903",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1923,
+      "date_text": "1923-12",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1570,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6999,
+      "qid": "Q16988903",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1923,
+      "date_text": "1923-12",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1123,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7036,
+      "qid": "Q3035884",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1915,
+      "date_text": "1915",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1571,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7036,
+      "qid": "Q3035884",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1915,
+      "date_text": "1915",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1134,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7037,
+      "qid": "Q3035885",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 2000,
+      "date_text": "2000",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1572,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7037,
+      "qid": "Q3035885",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 2000,
+      "date_text": "2000",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1133,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7038,
+      "qid": "Q3035888",
+      "title": "Don Quixote",
+      "type": "creative-work",
+      "year": 1992,
+      "date_text": "1992-05-16",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1573,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7038,
+      "qid": "Q3035888",
+      "title": "Don Quixote",
+      "type": "creative-work",
+      "year": 1992,
+      "date_text": "1992-05-16",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1125,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7055,
+      "qid": "Q3415590",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1933,
+      "date_text": "1933",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 10,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1574,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7055,
+      "qid": "Q3415590",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1933,
+      "date_text": "1933",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 10,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1131,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7113,
+      "qid": "Q5293358",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1973,
+      "date_text": "1973",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1576,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7113,
+      "qid": "Q5293358",
+      "title": "Don Quixote",
+      "type": "film",
+      "year": 1973,
+      "date_text": "1973",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 911,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6910,
+      "qid": "Q606635",
+      "title": "Don Quixote: Phantastische Variationen über ein Thema ritterlichen Charakters",
+      "type": "creative-work",
+      "year": 1898,
+      "date_text": "1898",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 889,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6771,
+      "qid": "Q142600",
+      "title": "Donkey Xote",
+      "type": "film",
+      "year": 2007,
+      "date_text": "2007",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 16,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1137,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6771,
+      "qid": "Q142600",
+      "title": "Donkey Xote",
+      "type": "film",
+      "year": 2007,
+      "date_text": "2007",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 16,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 909,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6906,
+      "qid": "Q5823029",
+      "title": "El Quijote de Miguel de Cervantes",
+      "type": "television-series",
+      "year": 1992,
+      "date_text": "1992-01-29",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1132,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6906,
+      "qid": "Q5823029",
+      "title": "El Quijote de Miguel de Cervantes",
+      "type": "television-series",
+      "year": 1992,
+      "date_text": "1992-01-29",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 910,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6907,
+      "qid": "Q5824107",
+      "title": "El caballero Don Quijote",
+      "type": "film",
+      "year": 2002,
+      "date_text": "2002-11-08",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1135,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6907,
+      "qid": "Q5824107",
+      "title": "El caballero Don Quijote",
+      "type": "film",
+      "year": 2002,
+      "date_text": "2002-11-08",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 891,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6794,
+      "qid": "Q1918331",
+      "title": "El retablo de maese Pedro",
+      "type": "opera",
+      "year": 1923,
+      "date_text": "1923-06-25",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 11,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 879,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6691,
+      "qid": "Q106443588",
+      "title": "Ez dok ero",
+      "type": "play",
+      "year": 2020,
+      "date_text": "2020",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1139,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6691,
+      "qid": "Q106443588",
+      "title": "Ez dok ero",
+      "type": "play",
+      "year": 2020,
+      "date_text": "2020",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 912,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6917,
+      "qid": "Q6784027",
+      "title": "Fasana-e-Azad",
+      "type": "literary-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 899,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6839,
+      "qid": "Q3140173",
+      "title": "Honor de cavalleria",
+      "type": "film",
+      "year": 2006,
+      "date_text": "2006",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1136,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6839,
+      "qid": "Q3140173",
+      "title": "Honor de cavalleria",
+      "type": "film",
+      "year": 2006,
+      "date_text": "2006",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 883,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6743,
+      "qid": "Q130714013",
+      "title": "Komedie s Quiotem Podle slavného Cervantesova románu.",
+      "type": "play",
+      "year": 1982,
+      "date_text": "1982-12-17",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 846,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6945,
+      "qid": "Q85108328",
+      "title": "L. M. Montgomery's Anne of Green Gables: Fire & Dew",
+      "type": "film",
+      "year": 2017,
+      "date_text": "2017-07-17",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1183,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6945,
+      "qid": "Q85108328",
+      "title": "L. M. Montgomery's Anne of Green Gables: Fire & Dew",
+      "type": "film",
+      "year": 2017,
+      "date_text": "2017-07-17",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 841,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6815,
+      "qid": "Q23647107",
+      "title": "L.M. Montgomery's Anne of Green Gables",
+      "type": "film",
+      "year": 2016,
+      "date_text": "2016",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1180,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6815,
+      "qid": "Q23647107",
+      "title": "L.M. Montgomery's Anne of Green Gables",
+      "type": "film",
+      "year": 2016,
+      "date_text": "2016",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 7,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 845,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6908,
+      "qid": "Q60219817",
+      "title": "L.M. Montgomery's Anne of Green Gables: The Good Stars",
+      "type": "film",
+      "year": 2017,
+      "date_text": "2017-02-20",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1182,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6908,
+      "qid": "Q60219817",
+      "title": "L.M. Montgomery's Anne of Green Gables: The Good Stars",
+      "type": "film",
+      "year": 2017,
+      "date_text": "2017-02-20",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6527,
+      "seed": "Anne of Green Gables",
+      "seed_year": 1908
+    },
+    {
+      "proposal_id": 1690,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7271,
+      "qid": "Q3210879",
+      "title": "La Morte amoureuse",
+      "type": "literary-work",
+      "year": 1836,
+      "date_text": "1836",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 8,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1688,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7291,
+      "qid": "Q3821271",
+      "title": "La Vampire",
+      "type": "novel",
+      "year": 1865,
+      "date_text": "1865",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1689,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7349,
+      "qid": "Q768605",
+      "title": "Le Château des Carpathes",
+      "type": "novel",
+      "year": 1892,
+      "date_text": "1892",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 28,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 880,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6697,
+      "qid": "Q109242855",
+      "title": "Le chevalier imaginaire",
+      "type": "creative-work",
+      "year": 1992,
+      "date_text": "1992-01-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1014,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6969,
+      "qid": "Q1213902",
+      "title": "Les Enfants du capitaine Grant",
+      "type": "novel",
+      "year": 1864,
+      "date_text": "1864",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 47,
+      "seed_id": 6521,
+      "seed": "Twenty Thousand Leagues Under the Sea",
+      "seed_year": 1869
+    },
+    {
+      "proposal_id": 895,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6826,
+      "qid": "Q2640322",
+      "title": "Man of La Mancha",
+      "type": "film",
+      "year": 1972,
+      "date_text": "1972",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 19,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1129,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6826,
+      "qid": "Q2640322",
+      "title": "Man of La Mancha",
+      "type": "film",
+      "year": 1972,
+      "date_text": "1972",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 19,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 897,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6834,
+      "qid": "Q30056828",
+      "title": "Marodierende Soldaten mit Dirnen",
+      "type": "creative-work",
+      "year": 1750,
+      "date_text": "1750",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 898,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6836,
+      "qid": "Q30095116",
+      "title": "Marodierende Soldaten mit Dirnen (Kopie nach Rubens)",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1194,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7142,
+      "qid": "Q6815266",
+      "title": "Memoirs of Joseph Grimaldi",
+      "type": "novel",
+      "year": 1838,
+      "date_text": "1838",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6529,
+      "seed": "Oliver Twist",
+      "seed_year": 1839
+    },
+    {
+      "proposal_id": 1142,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6986,
+      "qid": "Q1423235",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 1956,
+      "date_text": "1956",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 28,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1420,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6986,
+      "qid": "Q1423235",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 1956,
+      "date_text": "1956",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 28,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1147,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6991,
+      "qid": "Q1541167",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 1930,
+      "date_text": "1930",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 10,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1421,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6991,
+      "qid": "Q1541167",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 1930,
+      "date_text": "1930",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 10,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1141,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6996,
+      "qid": "Q164331",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 2010,
+      "date_text": "2010",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 14,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1422,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6996,
+      "qid": "Q164331",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 2010,
+      "date_text": "2010",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 14,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1151,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7051,
+      "qid": "Q3317713",
+      "title": "Moby Dick",
+      "type": "television-series",
+      "year": 2011,
+      "date_text": "2011",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1424,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7051,
+      "qid": "Q3317713",
+      "title": "Moby Dick",
+      "type": "television-series",
+      "year": 2011,
+      "date_text": "2011",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1150,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7107,
+      "qid": "Q512137",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1998,
+      "date_text": "1998",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1425,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7107,
+      "qid": "Q512137",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1998,
+      "date_text": "1998",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1143,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7145,
+      "qid": "Q6887419",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1971,
+      "date_text": "1971",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1426,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7145,
+      "qid": "Q6887419",
+      "title": "Moby Dick",
+      "type": "creative-work",
+      "year": 1971,
+      "date_text": "1971",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1148,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7146,
+      "qid": "Q6887421",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 1978,
+      "date_text": "1978",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1427,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7146,
+      "qid": "Q6887421",
+      "title": "Moby Dick",
+      "type": "film",
+      "year": 1978,
+      "date_text": "1978",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 726,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6920,
+      "qid": "Q6887435",
+      "title": "Moby Dick—Rehearsed",
+      "type": "play",
+      "year": 1955,
+      "date_text": "1955-06-16",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1144,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6920,
+      "qid": "Q6887435",
+      "title": "Moby Dick—Rehearsed",
+      "type": "play",
+      "year": 1955,
+      "date_text": "1955-06-16",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 722,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6735,
+      "qid": "Q125397488",
+      "title": "Moby-Dick",
+      "type": "film",
+      "year": 1977,
+      "date_text": "1977",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1145,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7050,
+      "qid": "Q3317708",
+      "title": "Moby-Dick",
+      "type": "opera",
+      "year": 2010,
+      "date_text": "2010-04-30",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1423,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "title_collision"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7050,
+      "qid": "Q3317708",
+      "title": "Moby-Dick",
+      "type": "opera",
+      "year": 2010,
+      "date_text": "2010-04-30",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 892,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6800,
+      "qid": "Q2061344",
+      "title": "Monsignor Quixote",
+      "type": "literary-work",
+      "year": 1982,
+      "date_text": "1982-09-16",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 8,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 884,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6744,
+      "qid": "Q130714790",
+      "title": "Nod Quijote",
+      "type": "play",
+      "year": 2010,
+      "date_text": "2010-10-27",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1736,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7246,
+      "qid": "Q2048624",
+      "title": "Pamela; or, Virtue Rewarded",
+      "type": "novel",
+      "year": 1740,
+      "date_text": "1740",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 18,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 885,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6747,
+      "qid": "Q130715471",
+      "title": "Quijote!",
+      "type": "play",
+      "year": 2014,
+      "date_text": "2014-05-30",
+      "date_kind": "first_performance",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1732,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7265,
+      "qid": "Q274744",
+      "title": "Sense and Sensibility",
+      "type": "novel",
+      "year": 1811,
+      "date_text": "1811",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 56,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 1006,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "generic_type",
+        "date_unverified",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6976,
+      "qid": "Q12857071",
+      "title": "Sherlock Holmes novels",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "public",
+      "sitelinks": 0,
+      "seed_id": 6519,
+      "seed": "The Adventures of Sherlock Holmes",
+      "seed_year": 1892
+    },
+    {
+      "proposal_id": 1330,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6537,
+      "qid": "Q476871",
+      "title": "The Call of the Wild",
+      "type": "novel",
+      "year": 1903,
+      "date_text": "1903",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 54,
+      "seed_id": 6538,
+      "seed": "White Fang",
+      "seed_year": 1906
+    },
+    {
+      "proposal_id": 914,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6931,
+      "qid": "Q7726949",
+      "title": "The Comical History of Don Quixote",
+      "type": "play",
+      "year": 1694,
+      "date_text": "1694",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1122,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6931,
+      "qid": "Q7726949",
+      "title": "The Comical History of Don Quixote",
+      "type": "play",
+      "year": 1694,
+      "date_text": "1694",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1865,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7323,
+      "qid": "Q510699",
+      "title": "The Coming Race",
+      "type": "novel",
+      "year": 1871,
+      "date_text": "1871",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 17,
+      "seed_id": 6016,
+      "seed": "The Time Machine",
+      "seed_year": 1895
+    },
+    {
+      "proposal_id": 894,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6818,
+      "qid": "Q2448770",
+      "title": "The History of Cardenio",
+      "type": "play",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 12,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1734,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7284,
+      "qid": "Q3521260",
+      "title": "The History of Sir Charles Grandison",
+      "type": "written-work",
+      "year": 1753,
+      "date_text": "1753",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 4,
+      "seed_id": 6009,
+      "seed": "Pride and Prejudice",
+      "seed_year": 1813
+    },
+    {
+      "proposal_id": 893,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6801,
+      "qid": "Q2095178",
+      "title": "The Man Who Killed Don Quixote",
+      "type": "film",
+      "year": 2018,
+      "date_text": "2018",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 25,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1138,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6801,
+      "qid": "Q2095178",
+      "title": "The Man Who Killed Don Quixote",
+      "type": "film",
+      "year": 2018,
+      "date_text": "2018",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 25,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1005,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7178,
+      "qid": "Q860831",
+      "title": "The Memoirs of Sherlock Holmes",
+      "type": "literary-work",
+      "year": 1894,
+      "date_text": "1894",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 38,
+      "seed_id": 6519,
+      "seed": "The Adventures of Sherlock Holmes",
+      "seed_year": 1892
+    },
+    {
+      "proposal_id": 1762,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7178,
+      "qid": "Q860831",
+      "title": "The Memoirs of Sherlock Holmes",
+      "type": "literary-work",
+      "year": 1894,
+      "date_text": "1894",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 38,
+      "seed_id": 6011,
+      "seed": "The Hound of the Baskervilles",
+      "seed_year": 1902
+    },
+    {
+      "proposal_id": 1192,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7089,
+      "qid": "Q460583",
+      "title": "The Posthumous Papers of the Pickwick Club, Containing a Faithful Record of the Perambulations, Perils, Travels, Adventures and Sporting Transactions of the Corresponding Members",
+      "type": "novel",
+      "year": 1836,
+      "date_text": "1836-04",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 40,
+      "seed_id": 6529,
+      "seed": "Oliver Twist",
+      "seed_year": 1839
+    },
+    {
+      "proposal_id": 724,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6866,
+      "qid": "Q3794896",
+      "title": "The Sea Beast",
+      "type": "film",
+      "year": 1926,
+      "date_text": "1926",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1146,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6866,
+      "qid": "Q3794896",
+      "title": "The Sea Beast",
+      "type": "film",
+      "year": 1926,
+      "date_text": "1926",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1004,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "year_inversion"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6518,
+      "qid": "Q500688",
+      "title": "The Sign of the Four",
+      "type": "novel",
+      "year": 1890,
+      "date_text": "1890-02",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 47,
+      "seed_id": 6519,
+      "seed": "The Adventures of Sherlock Holmes",
+      "seed_year": 1892
+    },
+    {
+      "proposal_id": 915,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year",
+        "generic_type",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6942,
+      "qid": "Q83506372",
+      "title": "The Story of Don Quixote",
+      "type": "creative-work",
+      "year": 1714,
+      "date_text": "1714",
+      "date_kind": "inception",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1070,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "multiple_qids",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "adaptation has multiple Wikidata QIDs",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6971,
+      "qid": "Q1218097",
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1961,
+      "date_text": "1961",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
+      "proposal_id": 1111,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "multiple_qids",
+        "entity_mismatch",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "adaptation has multiple Wikidata QIDs",
+        "P144 entity does not match the adaptation QID",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6971,
+      "qid": "Q1218097",
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1961,
+      "date_text": "1961",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
+      "proposal_id": 1366,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "multiple_qids",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "adaptation has multiple Wikidata QIDs",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6971,
+      "qid": "Q1218097",
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1961,
+      "date_text": "1961",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
+      "proposal_id": 1371,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "multiple_qids",
+        "entity_mismatch",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "adaptation has multiple Wikidata QIDs",
+        "P144 entity does not match the adaptation QID",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6971,
+      "qid": "Q1218097",
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1961,
+      "date_text": "1961",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
+      "proposal_id": 1568,
+      "run_id": 24,
+      "decision": "red",
+      "reasons": [
+        "multiple_qids",
+        "entity_mismatch",
+        "self_link",
+        "title_collision"
+      ],
+      "reason_details": [
+        "adaptation has multiple Wikidata QIDs",
+        "P144 entity does not match the adaptation QID",
+        "work is linked to itself",
+        "adaptation title matches the source title"
+      ],
+      "warnings": [],
+      "work_id": 6004,
+      "qid": "Q41567",
+      "title": "The Tragedy of Hamlet, Prince of Denmark",
+      "type": "play",
+      "year": 1602,
+      "date_text": "1602",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 143,
+      "seed_id": 6004,
+      "seed": "The Tragedy of Hamlet, Prince of Denmark",
+      "seed_year": 1602
+    },
+    {
+      "proposal_id": 1582,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7326,
+      "qid": "Q531630",
+      "title": "The Tragicall Historye of Romeus and Iuliet",
+      "type": "written-work",
+      "year": 1562,
+      "date_text": "1562",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 9,
+      "seed_id": 6005,
+      "seed": "Romeo and Juliet",
+      "seed_year": 1597
+    },
+    {
+      "proposal_id": 1686,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion",
+        "generic_type"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7322,
+      "qid": "Q509070",
+      "title": "The Vampyre",
+      "type": "literary-work",
+      "year": 1819,
+      "date_text": "1819",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 22,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 1691,
+      "run_id": 25,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7243,
+      "qid": "Q1987925",
+      "title": "Varney the Vampyre;",
+      "type": "novel",
+      "year": 1845,
+      "date_text": "1845",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 12,
+      "seed_id": 6008,
+      "seed": "Dracula",
+      "seed_year": 1897
+    },
+    {
+      "proposal_id": 878,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6684,
+      "qid": "Q10390453",
+      "title": "Vida do Grande D. Quixote de la Mancha e do Gordo Sancho Pança",
+      "type": "play",
+      "year": 1733,
+      "date_text": "1733",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 907,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6904,
+      "qid": "Q5785059",
+      "title": "continuations of Don Quixote",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 1,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1140,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7184,
+      "qid": "Q906512",
+      "title": "shipwrecking",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 48,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 901,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "no_year",
+        "seed_no_year",
+        "generic_type",
+        "date_unverified"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "adaptation has no year",
+        "source seed has no year, so order cannot be checked",
+        "public type is still generic",
+        "date is marked unverified or has unknown meaning"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6851,
+      "qid": "Q3508079",
+      "title": "tilting at windmills",
+      "type": "creative-work",
+      "year": null,
+      "date_text": "",
+      "date_kind": "unknown",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 904,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6891,
+      "qid": "Q518901",
+      "title": "Дон Кихот",
+      "type": "film",
+      "year": 1957,
+      "date_text": "1957",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 22,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1127,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6891,
+      "qid": "Q518901",
+      "title": "Дон Кихот",
+      "type": "film",
+      "year": 1957,
+      "date_text": "1957",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 22,
+      "seed_id": 6524,
+      "seed": "Don Quijote de la Mancha",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1227,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "year_inversion"
+      ],
+      "reason_details": [
+        "adaptation year precedes the source year"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7042,
+      "qid": "Q308918",
+      "title": "دۄن شَہَرن ہِنٛز دٔلیٖل",
+      "type": "novel",
+      "year": 1859,
+      "date_text": "1859",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 65,
+      "seed_id": 6531,
+      "seed": "Great Expectations",
+      "seed_year": 1861
+    },
+    {
+      "proposal_id": 721,
+      "run_id": 22,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6713,
+      "qid": "Q11580515",
+      "title": "白鯨伝説",
+      "type": "television-series",
+      "year": 1997,
+      "date_text": "1997-04-09",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    },
+    {
+      "proposal_id": 1149,
+      "run_id": 23,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "seed_no_year"
+      ],
+      "reason_details": [
+        "target is not a public editorial seed",
+        "source seed has no year, so order cannot be checked"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6713,
+      "qid": "Q11580515",
+      "title": "白鯨伝説",
+      "type": "television-series",
+      "year": 1997,
+      "date_text": "1997-04-09",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6525,
+      "seed": "Moby Dick",
+      "seed_year": null
+    }
+  ]
+}

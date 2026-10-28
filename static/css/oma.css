@@ -32,6 +32,9 @@
 .connection-row p { margin: .4rem 0; }
 .connection-row small { display: block; }
 .connection-row a, .connection-statement { overflow-wrap: anywhere; }
+.connection-badge { display: inline-block; margin-right: .4rem; padding: .1rem .4rem; border-radius: 3px; font-size: .65rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; vertical-align: middle; }
+.source-badge { background: #e7eef6; color: #1e3a5f; border: 1px solid #b9cbe0; }
+.adaptation-badge { background: #f1ede7; color: #6b5a3e; border: 1px solid #d8c9b0; }
 .connection-peek { position: relative; display: inline-block; }
 .connection-peek::after { content: attr(data-peek); position: absolute; left: 0; top: calc(100% + 6px); z-index: 20; width: max-content; max-width: min(360px, 80vw); background: var(--ink); color: #fff; padding: .5rem .65rem; border-radius: 4px; font-size: .75rem; line-height: 1.35; opacity: 0; visibility: hidden; transform: translateY(-2px); transition: opacity .12s ease, transform .12s ease; pointer-events: none; white-space: normal; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
 .connection-peek:hover::after, .connection-peek:focus-visible::after { opacity: 1; visibility: visible; transform: none; }

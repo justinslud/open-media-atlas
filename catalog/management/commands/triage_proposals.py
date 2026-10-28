@@ -22,13 +22,31 @@ from catalog.models import (
     WorkRelationship,
 )
 from catalog.ranking import sitelink_count
+from catalog.publication import SEED_SCOPES, is_seed
 
 GENERIC_TYPES = {"book", "creative-work", "literary-work", "written-work", "unknown"}
 MIN_YEAR = 1400
 MAX_FUTURE_YEARS = 5
 
+SUPPORTED_RELATIONSHIP_CODES = {
+    "based-on", "adapted-from", "remake-of", "reboot-of", "reimagining-of",
+    "retelling-of", "sequel-to", "prequel-to", "spin-off-of", "continuation-of",
+    "side-story-of", "alternative-version-of", "parody-of", "pastiche-of",
+    "homage-to", "fan-work-of", "translation-of", "abridgment-of",
+    "modernization-of", "edition-of", "part-of-series", "shares-universe-with",
+    "crossover-with", "uses-same-character", "uses-same-historical-event",
+    "follows", "followed-by", "inspired-by", "influenced-by", "derivative-work",
+    "remix-of", "cover-of", "sample-of", "interpolation-of", "mashup-of",
+    "medley-of", "edit-of", "instrumental-of", "dub-of", "localization-of",
+    "fansub-of", "scanlation-of", "fanvid-of", "podfic-of",
+    "recursive-fanwork-of", "same-trope-as", "same-theme-as", "similar-premise",
+    "thematic-resonance", "comparable-to", "related-to",
+}
+SUPPORTED_RELATIONSHIP_PROPERTIES = {"P144", "P155", "P156", "P179", "P629", "P941", "P737", "P4969"}
+
 RED_REASONS = {
-    "not_based_on": "relationship type is not based-on",
+    "unsupported_relationship": "relationship type is not in the supported vocabulary",
+    "unsupported_property": "evidence property is not supported",
     "not_p144": "evidence is not a P144 claim",
     "deprecated": "P144 statement is deprecated",
     "no_qid": "adaptation has no Wikidata QID",
@@ -38,7 +56,7 @@ RED_REASONS = {
     "self_link": "work is linked to itself",
     "demo_work": "demo work",
     "suppressed_work": "suppressed work",
-    "target_not_seed": "target is not a public editorial seed",
+    "target_not_seed": "target is not a public seed at the requested scope",
     "no_title": "title is unknown or a bare QID",
     "already_accepted": "an accepted edge already exists",
     "edge_exists": "a non-accepted edge already exists for this pair",
@@ -70,16 +88,16 @@ def _same_title(work, seed):
     )
 
 
-def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks):
+def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks, seed_scope="editorial"):
     work = proposal.from_work
     seed = proposal.to_work
     evidence = proposal.evidence if isinstance(proposal.evidence, dict) else {}
     red, amber = [], []
 
-    if proposal.relationship_type.code != "based-on":
-        red.append("not_based_on")
-    if evidence.get("property_id") != "P144":
-        red.append("not_p144")
+    if proposal.relationship_type.code not in SUPPORTED_RELATIONSHIP_CODES:
+        red.append("unsupported_relationship")
+    if evidence.get("property_id") not in SUPPORTED_RELATIONSHIP_PROPERTIES:
+        red.append("unsupported_property")
     if evidence.get("rank") == "deprecated":
         red.append("deprecated")
     if not qid:
@@ -96,7 +114,7 @@ def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, tod
         red.append("demo_work")
     if work.visibility == Work.Visibility.SUPPRESSED:
         red.append("suppressed_work")
-    if seed.visibility != Work.Visibility.PUBLIC or seed.depth != "editorial":
+    if not is_seed(seed, seed_scope):
         red.append("target_not_seed")
     if not work.has_known_title:
         red.append("no_title")
@@ -140,9 +158,10 @@ def evaluate_proposal(
     pending_edge_count,
     today_year,
     sitelinks,
+    seed_scope="editorial",
 ):
     red, amber = _reason_codes(
-        proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks
+        proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks, seed_scope
     )
     warnings = []
     if not proposal.from_work.image_url:
@@ -195,6 +214,10 @@ class Command(BaseCommand):
         parser.add_argument("--limit", type=int, default=0)
         parser.add_argument("--confirm", action="store_true")
         parser.add_argument("--approve-only", action="store_true", help="Approve green edges but leave endpoints draft.")
+        parser.add_argument(
+            "--seed-scope", choices=SEED_SCOPES, default="editorial",
+            help="Which works may act as seeds: editorial (default), public, or any.",
+        )
 
     def handle(self, *args, **options):
         reviewer = get_user_model().objects.get(username=options["reviewer"]) if options["confirm"] else None
@@ -236,6 +259,7 @@ class Command(BaseCommand):
                 pending_counts[key],
                 today_year,
                 sitelinks,
+                options["seed_scope"],
             )
             rows.append(_row(proposal, decision, reasons, warnings, qid, sitelinks))
 
@@ -256,7 +280,7 @@ class Command(BaseCommand):
                 "warnings": dict(warning_counts),
             },
             "rules": {
-                "green": "exact P144, based-on, dated, specific type, at least one sitelink, public editorial seed, no edge conflict, date order valid",
+                "green": "exact P144, based-on, dated, specific type, at least one sitelink, seed within --seed-scope, no edge conflict, date order valid",
                 "amber": "needs human review: missing year/date confidence, generic type, no sitelink, title collision, or duplicate pending edge",
                 "red": "excluded from auto-publish: bad evidence, identity conflict, unsupported type, or existing edge",
                 "images": "missing images are warnings, not publication blockers; placeholders remain",

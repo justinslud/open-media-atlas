@@ -1,12 +1,18 @@
 """Modest catalog discovery on Django's existing database and source snapshots."""
 from django.db.models import Case, Count, Exists, IntegerField, OuterRef, Q, Value, When
+from django.db.models import prefetch_related_objects
 
 from .models import Credit, FeaturedWork
 from .presentation import BOOK_TYPES, match_score, normalize_search
 
+# Django renders a wide prefetch predicate as a long OR chain. SQLite refuses
+# expression trees deeper than 1000, so wide prefetches are loaded in batches.
+PREFETCH_BATCH = 250
+CATALOG_PREFETCHES = ('credits__agent', 'source_records')
+
 
 def catalog_queryset(public):
-    return public.select_related('work_type').prefetch_related('credits__agent', 'source_records').annotate(
+    return public.select_related('work_type').annotate(
         connection_count=Count('outgoing_relationships', filter=Q(
             outgoing_relationships__review_status='accepted', outgoing_relationships__to_work__in=public), distinct=True)
         + Count('incoming_relationships', filter=Q(
@@ -23,6 +29,14 @@ def catalog_queryset(public):
 DISCOVERY_ORDER = ('-selected', '-known_title', '-has_creator', '-editorial', '-reviewed_connection', 'title', 'id')
 
 
+def load_related(works):
+    """Evaluate works with their related rows, batched to stay under SQLite limits."""
+    items = list(works.prefetch_related(None))
+    for start in range(0, len(items), PREFETCH_BATCH):
+        prefetch_related_objects(items[start:start + PREFETCH_BATCH], *CATALOG_PREFETCHES)
+    return items
+
+
 def filter_public_type(works, code):
     # The raw supplier type is retained. Membership uses the same evidence-backed
     # presentation as result/detail labels, including already-cached novel claims.
@@ -31,20 +45,26 @@ def filter_public_type(works, code):
         'unclassified': {'creative-work', 'unknown'},
         'written-work': {'literary-work', 'written-work'},
     }.get(code, {code})
-    ids = [work.pk for work in works if work.public_type_code in members]
+    ids = [work.pk for work in load_related(works) if work.public_type_code in members]
     return works.filter(pk__in=ids)
+
+
+# Distances beyond this are indistinguishable in practice, and collapsing them
+# keeps the generated CASE expression small enough for SQLite's tree-depth limit.
+MAX_RELEVANCE_DISTANCE = 40
 
 
 def search(works, query):
     normalized = normalize_search(query)
     if not normalized:
         return works.none()
-    ranks = {w.pk: rank for w in works if (rank := match_score(w, normalized)) is not None}
+    ranks = {w.pk: rank for w in load_related(works) if (rank := match_score(w, normalized)) is not None}
+    distances = {pk: min(value[1], MAX_RELEVANCE_DISTANCE) for pk, value in ranks.items()}
     return works.filter(pk__in=ranks).annotate(relevance=Case(
         *(When(pk__in=[pk for pk, value in ranks.items() if value[0] == rank], then=Value(rank))
           for rank in range(5)),
         default=Value(5), output_field=IntegerField()),
         relevance_distance=Case(
-            *(When(pk__in=[pk for pk, value in ranks.items() if value[1] == distance], then=Value(distance))
-              for distance in sorted({value[1] for value in ranks.values()})),
+            *(When(pk__in=[pk for pk, distance in distances.items() if distance == value], then=Value(value))
+              for value in sorted(set(distances.values()))),
             default=Value(0), output_field=IntegerField()))

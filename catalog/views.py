@@ -10,7 +10,7 @@ from django.views.decorators.http import require_GET, require_http_methods, requ
 
 from accounts.models import EmailVerification
 from .connections import connections_context, direction_label
-from .discovery import DISCOVERY_ORDER, catalog_queryset, filter_public_type, search
+from .discovery import CATALOG_PREFETCHES, DISCOVERY_ORDER, catalog_queryset, filter_public_type, search
 from .forms import EntryCommentaryForm, MediaListForm
 from .models import (
     AccessLink, FeaturedWork, MediaList, MediaListEntry, Work, WorkRedirect, WorkRelationship,
@@ -65,7 +65,7 @@ def home(request):
     fallback_works = []
     if not featured:
         fallback_works = list(
-            catalog_queryset(public).order_by(*DISCOVERY_ORDER)[:6]
+            catalog_queryset(public).prefetch_related(*CATALOG_PREFETCHES).order_by(*DISCOVERY_ORDER)[:6]
         )
 
     relationships = (
@@ -139,7 +139,7 @@ def discover(request):
     preserved = request.GET.copy()
     preserved.pop("page", None)
     context = {
-        "works": page_obj.object_list,
+        "works": page_obj.object_list.prefetch_related(*CATALOG_PREFETCHES),
         "page_obj": page_obj,
         "result_count": page_obj.paginator.count,
         "querystring": preserved.urlencode(),

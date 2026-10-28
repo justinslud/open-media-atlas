@@ -1,0 +1,8728 @@
+{
+  "generated_at": "2026-10-28T19:32:56.087710+00:00",
+  "audited": null,
+  "flagged": 840,
+  "summary": {
+    "demo_work": 3,
+    "generic_type": 350,
+    "long_title": 42,
+    "no_creator": 637,
+    "no_date": 115
+  },
+  "labels": {
+    "demo_work": "demo fixture record",
+    "generic_type": "generic or unclassified type",
+    "no_creator": "no credited creator",
+    "no_date": "no recorded year",
+    "long_title": "title longer than 80 characters"
+  },
+  "rows": [
+    {
+      "work": 1001,
+      "title": "The Glass Orchard",
+      "type": "novel",
+      "year": 1912,
+      "depth": "editorial",
+      "warnings": [
+        "demo_work"
+      ]
+    },
+    {
+      "work": 1002,
+      "title": "The Glass Orchard",
+      "type": "film",
+      "year": 1978,
+      "depth": "editorial",
+      "warnings": [
+        "demo_work"
+      ]
+    },
+    {
+      "work": 1003,
+      "title": "The Glass Orchard",
+      "type": "film",
+      "year": 2025,
+      "depth": "editorial",
+      "warnings": [
+        "demo_work"
+      ]
+    },
+    {
+      "work": 6016,
+      "title": "The Time Machine",
+      "type": "literary-work",
+      "year": 1895,
+      "depth": "editorial",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6019,
+      "title": "Les Misérables",
+      "type": "novel",
+      "year": 1862,
+      "depth": "editorial",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6021,
+      "title": "A Christmas Carol",
+      "type": "literary-work",
+      "year": 1843,
+      "depth": "editorial",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6023,
+      "title": "What if Romeo & Juliet…",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6024,
+      "title": "Alice au pays des merveilles",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6025,
+      "title": "Shakespeare for Squirrels",
+      "type": "literary-work",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6026,
+      "title": "Scrooge Live",
+      "type": "television-program",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6027,
+      "title": "En midsommarnattsdröm",
+      "type": "creative-work",
+      "year": 1990,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6028,
+      "title": "The Scarpea of the Baskakovs",
+      "type": "literary-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6030,
+      "title": "Dorian Gray",
+      "type": "creative-work",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6032,
+      "title": "Ophelia",
+      "type": "creative-work",
+      "year": 1851,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6034,
+      "title": "I Capuleti e i Montecchi",
+      "type": "creative-work",
+      "year": 1830,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6040,
+      "title": "Aloys und Imelde",
+      "type": "literary-work",
+      "year": 1812,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6044,
+      "title": "Salute, Jonathan!",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6045,
+      "title": "Amleto",
+      "type": "creative-work",
+      "year": 1961,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6046,
+      "title": "Sogno di una notte d'estate",
+      "type": "creative-work",
+      "year": 1850,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6047,
+      "title": "Romeo e Giulietta",
+      "type": "creative-work",
+      "year": 1865,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6048,
+      "title": "Daai Bo Fuk",
+      "type": "television-series",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6050,
+      "title": "Ein Weihnachtslied in Prosa oder Eine Geistergeschichte zum Christfest",
+      "type": "creative-work",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6052,
+      "title": "Monte Cristo",
+      "type": "play",
+      "year": 1848,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6055,
+      "title": "The Prisoner of If; or The Revenge of Monte-Christo",
+      "type": "literary-work",
+      "year": 1846,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6057,
+      "title": "Khūn-e Nāḥaq",
+      "type": "play",
+      "year": 1898,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6058,
+      "title": "Alice in Bed",
+      "type": "creative-work",
+      "year": 2014,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6059,
+      "title": "Dorian's Fate",
+      "type": "creative-work",
+      "year": 1990,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6060,
+      "title": "Romeo and Juliet: Beyond Words",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6061,
+      "title": "Roméo et Juliette de William Shakespeare",
+      "type": "creative-work",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6062,
+      "title": "The Bridgerton Series",
+      "type": "creative-work",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6063,
+      "title": "Toto",
+      "type": "creative-work",
+      "year": 2017,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6065,
+      "title": "El Conde: amor y honor",
+      "type": "television-series",
+      "year": 2024,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6067,
+      "title": "War of the Worlds: Annihilation",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6068,
+      "title": "Klärchen und Brackenburg",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6069,
+      "title": "White Rabbit",
+      "type": "song",
+      "year": 1967,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6070,
+      "title": "Romeo & Julia – Liebe ist alles",
+      "type": "creative-work",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6072,
+      "title": "Ophelia Is Not Dead",
+      "type": "written-work",
+      "year": 1968,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6073,
+      "title": "The New Hamlet",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6074,
+      "title": "Nihon Gankutsuou",
+      "type": "television-series",
+      "year": 1979,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6075,
+      "title": "Scrooge: A Christmas Carol",
+      "type": "creative-work",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6077,
+      "title": "Victor LaValle's Destroyer",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6079,
+      "title": "A Infância de Romeu e Julieta",
+      "type": "television-series",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6081,
+      "title": "Montecristo",
+      "type": "television-series",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6082,
+      "title": "Alicja w Krainie Czarów",
+      "type": "album",
+      "year": 1977,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6083,
+      "title": "Dolly Parton's Smoky Mountain Christmas Carol",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6085,
+      "title": "Midsummer Mechanicals",
+      "type": "play",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6087,
+      "title": "Romeo and Juliet: A Love Song",
+      "type": "film",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6088,
+      "title": "A Christmas Carol; or, Past, Present, and Future",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6089,
+      "title": "Mer de glace",
+      "type": "creative-work",
+      "year": 1991,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6090,
+      "title": "Arm Joe",
+      "type": "video-game",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6094,
+      "title": "Scruff in 'A Midsummer Night's Dream'",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6096,
+      "title": "En studie i rødt",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6098,
+      "title": "A Carol Christmas",
+      "type": "creative-work",
+      "year": 2003,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6099,
+      "title": "Alice, Through the Looking: À La Recherche d'Un Lapin Perdu",
+      "type": "film",
+      "year": 2021,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6100,
+      "title": "Re: Dracula",
+      "type": "creative-work",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6101,
+      "title": "Hamlet. Tragödie",
+      "type": "creative-work",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6102,
+      "title": "Hamlet (Prinz von Dänemark). Trauerspiel in fünf Akten und fünfzehn Bildern",
+      "type": "creative-work",
+      "year": 1953,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6103,
+      "title": "Hamlet. Trauerspiel",
+      "type": "creative-work",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6104,
+      "title": "Macbeth. Trauerspiel in fünf Aufzügen und achtzehn Bildern",
+      "type": "creative-work",
+      "year": 1954,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6105,
+      "title": "Hamlet, Prinz von Dänemark. Trauerspiel in fünf Akten",
+      "type": "creative-work",
+      "year": 1940,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6106,
+      "title": "Skatteøen",
+      "type": "creative-work",
+      "year": 1986,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6108,
+      "title": "Karmma Calling",
+      "type": "television-series",
+      "year": 2024,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6109,
+      "title": "Dee & Friends in Oz",
+      "type": "creative-work",
+      "year": 2024,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6110,
+      "title": "Ein Sommernachtstraum. Komödie in fünf Akten",
+      "type": "creative-work",
+      "year": 1992,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6111,
+      "title": "Die Reise um die Erde in 80 Tagen",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6112,
+      "title": "The Nursery “Alice”",
+      "type": "written-work",
+      "year": 1890,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6118,
+      "title": "Le Songe d’une nuit d’été",
+      "type": "creative-work",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6119,
+      "title": "A Long Trip to Teatime",
+      "type": "literary-work",
+      "year": 1976,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6120,
+      "title": "Sherlock Holmes - A Study in Scarlet",
+      "type": "creative-work",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6125,
+      "title": "Cesta kolem světa (volně inspirováno Julesem Vernem a Pavlem Kohoutem)",
+      "type": "play",
+      "year": 1994,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6126,
+      "title": "Cesta kolem světa za 80 dní",
+      "type": "play",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6127,
+      "title": "Dracula aneb CD 2002 na cestách",
+      "type": "play",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6128,
+      "title": "Frankenstein - Skutečný příběh",
+      "type": "play",
+      "year": 2021,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6129,
+      "title": "Poklad na ostrově",
+      "type": "play",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6131,
+      "title": "Alenka v říši divů",
+      "type": "creative-work",
+      "year": 2016,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6132,
+      "title": "Obraz Doriana Graye",
+      "type": "creative-work",
+      "year": 2014,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6133,
+      "title": "Vánoční koleda",
+      "type": "creative-work",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6134,
+      "title": "(Les) Bídníci aneb Hra na...",
+      "type": "play",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6136,
+      "title": "DRACULA reloaded",
+      "type": "play",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6137,
+      "title": "Alenka zamilovaná",
+      "type": "literary-work",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6138,
+      "title": "Kouzelník ze země Oz",
+      "type": "literary-work",
+      "year": 1991,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6139,
+      "title": "Alice, Alenka a voda živá",
+      "type": "creative-work",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6140,
+      "title": "Alenka v říši za zrcadlem",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6141,
+      "title": "In 80 Tagen um die Welt",
+      "type": "creative-work",
+      "year": 2024,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6142,
+      "title": "Alice in Terrorland",
+      "type": "film",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6143,
+      "title": "Fushigi no Kuni de Alice to: Dive in Wonderland",
+      "type": "creative-work",
+      "year": 2025,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6145,
+      "title": "Hamlet, or the Phenomenon of Danish Katsapism",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6148,
+      "title": "A Dennis the Menace Christmas",
+      "type": "creative-work",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6149,
+      "title": "Les Misérables: Shōjo Cosette",
+      "type": "creative-work",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6150,
+      "title": "Scrooge, or, Marley's Ghost",
+      "type": "creative-work",
+      "year": 1901,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6152,
+      "title": "Dorian Gray - Ora e per sempre",
+      "type": "creative-work",
+      "year": 2025,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6153,
+      "title": "রোমিও-জুলিয়েত",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6154,
+      "title": "Alice in the Nightmare Land",
+      "type": "video-game",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6155,
+      "title": "The Wizard of Oz at Sphere",
+      "type": "creative-work",
+      "year": 2025,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6159,
+      "title": "Black Souls",
+      "type": "video-game",
+      "year": 2017,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6161,
+      "title": "When Snow Falls Like Fire",
+      "type": "literary-work",
+      "year": 2024,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6162,
+      "title": "Where Darkness Preys",
+      "type": "literary-work",
+      "year": 2025,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6163,
+      "title": "War of the Servers",
+      "type": "film",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6166,
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6167,
+      "title": "Alice im Wunderland",
+      "type": "creative-work",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6168,
+      "title": "Der Zauberer von Oz",
+      "type": "creative-work",
+      "year": 1994,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6169,
+      "title": "Romeo und Julia",
+      "type": "creative-work",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6170,
+      "title": "Dickensin Joulutarina",
+      "type": "creative-work",
+      "year": 1970,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6171,
+      "title": "Дракула. Сквозь века",
+      "type": "creative-work",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6172,
+      "title": "Alice in Wonderland: A XXX Parody",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6173,
+      "title": "Gale: Yellow Brick Road",
+      "type": "film",
+      "year": 2026,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6174,
+      "title": "Mackenzie",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6175,
+      "title": "Bumbug the Musical",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6178,
+      "title": "El Conde de Monte-Cristo",
+      "type": "creative-work",
+      "year": 1848,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6180,
+      "title": "Hamlet: For the Love of Ophelia",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6181,
+      "title": "Hamlet: For the Love of Ophelia 2",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6182,
+      "title": "Godzilla’s Monsterpiece Theatre Presents: The Kaiju of Oz",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6183,
+      "title": "La guerre des mondes",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6184,
+      "title": "Der Krieg der Welten",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6185,
+      "title": "Nagy Feró: Hamlet",
+      "type": "album",
+      "year": 1986,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6186,
+      "title": "Romeo × Juliet",
+      "type": "creative-work",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6192,
+      "title": "56 csepp vér",
+      "type": "creative-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6193,
+      "title": "Sherlock Holmes and the Baskerville Curse",
+      "type": "creative-work",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6194,
+      "title": "It's Christmas, Carol!",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6195,
+      "title": "The Treasure Planet",
+      "type": "creative-work",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6196,
+      "title": "Kelly Clarkson's Cautionary Christmas Music Tale",
+      "type": "creative-work",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6197,
+      "title": "Dracula 5: The Blood Legacy",
+      "type": "video-game",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6198,
+      "title": "Mickey's Christmas Carol",
+      "type": "creative-work",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6199,
+      "title": "Around the World in 80 Days",
+      "type": "creative-work",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6203,
+      "title": "Hound of the Baskervilles",
+      "type": "creative-work",
+      "year": 1955,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6207,
+      "title": "A Boy Scout Around the World",
+      "type": "literary-work",
+      "year": 1928,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6209,
+      "title": "Frankenstein – A New Musical",
+      "type": "creative-work",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6210,
+      "title": "Ellen Terry as Lady Macbeth",
+      "type": "creative-work",
+      "year": 1889,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6212,
+      "title": "A Diva's Christmas Carol",
+      "type": "creative-work",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6213,
+      "title": "A Klingon Christmas Carol",
+      "type": "play",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6214,
+      "title": "Jeff Wayne's Musical Version of The War of the Worlds",
+      "type": "album",
+      "year": 1975,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6215,
+      "title": "The Madness of Titania",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6216,
+      "title": "Roméo et Juliette, de la Haine à l'Amour",
+      "type": "creative-work",
+      "year": 2001,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6217,
+      "title": "The Dreaming",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6218,
+      "title": "Alice's Lover",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6219,
+      "title": "HAMLET!!",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6221,
+      "title": "Hamlet and the King",
+      "type": "creative-work",
+      "year": 1869,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6223,
+      "title": "Frankenstein: The True Story",
+      "type": "creative-work",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6226,
+      "title": "80 Days",
+      "type": "video-game",
+      "year": 2014,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6227,
+      "title": "Springtime with Roo",
+      "type": "creative-work",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6229,
+      "title": "Willy Fog Around the World in 80 Days",
+      "type": "creative-work",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6231,
+      "title": "Hermia and Lysander",
+      "type": "creative-work",
+      "year": 1870,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6232,
+      "title": "The Great Martian War 1913 - 1917",
+      "type": "creative-work",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6235,
+      "title": "Titania Sleeping",
+      "type": "creative-work",
+      "year": 1841,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6236,
+      "title": "The Lion King II: Simba's Pride",
+      "type": "creative-work",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6240,
+      "title": "Bah, Humduck! A Looney Tunes Christmas",
+      "type": "creative-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6241,
+      "title": "Wonder.land",
+      "type": "creative-work",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6242,
+      "title": "Titania, Bottom and the Fairies",
+      "type": "creative-work",
+      "year": 1793,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6244,
+      "title": "Christmas Cupid",
+      "type": "creative-work",
+      "year": 2010,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6249,
+      "title": "A Study in Pink",
+      "type": "creative-work",
+      "year": 2010,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6250,
+      "title": "Chasing Christmas",
+      "type": "creative-work",
+      "year": 2005,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6251,
+      "title": "Treasure Island Dizzy",
+      "type": "video-game",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6253,
+      "title": "Portrait of Faure as Hamlet",
+      "type": "creative-work",
+      "year": 1877,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6254,
+      "title": "The Legends of Treasure Island",
+      "type": "creative-work",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6255,
+      "title": "Sherlock Holmes and Dr. Watson",
+      "type": "creative-work",
+      "year": 1980,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6257,
+      "title": "The Enchanted Island",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6258,
+      "title": "The Smurfs: A Christmas Carol",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6260,
+      "title": "Oberon, Titania and Puck with Fairies dancing",
+      "type": "creative-work",
+      "year": 1785,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6262,
+      "title": "Isten pénze",
+      "type": "creative-work",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6263,
+      "title": "Szentivánéji álom",
+      "type": "creative-work",
+      "year": 2008,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6264,
+      "title": "Bridget Jones's Diary",
+      "type": "literary-work",
+      "year": 1996,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6265,
+      "title": "Dōbutsu Takarajima",
+      "type": "creative-work",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6266,
+      "title": "Jim Hawkins",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6276,
+      "title": "Dracula: Resurrection",
+      "type": "video-game",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6277,
+      "title": "An All Dogs Christmas Carol",
+      "type": "creative-work",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6280,
+      "title": "War of the Worlds: Goliath",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6283,
+      "title": "Banquo's Ghost",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6284,
+      "title": "The Fairy-Queen",
+      "type": "creative-work",
+      "year": 1692,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6287,
+      "title": "Bridget Jones",
+      "type": "creative-work",
+      "year": 2001,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6289,
+      "title": "Stolthet och fördom",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6291,
+      "title": "Count Dracula",
+      "type": "creative-work",
+      "year": 1977,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6293,
+      "title": "The Wiz",
+      "type": "creative-work",
+      "year": 1975,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6295,
+      "title": "Shakespeare: The Animated Tales",
+      "type": "creative-work",
+      "year": 1992,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6296,
+      "title": "Sen noci svatojánské",
+      "type": "creative-work",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6298,
+      "title": "Alice in Wonderland and Through the Looking-Glass",
+      "type": "play",
+      "year": 2001,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6299,
+      "title": "Sherlock Holmes",
+      "type": "creative-work",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6305,
+      "title": "The Hounds of Baskerville",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6307,
+      "title": "Absurda Comica oder Herr Peter Squenz",
+      "type": "literary-work",
+      "year": 1657,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6308,
+      "title": "Orgoglio e Pregiudizio",
+      "type": "creative-work",
+      "year": 1957,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6309,
+      "title": "Orgullo y Prejuicio",
+      "type": "creative-work",
+      "year": 1966,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6311,
+      "title": "Jeff Wayne's The War of the Worlds",
+      "type": "video-game",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6312,
+      "title": "Worlds of Fun",
+      "type": "creative-work",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6315,
+      "title": "I miserabili",
+      "type": "creative-work",
+      "year": 1964,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6316,
+      "title": "Il conte di Montecristo",
+      "type": "creative-work",
+      "year": 1966,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6317,
+      "title": "Il conto Montecristo",
+      "type": "creative-work",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6319,
+      "title": "The Happy Hypocrite: A Fairy Tale for Tired Men",
+      "type": "literary-work",
+      "year": 1896,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6322,
+      "title": "Treasure Planet",
+      "type": "creative-work",
+      "year": 2002,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6323,
+      "title": "Tweety's High-Flying Adventure",
+      "type": "creative-work",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6327,
+      "title": "Остров сокровищ",
+      "type": "creative-work",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6328,
+      "title": "The Picture of Dorian Grey",
+      "type": "creative-work",
+      "year": 1915,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6329,
+      "title": "Приключения в Изумрудном городе",
+      "type": "creative-work",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6330,
+      "title": "Ромео и Джульетта",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6331,
+      "title": "Ромео и Джульетта (рок-опера)",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6332,
+      "title": "The Hound of the Baskervilles (1971 film)",
+      "type": "creative-work",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6333,
+      "title": "Tom and Jerry and the Wizard of Oz",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6334,
+      "title": "The Prisoner of Château d'If",
+      "type": "creative-work",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6335,
+      "title": "I am Edmond Dantes",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6337,
+      "title": "A Carol for Another Christmas",
+      "type": "creative-work",
+      "year": 1964,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6338,
+      "title": "A Flintstones Christmas Carol",
+      "type": "creative-work",
+      "year": 1994,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6341,
+      "title": "A Special Sesame Street Christmas",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6342,
+      "title": "Curious Alice",
+      "type": "creative-work",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6344,
+      "title": "Alice in Wonderland dress",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6346,
+      "title": "An American Christmas Carol",
+      "type": "creative-work",
+      "year": 1979,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6348,
+      "title": "Julia",
+      "type": "creative-work",
+      "year": 1991,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6349,
+      "title": "Around the World",
+      "type": "creative-work",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6350,
+      "title": "Around the World in 20 Years",
+      "type": "television-series",
+      "year": 2008,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6351,
+      "title": "Around the World in Seventy-Two Days",
+      "type": "written-work",
+      "year": 1890,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6354,
+      "title": "Monte Cristo Haku",
+      "type": "television-series",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6355,
+      "title": "Sherlock Holmes and a Study in Scarlet",
+      "type": "creative-work",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6356,
+      "title": "Blackadder's Christmas Carol",
+      "type": "creative-work",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6358,
+      "title": "Bugs Bunny's Christmas Carol",
+      "type": "creative-work",
+      "year": 1979,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6359,
+      "title": "Hamlet (overture-fantasia)",
+      "type": "creative-work",
+      "year": 1888,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6360,
+      "title": "Hamlet (incidental music)",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6365,
+      "title": "Ebbie",
+      "type": "creative-work",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6366,
+      "title": "Ebenezer",
+      "type": "creative-work",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6370,
+      "title": "Fellow Passengers",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6373,
+      "title": "Hamlet, Prince of Denmark",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6374,
+      "title": "Hamlet at Elsinore",
+      "type": "creative-work",
+      "year": 1964,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6375,
+      "title": "Dream",
+      "type": "creative-work",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6376,
+      "title": "Lady Macbeth",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6377,
+      "title": "La Dueña",
+      "type": "television-series",
+      "year": 1984,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6378,
+      "title": "MacBeth (2000-2001)",
+      "type": "creative-work",
+      "year": 2001,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6379,
+      "title": "Ryan North's To Be or Not to Be",
+      "type": "video-game",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6381,
+      "title": "Veronaville",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6382,
+      "title": "Too, Too Solid Flesh",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6383,
+      "title": "Scrooge!",
+      "type": "play",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6384,
+      "title": "Jeff Wayne's Musical Version of The War of the Worlds – The New Generation",
+      "type": "album",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6388,
+      "title": "Karroll's Christmas",
+      "type": "creative-work",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6389,
+      "title": "De vier dochters Bennet",
+      "type": "television-series",
+      "year": 1961,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6390,
+      "title": "Land of Oz",
+      "type": "creative-work",
+      "year": 1970,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6392,
+      "title": "Le songe d'une nuit d'été",
+      "type": "creative-work",
+      "year": 1850,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6393,
+      "title": "& Juliet",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6394,
+      "title": "John Grin's Christmas",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6397,
+      "title": "West Side Story",
+      "type": "creative-work",
+      "year": 1957,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6398,
+      "title": "MacBird!",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6399,
+      "title": "Khwab-e-Hasti",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6401,
+      "title": "Around the World in 80 Days with Michael Palin",
+      "type": "television-series",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6402,
+      "title": "Mister Magoo's Christmas Carol",
+      "type": "creative-work",
+      "year": 1962,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6403,
+      "title": "Mrs. Bob Cratchit's Wild Christmas Binge",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6404,
+      "title": "Nan's Christmas Carol",
+      "type": "creative-work",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6405,
+      "title": "Romeo and Juliet at the tomb of the Capulets",
+      "type": "creative-work",
+      "year": 1850,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6406,
+      "title": "Indian Fantasy",
+      "type": "creative-work",
+      "year": 1955,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6409,
+      "title": "Die Zeitmaschine",
+      "type": "creative-work",
+      "year": 2017,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6411,
+      "title": "Puck",
+      "type": "creative-work",
+      "year": 1949,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6412,
+      "title": "A Queer Carol",
+      "type": "creative-work",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6414,
+      "title": "Rich Little's Christmas Carol",
+      "type": "creative-work",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6416,
+      "title": "Sherlock Holmes Was Wrong",
+      "type": "literary-work",
+      "year": 2008,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6417,
+      "title": "Skinhead Hamlet",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6419,
+      "title": "Sleep No More",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6421,
+      "title": "Romeo and Juliet (overture-fantasia)",
+      "type": "creative-work",
+      "year": 1869,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6423,
+      "title": "RJ Romeo and Juliet",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6426,
+      "title": "The Lizzie Bennet Diaries",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6427,
+      "title": "The Other Log of Phileas Fogg",
+      "type": "literary-work",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6429,
+      "title": "The Stingiest Man in Town",
+      "type": "creative-work",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6431,
+      "title": "The Wizard of Oz: Beyond the Yellow Brick Road",
+      "type": "video-game",
+      "year": 2008,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6433,
+      "title": "uMabatha",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6437,
+      "title": "Wonderland",
+      "type": "creative-work",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6438,
+      "title": "Macbeth Underworld",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6439,
+      "title": "Macbeth, King of Scotland",
+      "type": "literary-work",
+      "year": 1871,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6440,
+      "title": "Around the World with Willy Fog",
+      "type": "creative-work",
+      "year": 1984,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6443,
+      "title": "Alice's Adventures Under Ground",
+      "type": "creative-work",
+      "year": 2016,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6444,
+      "title": "Bikini Frankenstein",
+      "type": "creative-work",
+      "year": 2010,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6446,
+      "title": "Gankutsuou: The Count of Monte Cristo",
+      "type": "creative-work",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6447,
+      "title": "Roméo et Juliette",
+      "type": "opera",
+      "year": 1867,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6448,
+      "title": "Romeo i Julia",
+      "type": "creative-work",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6450,
+      "title": "A Midsummer Night's Dream - B",
+      "type": "creative-work",
+      "year": 1990,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6455,
+      "title": "Romeo & Julia",
+      "type": "creative-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6456,
+      "title": "Jean Valjean devant la cour d'assises d'Arras (Les Misérables)",
+      "type": "creative-work",
+      "year": 1904,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6459,
+      "title": "Otello",
+      "type": "creative-work",
+      "year": 1906,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6461,
+      "title": "Desdemona singing the Song of the Willow",
+      "type": "creative-work",
+      "year": 1824,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6463,
+      "title": "Non sono quello che sono",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6464,
+      "title": "ভীমসিংহ",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6465,
+      "title": "Othello der Mohr von Venedig",
+      "type": "creative-work",
+      "year": 1903,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6466,
+      "title": "Othello",
+      "type": "creative-work",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6472,
+      "title": "Othello. Der Mohr von Venedig",
+      "type": "creative-work",
+      "year": 1954,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6473,
+      "title": "Catch My Soul",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6474,
+      "title": "Othello (2000-2001)",
+      "type": "creative-work",
+      "year": 2001,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6475,
+      "title": "Othello (2016-2017)",
+      "type": "creative-work",
+      "year": 2016,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6476,
+      "title": "Othello (1996-1997)",
+      "type": "creative-work",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6477,
+      "title": "Othello (1997-1998)",
+      "type": "creative-work",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6480,
+      "title": "Otelo",
+      "type": "creative-work",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6482,
+      "title": "The Moor's Pavane",
+      "type": "creative-work",
+      "year": 1949,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6483,
+      "title": "Othello and Desdemona",
+      "type": "creative-work",
+      "year": 1859,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6484,
+      "title": "The Jungle Book",
+      "type": "literary-work",
+      "year": 1894,
+      "depth": "editorial",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6486,
+      "title": "The Jungle Book: Rumble in the Jungle",
+      "type": "creative-work",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6488,
+      "title": "Księga dżungli (musical)",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6489,
+      "title": "Mauglí",
+      "type": "creative-work",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6490,
+      "title": "Kniha džungle",
+      "type": "creative-work",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6491,
+      "title": "Adventures of Mowgli",
+      "type": "creative-work",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6492,
+      "title": "Jungelboka",
+      "type": "creative-work",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6494,
+      "title": "The Jungle Book and Scouting",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6495,
+      "title": "The Jungle Book 2",
+      "type": "creative-work",
+      "year": 2003,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6496,
+      "title": "Jungle Book Shounen Mowgli",
+      "type": "creative-work",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6499,
+      "title": "Otello",
+      "type": "opera",
+      "year": 1887,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6500,
+      "title": "The Count of Monte Cristo",
+      "type": "musical",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6501,
+      "title": "The Wizard of Oz",
+      "type": "musical",
+      "year": 1902,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6502,
+      "title": "Alice's Adventures in Wonderland",
+      "type": "ballet",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6503,
+      "title": "A Midsummer Night's Dream",
+      "type": "opera",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6504,
+      "title": "Hamlet",
+      "type": "opera",
+      "year": 1868,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6505,
+      "title": "The Picture of Dorian Gray",
+      "type": "opera",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6506,
+      "title": "Les Misérables",
+      "type": "musical",
+      "year": 1980,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6507,
+      "title": "Romeo and Juliet",
+      "type": "ballet",
+      "year": 1938,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6508,
+      "title": "Cesta kolem světa za 80 dní",
+      "type": "ballet",
+      "year": 1962,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6509,
+      "title": "Mauglí",
+      "type": "ballet",
+      "year": 1996,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6510,
+      "title": "A Midsummer Night's Dream",
+      "type": "ballet",
+      "year": 1962,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6511,
+      "title": "Dorian Gray",
+      "type": "ballet",
+      "year": 2008,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6512,
+      "title": "Othello",
+      "type": "ballet",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6519,
+      "title": "The Adventures of Sherlock Holmes",
+      "type": "literary-work",
+      "year": 1892,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6530,
+      "title": "David Copperfield or The Personal History, Adventures, Experience and Observation of David Copperfield the Younger of Blunderstone Rookery (Which He Never Meant to Publish on Any Account)",
+      "type": "novel",
+      "year": 1850,
+      "depth": "editorial",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 6545,
+      "title": "Dracula",
+      "type": "television-series",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6559,
+      "title": "Alice in Wonderland",
+      "type": "television-program",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6561,
+      "title": "Hamlet: For the Love of Ophelia",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6562,
+      "title": "Romeo and Juliet",
+      "type": "film",
+      "year": 1947,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6582,
+      "title": "Frankenstein",
+      "type": "television-series",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6589,
+      "title": "Hamlet",
+      "type": "video-game",
+      "year": 2010,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6603,
+      "title": "Pride and Prejudice",
+      "type": "television-series",
+      "year": 1952,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6605,
+      "title": "Pride and Prejudice",
+      "type": "television-series",
+      "year": 1967,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6606,
+      "title": "Pride and Prejudice",
+      "type": "television-series",
+      "year": 1958,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6618,
+      "title": "Pride and Prejudice",
+      "type": "film",
+      "year": 1938,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6621,
+      "title": "Dracula",
+      "type": "video-game",
+      "year": 1986,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6623,
+      "title": "Dracula",
+      "type": "video-game",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6624,
+      "title": "The Wizard of Oz",
+      "type": "video-game",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6629,
+      "title": "Romeo and Juliet",
+      "type": "album",
+      "year": 1977,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6636,
+      "title": "Van Helsing: The London Assignment",
+      "type": "film",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6643,
+      "title": "A Christmas Carol",
+      "type": "film",
+      "year": 1908,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6651,
+      "title": "Macbeth",
+      "type": "play",
+      "year": 1606,
+      "depth": "editorial",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6652,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6653,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1961,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6654,
+      "title": "Macbeth",
+      "type": "creative-work",
+      "year": 1820,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6655,
+      "title": "Macbeth",
+      "type": "album",
+      "year": 1990,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6656,
+      "title": "Macbeth",
+      "type": "opera",
+      "year": 1827,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6657,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1948,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6658,
+      "title": "Macbeth",
+      "type": "opera",
+      "year": 1910,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6659,
+      "title": "King Lear",
+      "type": "film",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6660,
+      "title": "Macbeth",
+      "type": "opera",
+      "year": 1847,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6661,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6662,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1979,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6663,
+      "title": "König Lear",
+      "type": "creative-work",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6664,
+      "title": "König Lear",
+      "type": "creative-work",
+      "year": 1948,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6665,
+      "title": "Macbeth",
+      "type": "creative-work",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6666,
+      "title": "Macbeth",
+      "type": "creative-work",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6667,
+      "title": "King Lear",
+      "type": "film",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6668,
+      "title": "King Lear",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6669,
+      "title": "Macbeth",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6670,
+      "title": "乱",
+      "type": "film",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6671,
+      "title": "Μάκβεθ",
+      "type": "creative-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6672,
+      "title": "Lear",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6673,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1909,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6674,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1909,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6675,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1913,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6676,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1922,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6677,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6678,
+      "title": "The Story of King Lear and his Three Daughters",
+      "type": "literary-work",
+      "year": 1871,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6679,
+      "title": "Macbeth",
+      "type": "film",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6680,
+      "title": "Lear",
+      "type": "opera",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6681,
+      "title": "Lysande förhoppningar",
+      "type": "creative-work",
+      "year": 1914,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6685,
+      "title": "Dunbar",
+      "type": "book",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6687,
+      "title": "Δωδέκατη νύχτα",
+      "type": "creative-work",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6693,
+      "title": "Βασιλιάς Ληρ",
+      "type": "creative-work",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6696,
+      "title": "Re Lear",
+      "type": "creative-work",
+      "year": 1939,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6698,
+      "title": "The Life and Adventures of Oliver Twiss",
+      "type": "literary-work",
+      "year": 1839,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6699,
+      "title": "Oliver Twiss, the workhouse boy",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6707,
+      "title": "The Three Musketeers",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6708,
+      "title": "La nuit des rois",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6714,
+      "title": "La tempesta",
+      "type": "opera",
+      "year": 1850,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6718,
+      "title": "The Possession of Mrs. Hyde",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6719,
+      "title": "Приключения Шерлока Холмса и доктора Ватсона: Сокровища Агры",
+      "type": "creative-work",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6723,
+      "title": "Die Zauberinsel",
+      "type": "opera",
+      "year": 1942,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6727,
+      "title": "Viel Lärm um nichts",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6728,
+      "title": "Was ihr wollt",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6730,
+      "title": "Une Tempête",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6733,
+      "title": "A Caverna Encantada",
+      "type": "television-series",
+      "year": 2024,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6739,
+      "title": "Lear Rex",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6742,
+      "title": "Invisible Man",
+      "type": "play",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6746,
+      "title": "Oliwer Twist",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6749,
+      "title": "Tři mušketýři aneb Mocní se nudí",
+      "type": "play",
+      "year": 1984,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6750,
+      "title": "Jekyll & Hyde",
+      "type": "ballet",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6751,
+      "title": "Žabákova dobrodružství",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6754,
+      "title": "Black Slave's Cry to Heaven",
+      "type": "play",
+      "year": 1907,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6758,
+      "title": "I tre moschettieri",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6760,
+      "title": "পঞ্চৰত্ন",
+      "type": "creative-work",
+      "year": 1919,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6763,
+      "title": "The Legend of White Fang",
+      "type": "television-series",
+      "year": 1992,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6764,
+      "title": "King Liter",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6766,
+      "title": "Le Roi Lear",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6767,
+      "title": "Ariel",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6768,
+      "title": "Vingt mille lieues sous les mers",
+      "type": "creative-work",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6769,
+      "title": "O Mystikos Kipos",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6778,
+      "title": "若草の四姉妹",
+      "type": "television-series",
+      "year": 1981,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6783,
+      "title": "Nemo",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6785,
+      "title": "삼총사",
+      "type": "television-series",
+      "year": 2014,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6792,
+      "title": "Cumbres Borrascosas",
+      "type": "television-series",
+      "year": 1964,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6796,
+      "title": "\"King Lear,\" Act I, Scene I",
+      "type": "creative-work",
+      "year": 1898,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6797,
+      "title": "Miss Havisham's Fire",
+      "type": "opera",
+      "year": 1979,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6798,
+      "title": "Willy Fog 2",
+      "type": "television-series",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6802,
+      "title": "Miranda",
+      "type": "creative-work",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6806,
+      "title": "The Love of d'Artagnan",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6811,
+      "title": "3 Musketiers",
+      "type": "musical",
+      "year": 2003,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6813,
+      "title": "All Shook Up",
+      "type": "musical",
+      "year": 2005,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6819,
+      "title": "Oliver Twist, le musical",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6820,
+      "title": "Miranda fait une partie d'échec avec Ferdinand qu'elle accuse, en plaisantant, de tricher",
+      "type": "creative-work",
+      "year": 1822,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 6822,
+      "title": "Kong Lear",
+      "type": "television-series",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6830,
+      "title": "Три мушкетёра",
+      "type": "creative-work",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6832,
+      "title": "La Tempête",
+      "type": "creative-work",
+      "year": 1873,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6833,
+      "title": "Dr. Jekyll and Mr. Hyde, Or a Mis-Spent Life",
+      "type": "play",
+      "year": 1897,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6837,
+      "title": "মানিক",
+      "type": "film",
+      "year": 1961,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6843,
+      "title": "Caline et Calebasse",
+      "type": "creative-work",
+      "year": 1972,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6847,
+      "title": "Flashing Blades",
+      "type": "creative-work",
+      "year": 1984,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6850,
+      "title": "Viola",
+      "type": "opera",
+      "year": 1924,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6858,
+      "title": "Barbie and the Three Musketeers",
+      "type": "video-game",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6863,
+      "title": "I Quattro Moschettieri",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6876,
+      "title": "Captain Nemo",
+      "type": "television-series",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6881,
+      "title": "Sparkhouse",
+      "type": "television-series",
+      "year": 2002,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6882,
+      "title": "The Three Musketeers in film",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6886,
+      "title": "Der Sturm",
+      "type": "creative-work",
+      "year": 1942,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6899,
+      "title": "Fagin the Jew",
+      "type": "creative-work",
+      "year": 2003,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6902,
+      "title": "20 000 Lieues sous les mers",
+      "type": "video-game",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6911,
+      "title": "Vision of Lear",
+      "type": "opera",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6912,
+      "title": "Die Geisterinsel",
+      "type": "literary-work",
+      "year": 1797,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6915,
+      "title": "Kuningas Lear",
+      "type": "opera",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6916,
+      "title": "Albert le 5ème mousquetaire",
+      "type": "television-series",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6919,
+      "title": "Micawber",
+      "type": "television-series",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6923,
+      "title": "Tales of Little Women",
+      "type": "television-series",
+      "year": 1987,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6924,
+      "title": "Play On!",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6927,
+      "title": "Safed Khoon",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6928,
+      "title": "Ferdinand courting Miranda (from William Shakespeare's The Tempest, Act I scene ii)",
+      "type": "creative-work",
+      "year": 1736,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type",
+        "long_title"
+      ]
+    },
+    {
+      "work": 6932,
+      "title": "The Crucifer of Blood",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date"
+      ]
+    },
+    {
+      "work": 6937,
+      "title": "Tom Shows",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6938,
+      "title": "20,000 Leaks Under the City",
+      "type": "creative-work",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6939,
+      "title": "Four Musketurtles",
+      "type": "creative-work",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6940,
+      "title": "Béatrice et Bénédict",
+      "type": "opera",
+      "year": 1862,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6941,
+      "title": "Your Own Thing",
+      "type": "musical",
+      "year": 1968,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6948,
+      "title": "A Tempestade (ópera)",
+      "type": "creative-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6950,
+      "title": "Πολύ κακό για το τίποτα",
+      "type": "creative-work",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6951,
+      "title": "Les Hauts de Hurlevent",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6952,
+      "title": "Sherlock Holmes and the Sign of Four",
+      "type": "film",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6953,
+      "title": "The Tempest",
+      "type": "opera",
+      "year": 1895,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6954,
+      "title": "Jane Eyre",
+      "type": "film",
+      "year": 1934,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6955,
+      "title": "evolutionary anthropology",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6956,
+      "title": "March Trilogy",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6957,
+      "title": "trilogie des mousquetaires",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6958,
+      "title": "Great Expectations",
+      "type": "television-series",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6959,
+      "title": "Captain Nemo trilogy",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6960,
+      "title": "The Three Musketeers",
+      "type": "ballet",
+      "year": 1980,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6961,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1939,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6962,
+      "title": "Jane Eyre",
+      "type": "creative-work",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6963,
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6964,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6965,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6966,
+      "title": "The Secret Garden",
+      "type": "film",
+      "year": 1949,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6967,
+      "title": "The Wind in the Willows",
+      "type": "film",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6968,
+      "title": "The Wind in the Willows",
+      "type": "film",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6970,
+      "title": "Jane Eyre",
+      "type": "film",
+      "year": 1943,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6972,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1948,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6973,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1921,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6974,
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "type": "film",
+      "year": 1920,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6975,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6976,
+      "title": "Sherlock Holmes novels",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6977,
+      "title": "A Key to Uncle Tom's Cabin",
+      "type": "literary-work",
+      "year": 1853,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6978,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 2026,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6979,
+      "title": "Autour de la Lune",
+      "type": "novel",
+      "year": 1870,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6981,
+      "title": "White Fang",
+      "type": "film",
+      "year": 1991,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6982,
+      "title": "The Invisible Man",
+      "type": "film",
+      "year": 1933,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6983,
+      "title": "Twelfth Night",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6984,
+      "title": "Jekyll & Hyde",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6985,
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "type": "film",
+      "year": 1920,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6987,
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "type": "film",
+      "year": 1908,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6988,
+      "title": "Little Women",
+      "type": "film",
+      "year": 1949,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6989,
+      "title": "Oliver!",
+      "type": "musical",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6990,
+      "title": "The Call of the Wild",
+      "type": "film",
+      "year": 1972,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6992,
+      "title": "Our Mutual Friend",
+      "type": "novel",
+      "year": 1864,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6993,
+      "title": "Jane Eyre",
+      "type": "film",
+      "year": 1970,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6994,
+      "title": "criminology",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6995,
+      "title": "Vingt ans après",
+      "type": "novel",
+      "year": 1845,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 6997,
+      "title": "Jane Eyre",
+      "type": "creative-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 6998,
+      "title": "Little Women",
+      "type": "television-series",
+      "year": 1958,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7000,
+      "title": "Little Women",
+      "type": "television-series",
+      "year": 1950,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7001,
+      "title": "The Secret Garden",
+      "type": "television-series",
+      "year": 1975,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7002,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1953,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7003,
+      "title": "The Secret Garden",
+      "type": "film",
+      "year": 1918,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7004,
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1961,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7005,
+      "title": "20,000 Leagues Under the Sea",
+      "type": "film",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7006,
+      "title": "Cumbres Borrascosas",
+      "type": "television-series",
+      "year": 1979,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7007,
+      "title": "Little Women",
+      "type": "film",
+      "year": 1918,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7008,
+      "title": "Little Women",
+      "type": "film",
+      "year": 1933,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7009,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1939,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7010,
+      "title": "White Fang",
+      "type": "film",
+      "year": 1936,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7011,
+      "title": "A Child's History of England",
+      "type": "written-work",
+      "year": 1851,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7012,
+      "title": "The Invisible Man",
+      "type": "television-series",
+      "year": 1958,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7013,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7014,
+      "title": "Twelfth Night",
+      "type": "film",
+      "year": 1966,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7015,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7016,
+      "title": "The Wind in the Willows",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7017,
+      "title": "Miranda",
+      "type": "creative-work",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7018,
+      "title": "Jekyll & Hyde",
+      "type": "television-series",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7020,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1935,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7021,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1922,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7022,
+      "title": "canon of Sherlock Holmes",
+      "type": "literary-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7023,
+      "title": "The Call of the Wild",
+      "type": "film",
+      "year": 1935,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7024,
+      "title": "The Wind in the Willows",
+      "type": "film",
+      "year": 1996,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7025,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1959,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7026,
+      "title": "The Invisible Man",
+      "type": "television-series",
+      "year": 1984,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7027,
+      "title": "Jane Eyre",
+      "type": "film",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7028,
+      "title": "White Fang 2: Myth of the White Wolf",
+      "type": "film",
+      "year": 1994,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7030,
+      "title": "Little Women",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7031,
+      "title": "Great Expectations",
+      "type": "television-series",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7032,
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1959,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7033,
+      "title": "Much Ado About Nothing",
+      "type": "film",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7034,
+      "title": "David Copperfield",
+      "type": "creative-work",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7035,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7039,
+      "title": "Les Trois Mousquetaires",
+      "type": "creative-work",
+      "year": 1921,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7040,
+      "title": "Les Voyages extraordinaires",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7041,
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "type": "play",
+      "year": 1888,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7043,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7045,
+      "title": "The Wind in the Willows",
+      "type": "film",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7046,
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1912,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7047,
+      "title": "Les Trois Mousquetaires",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7048,
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1932,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7049,
+      "title": "Wuthering Heights",
+      "type": "television-series",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7052,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1920,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7053,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1933,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7054,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1970,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7056,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7057,
+      "title": "Uncle Tom's Cabin",
+      "type": "film",
+      "year": 1914,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7058,
+      "title": "Uncle Tom's Cabin",
+      "type": "film",
+      "year": 1927,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7059,
+      "title": "Call of the Wild",
+      "type": "television-series",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7060,
+      "title": "White Fang",
+      "type": "television-series",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7061,
+      "title": "David Copperfield",
+      "type": "film",
+      "year": 1922,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7062,
+      "title": "David Copperfield",
+      "type": "television-series",
+      "year": 1965,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7064,
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "type": "film",
+      "year": 1913,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7065,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1933,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7066,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 1917,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7067,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7068,
+      "title": "I quattro moschettieri",
+      "type": "film",
+      "year": 1936,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7069,
+      "title": "I quattro moschettieri",
+      "type": "film",
+      "year": 1963,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7070,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1909,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7071,
+      "title": "The Call of the Wild",
+      "type": "film",
+      "year": 1923,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7072,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1926,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7075,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7076,
+      "title": "Little Men",
+      "type": "literary-work",
+      "year": 1871,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7077,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1908,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7078,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7079,
+      "title": "Uncle Tom's Cabin",
+      "type": "film",
+      "year": 1918,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7080,
+      "title": "Wuthering Heights",
+      "type": "opera",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7081,
+      "title": "Wuthering Heights",
+      "type": "television-series",
+      "year": 1967,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7082,
+      "title": "Wuthering Heights",
+      "type": "television-series",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7083,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1920,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7084,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 2003,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7085,
+      "title": "Jane Eyre",
+      "type": "film",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7086,
+      "title": "Jane Eyre",
+      "type": "film",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7087,
+      "title": "Oliver Twist",
+      "type": "television-series",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7088,
+      "title": "The Secret Garden",
+      "type": "film",
+      "year": 1987,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7090,
+      "title": "Little Women",
+      "type": "television-series",
+      "year": 2017,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7091,
+      "title": "L'Île mystérieuse",
+      "type": "novel",
+      "year": 1888,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7092,
+      "title": "Der Sturm",
+      "type": "creative-work",
+      "year": 1964,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7093,
+      "title": "Der Sturm",
+      "type": "creative-work",
+      "year": 1964,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7094,
+      "title": "Der Sturm",
+      "type": "creative-work",
+      "year": 1952,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7095,
+      "title": "Viel Lärm um nichts",
+      "type": "creative-work",
+      "year": 1951,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7096,
+      "title": "Viel Lärm um nichts",
+      "type": "creative-work",
+      "year": 1967,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7097,
+      "title": "Viel Lärm um nichts",
+      "type": "creative-work",
+      "year": 1939,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7098,
+      "title": "Was ihr wollt",
+      "type": "creative-work",
+      "year": 1954,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7099,
+      "title": "Was ihr wollt",
+      "type": "creative-work",
+      "year": 1966,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7100,
+      "title": "Was ihr wollt",
+      "type": "creative-work",
+      "year": 1945,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7101,
+      "title": "Angel and Apostle",
+      "type": "novel",
+      "year": 2005,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7104,
+      "title": "The Tempest",
+      "type": "film",
+      "year": 2010,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7105,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1909,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7106,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7109,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1911,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7110,
+      "title": "Jane Eyre",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7111,
+      "title": "The Secret Garden",
+      "type": "film",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7112,
+      "title": "Der Sturm",
+      "type": "opera",
+      "year": 1956,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7114,
+      "title": "20,000 Leagues Under the Sea",
+      "type": "film",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7115,
+      "title": "Much Ado About Nothing",
+      "type": "film",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7116,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1948,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7117,
+      "title": "The Tempest",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7118,
+      "title": "Much Ado About Nothing",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7119,
+      "title": "Twelfth Night, or What You Will",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7120,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 1934,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7121,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 1974,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7122,
+      "title": "Great Expectations",
+      "type": "television-series",
+      "year": 1981,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7123,
+      "title": "Little Women",
+      "type": "film",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7125,
+      "title": "Little Women",
+      "type": "film",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7126,
+      "title": "Les trois mousquetaires",
+      "type": "film",
+      "year": 1974,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7127,
+      "title": "Cumbres Borrascosas",
+      "type": "television-series",
+      "year": 1976,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7128,
+      "title": "The Call of the Wild",
+      "type": "film",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7129,
+      "title": "Great Expectations",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7130,
+      "title": "Los tres mosqueteros",
+      "type": "film",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7131,
+      "title": "Три мушкетёра",
+      "type": "film",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7132,
+      "title": "Shirley",
+      "type": "novel",
+      "year": 1849,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7133,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7134,
+      "title": "The Invisible Man",
+      "type": "film",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7135,
+      "title": "20,000 Leagues Under the Sea",
+      "type": "film",
+      "year": 1954,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7136,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1948,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7137,
+      "title": "The Secret Garden",
+      "type": "film",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7138,
+      "title": "Great Expectations",
+      "type": "film",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7139,
+      "title": "Wuthering Heights",
+      "type": "film",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7140,
+      "title": "Little Women",
+      "type": "film",
+      "year": 1917,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7141,
+      "title": "Little Women",
+      "type": "opera",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7143,
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1953,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7144,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1917,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7147,
+      "title": "Oliver Twist",
+      "type": "television-series",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7148,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1912,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7149,
+      "title": "Oliver Twist",
+      "type": "television-series",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7150,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7151,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7152,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7153,
+      "title": "Dr. Jekyll and Mr. Hyde",
+      "type": "film",
+      "year": 1941,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7154,
+      "title": "Call of the Wild",
+      "type": "film",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7155,
+      "title": "The Call of the Wild",
+      "type": "film",
+      "year": 1976,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7156,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1913,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7157,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1922,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7158,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1934,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7159,
+      "title": "The Scarlet Letter",
+      "type": "film",
+      "year": 1974,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7160,
+      "title": "The Sign of Four",
+      "type": "film",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7161,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1969,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7162,
+      "title": "The Three Musketeers",
+      "type": "television-series",
+      "year": 1968,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7163,
+      "title": "The Wind in the Willows",
+      "type": "film",
+      "year": 1987,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7164,
+      "title": "The Wind in the Willows",
+      "type": "television-series",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7165,
+      "title": "Toad of Toad Hall",
+      "type": "play",
+      "year": 1929,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7166,
+      "title": "Top Withens",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7167,
+      "title": "Twelfth Night",
+      "type": "film",
+      "year": 1933,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7168,
+      "title": "Twelfth Night",
+      "type": "film",
+      "year": 1987,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7169,
+      "title": "Twelfth Night",
+      "type": "creative-work",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7170,
+      "title": "Wuthering Heights",
+      "type": "opera",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7171,
+      "title": "Wind in the Willows",
+      "type": "film",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7172,
+      "title": "Wuthering Heights",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7173,
+      "title": "Barbie and the Three Musketeers",
+      "type": "film",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7174,
+      "title": "The Tempest",
+      "type": "literary-work",
+      "year": 1871,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7175,
+      "title": "The Life and Adventures of Nicholas Nickleby",
+      "type": "novel",
+      "year": 1839,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7176,
+      "title": "Little Women",
+      "type": "film",
+      "year": 1994,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7177,
+      "title": "The Three Musketeers",
+      "type": "television-series",
+      "year": 1966,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7179,
+      "title": "Oliver Twist",
+      "type": "film",
+      "year": 2005,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7180,
+      "title": "20,000 Leagues Under the Sea",
+      "type": "television-series",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7181,
+      "title": "Josiah Henson",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7182,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1986,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7183,
+      "title": "devolution",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7185,
+      "title": "Dogtanian and the Three Muskehounds",
+      "type": "television-series",
+      "year": 1981,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7186,
+      "title": "David Copperfield",
+      "type": "television-series",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7188,
+      "title": "The Three Musketeers",
+      "type": "film",
+      "year": 1992,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7190,
+      "title": "Приключения Шерлока Холмса и доктора Ватсона: Собака Баскервилей",
+      "type": "creative-work",
+      "year": 1981,
+      "depth": "index",
+      "warnings": [
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7193,
+      "title": "Drákula",
+      "type": "musical",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7196,
+      "title": "Ophélie",
+      "type": "creative-work",
+      "year": 1890,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7197,
+      "title": "Greven av Monte Cristo",
+      "type": "television-series",
+      "year": 1965,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7198,
+      "title": "L'ultimo bacio di Romeo e Giulietta",
+      "type": "creative-work",
+      "year": 1823,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7200,
+      "title": "A dzsungel könyve",
+      "type": "musical",
+      "year": 1996,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7202,
+      "title": "宝島",
+      "type": "television-series",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7206,
+      "title": "Το πορτραίτο του Ντόριαν Γκρέυ",
+      "type": "creative-work",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7208,
+      "title": "Ronny & Julia",
+      "type": "television-series",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7209,
+      "title": "The Second Jungle Book",
+      "type": "literary-work",
+      "year": 1895,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7210,
+      "title": "The War of the Worlds",
+      "type": "film",
+      "year": 1953,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7211,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7212,
+      "title": "Frankenstein",
+      "type": "play",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7213,
+      "title": "The Picture of Dorian Gray",
+      "type": "film",
+      "year": 1945,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7214,
+      "title": "The Picture of Dorian Gray",
+      "type": "film",
+      "year": 1976,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7215,
+      "title": "Le Pays des fourrures",
+      "type": "novel",
+      "year": 1873,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7216,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7217,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1933,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7218,
+      "title": "The Time Machine",
+      "type": "film",
+      "year": 1960,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7219,
+      "title": "The Count of Monte Cristo",
+      "type": "television-series",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7220,
+      "title": "Juliet & Romeo",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7221,
+      "title": "Montecristo",
+      "type": "television-series",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7222,
+      "title": "Romeo and Juliet",
+      "type": "creative-work",
+      "year": 1790,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7223,
+      "title": "Dracula",
+      "type": "creative-work",
+      "year": 2002,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7224,
+      "title": "Dracula",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7225,
+      "title": "A Midsummer Night's Dream",
+      "type": "creative-work",
+      "year": 1842,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7226,
+      "title": "The Picture of Dorian Gray",
+      "type": "television-series",
+      "year": 1969,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7227,
+      "title": "U Romeo bad Ka Juliet",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7228,
+      "title": "Scrooge",
+      "type": "film",
+      "year": 1935,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7229,
+      "title": "Valperga",
+      "type": "novel",
+      "year": 1823,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7230,
+      "title": "Around the World in 80 Days",
+      "type": "film",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7231,
+      "title": "Dorian Gray",
+      "type": "opera",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7232,
+      "title": "Disney's Active Play: The Lion King II: Simba's Pride",
+      "type": "video-game",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7233,
+      "title": "The Marvelous Land of Oz",
+      "type": "novel",
+      "year": 1904,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7234,
+      "title": "Around the World in 80 Days",
+      "type": "creative-work",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7235,
+      "title": "The Jungle Book",
+      "type": "film",
+      "year": 2016,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7236,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1987,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7237,
+      "title": "The Return of Monte Cristo",
+      "type": "film",
+      "year": 1946,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7238,
+      "title": "Romeo und Julia",
+      "type": "literary-work",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7239,
+      "title": "Frankenstein",
+      "type": "creative-work",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7240,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7241,
+      "title": "Alice in Wonderland",
+      "type": "song",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7242,
+      "title": "Le Comte de Monte-Cristo",
+      "type": "film",
+      "year": 1954,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7244,
+      "title": "Romeo and Juliet",
+      "type": "creative-work",
+      "year": 1870,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7245,
+      "title": "War of the Worlds",
+      "type": "film",
+      "year": 2005,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7247,
+      "title": "Romeo and Julietaa- 1900",
+      "type": "creative-work",
+      "year": 1900,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7249,
+      "title": "Romeo und Julia",
+      "type": "opera",
+      "year": 1940,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7250,
+      "title": "Oz book series",
+      "type": "creative-work",
+      "year": 1900,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7251,
+      "title": "Through the Looking-Glass, and What Alice Found There",
+      "type": "novel",
+      "year": 1871,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7252,
+      "title": "Scrooge",
+      "type": "film",
+      "year": 1970,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7253,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7254,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7255,
+      "title": "The Count of Monte Cristo",
+      "type": "film",
+      "year": 1934,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7256,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1958,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7257,
+      "title": "War of the Worlds",
+      "type": "creative-work",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7258,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1972,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7259,
+      "title": "The War of the Worlds",
+      "type": "creative-work",
+      "year": 1938,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7260,
+      "title": "Alice in Wonderland",
+      "type": "play",
+      "year": 1915,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7261,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1935,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7262,
+      "title": "Alice in Wonderland",
+      "type": "opera",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7263,
+      "title": "Dorian Gray",
+      "type": "musical",
+      "year": 1990,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7264,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1934,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7266,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7267,
+      "title": "History of a Six Weeks' Tour",
+      "type": "written-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7268,
+      "title": "Frankenstein",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7269,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7270,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7272,
+      "title": "Le Comte de Monte-Cristo",
+      "type": "film",
+      "year": 1943,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7273,
+      "title": "Le Comte de Monte-Cristo",
+      "type": "film",
+      "year": 1961,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7274,
+      "title": "The Picture of Dorian Gray",
+      "type": "film",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7275,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1913,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7276,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1926,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7277,
+      "title": "I miserabili",
+      "type": "film",
+      "year": 1948,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7278,
+      "title": "Les Misérables",
+      "type": "television-series",
+      "year": 1972,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7279,
+      "title": "Les Misérables",
+      "type": "television-series",
+      "year": 1992,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7281,
+      "title": "Dorian Gray",
+      "type": "film",
+      "year": 1970,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7282,
+      "title": "The Count of Monte Cristo",
+      "type": "film",
+      "year": 1929,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7283,
+      "title": "The Count of Monte Cristo",
+      "type": "film",
+      "year": 1908,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7285,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1909,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7286,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1917,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7287,
+      "title": "Les Misérables",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7288,
+      "title": "Il conte di Montecristo",
+      "type": "film",
+      "year": 1908,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7289,
+      "title": "The Wonderful Wizard of Oz",
+      "type": "film",
+      "year": 1910,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7290,
+      "title": "Jungle Book",
+      "type": "film",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7292,
+      "title": "The Chimes",
+      "type": "literary-work",
+      "year": 1844,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7293,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1950,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7294,
+      "title": "Monte Cristo",
+      "type": "film",
+      "year": 1922,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7295,
+      "title": "The Jungle Book",
+      "type": "film",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7296,
+      "title": "Romeo e Giulietta",
+      "type": "play",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7297,
+      "title": "Around the World in Eighty Days",
+      "type": "television-series",
+      "year": 1972,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7298,
+      "title": "A Christmas Carol",
+      "type": "film",
+      "year": 1949,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7299,
+      "title": "Monte Cristo",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7300,
+      "title": "Остров сокровищ",
+      "type": "film",
+      "year": 1938,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7301,
+      "title": "Остров сокровищ",
+      "type": "film",
+      "year": 1972,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7302,
+      "title": "Остров сокровищ",
+      "type": "film",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7303,
+      "title": "A Christmas Carol",
+      "type": "musical",
+      "year": 1954,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7304,
+      "title": "A Christmas Carol",
+      "type": "creative-work",
+      "year": 1982,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7305,
+      "title": "A Christmas Carol",
+      "type": "film",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7306,
+      "title": "A Christmas Carol",
+      "type": "film",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7307,
+      "title": "A Christmas Carol",
+      "type": "film",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7308,
+      "title": "epistolary novel",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7309,
+      "title": "Mansfield Park",
+      "type": "novel",
+      "year": 1814,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7310,
+      "title": "Alice in Wonderland",
+      "type": "musical",
+      "year": 1886,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7311,
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1949,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7312,
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1947,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7313,
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1952,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7314,
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1955,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7315,
+      "title": "Ein Sommernachtstraum",
+      "type": "creative-work",
+      "year": 1962,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7316,
+      "title": "Romeo und Julia",
+      "type": "creative-work",
+      "year": 1941,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7317,
+      "title": "Romeo und Julia",
+      "type": "creative-work",
+      "year": 1950,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7318,
+      "title": "Romeo und Julia",
+      "type": "creative-work",
+      "year": 1957,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7319,
+      "title": "Around the World in 80 Days",
+      "type": "film",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7320,
+      "title": "Die Reise um die Erde in 80 Tagen",
+      "type": "film",
+      "year": 1919,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7321,
+      "title": "The Time Machine",
+      "type": "film",
+      "year": 2002,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7324,
+      "title": "Les Misérables",
+      "type": "television-series",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7325,
+      "title": "The War of The Worlds",
+      "type": "television-series",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7327,
+      "title": "Dorian Gray",
+      "type": "creative-work",
+      "year": 2011,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7328,
+      "title": "Les Misérables",
+      "type": "creative-work",
+      "year": 2000,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7329,
+      "title": "Ármin Vámbéry",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7330,
+      "title": "Romeo and Juliet",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7331,
+      "title": "Othello",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7332,
+      "title": "A Midsummer Night's Dream",
+      "type": "literary-work",
+      "year": 1807,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7333,
+      "title": "Le Comte de Monte-Cristo",
+      "type": "creative-work",
+      "year": 1998,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7334,
+      "title": "The Count of Monte Cristo",
+      "type": "film",
+      "year": 1975,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7335,
+      "title": "Les Misérables",
+      "type": "television-series",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7336,
+      "title": "Montecristo",
+      "type": "television-series",
+      "year": 2007,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7337,
+      "title": "Montecristo",
+      "type": "television-series",
+      "year": 2006,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7338,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7339,
+      "title": "Frankenstein",
+      "type": "opera",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7340,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1920,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7341,
+      "title": "A Christmas Carol",
+      "type": "television-series",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7342,
+      "title": "War of the Worlds",
+      "type": "television-series",
+      "year": 2019,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7343,
+      "title": "Остров сокровищ",
+      "type": "film",
+      "year": 1989,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7344,
+      "title": "Alice in Wonderland",
+      "type": "creative-work",
+      "year": 1999,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7345,
+      "title": "Around the World in 80 Days",
+      "type": "film",
+      "year": 1956,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7346,
+      "title": "The Return of Sherlock Holmes",
+      "type": "literary-work",
+      "year": 1905,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7347,
+      "title": "Scrooge",
+      "type": "film",
+      "year": 1913,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7348,
+      "title": "Hamlet",
+      "type": "creative-work",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7350,
+      "title": "The Count of Monte Cristo",
+      "type": "television-series",
+      "year": 1956,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7351,
+      "title": "The Picture of Dorian Gray",
+      "type": "film",
+      "year": 1916,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7352,
+      "title": "The Time Machine",
+      "type": "film",
+      "year": 1978,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7353,
+      "title": "The Wizard of Oz",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7354,
+      "title": "The Wizard of Oz",
+      "type": "film",
+      "year": 1950,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7355,
+      "title": "The Wizard of Oz",
+      "type": "musical",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7356,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1918,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7357,
+      "title": "Treasure Island",
+      "type": "television-series",
+      "year": 1977,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7358,
+      "title": "Treasure Island",
+      "type": "creative-work",
+      "year": 2012,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7359,
+      "title": "The Count of Monte Cristo",
+      "type": "film",
+      "year": 2002,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7360,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1995,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7361,
+      "title": "A Christmas Carol",
+      "type": "film",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7362,
+      "title": "Around the World in 80 Days",
+      "type": "television-series",
+      "year": 2021,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7363,
+      "title": "Dorian Gray",
+      "type": "film",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7364,
+      "title": "Alice in Wonderland",
+      "type": "creative-work",
+      "year": 1976,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "generic_type"
+      ]
+    },
+    {
+      "work": 7365,
+      "title": "Treasure Island",
+      "type": "film",
+      "year": 1990,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7366,
+      "title": "Les Misérables",
+      "type": "film",
+      "year": 1952,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7367,
+      "title": "Juliet & Romeo",
+      "type": "song",
+      "year": null,
+      "depth": "index",
+      "warnings": [
+        "no_date",
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7369,
+      "title": "Mileage Log Book for Car Taxes / 176 Pages / Fuel and Expenses Tracking / Vehicle Conditions Checklist",
+      "type": "book",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7377,
+      "title": "An investigation of the effects of unsteady inflow modeling on helicopter simulation",
+      "type": "book",
+      "year": 1994,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7378,
+      "title": "The humble petition of the gentry, ministers and freeholders of the county of York",
+      "type": "book",
+      "year": 1642,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7383,
+      "title": "Important questions of state, law, justice and prudence both civil and religious upon the late revolutions and present state of these nations",
+      "type": "book",
+      "year": 1689,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7406,
+      "title": "Report of a Special Subcommittee on Territorial and Insular Affairs of the Committee on Interior and Insular Affairs, House of Representatives, Eighty-third Congress, second session, pursuant to H. Res. 89. Guam, Mariana Islands",
+      "type": "book",
+      "year": 1955,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7408,
+      "title": "Quality of water on the Prairie Band Potawatomi Reservation, northeastern Kansas, May 2001 through August 2003",
+      "type": "book",
+      "year": 2004,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7423,
+      "title": "A review of British trilobites, including a synoptic revision of Salter's monograph",
+      "type": "book",
+      "year": 1988,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7439,
+      "title": "Thirteenth Symposium (International) on Combustion, at the University of Utah, Salt Lake City, Utah, August 23-29, 1970",
+      "type": "book",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7466,
+      "title": "Everyname index to The Wheeling [W. Va.] blue book, an elite [social] directory and family register, 1901-1902",
+      "type": "book",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7479,
+      "title": "Seasonable Case of Submission to the Church-Government, As Now Re-established by Law, Briefly Stated and Determined",
+      "type": "book",
+      "year": 2021,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7481,
+      "title": "A review of factors affecting the selection of steels for refining and petrochemical applications",
+      "type": "book",
+      "year": 1971,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7495,
+      "title": "Report on equality of treatment for national and foreign workers as regards workmen's compensation for accidents",
+      "type": "book",
+      "year": 1924,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7500,
+      "title": "An analysis of the fish and macrobenthos along the Sand Island deep ocean outfall, Oʻahu, Hawaiʻi, using remote video IV-- 1993",
+      "type": "book",
+      "year": 1993,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7512,
+      "title": "Firecrackers - a Realistic Novel (Read & Co. Classic Editions);with the Introductory Essay 'the Jazz Age Literature of the Lost Generation '",
+      "type": "book",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7513,
+      "title": "2022 IEEE 33rd Annual International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC)",
+      "type": "book",
+      "year": 2022,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7522,
+      "title": "Making a difference in families",
+      "type": "book",
+      "year": 2003,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7531,
+      "title": "Ploetz' Manual of Universal History from the Dawn of Civilization to the Outbreak of the Great War Of 1914",
+      "type": "book",
+      "year": 2018,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7533,
+      "title": "In times of eroding cooperative security",
+      "type": "book",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7541,
+      "title": "Cases brought in the Commerce Court. Letter from the Attorney General transmitting in response to Senate resolution of June 10, 1912, information relative to the cases brought in the United States Commerce Court",
+      "type": "book",
+      "year": 1912,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7572,
+      "title": "Sustainability of Indian agriculture",
+      "type": "book",
+      "year": 2009,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7573,
+      "title": "Paraclesis, or Consolations for a dying hour, from a review of the evidences of the renewed life, in a series of letters from a father to his children",
+      "type": "book",
+      "year": 1802,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7607,
+      "title": "Treaty of peace and friendship, between the United States of America, and the kingdom of Tunis",
+      "type": "book",
+      "year": 1798,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7610,
+      "title": "The implementation of Title XX in Michigan",
+      "type": "book",
+      "year": 1977,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7633,
+      "title": "Tourism in Africa and the management of related resources",
+      "type": "book",
+      "year": 1974,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7640,
+      "title": "Ashton Monogram Composition Book, Gold Stars Pattern Matte Cover, College Ruled Pages",
+      "type": "book",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7647,
+      "title": "Still eastward bound",
+      "type": "book",
+      "year": 1940,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7648,
+      "title": "A study on the extent of involvement of the youth development leaders of MSSD in the family planning program implementation in Region XII",
+      "type": "book",
+      "year": 1985,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7653,
+      "title": "Death, Society and Human Experience : Pearson New International Edition Mylab Access Card",
+      "type": "book",
+      "year": 2013,
+      "depth": "index",
+      "warnings": [
+        "no_creator",
+        "long_title"
+      ]
+    },
+    {
+      "work": 7668,
+      "title": "Wild Rover for Accordion and Bassoon - Pure Duet Sheet Music by Lars Christian Lundholm",
+      "type": "book",
+      "year": 2015,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7687,
+      "title": "Encyclopaedia Londinensis, or, Universal dictionary of arts, sciences, and literature, comprehending, under one general alphabetical arrangement, all the words and substance of every kind of dictionary extant in the English language ... embellished by a ... set of copper-plate engravings ...",
+      "type": "book",
+      "year": 1810,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7688,
+      "title": "Third Part of No Protestant Plot :  : with Observations on the Proceedings upon the Bill of Indictment Against the E. of Shaftsbury",
+      "type": "book",
+      "year": 2020,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7697,
+      "title": "Report on the family living conditions of the households in Delhi (Urban), 1971-72",
+      "type": "book",
+      "year": 1973,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7737,
+      "title": "Health Implications of Exercise in Sports in the School Aged Child and Adolescent (Journal : Pediatrician, Volume 13, No. 1)",
+      "type": "book",
+      "year": 1986,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7745,
+      "title": "Amending the act authorizing the establishment of the Congaree Swamp National Monument to provide that at such time as the principal visitor center is established, such center shall be designated as the \"Harry R.E. Hampton Visitor Center\"",
+      "type": "book",
+      "year": 1984,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7747,
+      "title": "Greek Island Hopping",
+      "type": "book",
+      "year": 1983,
+      "depth": "index",
+      "warnings": [
+        "no_creator"
+      ]
+    },
+    {
+      "work": 7749,
+      "title": "Ninth Annual Report of the Department of Mines and Minerals of the Province of Alberta for the Fiscal Year Ended March 31st 1958; 1957/58",
+      "type": "book",
+      "year": 2021,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7751,
+      "title": "The continuation of the Laws of Jamaica, passed by the Assembly, and confirmed by His Majesty in Council, December 26th, 1695",
+      "type": "book",
+      "year": 1698,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7759,
+      "title": "A study of the romance of the Seven sages with special reference to the Middle English versions",
+      "type": "book",
+      "year": 1898,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7769,
+      "title": "An  evaluation on the provision and the use of legal research materials of the People's Republic of China on the World Wide Web",
+      "type": "book",
+      "year": 1997,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7780,
+      "title": "Gwasanaeth o fawl yn Eglwys Bresbyteraidd Llanfairpwllgwyngyll, nos Sul, 16 Ionawr, 1977",
+      "type": "book",
+      "year": 1977,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7792,
+      "title": "Six months in South Australia, with some account of Port Philip and Portland Bay, in Australia Felix",
+      "type": "book",
+      "year": 1962,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7813,
+      "title": "Lambeth, Bristol, Dutch and other Delft pottery; armour, swords, firearms and German stoneware; a collection of fine old English furniture",
+      "type": "book",
+      "year": 1927,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7822,
+      "title": "Lecture on the action of the cholera poison on the body, and its nature and history outside the body",
+      "type": "book",
+      "year": 1870,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7838,
+      "title": "Code of Federal Regulations,TITLE 48 FEDERAL ACQUIS CH 29-END, Revised As of October 1 2022",
+      "type": "book",
+      "year": 2023,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7846,
+      "title": "Decisions of questions discussed by the senior class in Yale College, in 1813 and 1814",
+      "type": "book",
+      "year": 1833,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    },
+    {
+      "work": 7848,
+      "title": "Apud Edinburgh xxvii die mensis Decembris. Anno. Do. millesimo quingentesimo sexagesimo nono",
+      "type": "book",
+      "year": 1800,
+      "depth": "index",
+      "warnings": [
+        "long_title"
+      ]
+    }
+  ]
+}

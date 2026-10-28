@@ -236,3 +236,25 @@ class TrustworthyCatalogTests(TestCase):
         self.assertEqual(novel.work_type_id, 'literary-work')
         punctuation = self.client.get(reverse('discover'), {'q': 'DArtagnan'})
         self.assertEqual([w.pk for w in punctuation.context['works']], [adaptation.pk])
+
+    def test_wide_result_sets_load_related_rows_without_sqlite_expression_depth_errors(self):
+        # SQLite refuses expression trees deeper than 1000. A catalog-wide prefetch
+        # of credits__agent used to build one OR term per agent and crash search.
+        works = [Work(title=f'Wide result {number:04}', slug=f'wide-{number}',
+                      work_type=self.book, visibility='public')
+                 for number in range(1100)]
+        Work.objects.bulk_create(works, batch_size=200)
+        agents = [Agent(name=f'Wide Creator {number:04}', kind='person') for number in range(1100)]
+        Agent.objects.bulk_create(agents, batch_size=200)
+        stored = list(Work.objects.filter(slug__startswith='wide-').order_by('id'))
+        stored_agents = list(Agent.objects.filter(name__startswith='Wide Creator').order_by('id'))
+        Credit.objects.bulk_create(
+            [Credit(work=work, agent=agent, role='author') for work, agent in zip(stored, stored_agents)],
+            batch_size=200,
+        )
+        response = self.client.get(reverse('discover'), {'q': 'Wide result'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['result_count'], 1100)
+        creator = self.client.get(reverse('discover'), {'q': 'Wide Creator 0500'})
+        self.assertEqual(creator.status_code, 200)
+        self.assertEqual([w.pk for w in creator.context['works']], [stored[500].pk])

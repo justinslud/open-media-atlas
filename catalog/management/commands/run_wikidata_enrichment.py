@@ -7,7 +7,8 @@ from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 
 from catalog.importers.wikidata import IMPORTER_VERSION, WikidataClient, WikidataError, run_import
-from catalog.models import ImportRun, Source
+from catalog.models import ExternalIdentifier, ImportRun, Source
+from catalog.publication import SEED_SCOPES, is_seed
 
 QID = re.compile(r"^Q[1-9]\d*$")
 
@@ -57,6 +58,29 @@ class Command(BaseCommand):
         parser.add_argument("--timeout", type=int, default=30)
         parser.add_argument("--max-runtime", type=int, default=1800)
         parser.add_argument("--dry-run", action="store_true")
+        parser.add_argument(
+            "--seed-scope", choices=SEED_SCOPES, default="any",
+            help="Restrict seeds to works already promoted at this scope; new seeds stay allowed.",
+        )
+
+    def _apply_seed_scope(self, seeds, scope):
+        """Drop seeds already in the catalog that are outside the requested scope.
+
+        Seeds with no local record are kept: they are the point of an enrichment
+        run and become drafts, which triage will still treat as non-seeds.
+        """
+        known = {
+            identifier.value: identifier.work
+            for identifier in ExternalIdentifier.objects.filter(scheme="wikidata", value__in=seeds).select_related("work")
+        }
+        kept, skipped = [], []
+        for qid in seeds:
+            work = known.get(qid)
+            if work is not None and scope != "any" and not is_seed(work, scope):
+                skipped.append(qid)
+                continue
+            kept.append(qid)
+        return kept, skipped
 
     def handle(self, *args, **options):
         if not 1 <= options["seed_limit"] <= 200:
@@ -72,6 +96,9 @@ class Command(BaseCommand):
         seeds = [row["qid"] for row in chosen]
         if len(set(seeds)) != len(seeds) or any(not QID.fullmatch(str(q)) for q in seeds):
             raise CommandError("manifest must contain unique Wikidata QIDs")
+        seeds, skipped_out_of_scope = self._apply_seed_scope(seeds, options["seed_scope"])
+        if not seeds:
+            raise CommandError(f"no seeds within --seed-scope {options['seed_scope']}")
         candidate_rows = load_candidates(options["candidates"], seeds) if options["candidates"] else []
         candidate_qids = [row["qid"] for row in candidate_rows]
         if candidate_qids and len(candidate_qids) > options["related_limit"]:
@@ -100,6 +127,10 @@ class Command(BaseCommand):
             },
         )
         mode = "candidates" if candidate_qids else "discovery"
+        if skipped_out_of_scope:
+            self.stdout.write(
+                f"skipped {len(skipped_out_of_scope)} seed(s) outside --seed-scope {options['seed_scope']}"
+            )
         self.stdout.write(f"run_id={run.pk} mode={mode} seeds={len(seeds)} candidates={len(candidate_qids)} related_cap={options['related_limit']} dry_run={options['dry_run']}")
         started = time.monotonic()
         try:
