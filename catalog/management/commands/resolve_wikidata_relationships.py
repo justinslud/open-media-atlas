@@ -52,6 +52,12 @@ PROPERTY_MAP = {
     "P4969": "derivative-work",
 }
 
+# P4969 is the only property here where the seed is the *source* and the target
+# is derived. For P144/P155/P156/P179/P629/P941/P737 the claim lives on the seed,
+# so the seed is the subject: the edge must be stored seed -> target to keep the
+# catalog convention of "from = derived work".
+PROPERTIES_DERIVED_ON_TARGET = {"P4969"}
+
 QUALIFIER_ROLE_MAP = {
     "remake": "remake-of",
     "reboot": "reboot-of",
@@ -251,10 +257,14 @@ class Command(BaseCommand):
                         )[0]
                     reltype = reltype_cache[code]
                     statement_id = claim.get("id") or f"{target}-{prop}-{seed}"
+                    if prop in PROPERTIES_DERIVED_ON_TARGET:
+                        from_work, to_work = target_work, seed_work
+                    else:
+                        from_work, to_work = seed_work, target_work
                     duplicate = ImportRelationshipProposal.objects.filter(
                         statement_id=statement_id,
-                        from_work=target_work,
-                        to_work=seed_work,
+                        from_work=from_work,
+                        to_work=to_work,
                         relationship_type=reltype,
                         status__in=(ImportRelationshipProposal.Status.PENDING, ImportRelationshipProposal.Status.APPROVED),
                     ).exclude(run=run).exists()
@@ -273,13 +283,14 @@ class Command(BaseCommand):
                         "revision_id": entities.get(target, {}).get("lastrevid"),
                         "source_url": f"https://www.wikidata.org/wiki/{target}",
                         "relationship_code": code,
+                        "edge_subject": "seed",
                     }
                     ImportRelationshipProposal.objects.update_or_create(
                         run=run,
                         statement_id=statement_id,
                         defaults={
-                            "from_work": target_work,
-                            "to_work": seed_work,
+                            "from_work": from_work,
+                            "to_work": to_work,
                             "relationship_type": reltype,
                             "source": source,
                             "evidence": evidence,

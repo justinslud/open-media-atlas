@@ -1,0 +1,16 @@
+{
+  "confirm": true,
+  "proposals_swapped": 208,
+  "proposals_skipped_duplicate": 8,
+  "relationships_swapped": 69,
+  "relationships_skipped_duplicate": 0,
+  "proposal_codes": {
+    "follows": 48,
+    "followed-by": 64,
+    "part-of-series": 35,
+    "based-on": 18,
+    "inspired-by": 28,
+    "influenced-by": 14,
+    "edition-of": 1
+  }
+}

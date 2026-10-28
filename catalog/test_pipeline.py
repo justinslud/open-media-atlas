@@ -301,7 +301,9 @@ class ResolveWikidataRelationshipsTests(TestCase):
 
         proposal = ImportRelationshipProposal.objects.get()
         self.assertEqual(proposal.relationship_type.code, "edition-of")
-        self.assertEqual(proposal.to_work_id, self.seed.pk)
+        # The claim lives on the seed, so the seed is the subject of the edge.
+        self.assertEqual(proposal.from_work_id, self.seed.pk)
+        self.assertEqual(proposal.to_work_id, Work.objects.get(identifiers__value="Q200").pk)
         self.assertEqual(proposal.evidence["property_id"], "P629")
 
     def test_seed_outside_scope_is_skipped(self):

@@ -88,9 +88,31 @@ def _same_title(work, seed):
     )
 
 
+# Codes where the derived work must not predate the work it derives from.
+# Sequence and series codes carry no such expectation.
+DATE_ORDER_CODES = {
+    "based-on", "adapted-from", "remake-of", "reboot-of", "reimagining-of",
+    "retelling-of", "spin-off-of", "continuation-of", "parody-of", "pastiche-of",
+    "homage-to", "fan-work-of", "translation-of", "abridgment-of",
+    "modernization-of", "edition-of", "derivative-work", "inspired-by",
+    "influenced-by", "remix-of", "cover-of", "interpolation-of",
+}
+
+
+def endpoints(proposal):
+    """Return (work, seed) for a proposal regardless of how the edge is stored.
+
+    Resolver evidence marks the seed as the claim subject; supplier discovery
+    evidence leaves the seed on the target side.
+    """
+    evidence = proposal.evidence if isinstance(proposal.evidence, dict) else {}
+    if evidence.get("edge_subject") == "seed":
+        return proposal.to_work, proposal.from_work
+    return proposal.from_work, proposal.to_work
+
+
 def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks, seed_scope="editorial"):
-    work = proposal.from_work
-    seed = proposal.to_work
+    work, seed = endpoints(proposal)
     evidence = proposal.evidence if isinstance(proposal.evidence, dict) else {}
     red, amber = [], []
 
@@ -122,7 +144,9 @@ def _reason_codes(proposal, qid, qid_count, edge_status, pending_edge_count, tod
         red.append("already_accepted")
     elif edge_status:
         red.append("edge_exists")
-    if work.first_publication_year and seed.first_publication_year and work.first_publication_year < seed.first_publication_year:
+    if (proposal.relationship_type.code in DATE_ORDER_CODES
+            and work.first_publication_year and seed.first_publication_year
+            and work.first_publication_year < seed.first_publication_year):
         red.append("year_inversion")
     if work.first_publication_year and not (MIN_YEAR <= work.first_publication_year <= today_year + MAX_FUTURE_YEARS):
         red.append("year_out_of_range")
@@ -163,10 +187,11 @@ def evaluate_proposal(
     red, amber = _reason_codes(
         proposal, qid, qid_count, edge_status, pending_edge_count, today_year, sitelinks, seed_scope
     )
+    work, seed = endpoints(proposal)
     warnings = []
-    if not proposal.from_work.image_url:
+    if not work.image_url:
         warnings.append("no_image")
-    if _same_title(proposal.from_work, proposal.to_work) and "title_collision" not in amber:
+    if _same_title(work, seed) and "title_collision" not in amber:
         warnings.append("eponymous_title")
     if red:
         decision = "red"
@@ -178,8 +203,7 @@ def evaluate_proposal(
 
 
 def _row(proposal, decision, reasons, warnings, qid, sitelinks):
-    work = proposal.from_work
-    seed = proposal.to_work
+    work, seed = endpoints(proposal)
     return {
         "proposal_id": proposal.pk,
         "run_id": proposal.run_id,
@@ -232,9 +256,10 @@ class Command(BaseCommand):
         )
         if options["limit"]:
             proposals = proposals[: options["limit"]]
+        endpoint_ids = {work_id for proposal in proposals for work_id in (proposal.from_work_id, proposal.to_work_id)}
         qids = defaultdict(list)
         for work_id, value in ExternalIdentifier.objects.filter(
-            scheme="wikidata", work_id__in=[p.from_work_id for p in proposals]
+            scheme="wikidata", work_id__in=endpoint_ids
         ).values_list("work_id", "value"):
             qids[work_id].append(value)
         edge_status = {}
@@ -247,10 +272,11 @@ class Command(BaseCommand):
 
         rows = []
         for proposal in proposals:
-            work_qids = qids.get(proposal.from_work_id, [])
+            work, _seed = endpoints(proposal)
+            work_qids = qids.get(work.pk, [])
             qid = work_qids[0] if work_qids else ""
             key = (proposal.from_work_id, proposal.to_work_id, proposal.relationship_type_id)
-            sitelinks = sitelink_count(proposal.from_work)
+            sitelinks = sitelink_count(work)
             decision, reasons, warnings = evaluate_proposal(
                 proposal,
                 qid,
@@ -314,7 +340,7 @@ class Command(BaseCommand):
                 if proposal.status != ImportRelationshipProposal.Status.PENDING:
                     continue
                 proposal.approve(reviewer)
-                approved.append(proposal.from_work_id)
+                approved.append(endpoints(proposal)[0].pk)
             if not options["approve_only"]:
                 for work in Work.objects.select_for_update().filter(
                     pk__in=set(approved), visibility=Work.Visibility.DRAFT

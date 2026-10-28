@@ -13,6 +13,17 @@ from .ranking import metadata_richness, select_timeline_highlights, work_languag
 
 PAGE_SIZE = 12
 
+# Version-level links describe a specific edition or translation, not a new
+# work. They stay in the research list, but they are not timeline material.
+VERSION_LEVEL_CODES = {"edition-of", "translation-of", "abridgment-of", "modernization-of"}
+
+GROUPS = (
+    "Source works",
+    "Adaptations",
+    "Other direct connections",
+    "Edition and translation links",
+)
+
 
 def _year_param(value):
     value = (value or "").strip()
@@ -95,7 +106,9 @@ def connections_context(request, work, public):
         choices[key] = relationship_label(code, label, inverse, direction == 'out')
         by_work.setdefault(other, set()).add(key)
         priority = (0 if direction == 'out' else 1) if code == 'adapted-from' else 2
-        priorities[other] = min(priorities.get(other, 2), priority)
+        if code in VERSION_LEVEL_CODES:
+            priority = 3
+        priorities[other] = min(priorities.get(other, 3), priority)
     related = list(public.filter(pk__in=by_work).select_related('work_type').prefetch_related(
         'source_records', 'credits__agent', 'versions'
     ))
@@ -110,6 +123,8 @@ def connections_context(request, work, public):
         if not item.first_publication_year:
             continue
         keys = by_work[item.pk]
+        if all(key.split(':', 1)[1] in VERSION_LEVEL_CODES for key in keys):
+            continue
         primary = next(
             (key for key in ('in:adapted-from', 'out:adapted-from') if key in keys),
             sorted(keys)[0],
@@ -182,7 +197,7 @@ def connections_context(request, work, public):
     rows = {w.pk: {
         'work': w,
         'relationships': [],
-        'group': ('Source works', 'Adaptations', 'Other direct connections')[priorities[w.pk]],
+        'group': GROUPS[priorities[w.pk]],
         'prominence': prominence[w.pk],
         'language': work_languages[w.pk],
     } for w in page.object_list}
