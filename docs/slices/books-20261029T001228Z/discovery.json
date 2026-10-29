@@ -1,0 +1,7 @@
+{
+  "manifest": "docs/slices/books-20261029T001228Z/candidates.json",
+  "candidates": 2421,
+  "skipped_already_present": 4917,
+  "elapsed_seconds": 34.55,
+  "network_requests": 1
+}

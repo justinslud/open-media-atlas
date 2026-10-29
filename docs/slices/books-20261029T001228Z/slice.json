@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-10-29T00:21:57.010902+00:00",
+  "workdir": "docs/slices/books-20261029T001228Z",
+  "depth": "index",
+  "approve": true,
+  "elapsed_seconds": 568.2,
+  "results": {
+    "discover": {
+      "manifest": "docs/slices/books-20261029T001228Z/candidates.json",
+      "candidates": 2421,
+      "skipped_already_present": 4917,
+      "elapsed_seconds": 34.55,
+      "network_requests": 1
+    },
+    "import": {
+      "run_id": 40,
+      "candidates": 2421,
+      "created": 2152,
+      "matched": 98,
+      "published": 2077,
+      "kept_draft": 0,
+      "failures": 171,
+      "network_requests": 120,
+      "elapsed_seconds": 431.89
+    },
+    "seeds": {
+      "depth": "index",
+      "work_type": null,
+      "min_sitelinks": 20,
+      "require_date": true,
+      "require_creator": true,
+      "limit": 500,
+      "count": 500
+    },
+    "triage": {
+      "candidates": 1595,
+      "summary": {
+        "red": 923,
+        "amber": 486,
+        "green": 186
+      },
+      "applied": {
+        "approved_proposals": 186,
+        "published_works": 34,
+        "published_work_ids": [
+          7019,
+          10144,
+          10191,
+          10275,
+          10340,
+          10380,
+          10393,
+          10401,
+          10408,
+          10447,
+          10475,
+          10541,
+          10581,
+          10718,
+          10721,
+          10737,
+          10787,
+          10910,
+          13231,
+          13255,
+          13277,
+          13315,
+          13411,
+          13425,
+          13434,
+          13459,
+          13464,
+          13487,
+          13520,
+          13583,
+          13621,
+          13773,
+          13778,
+          13784
+        ],
+        "approve_only": false
+      }
+    }
+  }
+}

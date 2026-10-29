@@ -1,0 +1,3014 @@
+{
+  "version": "2026-10-28-catalog-seeds",
+  "generated_at": "2026-10-29T00:20:18.129874+00:00",
+  "selection": {
+    "depth": "index",
+    "work_type": null,
+    "min_sitelinks": 20,
+    "require_date": true,
+    "require_creator": true,
+    "limit": 500
+  },
+  "seeds": [
+    {
+      "qid": "Q25338",
+      "label": "Le Petit Prince",
+      "work": 7875,
+      "sitelinks": 151
+    },
+    {
+      "qid": "Q15228",
+      "label": "The Lord of the Rings",
+      "work": 7876,
+      "sitelinks": 149
+    },
+    {
+      "qid": "Q40591",
+      "label": "Das Kommunistische Manifest",
+      "work": 7877,
+      "sitelinks": 143
+    },
+    {
+      "qid": "Q208460",
+      "label": "Nineteen Eighty-Four",
+      "work": 7878,
+      "sitelinks": 138
+    },
+    {
+      "qid": "Q40185",
+      "label": "Divine Comedy",
+      "work": 7881,
+      "sitelinks": 131
+    },
+    {
+      "qid": "Q459842",
+      "label": "The Book of Mormon",
+      "work": 7883,
+      "sitelinks": 126
+    },
+    {
+      "qid": "Q1396889",
+      "label": "Animal Farm",
+      "work": 7884,
+      "sitelinks": 122
+    },
+    {
+      "qid": "Q74287",
+      "label": "The Hobbit",
+      "work": 7886,
+      "sitelinks": 117
+    },
+    {
+      "qid": "Q8265",
+      "label": "紅樓夢",
+      "work": 7885,
+      "sitelinks": 117
+    },
+    {
+      "qid": "Q455",
+      "label": "Encyclopædia Britannica",
+      "work": 7889,
+      "sitelinks": 115
+    },
+    {
+      "qid": "Q147787",
+      "label": "Anna Karenina",
+      "work": 7890,
+      "sitelinks": 109
+    },
+    {
+      "qid": "Q165318",
+      "label": "Преступленіе и наказаніе",
+      "work": 7891,
+      "sitelinks": 109
+    },
+    {
+      "qid": "Q11859",
+      "label": "Den lille Havfrue",
+      "work": 7892,
+      "sitelinks": 107
+    },
+    {
+      "qid": "Q43361",
+      "label": "Harry Potter and the Philosopher's Stone",
+      "work": 7894,
+      "sitelinks": 104
+    },
+    {
+      "qid": "Q48244",
+      "label": "My battle",
+      "work": 7895,
+      "sitelinks": 104
+    },
+    {
+      "qid": "Q123397",
+      "label": "Πολιτεία",
+      "work": 7896,
+      "sitelinks": 103
+    },
+    {
+      "qid": "Q131719",
+      "label": "Il principe",
+      "work": 7897,
+      "sitelinks": 101
+    },
+    {
+      "qid": "Q178869",
+      "label": "Cien años de soledad",
+      "work": 7898,
+      "sitelinks": 101
+    },
+    {
+      "qid": "Q216929",
+      "label": "Oliver & Company",
+      "work": 6804,
+      "sitelinks": 100
+    },
+    {
+      "qid": "Q130924",
+      "label": "Kalevala",
+      "work": 7900,
+      "sitelinks": 99
+    },
+    {
+      "qid": "Q483034",
+      "label": "The Life and Strange Surprizing Adventures of Robinson Crusoe, of York, Mariner: Who lived Eight and Twenty Years, all alone in an un-inhabited Island on the Coast of America, near the Mouth of the Great River of Oroonoque; Having been cast on Shore by Shipwreck, wherein all the Men perished but him",
+      "work": 7901,
+      "sitelinks": 99
+    },
+    {
+      "qid": "Q11831",
+      "label": "Schneewittchen",
+      "work": 7903,
+      "sitelinks": 97
+    },
+    {
+      "qid": "Q161531",
+      "label": "War and Peace",
+      "work": 7902,
+      "sitelinks": 97
+    },
+    {
+      "qid": "Q47209",
+      "label": "Harry Potter and the Chamber of Secrets",
+      "work": 7904,
+      "sitelinks": 97
+    },
+    {
+      "qid": "Q179021",
+      "label": "The Alchemist",
+      "work": 7907,
+      "sitelinks": 92
+    },
+    {
+      "qid": "Q47598",
+      "label": "Harry Potter and the Prisoner of Azkaban",
+      "work": 7909,
+      "sitelinks": 92
+    },
+    {
+      "qid": "Q80817",
+      "label": "Harry Potter and the Order of the Phoenix",
+      "work": 7908,
+      "sitelinks": 92
+    },
+    {
+      "qid": "Q183157",
+      "label": "Братья Карамазовы",
+      "work": 7910,
+      "sitelinks": 91
+    },
+    {
+      "qid": "Q26505",
+      "label": "The Old Man and the Sea",
+      "work": 7911,
+      "sitelinks": 91
+    },
+    {
+      "qid": "Q46751",
+      "label": "Harry Potter and the Goblet of Fire",
+      "work": 7912,
+      "sitelinks": 90
+    },
+    {
+      "qid": "Q46887",
+      "label": "Harry Potter and the Half-Blood Prince",
+      "work": 7913,
+      "sitelinks": 90
+    },
+    {
+      "qid": "Q46758",
+      "label": "Harry Potter and the Deathly Hallows",
+      "work": 7914,
+      "sitelinks": 89
+    },
+    {
+      "qid": "Q58784",
+      "label": "Das Kapital",
+      "work": 7915,
+      "sitelinks": 89
+    },
+    {
+      "qid": "Q163297",
+      "label": "L'Étranger",
+      "work": 7916,
+      "sitelinks": 86
+    },
+    {
+      "qid": "Q183883",
+      "label": "The Catcher in the Rye",
+      "work": 7917,
+      "sitelinks": 86
+    },
+    {
+      "qid": "Q181488",
+      "label": "Travels into Several Remote Nations of the World, in Four Parts. By Lemuel Gulliver, First a Surgeon, and then a Captain of several Ships",
+      "work": 7918,
+      "sitelinks": 85
+    },
+    {
+      "qid": "Q20124",
+      "label": "On the origin of species by means of natural selection, or the preservation of favored races in the struggle for life",
+      "work": 7921,
+      "sitelinks": 85
+    },
+    {
+      "qid": "Q29478",
+      "label": "Faust",
+      "work": 7919,
+      "sitelinks": 85
+    },
+    {
+      "qid": "Q81689",
+      "label": "The Da Vinci Code",
+      "work": 7920,
+      "sitelinks": 85
+    },
+    {
+      "qid": "Q184222",
+      "label": "The Metamorphosis",
+      "work": 7922,
+      "sitelinks": 84
+    },
+    {
+      "qid": "Q214371",
+      "label": "The Great Gatsby",
+      "work": 7923,
+      "sitelinks": 84
+    },
+    {
+      "qid": "Q6511",
+      "label": "Ulysses",
+      "work": 7924,
+      "sitelinks": 84
+    },
+    {
+      "qid": "Q8065468",
+      "label": "Le avventure di Pinocchio",
+      "work": 7925,
+      "sitelinks": 84
+    },
+    {
+      "qid": "Q45735",
+      "label": "Charlotte’s Web",
+      "work": 7926,
+      "sitelinks": 83
+    },
+    {
+      "qid": "Q199774",
+      "label": "Also sprach Zarathustra",
+      "work": 7927,
+      "sitelinks": 80
+    },
+    {
+      "qid": "Q205921",
+      "label": "Philosophiæ Naturalis Principia Mathematica.",
+      "work": 7929,
+      "sitelinks": 80
+    },
+    {
+      "qid": "Q6911",
+      "label": "Diary of Anne Frank",
+      "work": 7928,
+      "sitelinks": 80
+    },
+    {
+      "qid": "Q188538",
+      "label": "Мастер и Маргарита",
+      "work": 7930,
+      "sitelinks": 79
+    },
+    {
+      "qid": "Q19871",
+      "label": "En attendant Godot",
+      "work": 7931,
+      "sitelinks": 79
+    },
+    {
+      "qid": "Q70784",
+      "label": "西遊記",
+      "work": 7932,
+      "sitelinks": 79
+    },
+    {
+      "qid": "Q127149",
+      "label": "Lolita",
+      "work": 7935,
+      "sitelinks": 77
+    },
+    {
+      "qid": "Q189875",
+      "label": "Alice in Wonderland",
+      "work": 6572,
+      "sitelinks": 77
+    },
+    {
+      "qid": "Q190192",
+      "label": "Dune",
+      "work": 7936,
+      "sitelinks": 77
+    },
+    {
+      "qid": "Q191380",
+      "label": "Notre-Dame de Paris",
+      "work": 7937,
+      "sitelinks": 77
+    },
+    {
+      "qid": "Q326914",
+      "label": "The Adventures of Tom Sawyer",
+      "work": 7938,
+      "sitelinks": 77
+    },
+    {
+      "qid": "Q11829",
+      "label": "Hänsel und Gretel",
+      "work": 7944,
+      "sitelinks": 74
+    },
+    {
+      "qid": "Q191949",
+      "label": "Brave New World",
+      "work": 7942,
+      "sitelinks": 74
+    },
+    {
+      "qid": "Q193417",
+      "label": "Madame Bovary",
+      "work": 7943,
+      "sitelinks": 74
+    },
+    {
+      "qid": "Q28754",
+      "label": "Paradise Lost",
+      "work": 7945,
+      "sitelinks": 74
+    },
+    {
+      "qid": "Q215410",
+      "label": "The Adventures Of Huckleberry Finn",
+      "work": 7946,
+      "sitelinks": 73
+    },
+    {
+      "qid": "Q22726",
+      "label": "The Raven",
+      "work": 7947,
+      "sitelinks": 73
+    },
+    {
+      "qid": "Q36097",
+      "label": "Der Prozeß",
+      "work": 7948,
+      "sitelinks": 73
+    },
+    {
+      "qid": "Q174385",
+      "label": "Alice in Wonderland",
+      "work": 6568,
+      "sitelinks": 72
+    },
+    {
+      "qid": "Q191663",
+      "label": "The Canterbury Tales",
+      "work": 7951,
+      "sitelinks": 71
+    },
+    {
+      "qid": "Q210784",
+      "label": "The Idiot",
+      "work": 7952,
+      "sitelinks": 70
+    },
+    {
+      "qid": "Q50948",
+      "label": "Евгеній Онѣгинъ",
+      "work": 7953,
+      "sitelinks": 70
+    },
+    {
+      "qid": "Q206400",
+      "label": "The Merchant of Venice",
+      "work": 7955,
+      "sitelinks": 68
+    },
+    {
+      "qid": "Q212340",
+      "label": "To Kill a Mockingbird",
+      "work": 7956,
+      "sitelinks": 68
+    },
+    {
+      "qid": "Q193695",
+      "label": "The Wizard of Oz",
+      "work": 6238,
+      "sitelinks": 67
+    },
+    {
+      "qid": "Q202009",
+      "label": "Fahrenheit 451",
+      "work": 7957,
+      "sitelinks": 67
+    },
+    {
+      "qid": "Q207332",
+      "label": "All quiet on the western front",
+      "work": 7958,
+      "sitelinks": 67
+    },
+    {
+      "qid": "Q200920",
+      "label": "For Whom the Bell Tolls",
+      "work": 7959,
+      "sitelinks": 66
+    },
+    {
+      "qid": "Q233562",
+      "label": "An Inquiry into the Nature and Causes of the Wealth of Nations",
+      "work": 7960,
+      "sitelinks": 66
+    },
+    {
+      "qid": "Q79762",
+      "label": "The Silmarillion",
+      "work": 7962,
+      "sitelinks": 66
+    },
+    {
+      "qid": "Q813031",
+      "label": "古事記",
+      "work": 7963,
+      "sitelinks": 66
+    },
+    {
+      "qid": "Q863963",
+      "label": "The Adventures of Ichabod and Mr. Toad",
+      "work": 6947,
+      "sitelinks": 66
+    },
+    {
+      "qid": "Q172850",
+      "label": "Il nome della rosa",
+      "work": 7964,
+      "sitelinks": 65
+    },
+    {
+      "qid": "Q215894",
+      "label": "Candide, ou l’Optimisme",
+      "work": 7965,
+      "sitelinks": 65
+    },
+    {
+      "qid": "Q215983",
+      "label": "The Grapes of Wrath",
+      "work": 7966,
+      "sitelinks": 65
+    },
+    {
+      "qid": "Q151883",
+      "label": "The Sorrows of Young Werther",
+      "work": 7967,
+      "sitelinks": 64
+    },
+    {
+      "qid": "Q2870",
+      "label": "Gone with the Wind",
+      "work": 7969,
+      "sitelinks": 64
+    },
+    {
+      "qid": "Q16857406",
+      "label": "The Jungle Book",
+      "work": 7235,
+      "sitelinks": 63
+    },
+    {
+      "qid": "Q182502",
+      "label": "Angels & Demons",
+      "work": 7971,
+      "sitelinks": 63
+    },
+    {
+      "qid": "Q187715",
+      "label": "Asasin",
+      "work": 7973,
+      "sitelinks": 63
+    },
+    {
+      "qid": "Q191803",
+      "label": "The Lion King II: Simba's Pride",
+      "work": 6236,
+      "sitelinks": 63
+    },
+    {
+      "qid": "Q208002",
+      "label": "The Fellowship of the Ring",
+      "work": 7972,
+      "sitelinks": 63
+    },
+    {
+      "qid": "Q392530",
+      "label": "Treasure Planet",
+      "work": 6322,
+      "sitelinks": 63
+    },
+    {
+      "qid": "Q1751870",
+      "label": "A Game of Thrones",
+      "work": 7976,
+      "sitelinks": 62
+    },
+    {
+      "qid": "Q271764",
+      "label": "Lord of the Flies",
+      "work": 7974,
+      "sitelinks": 62
+    },
+    {
+      "qid": "Q320372",
+      "label": "The Plague",
+      "work": 7975,
+      "sitelinks": 62
+    },
+    {
+      "qid": "Q11880",
+      "label": "The Snow Queen",
+      "work": 7983,
+      "sitelinks": 61
+    },
+    {
+      "qid": "Q189378",
+      "label": "Twilight",
+      "work": 7978,
+      "sitelinks": 61
+    },
+    {
+      "qid": "Q220331",
+      "label": "Through the Looking-Glass, and What Alice Found There",
+      "work": 7251,
+      "sitelinks": 61
+    },
+    {
+      "qid": "Q240617",
+      "label": "Le Papa Goriot",
+      "work": 7981,
+      "sitelinks": 61
+    },
+    {
+      "qid": "Q637839",
+      "label": "The kite runner",
+      "work": 7979,
+      "sitelinks": 61
+    },
+    {
+      "qid": "Q647379",
+      "label": "Мёртвые души",
+      "work": 7980,
+      "sitelinks": 61
+    },
+    {
+      "qid": "Q11866",
+      "label": "Kejserens nye Klæder",
+      "work": 7987,
+      "sitelinks": 60
+    },
+    {
+      "qid": "Q151895",
+      "label": "Nosferatu – Eine Symphonie des Grauens",
+      "work": 6564,
+      "sitelinks": 60
+    },
+    {
+      "qid": "Q457289",
+      "label": "Siddharta",
+      "work": 7985,
+      "sitelinks": 60
+    },
+    {
+      "qid": "Q16983114",
+      "label": "Of Mice and Men",
+      "work": 7988,
+      "sitelinks": 59
+    },
+    {
+      "qid": "Q193034",
+      "label": "Leviathan",
+      "work": 7991,
+      "sitelinks": 59
+    },
+    {
+      "qid": "Q205882",
+      "label": "Prose Edda",
+      "work": 7989,
+      "sitelinks": 59
+    },
+    {
+      "qid": "Q220002",
+      "label": "Critique of Pure Reason",
+      "work": 7992,
+      "sitelinks": 59
+    },
+    {
+      "qid": "Q471726",
+      "label": "A Brief History of Time",
+      "work": 7990,
+      "sitelinks": 59
+    },
+    {
+      "qid": "Q112015",
+      "label": "Die Bremer Stadtmusikanten",
+      "work": 7998,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q129778",
+      "label": "Heart of Darkness",
+      "work": 7993,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q138174",
+      "label": "La vida es sueño",
+      "work": 7994,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q202028",
+      "label": "War of the Worlds",
+      "work": 7245,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q217073",
+      "label": "Steppenwolf",
+      "work": 7996,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q270385",
+      "label": "Pride & Prejudice",
+      "work": 6282,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q332388",
+      "label": "The Return of the King",
+      "work": 7997,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q369944",
+      "label": "The Gulag Archipelago",
+      "work": 7999,
+      "sitelinks": 58
+    },
+    {
+      "qid": "Q235795",
+      "label": "A Farewell to Arms",
+      "work": 8002,
+      "sitelinks": 57
+    },
+    {
+      "qid": "Q442",
+      "label": "Naturalis historia",
+      "work": 8004,
+      "sitelinks": 57
+    },
+    {
+      "qid": "Q837283",
+      "label": "Fight Club",
+      "work": 8003,
+      "sitelinks": 57
+    },
+    {
+      "qid": "Q107325",
+      "label": "Bram Stoker's Dracula",
+      "work": 6037,
+      "sitelinks": 56
+    },
+    {
+      "qid": "Q235193",
+      "label": "The Clash of Civilizations",
+      "work": 8006,
+      "sitelinks": 56
+    },
+    {
+      "qid": "Q917055",
+      "label": "Nesnesitelná lehkost bytí",
+      "work": 8005,
+      "sitelinks": 56
+    },
+    {
+      "qid": "Q11678",
+      "label": "The Hunger Games",
+      "work": 8014,
+      "sitelinks": 55
+    },
+    {
+      "qid": "Q194424",
+      "label": "Fantastic Beasts and Where to Find Them",
+      "work": 8007,
+      "sitelinks": 55
+    },
+    {
+      "qid": "Q206870",
+      "label": "Доктор Живаго",
+      "work": 8012,
+      "sitelinks": 55
+    },
+    {
+      "qid": "Q208622",
+      "label": "The Good Soldier Švejk",
+      "work": 8013,
+      "sitelinks": 55
+    },
+    {
+      "qid": "Q466605",
+      "label": "Charlie and the Chocolate Factory",
+      "work": 8008,
+      "sitelinks": 55
+    },
+    {
+      "qid": "Q470098",
+      "label": "The Second Sex",
+      "work": 8009,
+      "sitelinks": 55
+    },
+    {
+      "qid": "Q128444",
+      "label": "Watchmen",
+      "work": 8015,
+      "sitelinks": 54
+    },
+    {
+      "qid": "Q165068",
+      "label": "The Tales of Beedle the Bard",
+      "work": 8016,
+      "sitelinks": 54
+    },
+    {
+      "qid": "Q499396",
+      "label": "El amor en los tiempos del cólera",
+      "work": 8017,
+      "sitelinks": 54
+    },
+    {
+      "qid": "Q214132",
+      "label": "Ten Little Niggers",
+      "work": 8019,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q261281",
+      "label": "Solaris",
+      "work": 8020,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q278208",
+      "label": "Catch-22",
+      "work": 8021,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q329989",
+      "label": "Бѣсы",
+      "work": 8024,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q404158",
+      "label": "Libellus vere aureus, nec minus salutaris quam festivus, de optimo rei publicae statu deque nova insula Utopia",
+      "work": 8026,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q471005",
+      "label": "L'Île mystérieuse",
+      "work": 7091,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q569869",
+      "label": "Moriae Encomium, sive Stultitiae Laus",
+      "work": 8022,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q61324",
+      "label": "Sofies verden.....",
+      "work": 8025,
+      "sitelinks": 53
+    },
+    {
+      "qid": "Q185449",
+      "label": "Eragon",
+      "work": 8027,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q192649",
+      "label": "Le Rouge et le Noir",
+      "work": 8028,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q216578",
+      "label": "Les Fleurs du mal",
+      "work": 8029,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q243556",
+      "label": "The Godfather",
+      "work": 8030,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q245265",
+      "label": "The God Delusion",
+      "work": 8034,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q271697",
+      "label": "Heidi",
+      "work": 8033,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q28234",
+      "label": "Les Misérables",
+      "work": 7266,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q493574",
+      "label": "The Last of the Mohicans",
+      "work": 8031,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q565231",
+      "label": "乱",
+      "work": 6670,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q692557",
+      "label": "A Clockwork Orange",
+      "work": 8032,
+      "sitelinks": 52
+    },
+    {
+      "qid": "Q191540",
+      "label": "New Moon",
+      "work": 8035,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q221947",
+      "label": "The Jungle Book 2",
+      "work": 6495,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q36393",
+      "label": "Quotations from Chairman Mao Tse-tung",
+      "work": 8040,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q501351",
+      "label": "The Sun Also Rises",
+      "work": 8038,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q662550",
+      "label": "Shakespeare's sonnets",
+      "work": 8036,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q696057",
+      "label": "Around the World in 80 Days",
+      "work": 7345,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q840974",
+      "label": "Ivanhoe",
+      "work": 8041,
+      "sitelinks": 51
+    },
+    {
+      "qid": "Q161138",
+      "label": "Bluebeard",
+      "work": 8043,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q192258",
+      "label": "Quidditch Through the Ages",
+      "work": 8044,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q204208",
+      "label": "ვეფხისტყაოსანი",
+      "work": 8045,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q546829",
+      "label": "Frankenstein",
+      "work": 6622,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q658375",
+      "label": "The Fault in Our Stars",
+      "work": 8046,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q695116",
+      "label": "Записки изъ подполья",
+      "work": 8048,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q845889",
+      "label": "Murder on the Orient Express",
+      "work": 8049,
+      "sitelinks": 50
+    },
+    {
+      "qid": "Q1317839",
+      "label": "Martin Eden",
+      "work": 8061,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q211006",
+      "label": "The Lost Symbol",
+      "work": 8053,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q212473",
+      "label": "Eclipse",
+      "work": 8054,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q218950",
+      "label": "Prince Caspianː The Return to Narnia",
+      "work": 8055,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q223688",
+      "label": "Игрок",
+      "work": 8056,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q223880",
+      "label": "Emma",
+      "work": 8057,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q53945",
+      "label": "Breaking dawn",
+      "work": 8059,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q56881140",
+      "label": "Little Women",
+      "work": 7125,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q602288",
+      "label": "Cancer",
+      "work": 8060,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q762206",
+      "label": "The Tell-Tale Heart",
+      "work": 8058,
+      "sitelinks": 49
+    },
+    {
+      "qid": "Q217100",
+      "label": "Kalevipoeg",
+      "work": 8075,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q326909",
+      "label": "Buddenbrooks",
+      "work": 8068,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q374204",
+      "label": "Life of Pi",
+      "work": 8071,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q471066",
+      "label": "Ревизоръ",
+      "work": 8064,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q557867",
+      "label": "Fifty Shades of Grey",
+      "work": 8067,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q73112",
+      "label": "Ἀνάβασις",
+      "work": 8070,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q774233",
+      "label": "Voyage au bout de la nuit",
+      "work": 8069,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q849701",
+      "label": "East of Eden",
+      "work": 8073,
+      "sitelinks": 48
+    },
+    {
+      "qid": "Q107790",
+      "label": "الكتاب الأخضر‎‎‎",
+      "work": 8086,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q1125903",
+      "label": "Le Mythe de Sisyphe",
+      "work": 8089,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q117293",
+      "label": "Бедные люди",
+      "work": 8076,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q11870",
+      "label": "Tommelise",
+      "work": 8083,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q163027",
+      "label": "Kinder- und Hausmärchen",
+      "work": 8077,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q224078",
+      "label": "The Murder of Roger Ackroyd",
+      "work": 8078,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q265954",
+      "label": "Slaughterhouse-Five",
+      "work": 8080,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q279378",
+      "label": "Dracula",
+      "work": 6588,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q29424",
+      "label": "Fathers and Sons",
+      "work": 8084,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q322188",
+      "label": "Rumpelstiltskin",
+      "work": 8085,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q600461",
+      "label": "Белые ночи",
+      "work": 8088,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q651923",
+      "label": "Young Frankenstein",
+      "work": 6395,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q682733",
+      "label": "The castle",
+      "work": 8079,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q743180",
+      "label": "On the Road",
+      "work": 8081,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q756866",
+      "label": "Jurassic Park",
+      "work": 8082,
+      "sitelinks": 47
+    },
+    {
+      "qid": "Q212898",
+      "label": "The magic Mountain",
+      "work": 8094,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q268211",
+      "label": "The Pilgrim’s Progress from this world, to That which is to come",
+      "work": 8095,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q272506",
+      "label": "Le Fantôme de l'Opéra",
+      "work": 8096,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q333179",
+      "label": "Persuasion",
+      "work": 8099,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q374098",
+      "label": "Atlas Shrugged",
+      "work": 8102,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q465360",
+      "label": "A Portrait of the Artist as a Young Man",
+      "work": 8092,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q477831",
+      "label": "The Magican's Nephew",
+      "work": 8093,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q4845793",
+      "label": "Inferno",
+      "work": 8106,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q750670",
+      "label": "Lady Chatterley's Lover",
+      "work": 8097,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q751348",
+      "label": "ノルウェイの森",
+      "work": 8098,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q75561",
+      "label": "Catechismus Catholicae Ecclesiae",
+      "work": 8107,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q828296",
+      "label": "Der Tod in Venedig",
+      "work": 8103,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q860577",
+      "label": "Demian",
+      "work": 8100,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q863534",
+      "label": "Walden; or, Life in the Woods",
+      "work": 8101,
+      "sitelinks": 46
+    },
+    {
+      "qid": "Q141359",
+      "label": "Oliver!",
+      "work": 6770,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q1541914",
+      "label": "The Handmaid's Tale",
+      "work": 8120,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q172324",
+      "label": "Otello",
+      "work": 6499,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q202531",
+      "label": "Deception Point",
+      "work": 8110,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q238693",
+      "label": "Historia regum Britanniae",
+      "work": 8111,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q27178",
+      "label": "Hamlet",
+      "work": 6587,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q300370",
+      "label": "A Clash of Kings",
+      "work": 8113,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q334896",
+      "label": "The Black Book of Communism",
+      "work": 8114,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q335315",
+      "label": "Quo vadis",
+      "work": 8115,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q459592",
+      "label": "Dubliners",
+      "work": 8109,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q463313",
+      "label": "Romeo + Juliet",
+      "work": 6336,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q53592",
+      "label": "De la Terre à la Lune",
+      "work": 8117,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q726254",
+      "label": "Nils Holgerssons underbara resa genom Sverige",
+      "work": 8112,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q860633",
+      "label": "A Thousand Splendid Suns",
+      "work": 8116,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q973053",
+      "label": "The Cat in the Hat",
+      "work": 8118,
+      "sitelinks": 45
+    },
+    {
+      "qid": "Q129493",
+      "label": "Golden Legend",
+      "work": 8122,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q1345004",
+      "label": "Собачье сердце",
+      "work": 8141,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q135515",
+      "label": "The Sound and the Fury",
+      "work": 8123,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q144569",
+      "label": "Капитанская дочка",
+      "work": 8124,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q146866",
+      "label": "Воскресение",
+      "work": 8125,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q156519",
+      "label": "Around the World in 80 Days",
+      "work": 7230,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q177359",
+      "label": "Ἀλεξιάς",
+      "work": 8127,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q190126",
+      "label": "Du contrat social, ou Principes du droit politique",
+      "work": 8143,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q215806",
+      "label": "Heimskringla",
+      "work": 8133,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q257818",
+      "label": "Throne of Blood",
+      "work": 6274,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q373536",
+      "label": "Jonathan Livingston Seagull",
+      "work": 8138,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q393018",
+      "label": "I, Robot.",
+      "work": 8139,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q4509219",
+      "label": "Inferno",
+      "work": 8142,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q463108",
+      "label": "The Neverending Story",
+      "work": 8126,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q469690",
+      "label": "Mansfield Park",
+      "work": 7309,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q470937",
+      "label": "The Shining",
+      "work": 8129,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q472228",
+      "label": "The Mysterious Affair at Styles",
+      "work": 8130,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q478016",
+      "label": "To the Lighthouse",
+      "work": 8131,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q48922",
+      "label": "Orlando furioso",
+      "work": 8136,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q499633",
+      "label": "The Time Machine",
+      "work": 7321,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q579744",
+      "label": "海辺のカフカ",
+      "work": 8135,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q595950",
+      "label": "Mortal Engines",
+      "work": 8137,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q658288",
+      "label": "La Nausée",
+      "work": 8132,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q726382",
+      "label": "Die Traumdeutung",
+      "work": 8134,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q72925",
+      "label": "She's the Man",
+      "work": 6926,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q820862",
+      "label": "Death of a Salesman",
+      "work": 8140,
+      "sitelinks": 44
+    },
+    {
+      "qid": "Q1140611",
+      "label": "Wuthering Heights",
+      "work": 6961,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q1250822",
+      "label": "Тарас Бульба",
+      "work": 8163,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q137869",
+      "label": "Germinal",
+      "work": 8144,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q157360",
+      "label": "The Horse and His Boy",
+      "work": 8145,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q207964",
+      "label": "Digital Fortress",
+      "work": 8150,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q212789",
+      "label": "The Selfish Gene",
+      "work": 8164,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q286567",
+      "label": "Terminologia Anatomica",
+      "work": 8151,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q459667",
+      "label": "The Murders in the Rue Morgue",
+      "work": 8146,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q579794",
+      "label": "Jenseits von Gut und Böse",
+      "work": 8153,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q605249",
+      "label": "Do Androids Dream of Electric Sheep?",
+      "work": 8158,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q612836",
+      "label": "Vanity Fair",
+      "work": 8159,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q622634",
+      "label": "Cinq semaines en ballon",
+      "work": 8160,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q661541",
+      "label": "Historia ecclesiastica gentis Anglorum",
+      "work": 8147,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q669010",
+      "label": "West Side Story",
+      "work": 6397,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q670350",
+      "label": "Dē imitātiōne Christī",
+      "work": 8149,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q731224",
+      "label": "Discours de la méthode pour bien conduire sa raison, et chercher la vérité dans les sciences",
+      "work": 8167,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q826428",
+      "label": "Ensayo sobre a ceguera",
+      "work": 8161,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q837140",
+      "label": "Catching Fire",
+      "work": 8162,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q83799",
+      "label": "Мы",
+      "work": 8154,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q862816",
+      "label": "Ethics",
+      "work": 8156,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q869725",
+      "label": "The Prince and the Pauper",
+      "work": 8157,
+      "sitelinks": 43
+    },
+    {
+      "qid": "Q1161171",
+      "label": "Записки из Мёртвого дома",
+      "work": 8176,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q11861",
+      "label": "The Princess and the Pea",
+      "work": 8171,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q12411055",
+      "label": "Sapiens",
+      "work": 8179,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q265546",
+      "label": "A Scandal in Bohemia",
+      "work": 8168,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q331656",
+      "label": "The Voyage of the Dawn Treader",
+      "work": 8172,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q331669",
+      "label": "The Silver Chair",
+      "work": 8173,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q517265",
+      "label": "Romeo and Juliet",
+      "work": 6619,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q623394",
+      "label": "Carrie",
+      "work": 8174,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q749783",
+      "label": "The Man in the High Castle",
+      "work": 8169,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q752584",
+      "label": "Mrs Dalloway",
+      "work": 8170,
+      "sitelinks": 42
+    },
+    {
+      "qid": "Q1132408",
+      "label": "El coronel no tiene quien le escriba.",
+      "work": 8192,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q11848",
+      "label": "The Wolf and the Seven Little Kids",
+      "work": 8188,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q119709",
+      "label": "L'Être et le Néant",
+      "work": 8195,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q169632",
+      "label": "МаTь",
+      "work": 8183,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q208971",
+      "label": "1Q84",
+      "work": 8184,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q250371",
+      "label": "Jabberwocky",
+      "work": 8185,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q28306",
+      "label": "A Dance with Dragons",
+      "work": 8189,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q300646",
+      "label": "A Vindication of the Rights of Woman",
+      "work": 8197,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q381756",
+      "label": "Death on the Nile",
+      "work": 8193,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q428114",
+      "label": "De origine et situ Germanorum",
+      "work": 8180,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q431927",
+      "label": "A Storm of Swords",
+      "work": 8181,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q459303",
+      "label": "Perfume",
+      "work": 8182,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q501514",
+      "label": "The Lightning Thief",
+      "work": 8186,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q583705",
+      "label": "La Celestina",
+      "work": 8190,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q591623",
+      "label": "Silent Spring",
+      "work": 8198,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q64110",
+      "label": "20,000 Leagues Under the Sea",
+      "work": 7135,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q6507",
+      "label": "Finnegans Wake",
+      "work": 8187,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q842106",
+      "label": "A Streetcar Named Desire",
+      "work": 8194,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q858036",
+      "label": "Federalist Papers",
+      "work": 8200,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q861527",
+      "label": "Ecce Homo",
+      "work": 8191,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q86791",
+      "label": "A Christmas Carol",
+      "work": 7361,
+      "sitelinks": 41
+    },
+    {
+      "qid": "Q1061693",
+      "label": "Die fröhliche Wissenschaft",
+      "work": 8214,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q1137494",
+      "label": "King Solomon's Mines",
+      "work": 8209,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q1140295",
+      "label": "The Road",
+      "work": 8215,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q116361132",
+      "label": "Nosferatu",
+      "work": 6080,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q124393045",
+      "label": "Frankenstein",
+      "work": 6553,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q160259",
+      "label": "Nosferatu the Vampyre",
+      "work": 6204,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q1764445",
+      "label": "A Feast for Crows",
+      "work": 8216,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q2342159",
+      "label": "Rich Dad Poor Dad",
+      "work": 8217,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q289130",
+      "label": "The Last Battle",
+      "work": 8204,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q384635",
+      "label": "Le Journal d'une femme de chambre",
+      "work": 8210,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q461026",
+      "label": "The Red-Headed League",
+      "work": 8202,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q470464",
+      "label": "Benim Adım Kırmızı",
+      "work": 8203,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q753535",
+      "label": "金瓶梅",
+      "work": 8206,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q816016",
+      "label": "Ender's Game",
+      "work": 8211,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q829934",
+      "label": "The Remains of the Day",
+      "work": 8212,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q837934",
+      "label": "Flowers for Algernon",
+      "work": 8213,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q839596",
+      "label": "The Count of Monte Cristo",
+      "work": 7359,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q899334",
+      "label": "The tin drum",
+      "work": 8207,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q913599",
+      "label": "Émile ou De l’éducation",
+      "work": 8208,
+      "sitelinks": 40
+    },
+    {
+      "qid": "Q1047711",
+      "label": "Casino Royale",
+      "work": 8230,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q1121567",
+      "label": "Michel Strogoff",
+      "work": 8228,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q1141090",
+      "label": "Der Judenstaat",
+      "work": 8232,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q149552",
+      "label": "The Stand",
+      "work": 8219,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q279022",
+      "label": "Guns, Germs, and Steel",
+      "work": 8231,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q308982",
+      "label": "Eldest",
+      "work": 8224,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q396602",
+      "label": "Смерть Ивана Ильича",
+      "work": 8229,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q472291",
+      "label": "Un capitaine de quinze ans",
+      "work": 8220,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q514694",
+      "label": "Homage to Catalonia",
+      "work": 8222,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q538396",
+      "label": "Der Antichrist",
+      "work": 8233,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q615137",
+      "label": "枕草子 cebuanooooo",
+      "work": 8227,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q654562",
+      "label": "Le Livre de Marco Polo",
+      "work": 8234,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q727408",
+      "label": "Lord Jim",
+      "work": 8223,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q753677",
+      "label": "Gnomeo & Juliet",
+      "work": 6418,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q845981",
+      "label": "De Revolutionibus Orbium Coelestium",
+      "work": 8236,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q863438",
+      "label": "The Valley of Fear",
+      "work": 8225,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q878580",
+      "label": "The Gold-Bug",
+      "work": 8226,
+      "sitelinks": 39
+    },
+    {
+      "qid": "Q1051472",
+      "label": "The Mousetrap",
+      "work": 8253,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1053313",
+      "label": "Gerusalemme liberata",
+      "work": 8254,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1053359",
+      "label": "Die Geburt der Tragödie aus dem Geiste der Musik",
+      "work": 8255,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1055881",
+      "label": "On liberty",
+      "work": 8262,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1060471",
+      "label": "The Adventure of the Speckled Band",
+      "work": 8256,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1145236",
+      "label": "Encyclopaedia of Islam",
+      "work": 8263,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1196302",
+      "label": "The Prophet",
+      "work": 8251,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1247865",
+      "label": "Na Drini ćuprija",
+      "work": 8252,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q135932",
+      "label": "The Invisible Man",
+      "work": 6982,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1638194",
+      "label": "The Road to Serfdom",
+      "work": 8258,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q16385821",
+      "label": "Go, Dog. Go!",
+      "work": 8259,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q221846",
+      "label": "Ghosts of Girlfriends Past",
+      "work": 6252,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q2418926",
+      "label": "Monkey Planet",
+      "work": 8257,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q27321",
+      "label": "Один день Ивана Денисовича",
+      "work": 8242,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q277111",
+      "label": "The Limits to Growth",
+      "work": 8260,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q27912",
+      "label": "Struwwelpeter",
+      "work": 8243,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q28491",
+      "label": "I promessi sposi",
+      "work": 8244,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q392937",
+      "label": "Die protestantische Ethik und der Geist des Kapitalismus",
+      "work": 8261,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q437791",
+      "label": "Il pendolo di Foucault",
+      "work": 8237,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q485538",
+      "label": "三國遺事",
+      "work": 8238,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q492207",
+      "label": "Starship Troopers",
+      "work": 8239,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q596874",
+      "label": "Misery",
+      "work": 8248,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q606930",
+      "label": "Cat on a Hot Tin Roof",
+      "work": 8249,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q622400",
+      "label": "Things Fall Apart",
+      "work": 8250,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q64004122",
+      "label": "The Invisible Man",
+      "work": 7134,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q708177",
+      "label": "The Rime of the Ancyent Marinere",
+      "work": 8240,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q723407",
+      "label": "Salome",
+      "work": 8241,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q830581",
+      "label": "Les Misérables",
+      "work": 6506,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q862050",
+      "label": "Les Liaisons dangereuses",
+      "work": 8246,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q877510",
+      "label": "System der Wissenschaft. Erster Theil, die Phänomenologie des Geistes",
+      "work": 8265,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q883305",
+      "label": "Bleak House",
+      "work": 8247,
+      "sitelinks": 38
+    },
+    {
+      "qid": "Q1059553",
+      "label": "Βίος και Πολιτεία του Αλέξη Ζορμπά",
+      "work": 8290,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1062365",
+      "label": "Hunger",
+      "work": 8289,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q114817050",
+      "label": "Wicked: For Good",
+      "work": 6071,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1167592",
+      "label": "Jungle Book",
+      "work": 6487,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1204366",
+      "label": "A Room of One’s Own",
+      "work": 8292,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1247232",
+      "label": "Parzival",
+      "work": 8284,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q132042",
+      "label": "Leaves of Grass",
+      "work": 8266,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1327411",
+      "label": "Autour de la Lune",
+      "work": 6979,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1426188",
+      "label": "Matilda",
+      "work": 8291,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q14512114",
+      "label": "Dracula Untold",
+      "work": 6189,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q245194",
+      "label": "Двенадцать стульев",
+      "work": 8269,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q331804",
+      "label": "The Adventures of Tom Bombadil",
+      "work": 8277,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q40354",
+      "label": "Mockingjay",
+      "work": 8280,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q466288",
+      "label": "The Green Mile",
+      "work": 8267,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q482085",
+      "label": "The Caves of Steel",
+      "work": 8270,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q57982258",
+      "label": "The Call of the Wild",
+      "work": 7128,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q581458",
+      "label": "The Waste Land",
+      "work": 8293,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q605790",
+      "label": "Meditationes de prima philosophia",
+      "work": 8282,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q627192",
+      "label": "Divergent",
+      "work": 8285,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q649409",
+      "label": "Tess of the d'Urbervilles",
+      "work": 8268,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q678288",
+      "label": "Män som hatar kvinnor",
+      "work": 8271,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q693559",
+      "label": "The Murder at the Vicarage",
+      "work": 8272,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q718268",
+      "label": "The Island of Doctor Moreau",
+      "work": 8273,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q727861",
+      "label": "The A.B.C. Murders",
+      "work": 8274,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q753290",
+      "label": "'Salem's Lot",
+      "work": 8275,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q753894",
+      "label": "Foundation",
+      "work": 8276,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q766086",
+      "label": "The Mask of the Red Death",
+      "work": 8279,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q816528",
+      "label": "Ben-Hur",
+      "work": 8286,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q830643",
+      "label": "Sinuhe egyptiläinen",
+      "work": 8287,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q849930",
+      "label": "Breakfast at Tiffany's",
+      "work": 8288,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q861927",
+      "label": "De consolatione philosophiae",
+      "work": 8278,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q918052",
+      "label": "The Martian Chronicles",
+      "work": 8281,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q951587",
+      "label": "Never Let Me Go",
+      "work": 8283,
+      "sitelinks": 37
+    },
+    {
+      "qid": "Q1130546",
+      "label": "Униженные и оскорблённые",
+      "work": 8302,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q1331230",
+      "label": "Forbidden Planet",
+      "work": 6756,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q1339346",
+      "label": "Pan Tadeusz",
+      "work": 8308,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q2011716",
+      "label": "Подросток",
+      "work": 8309,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q320363",
+      "label": "Macbeth",
+      "work": 6660,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q378786",
+      "label": "The God of Small Things",
+      "work": 8304,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q41359",
+      "label": "Cat's Cradle",
+      "work": 8299,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q477508",
+      "label": "Northanger Abbey",
+      "work": 8295,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q589868",
+      "label": "Kim",
+      "work": 8311,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q59696",
+      "label": "Maus",
+      "work": 8300,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q62407",
+      "label": "Mother Courage and her children",
+      "work": 8301,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q725752",
+      "label": "The Return of Sherlock Holmes",
+      "work": 7346,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q819101",
+      "label": "The Book Thief",
+      "work": 8306,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q843940",
+      "label": "Common Sense",
+      "work": 8307,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q850522",
+      "label": "Little Women",
+      "work": 7176,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q854921",
+      "label": "The Decline of the West",
+      "work": 8297,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q880092",
+      "label": "Black Beauty",
+      "work": 8298,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q936801",
+      "label": "Watership Down",
+      "work": 8303,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q940014",
+      "label": "Pride and Prejudice",
+      "work": 6640,
+      "sitelinks": 36
+    },
+    {
+      "qid": "Q1135816",
+      "label": "Frankenstein",
+      "work": 6543,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q1213085",
+      "label": "The Bell Jar",
+      "work": 8328,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q1296318",
+      "label": "Götzen-Dämmerung oder wie man mit dem Hammer philosophirt",
+      "work": 8327,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q1639633",
+      "label": "Vingt ans après",
+      "work": 6995,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q1649862",
+      "label": "The Big Sleep",
+      "work": 8329,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q19595098",
+      "label": "Mowgli",
+      "work": 6493,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q2008211",
+      "label": "The Left Hand of Darkness",
+      "work": 8330,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q248096",
+      "label": "The History of Tom Jones, a Foundling",
+      "work": 8315,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q25750",
+      "label": "The Casual Vacancy",
+      "work": 8321,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q331651",
+      "label": "The Children of Húrin",
+      "work": 8322,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q3435337",
+      "label": "Peter Pan; or, the Boy Who Wouldn't Grow Up",
+      "work": 8331,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q466333",
+      "label": "Die Räuber",
+      "work": 8312,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q466504",
+      "label": "American Psycho",
+      "work": 8313,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q467363",
+      "label": "The Cathedral and the Bazaar",
+      "work": 8332,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q662029",
+      "label": "Neuromancer",
+      "work": 8314,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q718289",
+      "label": "Brisingr",
+      "work": 8317,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q72309",
+      "label": "The Legend of Sleepy Hollow",
+      "work": 8324,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q728312",
+      "label": "Flatland",
+      "work": 8318,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q742226",
+      "label": "Pet Sematary",
+      "work": 8319,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q745079",
+      "label": "A Murder is Announced",
+      "work": 8320,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q842074",
+      "label": "Обломов",
+      "work": 8326,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q874381",
+      "label": "The grey gentleman",
+      "work": 8323,
+      "sitelinks": 35
+    },
+    {
+      "qid": "Q1136104",
+      "label": "Le Morte Darthur",
+      "work": 8355,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1139322",
+      "label": "Veronika decide morrer",
+      "work": 8356,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1141815",
+      "label": "The Call of Cthulhu",
+      "work": 8363,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1164083",
+      "label": "The life and opinions of Tristram Shandy",
+      "work": 8365,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q117182",
+      "label": "Salammbô",
+      "work": 8335,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1192975",
+      "label": "Двойник",
+      "work": 8366,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1193736",
+      "label": "Il Gattopardo",
+      "work": 8367,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1195668",
+      "label": "The man without qualities",
+      "work": 8357,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1212285",
+      "label": "L'Éducation sentimentale",
+      "work": 8360,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1257081",
+      "label": "Drei Kameraden",
+      "work": 8362,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q127546",
+      "label": "The Vagina Monologues",
+      "work": 8336,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1282209",
+      "label": "Great Expectations",
+      "work": 6975,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1334940",
+      "label": "Rebecca",
+      "work": 8361,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1501700",
+      "label": "Tropic of Cancer",
+      "work": 8372,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q15991228",
+      "label": "Le Capital au XXIe siècle",
+      "work": 8373,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1983019",
+      "label": "The Age of Reason",
+      "work": 8368,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q247372",
+      "label": "Tender Is the Night",
+      "work": 8339,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q247379",
+      "label": "Onze Minutos",
+      "work": 8340,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q309019",
+      "label": "Unfinished Tales of Númenor and Middle-earth",
+      "work": 8345,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q311449",
+      "label": "The Reader",
+      "work": 8346,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q326838",
+      "label": "The Brave Little Tailor",
+      "work": 8348,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q339761",
+      "label": "Bel-Ami",
+      "work": 8349,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q379449",
+      "label": "The Pit and the Pendulum",
+      "work": 8358,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q4551661",
+      "label": "Пиковая дама",
+      "work": 8369,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q475125",
+      "label": "Coraline",
+      "work": 8337,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q509209",
+      "label": "Государство и революция",
+      "work": 8341,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q560352",
+      "label": "Die Welt als Wille und Vorstellung",
+      "work": 8344,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q607112",
+      "label": "The Three-Body Problem",
+      "work": 8354,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q642842",
+      "label": "Dracula",
+      "work": 6631,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q651283",
+      "label": "The Golden Bough",
+      "work": 8338,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q734493",
+      "label": "I Am Legend",
+      "work": 8342,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q74263",
+      "label": "Opticks, or a Treatise of the Reflections, Refractions, Inflections and Colours of Light",
+      "work": 8370,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q833180",
+      "label": "Frankenstein",
+      "work": 6637,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q857313",
+      "label": "One Flew Over the Cuckoo's Nest",
+      "work": 8350,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q876848",
+      "label": "The Curious Incident of the Dog in the Night-Time",
+      "work": 8351,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q910769",
+      "label": "Totem und Tabu",
+      "work": 8352,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q921510",
+      "label": "Dorian Gray",
+      "work": 7363,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q929821",
+      "label": "Stranger in a Strange Land",
+      "work": 8353,
+      "sitelinks": 34
+    },
+    {
+      "qid": "Q1048916",
+      "label": "Cyrano de Bergerac",
+      "work": 8390,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1052459",
+      "label": "Good Omens",
+      "work": 8391,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1140678",
+      "label": "The Adventure of the Blue Carbuncle",
+      "work": 8392,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1141032",
+      "label": "Histoire du chevalier des Grieux et de Manon Lescaut",
+      "work": 8393,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1150069",
+      "label": "The Adventure of the Musgrave Ritual",
+      "work": 8394,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1165714",
+      "label": "La Chartreuse de Parme",
+      "work": 8395,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1233830",
+      "label": "New Atlantis",
+      "work": 8388,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1254469",
+      "label": "Dracula: Dead and Loving It",
+      "work": 6115,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q130393881",
+      "label": "Wuthering Heights",
+      "work": 6978,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q195274",
+      "label": "Little Women",
+      "work": 7008,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q1981770",
+      "label": "Vom Kriege",
+      "work": 8401,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q20064904",
+      "label": "Laudato si'",
+      "work": 8398,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q2348190",
+      "label": "Pollyanna",
+      "work": 8396,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q24904727",
+      "label": "Gnomeo & Juliet: Sherlock Gnomes",
+      "work": 6267,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q309248",
+      "label": "The Three Musketeers",
+      "work": 7043,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q331092",
+      "label": "Resistance to Civil Government",
+      "work": 8381,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q3753136",
+      "label": "Predator's Gold",
+      "work": 8397,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q430514",
+      "label": "American Gods",
+      "work": 8374,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q468071",
+      "label": "The Spy Who Came In from the Cold",
+      "work": 8375,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q48229",
+      "label": "Lost in America",
+      "work": 8383,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q52910",
+      "label": "La sombra del viento",
+      "work": 8384,
+      "sitelinks": 33
+    },
+    {
+      "qid": "Q548576",
+      "label": "Das Schloss von Otranto",
+      "work": 8379,
+      "sitelinks": 33
+    }
+  ]
+}

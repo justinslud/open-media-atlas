@@ -306,6 +306,31 @@ class ResolveWikidataRelationshipsTests(TestCase):
         self.assertEqual(proposal.to_work_id, Work.objects.get(identifiers__value="Q200").pk)
         self.assertEqual(proposal.evidence["property_id"], "P629")
 
+    def test_derivative_work_claim_is_not_marked_seed_subject(self):
+        from unittest.mock import patch
+        from .management.commands import resolve_wikidata_relationships as module
+
+        class Client(FakeWikidataClient):
+            def payload(self, qid):
+                base = super().payload(qid)
+                if qid == "Q100":
+                    base["claims"] = {"P4969": [{
+                        "id": "Q100$derivative", "rank": "normal",
+                        "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": "Q200"}}},
+                        "qualifiers": {}, "references": [],
+                    }]}
+                return base
+
+        with patch.object(module, "WikidataClient", Client):
+            call_command("resolve_wikidata_relationships", manifest=self.manifest, seed_limit=1, limit=5)
+
+        proposal = ImportRelationshipProposal.objects.get()
+        self.assertEqual(proposal.relationship_type.code, "derivative-work")
+        # P4969 is asserted on the target, so the target is the derived work.
+        self.assertEqual(proposal.from_work_id, Work.objects.get(identifiers__value="Q200").pk)
+        self.assertEqual(proposal.to_work_id, self.seed.pk)
+        self.assertNotIn("edge_subject", proposal.evidence)
+
     def test_seed_outside_scope_is_skipped(self):
         from django.core.management.base import CommandError
         from unittest.mock import patch
@@ -614,3 +639,50 @@ class TitleAndSeedSelectionTests(TestCase):
         obscure.refresh_from_db()
         self.assertEqual((known.visibility, known.depth), (Work.Visibility.PUBLIC, "index"))
         self.assertEqual(obscure.depth, "ambient")
+
+
+class OrphanReportTests(TestCase):
+    def setUp(self):
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+
+    def work(self, title, **kwargs):
+        defaults = {"slug": f"orphan-{Work.objects.count()}", "work_type": self.book,
+                    "visibility": Work.Visibility.PUBLIC, "first_publication_year": 1900}
+        defaults.update(kwargs)
+        return Work.objects.create(title=title, **defaults)
+
+    def test_orphans_are_separated_by_cause(self):
+        alone = self.work("No Claims At All", slug="no-claims")
+        claimed = self.work("Has Unresolved Claim", slug="unresolved")
+        SourceRecord.objects.create(
+            source=self.source, external_key="Q1", matched_work=claimed,
+            raw_payload={"id": "Q1", "claims": {"P629": [{"mainsnak": {"datavalue": {"value": {"id": "Q9"}}}}]}},
+            payload_hash="Q1", retrieved_at=timezone.now(),
+        )
+
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / "orphans.json"
+            call_command("report_orphans", output=output)
+            report = json.loads(output.read_text())
+
+        states = {row["title"]: row["state"] for row in report["rows"]}
+        self.assertEqual(states["No Claims At All"], "no_claims")
+        self.assertEqual(states["Has Unresolved Claim"], "claims_unresolved")
+        self.assertEqual(report["summary"].get("claims_unresolved"), 1)
+
+
+class BookSliceRunnerTests(TestCase):
+    def test_dry_run_lists_steps_without_writing(self):
+        with tempfile.TemporaryDirectory() as folder:
+            workdir = Path(folder) / "slices"
+            call_command("run_book_slice", dry_run=True, workdir=workdir, limit=50)
+            self.assertFalse(workdir.exists())
+
+    def test_scan_must_cover_the_limit(self):
+        from django.core.management.base import CommandError
+
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaises(CommandError):
+                call_command("discover_wikidata_books", limit=100, scan=50,
+                             manifest=Path(folder) / "m.json")

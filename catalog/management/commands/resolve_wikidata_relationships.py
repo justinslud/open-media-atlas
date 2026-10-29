@@ -111,8 +111,8 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        if not 1 <= options["seed_limit"] <= 200:
-            raise CommandError("--seed-limit must be 1..200")
+        if not 1 <= options["seed_limit"] <= 500:
+            raise CommandError("--seed-limit must be 1..500")
         if not 1 <= options["limit"] <= 5000:
             raise CommandError("--limit must be 1..5000")
 
@@ -283,8 +283,11 @@ class Command(BaseCommand):
                         "revision_id": entities.get(target, {}).get("lastrevid"),
                         "source_url": f"https://www.wikidata.org/wiki/{target}",
                         "relationship_code": code,
-                        "edge_subject": "seed",
                     }
+                    if prop not in PROPERTIES_DERIVED_ON_TARGET:
+                        # Only these properties live on the seed; P4969 lives on
+                        # the target, so its evidence must not claim seed subject.
+                        evidence["edge_subject"] = "seed"
                     ImportRelationshipProposal.objects.update_or_create(
                         run=run,
                         statement_id=statement_id,

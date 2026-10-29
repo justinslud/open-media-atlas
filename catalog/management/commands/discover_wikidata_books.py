@@ -28,6 +28,8 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--limit", type=int, default=2000)
+        parser.add_argument("--scan", type=int, default=0,
+                            help="Rows to inspect before filtering known records (default 3x limit)")
         parser.add_argument("--min-sitelinks", type=int, default=0)
         parser.add_argument("--timeout", type=int, default=120)
         parser.add_argument("--include-existing", action="store_true",
@@ -38,6 +40,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if not 1 <= options["limit"] <= 5000:
             raise CommandError("--limit must be 1..5000")
+        scan = options["scan"] or min(5000, options["limit"] * 3)
+        if not options["limit"] <= scan <= 5000:
+            raise CommandError("--scan must be between --limit and 5000")
         started = time.monotonic()
         client = WikidataClient(timeout=options["timeout"], max_requests=10)
 
@@ -49,7 +54,7 @@ class Command(BaseCommand):
           ?item wdt:P31 ?type .
           ?item wikibase:sitelinks ?sitelinks .
           FILTER(?sitelinks >= {int(options['min_sitelinks'])})
-        }} ORDER BY DESC(?sitelinks) LIMIT {int(options['limit'])}"""
+        }} ORDER BY DESC(?sitelinks) LIMIT {int(scan)}"""
 
         try:
             data = client.get_json(QUERY_SERVICE, {"query": query, "format": "json"}, attempts=3)
@@ -84,9 +89,10 @@ class Command(BaseCommand):
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "source": "Wikidata Query Service",
             "method": "items with P648 Open Library work IDs and a book-like P31, ordered by sitelink count",
-            "limits": {"requested": options["limit"], "min_sitelinks": options["min_sitelinks"]},
+            "limits": {"requested": options["limit"], "scanned": scan, "min_sitelinks": options["min_sitelinks"]},
             "counts": {
                 "returned": len(rows) + (0 if options["include_existing"] else len(known | ol_known)),
+                "scanned": scan,
                 "candidates": len(rows),
                 "skipped_already_present": 0 if options["include_existing"] else len(known | ol_known),
             },

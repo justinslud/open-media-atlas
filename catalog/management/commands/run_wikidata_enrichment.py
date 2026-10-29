@@ -83,8 +83,8 @@ class Command(BaseCommand):
         return kept, skipped
 
     def handle(self, *args, **options):
-        if not 1 <= options["seed_limit"] <= 200:
-            raise CommandError("--seed-limit must be 1..200")
+        if not 1 <= options["seed_limit"] <= 500:
+            raise CommandError("--seed-limit must be 1..500")
         if not 1 <= options["related_limit"] <= 5000:
             raise CommandError("--related-limit must be 1..5000")
         path = Path(options["manifest"])
