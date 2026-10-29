@@ -1,0 +1,89 @@
+{
+  "dry_run": false,
+  "cache_only": false,
+  "candidate_works": 1462,
+  "with_cached_payload": 1324,
+  "works_filled": 1062,
+  "works_without_claims": 400,
+  "agents_resolved_from_cache": 1441,
+  "agents_fetched": 1435,
+  "agents_missing_label": 9,
+  "network_requests": 34,
+  "sample": [
+    {
+      "work": 6697,
+      "credits": [
+        {
+          "agent": "Miguel de Cervantes",
+          "role": "screenwriter",
+          "qid": "Q5682"
+        },
+        {
+          "agent": "Philippe Fénelon",
+          "role": "composer",
+          "qid": "Q3379866"
+        }
+      ]
+    },
+    {
+      "work": 6731,
+      "credits": [
+        {
+          "agent": "Ludwig Minkus",
+          "role": "composer",
+          "qid": "Q434821"
+        }
+      ]
+    },
+    {
+      "work": 6887,
+      "credits": [
+        {
+          "agent": "Norman Campbell",
+          "role": "composer",
+          "qid": "Q3343754"
+        }
+      ]
+    },
+    {
+      "work": 6910,
+      "credits": [
+        {
+          "agent": "Richard Strauss",
+          "role": "composer",
+          "qid": "Q13894"
+        }
+      ]
+    },
+    {
+      "work": 6971,
+      "credits": [
+        {
+          "agent": "Bernard Borderie",
+          "role": "director",
+          "qid": "Q822322"
+        },
+        {
+          "agent": "Bernard Borderie",
+          "role": "screenwriter",
+          "qid": "Q822322"
+        },
+        {
+          "agent": "Jean Bernard-Luc",
+          "role": "screenwriter",
+          "qid": "Q3170712"
+        },
+        {
+          "agent": "Paul Misraki",
+          "role": "composer",
+          "qid": "Q2540023"
+        },
+        {
+          "agent": "Raymond Borderie",
+          "role": "producer",
+          "qid": "Q3420691"
+        }
+      ]
+    }
+  ]
+}

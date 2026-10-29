@@ -1,0 +1,1083 @@
+{
+  "generated_at": "2026-10-29T16:12:24.887643+00:00",
+  "scope": "public",
+  "confirm": true,
+  "candidates": 1954,
+  "refined": 118,
+  "left_generic_ambiguous": 1836,
+  "no_cached_payload": 0,
+  "by_type": {
+    "film": 52,
+    "opera": 13,
+    "novel": 1,
+    "play": 1,
+    "musical": 27,
+    "television-series": 16,
+    "ballet": 4,
+    "television-program": 4
+  },
+  "changes": [
+    {
+      "work": 6027,
+      "title": "En midsommarnattsdröm",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6030,
+      "title": "Dorian Gray",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6034,
+      "title": "I Capuleti e i Montecchi",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6044,
+      "title": "Salute, Jonathan!",
+      "from": "creative-work",
+      "to": "novel",
+      "label": "Novel",
+      "medium": "text",
+      "visibility": "public"
+    },
+    {
+      "work": 6050,
+      "title": "Ein Weihnachtslied in Prosa oder Eine Geistergeschichte zum Christfest",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6058,
+      "title": "Alice in Bed",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6060,
+      "title": "Romeo and Juliet: Beyond Words",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6061,
+      "title": "Roméo et Juliette de William Shakespeare",
+      "from": "creative-work",
+      "to": "play",
+      "label": "Play",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6070,
+      "title": "Romeo & Julia – Liebe ist alles",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6075,
+      "title": "Scrooge: A Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6089,
+      "title": "Mer de glace",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6094,
+      "title": "Scruff in 'A Midsummer Night's Dream'",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6098,
+      "title": "A Carol Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6106,
+      "title": "Skatteøen",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6109,
+      "title": "Dee & Friends in Oz",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6131,
+      "title": "Alenka v říši divů",
+      "from": "creative-work",
+      "to": "ballet",
+      "label": "Ballet",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6132,
+      "title": "Obraz Doriana Graye",
+      "from": "creative-work",
+      "to": "ballet",
+      "label": "Ballet",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6133,
+      "title": "Vánoční koleda",
+      "from": "creative-work",
+      "to": "ballet",
+      "label": "Ballet",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6139,
+      "title": "Alice, Alenka a voda živá",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6140,
+      "title": "Alenka v říši za zrcadlem",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6141,
+      "title": "In 80 Tagen um die Welt",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6143,
+      "title": "Fushigi no Kuni de Alice to: Dive in Wonderland",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6148,
+      "title": "A Dennis the Menace Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6149,
+      "title": "Les Misérables: Shōjo Cosette",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6171,
+      "title": "Дракула. Сквозь века",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6172,
+      "title": "Alice in Wonderland: A XXX Parody",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6175,
+      "title": "Bumbug the Musical",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6186,
+      "title": "Romeo × Juliet",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6192,
+      "title": "56 csepp vér",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6193,
+      "title": "Sherlock Holmes and the Baskerville Curse",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6194,
+      "title": "It's Christmas, Carol!",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6195,
+      "title": "The Treasure Planet",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6196,
+      "title": "Kelly Clarkson's Cautionary Christmas Music Tale",
+      "from": "creative-work",
+      "to": "television-program",
+      "label": "Television program",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6198,
+      "title": "Mickey's Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6209,
+      "title": "Frankenstein – A New Musical",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6212,
+      "title": "A Diva's Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6216,
+      "title": "Roméo et Juliette, de la Haine à l'Amour",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6217,
+      "title": "The Dreaming",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6218,
+      "title": "Alice's Lover",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6223,
+      "title": "Frankenstein: The True Story",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6227,
+      "title": "Springtime with Roo",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6229,
+      "title": "Willy Fog Around the World in 80 Days",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6232,
+      "title": "The Great Martian War 1913 - 1917",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6236,
+      "title": "The Lion King II: Simba's Pride",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6240,
+      "title": "Bah, Humduck! A Looney Tunes Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6241,
+      "title": "Wonder.land",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6244,
+      "title": "Christmas Cupid",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6250,
+      "title": "Chasing Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6254,
+      "title": "The Legends of Treasure Island",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6257,
+      "title": "The Enchanted Island",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6258,
+      "title": "The Smurfs: A Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6262,
+      "title": "Isten pénze",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6263,
+      "title": "Szentivánéji álom",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6265,
+      "title": "Dōbutsu Takarajima",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6277,
+      "title": "An All Dogs Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6280,
+      "title": "War of the Worlds: Goliath",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6284,
+      "title": "The Fairy-Queen",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6291,
+      "title": "Count Dracula",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6293,
+      "title": "The Wiz",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6295,
+      "title": "Shakespeare: The Animated Tales",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6296,
+      "title": "Sen noci svatojánské",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6299,
+      "title": "Sherlock Holmes",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6308,
+      "title": "Orgoglio e Pregiudizio",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6309,
+      "title": "Orgullo y Prejuicio",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6315,
+      "title": "I miserabili",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6316,
+      "title": "Il conte di Montecristo",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6317,
+      "title": "Il conto Montecristo",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6322,
+      "title": "Treasure Planet",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6323,
+      "title": "Tweety's High-Flying Adventure",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6327,
+      "title": "Остров сокровищ",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6328,
+      "title": "The Picture of Dorian Grey",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6329,
+      "title": "Приключения в Изумрудном городе",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6331,
+      "title": "Ромео и Джульетта (рок-опера)",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6332,
+      "title": "The Hound of the Baskervilles (1971 film)",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6333,
+      "title": "Tom and Jerry and the Wizard of Oz",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6334,
+      "title": "The Prisoner of Château d'If",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6335,
+      "title": "I am Edmond Dantes",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6337,
+      "title": "A Carol for Another Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6341,
+      "title": "A Special Sesame Street Christmas",
+      "from": "creative-work",
+      "to": "television-program",
+      "label": "Television program",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6342,
+      "title": "Curious Alice",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6346,
+      "title": "An American Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6348,
+      "title": "Julia",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6349,
+      "title": "Around the World",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6355,
+      "title": "Sherlock Holmes and a Study in Scarlet",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6356,
+      "title": "Blackadder's Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6358,
+      "title": "Bugs Bunny's Christmas Carol",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6365,
+      "title": "Ebbie",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6366,
+      "title": "Ebenezer",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6374,
+      "title": "Hamlet at Elsinore",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6388,
+      "title": "Karroll's Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6392,
+      "title": "Le songe d'une nuit d'été",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6393,
+      "title": "& Juliet",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6394,
+      "title": "John Grin's Christmas",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6397,
+      "title": "West Side Story",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6404,
+      "title": "Nan's Christmas Carol",
+      "from": "creative-work",
+      "to": "television-program",
+      "label": "Television program",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6406,
+      "title": "Indian Fantasy",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6411,
+      "title": "Puck",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6414,
+      "title": "Rich Little's Christmas Carol",
+      "from": "creative-work",
+      "to": "television-program",
+      "label": "Television program",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6429,
+      "title": "The Stingiest Man in Town",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6437,
+      "title": "Wonderland",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6438,
+      "title": "Macbeth Underworld",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6440,
+      "title": "Around the World with Willy Fog",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6443,
+      "title": "Alice's Adventures Under Ground",
+      "from": "creative-work",
+      "to": "opera",
+      "label": "Opera",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6444,
+      "title": "Bikini Frankenstein",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6446,
+      "title": "Gankutsuou: The Count of Monte Cristo",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6448,
+      "title": "Romeo i Julia",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6455,
+      "title": "Romeo & Julia",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6459,
+      "title": "Otello",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6473,
+      "title": "Catch My Soul",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6480,
+      "title": "Otelo",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6482,
+      "title": "The Moor's Pavane",
+      "from": "creative-work",
+      "to": "ballet",
+      "label": "Ballet",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6486,
+      "title": "The Jungle Book: Rumble in the Jungle",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6488,
+      "title": "Księga dżungli (musical)",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6490,
+      "title": "Kniha džungle",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6491,
+      "title": "Adventures of Mowgli",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6492,
+      "title": "Jungelboka",
+      "from": "creative-work",
+      "to": "musical",
+      "label": "Musical",
+      "medium": "stage",
+      "visibility": "public"
+    },
+    {
+      "work": 6495,
+      "title": "The Jungle Book 2",
+      "from": "creative-work",
+      "to": "film",
+      "label": "Film",
+      "medium": "screen",
+      "visibility": "public"
+    },
+    {
+      "work": 6496,
+      "title": "Jungle Book Shounen Mowgli",
+      "from": "creative-work",
+      "to": "television-series",
+      "label": "Television series",
+      "medium": "screen",
+      "visibility": "public"
+    }
+  ]
+}

@@ -37,11 +37,17 @@ class Command(BaseCommand):
         parser.add_argument("--timeout", type=int, default=30)
         parser.add_argument("--cache-only", action="store_true", help="Never fetch missing agent labels")
         parser.add_argument("--fill-missing", action="store_true", help="Also top up works that already have credits")
+        parser.add_argument("--scope", choices=("public", "draft", "all"), default="public",
+                            help="Which visibility to backfill (default public)")
         parser.add_argument("--report", help="Optional JSON report path")
         parser.add_argument("--dry-run", action="store_true")
 
     def handle(self, *args, **options):
-        works = Work.objects.filter(visibility=Work.Visibility.PUBLIC, is_demo=False).order_by("pk")
+        works = Work.objects.filter(is_demo=False).order_by("pk")
+        if options["scope"] == "public":
+            works = works.filter(visibility=Work.Visibility.PUBLIC)
+        elif options["scope"] == "draft":
+            works = works.filter(visibility=Work.Visibility.DRAFT)
         if options["ids"]:
             try:
                 ids = [int(value) for value in options["ids"].split(",") if value.strip()]

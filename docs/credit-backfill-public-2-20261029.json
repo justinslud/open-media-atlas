@@ -1,0 +1,184 @@
+{
+  "dry_run": false,
+  "cache_only": false,
+  "candidate_works": 781,
+  "with_cached_payload": 773,
+  "works_filled": 382,
+  "works_without_claims": 399,
+  "agents_resolved_from_cache": 925,
+  "agents_fetched": 921,
+  "agents_missing_label": 37,
+  "network_requests": 23,
+  "sample": [
+    {
+      "work": 10367,
+      "credits": [
+        {
+          "agent": "Francis Ford Coppola",
+          "role": "director",
+          "qid": "Q56094"
+        },
+        {
+          "agent": "Francis Ford Coppola",
+          "role": "screenwriter",
+          "qid": "Q56094"
+        },
+        {
+          "agent": "Michael Herr",
+          "role": "screenwriter",
+          "qid": "Q937835"
+        },
+        {
+          "agent": "John Milius",
+          "role": "screenwriter",
+          "qid": "Q83859"
+        },
+        {
+          "agent": "Carmine Coppola",
+          "role": "composer",
+          "qid": "Q658614"
+        },
+        {
+          "agent": "Francis Ford Coppola",
+          "role": "composer",
+          "qid": "Q56094"
+        },
+        {
+          "agent": "Francis Ford Coppola",
+          "role": "producer",
+          "qid": "Q56094"
+        }
+      ]
+    },
+    {
+      "work": 13801,
+      "credits": [
+        {
+          "agent": "Stephan Apelgren",
+          "role": "director",
+          "qid": "Q5558110"
+        },
+        {
+          "agent": "Johan Bogaeus",
+          "role": "screenwriter",
+          "qid": "Q5580548"
+        },
+        {
+          "agent": "Malin Lagerlöf",
+          "role": "screenwriter",
+          "qid": "Q4960544"
+        },
+        {
+          "agent": "Thomas Lindahl",
+          "role": "composer",
+          "qid": "Q5953233"
+        }
+      ]
+    },
+    {
+      "work": 13802,
+      "credits": [
+        {
+          "agent": "Åsa Kalmér",
+          "role": "director",
+          "qid": "Q4957897"
+        },
+        {
+          "agent": "Maria Weisby",
+          "role": "director",
+          "qid": "Q4990260"
+        },
+        {
+          "agent": "Hans Rosenfeldt",
+          "role": "screenwriter",
+          "qid": "Q6079725"
+        },
+        {
+          "agent": "Pernilla Oljelund",
+          "role": "screenwriter",
+          "qid": "Q4970965"
+        },
+        {
+          "agent": "Anders Hillborg",
+          "role": "composer",
+          "qid": "Q491037"
+        }
+      ]
+    },
+    {
+      "work": 13803,
+      "credits": [
+        {
+          "agent": "Ettore Scola",
+          "role": "director",
+          "qid": "Q53037"
+        },
+        {
+          "agent": "Furio Scarpelli",
+          "role": "screenwriter",
+          "qid": "Q179982"
+        },
+        {
+          "agent": "Ettore Scola",
+          "role": "screenwriter",
+          "qid": "Q53037"
+        },
+        {
+          "agent": "Vincenzo Cerami",
+          "role": "screenwriter",
+          "qid": "Q1334704"
+        },
+        {
+          "agent": "Armando Trovajoli",
+          "role": "composer",
+          "qid": "Q678840"
+        },
+        {
+          "agent": "Mario Cecchi Gori",
+          "role": "producer",
+          "qid": "Q712878"
+        },
+        {
+          "agent": "Vittorio Cecchi Gori",
+          "role": "producer",
+          "qid": "Q1459321"
+        },
+        {
+          "agent": "Luciano Ricceri",
+          "role": "producer",
+          "qid": "Q3838694"
+        }
+      ]
+    },
+    {
+      "work": 13806,
+      "credits": [
+        {
+          "agent": "James Whale",
+          "role": "director",
+          "qid": "Q381831"
+        },
+        {
+          "agent": "George Bruce",
+          "role": "screenwriter",
+          "qid": "Q79406028"
+        },
+        {
+          "agent": "Lucien Moraweck",
+          "role": "composer",
+          "qid": "Q1873412"
+        },
+        {
+          "agent": "Lud Gluskin",
+          "role": "composer",
+          "qid": "Q1117465"
+        },
+        {
+          "agent": "Edward Small",
+          "role": "producer",
+          "qid": "Q1616048"
+        }
+      ]
+    }
+  ]
+}

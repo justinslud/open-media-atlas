@@ -890,3 +890,50 @@ class DuplicateIdentityRepairTests(TestCase):
 
         self.assertEqual(Work.objects.count(), 1)
         self.assertEqual(work.identifiers.filter(scheme="wikidata").count(), 2)
+
+
+class RefineWorkTypesTests(TestCase):
+    def setUp(self):
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.generic = WorkType.objects.get_or_create(
+            code="written-work", defaults={"label": "Written work", "medium": "text"}
+        )[0]
+        self.novel = WorkType.objects.get_or_create(
+            code="novel", defaults={"label": "Novel", "medium": "text"}
+        )[0]
+
+    def make(self, title, slug, claims):
+        work = Work.objects.create(title=title, slug=slug, work_type=self.generic,
+                                   visibility=Work.Visibility.PUBLIC, first_publication_year=1900)
+        SourceRecord.objects.create(
+            source=self.source, external_key=f"Q{Work.objects.count()}", matched_work=work,
+            raw_payload={"id": f"Q{Work.objects.count()}", "claims": claims},
+            payload_hash=slug, retrieved_at=timezone.now(),
+        )
+        return work
+
+    @staticmethod
+    def form(qid):
+        return {"P7937": [{"rank": "normal", "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": qid}}}}]}
+
+    def test_unambiguous_form_refines_and_ambiguous_form_does_not(self):
+        clear = self.make("Clear Novel", "clear-novel", self.form("Q8261"))
+        mixed = self.make("Mixed Form", "mixed-form", {
+            "P7937": [
+                {"rank": "normal", "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": "Q8261"}}}},
+                {"rank": "normal", "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": "Q11424"}}}},
+            ]
+        })
+
+        call_command("refine_work_types", confirm=True)
+
+        clear.refresh_from_db()
+        mixed.refresh_from_db()
+        self.assertEqual(clear.work_type_id, "novel")
+        self.assertEqual(mixed.work_type_id, "written-work")
+
+    def test_dry_run_changes_nothing(self):
+        work = self.make("Dry Novel", "dry-novel", self.form("Q8261"))
+        call_command("refine_work_types")
+        work.refresh_from_db()
+        self.assertEqual(work.work_type_id, "written-work")
