@@ -183,6 +183,7 @@
           {% if not claim.target_work_id %}<span class="mono">{{ claim.target_qid }}</span> <em>(not in catalog)</em>{% endif %}<br>
           <span class="mono">statement {{ claim.statement_id }}</span><br>
           rank {{ claim.rank }} · {{ claim.references }} reference{{ claim.references|pluralize }}
+          {% if claim.outcome == "self_link" and case.diagnosis.duplicate_identity %}<br><em>Self-link because this work carries two Wikidata IDs: the claim points at its own other item.{% if claim.target_work_id %} Fix is identity, not the claim.{% endif %}</em>{% endif %}
           {% if claim.relationship_id %}· <a href="{% url 'admin:catalog_workrelationship_change' claim.relationship_id %}">accepted edge</a>{% endif %}
           {% if claim.proposal_id %}· <a href="{% url 'admin:catalog_importrelationshipproposal_change' claim.proposal_id %}">proposal</a>{% endif %}
         </dd>
@@ -193,6 +194,14 @@
         <dd class="outcome {% for claim in case.highlight %}{{ claim.outcome }}{% endfor %}">
           {% for claim in case.highlight %}{{ claim.outcome_label }}{% if not forloop.last %}; {% endif %}{% endfor %}
           <div class="note">{{ case.note }}</div>
+        </dd>
+
+        <dt>Identity</dt>
+        <dd>
+          {% if case.diagnosis.duplicate_identity %}
+            <span class="flag">duplicate Wikidata identity: {{ case.diagnosis.qids|join:", " }}</span>
+            <div class="note">Two Wikidata items share this work, so a claim between them reads as a self-link. The fix is identity (split or merge the row), not the claim.</div>
+          {% else %}<span class="note">one Wikidata ID</span>{% endif %}
         </dd>
 
         <dt>Quality flags</dt>

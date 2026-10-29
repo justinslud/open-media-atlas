@@ -138,6 +138,15 @@ class WorkDiagnosis:
     def resolved(self):
         return [claim for claim in self.claims if claim.outcome in ("accepted", "proposal_approved")]
 
+    @property
+    def duplicate_identity(self):
+        """True when a crosswalk merged two or more Wikidata items into one work.
+
+        This is the usual cause of a self-link: the claim points at the work's
+        *other* QID, so both endpoints collapse onto one catalog row.
+        """
+        return len(self.qids) > 1
+
 
 _CACHE = {}
 
@@ -435,7 +444,7 @@ def sample_cases(index=None):
         ("proposal_rejected", "Ambiguous", "A claim became a proposal that review rejected."),
         ("target_missing", "Failed", "A claim points at an entity that was never staged in the catalog."),
         ("no_proposal", "Failed", "Both endpoints exist in the catalog, but no proposal references this statement."),
-        ("self_link", "Failed", "The claim points at the work itself and cannot become an edge."),
+        ("self_link", "Failed", "One claim points at the work's own other Wikidata item; the claim shown beside it is the real relationship."),
     ]
     cases = []
     used = set()
@@ -460,9 +469,20 @@ def sample_cases(index=None):
         used.add(work.pk)
         diagnosis = diagnose(work, index)
         matches = [claim for claim in diagnosis.claims if claim.outcome == outcome]
-        # One example per property keeps the card short and the coverage wide.
+        if outcome == "self_link":
+            # Show the sibling claim on the same property: it is usually the real
+            # relationship that the duplicate identity is hiding.
+            props = {claim.property_id for claim in matches}
+            siblings = [
+                claim for claim in diagnosis.claims
+                if claim.property_id in props and claim.outcome != "self_link"
+            ]
+            matches = siblings + matches
+        # A self-link is often a duplicate-identity symptom, and it hides the real
+        # claim sitting next to it. Show informative claims first.
+        ordered = sorted(matches, key=lambda claim: claim.outcome == "self_link")
         highlight, seen_props = [], set()
-        for claim in matches:
+        for claim in ordered:
             if claim.property_id in seen_props:
                 continue
             seen_props.add(claim.property_id)
