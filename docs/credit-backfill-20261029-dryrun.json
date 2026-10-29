@@ -1,0 +1,99 @@
+{
+  "dry_run": true,
+  "cache_only": false,
+  "candidate_works": 1344,
+  "with_cached_payload": 1336,
+  "works_filled": 986,
+  "works_without_claims": 358,
+  "agents_resolved_from_cache": 2430,
+  "agents_fetched": 2427,
+  "agents_missing_label": 50,
+  "network_requests": 50,
+  "sample": [
+    {
+      "work": 6969,
+      "credits": [
+        {
+          "agent": "Jules Verne",
+          "role": "author",
+          "qid": "Q33977"
+        },
+        {
+          "agent": "Édouard Riou",
+          "role": "illustrator",
+          "qid": "Q583275"
+        }
+      ]
+    },
+    {
+      "work": 7019,
+      "credits": [
+        {
+          "agent": "Jules Verne",
+          "role": "author",
+          "qid": "Q33977"
+        },
+        {
+          "agent": "Édouard Riou",
+          "role": "illustrator",
+          "qid": "Q583275"
+        }
+      ]
+    },
+    {
+      "work": 7042,
+      "credits": [
+        {
+          "agent": "Charles Dickens",
+          "role": "author",
+          "qid": "Q5686"
+        },
+        {
+          "agent": "Hablot Knight Browne",
+          "role": "illustrator",
+          "qid": "Q2737410"
+        }
+      ]
+    },
+    {
+      "work": 7089,
+      "credits": [
+        {
+          "agent": "Charles Dickens",
+          "role": "author",
+          "qid": "Q5686"
+        },
+        {
+          "agent": "Robert Seymour",
+          "role": "illustrator",
+          "qid": "Q444579"
+        },
+        {
+          "agent": "Robert William Buss",
+          "role": "illustrator",
+          "qid": "Q921595"
+        },
+        {
+          "agent": "Hablot Knight Browne",
+          "role": "illustrator",
+          "qid": "Q2737410"
+        }
+      ]
+    },
+    {
+      "work": 7142,
+      "credits": [
+        {
+          "agent": "Charles Dickens",
+          "role": "author",
+          "qid": "Q5686"
+        },
+        {
+          "agent": "George Cruikshank",
+          "role": "illustrator",
+          "qid": "Q360466"
+        }
+      ]
+    }
+  ]
+}

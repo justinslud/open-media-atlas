@@ -1,0 +1,6 @@
+{
+  "note": "Keep-identity decisions for works that a title collision merged two Wikidata items into. Derived from each work's date_evidence source except work 8000, which has no date and is kept as On the Heavens.",
+  "overrides": {
+    "8000": "Q331011"
+  }
+}

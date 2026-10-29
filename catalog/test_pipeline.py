@@ -813,3 +813,80 @@ class DiagnosticsTests(TestCase):
         response = client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Relationship pipeline diagnostics")
+
+
+class DuplicateIdentityRepairTests(TestCase):
+    def setUp(self):
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+        self.reltype = RelationshipType.objects.create(
+            code="based-on", label="Based on", inverse_label="Basis", category="reference",
+        )
+
+    def payload(self, qid, label, year, p31, target=None):
+        claims = {"P31": [{"rank": "normal", "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": p31}}}}],
+                  "P577": [{"id": f"{qid}$date", "rank": "normal",
+                            "mainsnak": {"datavalue": {"value": {"time": f"+{year}-00-00T00:00:00Z", "precision": 9}}},
+                            "qualifiers": {}, "references": []}]}
+        if target:
+            claims["P144"] = [{"id": f"{qid}$based", "rank": "normal",
+                               "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": target}}},
+                               "qualifiers": {}, "references": []}]
+        return {"id": qid, "labels": {"en": {"value": label}}, "claims": claims, "sitelinks": {}}
+
+    def test_split_moves_identity_and_repoints_the_claim(self):
+        original = Work.objects.create(
+            title="Apocalypse Now", slug="apocalypse-now", work_type=self.book,
+            visibility=Work.Visibility.PUBLIC, depth="index", first_publication_year=1979,
+            date_evidence={"source_url": "https://www.wikidata.org/wiki/Q100"},
+        )
+        ExternalIdentifier.objects.create(work=original, scheme="wikidata", value="Q100")
+        ExternalIdentifier.objects.create(work=original, scheme="wikidata", value="Q200")
+        for qid, label, year, target in (
+            ("Q100", "Apocalypse Now", 1979, None),
+            ("Q200", "Apocalypse Now Redux", 2001, "Q100"),
+        ):
+            SourceRecord.objects.create(
+                source=self.source, external_key=qid, matched_work=original,
+                raw_payload=self.payload(qid, label, year, "Q11424", target),
+                payload_hash=qid, retrieved_at=timezone.now(),
+            )
+        ImportRelationshipProposal.objects.create(
+            run=ImportRun.objects.create(source=self.source), statement_id="Q200$based",
+            from_work=original, to_work=original, relationship_type=self.reltype,
+            source=self.source, evidence={"property_id": "P144", "entity_id": "Q100",
+                                          "statement_id": "Q200$based", "edge_subject": "seed"},
+        )
+
+        call_command("repair_duplicate_identities", confirm=True)
+
+        original.refresh_from_db()
+        self.assertEqual(
+            list(original.identifiers.filter(scheme="wikidata").values_list("value", flat=True)), ["Q100"]
+        )
+        split = Work.objects.get(identifiers__scheme="wikidata", identifiers__value="Q200")
+        self.assertEqual(split.title, "Apocalypse Now Redux")
+        self.assertEqual(split.visibility, Work.Visibility.DRAFT)
+
+        proposal = ImportRelationshipProposal.objects.get()
+        self.assertEqual(proposal.from_work_id, split.pk)
+        self.assertEqual(proposal.to_work_id, original.pk)
+        record = SourceRecord.objects.get(external_key="Q200")
+        self.assertEqual(record.matched_work_id, split.pk)
+
+    def test_plan_mode_writes_nothing(self):
+        work = Work.objects.create(title="Merged", slug="merged", work_type=self.book,
+                                   visibility=Work.Visibility.PUBLIC, first_publication_year=1900,
+                                   date_evidence={"source_url": "https://www.wikidata.org/wiki/Q1"})
+        ExternalIdentifier.objects.create(work=work, scheme="wikidata", value="Q1")
+        ExternalIdentifier.objects.create(work=work, scheme="wikidata", value="Q2")
+        SourceRecord.objects.create(
+            source=self.source, external_key="Q2", matched_work=work,
+            raw_payload=self.payload("Q2", "Other", 1901, "Q7725634"),
+            payload_hash="Q2", retrieved_at=timezone.now(),
+        )
+
+        call_command("repair_duplicate_identities")
+
+        self.assertEqual(Work.objects.count(), 1)
+        self.assertEqual(work.identifiers.filter(scheme="wikidata").count(), 2)

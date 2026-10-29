@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-10-29T16:01:15.422822+00:00",
+  "confirm": true,
+  "merged_works": 14,
+  "summary": {
+    "split": 14
+  },
+  "decisions": [
+    {
+      "work": 6004,
+      "title": "The Tragedy of Hamlet, Prince of Denmark",
+      "keep": "Q41567",
+      "move": "Q54800666",
+      "status": "split",
+      "new_work": 14879,
+      "proposals_moved": 2,
+      "relationships_moved": 0
+    },
+    {
+      "work": 6971,
+      "title": "The Three Musketeers",
+      "keep": "Q1218097",
+      "move": "Q20559449",
+      "status": "split",
+      "new_work": 14880,
+      "proposals_moved": 2,
+      "relationships_moved": 0
+    },
+    {
+      "work": 7988,
+      "title": "Of Mice and Men",
+      "keep": "Q457977",
+      "move": "Q16983114",
+      "status": "split",
+      "new_work": 14881,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 7991,
+      "title": "Leviathan",
+      "keep": "Q193034",
+      "move": "Q58349612",
+      "status": "split",
+      "new_work": 14882,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 7997,
+      "title": "The Return of the King",
+      "keep": "Q332581",
+      "move": "Q332388",
+      "status": "split",
+      "new_work": 14883,
+      "proposals_moved": 7,
+      "relationships_moved": 3
+    },
+    {
+      "work": 8000,
+      "title": "Περὶ οὐρανοῦ",
+      "keep": "Q331011",
+      "move": "Q264714",
+      "status": "split",
+      "new_work": 14884,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 8211,
+      "title": "Ender's Game",
+      "keep": "Q816016",
+      "move": "Q5376051",
+      "status": "split",
+      "new_work": 14885,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 8213,
+      "title": "Flowers for Algernon",
+      "keep": "Q837934",
+      "move": "Q122463813",
+      "status": "split",
+      "new_work": 14886,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 8272,
+      "title": "The Murder at the Vicarage",
+      "keep": "Q693559",
+      "move": "Q3201524",
+      "status": "split",
+      "new_work": 14887,
+      "proposals_moved": 1,
+      "relationships_moved": 0
+    },
+    {
+      "work": 10134,
+      "title": "红楼梦第一部",
+      "keep": "Q110878850",
+      "move": "Q7213376",
+      "status": "split",
+      "new_work": 14888,
+      "proposals_moved": 2,
+      "relationships_moved": 0
+    },
+    {
+      "work": 10367,
+      "title": "Apocalypse Now",
+      "keep": "Q182692",
+      "move": "Q3620669",
+      "status": "split",
+      "new_work": 14889,
+      "proposals_moved": 1,
+      "relationships_moved": 0
+    },
+    {
+      "work": 11225,
+      "title": "Burning Chrome",
+      "keep": "Q2755162",
+      "move": "Q1068344",
+      "status": "split",
+      "new_work": 14890,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 11508,
+      "title": "Mémoires d'outre-tombe",
+      "keep": "Q2263221",
+      "move": "Q2693509",
+      "status": "split",
+      "new_work": 14891,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    },
+    {
+      "work": 12258,
+      "title": "Mass Effect: Ascension",
+      "keep": "Q2711383",
+      "move": "Q2543776",
+      "status": "split",
+      "new_work": 14892,
+      "proposals_moved": 0,
+      "relationships_moved": 0
+    }
+  ]
+}

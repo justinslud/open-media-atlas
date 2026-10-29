@@ -1,19 +1,19 @@
 {
   "version": "2026-10-22-proposal-triage",
-  "generated_at": "2026-10-29T15:06:41.442500+00:00",
+  "generated_at": "2026-10-29T16:01:38.272182+00:00",
   "dry_run": true,
   "reviewer": null,
-  "candidate_count": 1516,
+  "candidate_count": 1542,
   "summary": {
     "decisions": {
-      "green": 466,
-      "amber": 914,
-      "red": 136
+      "green": 469,
+      "amber": 925,
+      "red": 148
     },
     "green_types": {
-      "film": 319,
+      "film": 323,
       "novel": 57,
-      "television-series": 57,
+      "television-series": 56,
       "opera": 7,
       "musical": 2,
       "play": 9,
@@ -24,18 +24,21 @@
     },
     "reasons": {
       "no_year": 339,
-      "generic_type": 808,
+      "generic_type": 816,
       "date_unverified": 339,
-      "no_sitelink": 340,
+      "no_sitelink": 342,
       "year_inversion": 135,
       "title_collision": 99,
       "seed_no_year": 11,
+      "entity_mismatch": 8,
       "year_out_of_range": 5,
-      "multiple_qids": 2
+      "already_accepted": 2,
+      "duplicate_pending": 12,
+      "target_not_seed": 2
     },
     "warnings": {
-      "no_image": 1506,
-      "eponymous_title": 293
+      "no_image": 1529,
+      "eponymous_title": 300
     }
   },
   "rules": {
@@ -1949,6 +1952,58 @@
       "seed_year": 1871
     },
     {
+      "proposal_id": 2481,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6572,
+      "qid": "Q189875",
+      "title": "Alice in Wonderland",
+      "type": "film",
+      "year": 1951,
+      "date_text": "1951-07-28",
+      "date_kind": "release",
+      "visibility": "public",
+      "sitelinks": 77,
+      "seed_id": 6012,
+      "seed": "Alice's Adventures in Wonderland",
+      "seed_year": 1865
+    },
+    {
+      "proposal_id": 2588,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6568,
+      "qid": "Q174385",
+      "title": "Alice in Wonderland",
+      "type": "film",
+      "year": 2010,
+      "date_text": "2010",
+      "date_kind": "release",
+      "visibility": "public",
+      "sitelinks": 72,
+      "seed_id": 6012,
+      "seed": "Alice's Adventures in Wonderland",
+      "seed_year": 1865
+    },
+    {
       "proposal_id": 4662,
       "run_id": 43,
       "decision": "red",
@@ -2578,6 +2633,50 @@
       "seed_id": 6527,
       "seed": "Anne of Green Gables",
       "seed_year": 1908
+    },
+    {
+      "proposal_id": 2793,
+      "run_id": 41,
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 10367,
+      "qid": "Q182692",
+      "title": "Apocalypse Now",
+      "type": "film",
+      "year": 1979,
+      "date_text": "1979",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 84,
+      "seed_id": 7993,
+      "seed": "Heart of Darkness",
+      "seed_year": 1899
+    },
+    {
+      "proposal_id": 2794,
+      "run_id": 41,
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 14889,
+      "qid": "Q3620669",
+      "title": "Apocalypse Now Redux",
+      "type": "film",
+      "year": 2001,
+      "date_text": "2001",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 7993,
+      "seed": "Heart of Darkness",
+      "seed_year": 1899
     },
     {
       "proposal_id": 2060,
@@ -15924,6 +16023,52 @@
       "seed_year": 1980
     },
     {
+      "proposal_id": 1111,
+      "run_id": 23,
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 14880,
+      "qid": "Q20559449",
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1961,
+      "date_text": "1961-10-04",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
+      "proposal_id": 1371,
+      "run_id": 24,
+      "decision": "green",
+      "reasons": [],
+      "reason_details": [],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 14880,
+      "qid": "Q20559449",
+      "title": "Les Trois Mousquetaires",
+      "type": "film",
+      "year": 1961,
+      "date_text": "1961-10-04",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 2,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
       "proposal_id": 4532,
       "run_id": 43,
       "decision": "green",
@@ -19838,6 +19983,32 @@
       "seed_year": 1988
     },
     {
+      "proposal_id": 2255,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6804,
+      "qid": "Q216929",
+      "title": "Oliver & Company",
+      "type": "film",
+      "year": 1988,
+      "date_text": "1988",
+      "date_kind": "release",
+      "visibility": "public",
+      "sitelinks": 100,
+      "seed_id": 6529,
+      "seed": "Oliver Twist",
+      "seed_year": 1839
+    },
+    {
       "proposal_id": 3192,
       "run_id": 41,
       "decision": "red",
@@ -21947,6 +22118,84 @@
       "date_kind": "publication",
       "visibility": "draft",
       "sitelinks": 9,
+      "seed_id": 6005,
+      "seed": "Romeo and Juliet",
+      "seed_year": 1597
+    },
+    {
+      "proposal_id": 2704,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6236,
+      "qid": "Q191803",
+      "title": "The Lion King II: Simba's Pride",
+      "type": "film",
+      "year": 1998,
+      "date_text": "1998",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 63,
+      "seed_id": 6005,
+      "seed": "Romeo and Juliet",
+      "seed_year": 1597
+    },
+    {
+      "proposal_id": 238,
+      "run_id": 5,
+      "decision": "red",
+      "reasons": [
+        "already_accepted",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "an accepted edge already exists",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [],
+      "work_id": 6447,
+      "qid": "Q918714",
+      "title": "Roméo et Juliette",
+      "type": "opera",
+      "year": 1867,
+      "date_text": "1867-04-27",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 22,
+      "seed_id": 6005,
+      "seed": "Romeo and Juliet",
+      "seed_year": 1597
+    },
+    {
+      "proposal_id": 458,
+      "run_id": 9,
+      "decision": "red",
+      "reasons": [
+        "already_accepted",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "an accepted edge already exists",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [],
+      "work_id": 6447,
+      "qid": "Q918714",
+      "title": "Roméo et Juliette",
+      "type": "opera",
+      "year": 1867,
+      "date_text": "1867-04-27",
+      "date_kind": "first_performance",
+      "visibility": "public",
+      "sitelinks": 22,
       "seed_id": 6005,
       "seed": "Romeo and Juliet",
       "seed_year": 1597
@@ -26383,6 +26632,32 @@
       "seed_year": 1934
     },
     {
+      "proposal_id": 2709,
+      "run_id": 37,
+      "decision": "amber",
+      "reasons": [
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 14883,
+      "qid": "Q332388",
+      "title": "The Two Towers",
+      "type": "novel",
+      "year": 1954,
+      "date_text": "1954-11-11",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 58,
+      "seed_id": 7972,
+      "seed": "The Fellowship of the Ring",
+      "seed_year": 1954
+    },
+    {
       "proposal_id": 2710,
       "run_id": 37,
       "decision": "amber",
@@ -26404,6 +26679,32 @@
       "date_kind": "publication",
       "visibility": "public",
       "sitelinks": 149,
+      "seed_id": 7972,
+      "seed": "The Fellowship of the Ring",
+      "seed_year": 1954
+    },
+    {
+      "proposal_id": 2718,
+      "run_id": 41,
+      "decision": "amber",
+      "reasons": [
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 14883,
+      "qid": "Q332388",
+      "title": "The Two Towers",
+      "type": "novel",
+      "year": 1954,
+      "date_text": "1954-11-11",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 58,
       "seed_id": 7972,
       "seed": "The Fellowship of the Ring",
       "seed_year": 1954
@@ -26929,6 +27230,62 @@
       "seed_id": 8030,
       "seed": "The Godfather",
       "seed_year": 1969
+    },
+    {
+      "proposal_id": 2657,
+      "run_id": 37,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7988,
+      "qid": "Q457977",
+      "title": "Of Mice and Men",
+      "type": "literary-work",
+      "year": 1937,
+      "date_text": "1937",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 59,
+      "seed_id": 7966,
+      "seed": "The Grapes of Wrath",
+      "seed_year": 1939
+    },
+    {
+      "proposal_id": 2717,
+      "run_id": 41,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7988,
+      "qid": "Q457977",
+      "title": "Of Mice and Men",
+      "type": "literary-work",
+      "year": 1937,
+      "date_text": "1937",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 59,
+      "seed_id": 7966,
+      "seed": "The Grapes of Wrath",
+      "seed_year": 1939
     },
     {
       "proposal_id": 2380,
@@ -28070,6 +28427,33 @@
       "seed_year": 1847
     },
     {
+      "proposal_id": 2699,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 7235,
+      "qid": "Q16857406",
+      "title": "The Jungle Book",
+      "type": "film",
+      "year": 2016,
+      "date_text": "2016",
+      "date_kind": "release",
+      "visibility": "public",
+      "sitelinks": 63,
+      "seed_id": 6484,
+      "seed": "The Jungle Book",
+      "seed_year": 1894
+    },
+    {
       "proposal_id": 2700,
       "run_id": 37,
       "decision": "amber",
@@ -28180,6 +28564,62 @@
       "seed_id": 8448,
       "seed": "Le Vicomte de Bragelonne",
       "seed_year": 1847
+    },
+    {
+      "proposal_id": 336,
+      "run_id": 5,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 14879,
+      "qid": "Q54800666",
+      "title": "The Klingon Hamlet",
+      "type": "written-work",
+      "year": 2000,
+      "date_text": "2000",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6004,
+      "seed": "The Tragedy of Hamlet, Prince of Denmark",
+      "seed_year": 1602
+    },
+    {
+      "proposal_id": 1568,
+      "run_id": 24,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 14879,
+      "qid": "Q54800666",
+      "title": "The Klingon Hamlet",
+      "type": "written-work",
+      "year": 2000,
+      "date_text": "2000",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 3,
+      "seed_id": 6004,
+      "seed": "The Tragedy of Hamlet, Prince of Denmark",
+      "seed_year": 1602
     },
     {
       "proposal_id": 3487,
@@ -28662,11 +29102,9 @@
       "run_id": 43,
       "decision": "red",
       "reasons": [
-        "multiple_qids",
         "year_inversion"
       ],
       "reason_details": [
-        "adaptation has multiple Wikidata QIDs",
         "adaptation year precedes the source year"
       ],
       "warnings": [],
@@ -29222,24 +29660,22 @@
       "run_id": 43,
       "decision": "red",
       "reasons": [
-        "multiple_qids",
         "year_inversion"
       ],
       "reason_details": [
-        "adaptation has multiple Wikidata QIDs",
         "adaptation year precedes the source year"
       ],
       "warnings": [
         "no_image"
       ],
-      "work_id": 7997,
+      "work_id": 14883,
       "qid": "Q332388",
-      "title": "The Return of the King",
+      "title": "The Two Towers",
       "type": "novel",
-      "year": 1955,
-      "date_text": "1955-10-20",
+      "year": 1954,
+      "date_text": "1954-11-11",
       "date_kind": "publication",
-      "visibility": "public",
+      "visibility": "draft",
       "sitelinks": 58,
       "seed_id": 10322,
       "seed": "The Lord of the Rings: The Two Towers",
@@ -29799,9 +30235,13 @@
     {
       "proposal_id": 4827,
       "run_id": 43,
-      "decision": "green",
-      "reasons": [],
-      "reason_details": [],
+      "decision": "red",
+      "reasons": [
+        "target_not_seed"
+      ],
+      "reason_details": [
+        "target is not a public seed at the requested scope"
+      ],
       "warnings": [
         "no_image"
       ],
@@ -29814,9 +30254,9 @@
       "date_kind": "release",
       "visibility": "draft",
       "sitelinks": 17,
-      "seed_id": 8272,
+      "seed_id": 14887,
       "seed": "The Murder at the Vicarage",
-      "seed_year": 1930
+      "seed_year": 1986
     },
     {
       "proposal_id": 3105,
@@ -31984,32 +32424,6 @@
       "seed_year": 1905
     },
     {
-      "proposal_id": 2801,
-      "run_id": 41,
-      "decision": "amber",
-      "reasons": [
-        "generic_type"
-      ],
-      "reason_details": [
-        "public type is still generic"
-      ],
-      "warnings": [
-        "no_image"
-      ],
-      "work_id": 7876,
-      "qid": "Q15228",
-      "title": "The Lord of the Rings",
-      "type": "literary-work",
-      "year": 1954,
-      "date_text": "1954",
-      "date_kind": "publication",
-      "visibility": "public",
-      "sitelinks": 149,
-      "seed_id": 7997,
-      "seed": "The Return of the King",
-      "seed_year": 1955
-    },
-    {
       "proposal_id": 3632,
       "run_id": 41,
       "decision": "red",
@@ -33303,6 +33717,58 @@
       "seed_year": 1915
     },
     {
+      "proposal_id": 1070,
+      "run_id": 23,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6971,
+      "qid": "Q1218097",
+      "title": "The Three Musketeers",
+      "type": "creative-work",
+      "year": 1961,
+      "date_text": "1961",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
+      "proposal_id": 1366,
+      "run_id": 24,
+      "decision": "amber",
+      "reasons": [
+        "generic_type"
+      ],
+      "reason_details": [
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6971,
+      "qid": "Q1218097",
+      "title": "The Three Musketeers",
+      "type": "creative-work",
+      "year": 1961,
+      "date_text": "1961",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 13,
+      "seed_id": 6523,
+      "seed": "Les Trois Mousquetaires",
+      "seed_year": 1844
+    },
+    {
       "proposal_id": 3970,
       "run_id": 41,
       "decision": "amber",
@@ -33641,6 +34107,34 @@
       "seed_year": 1928
     },
     {
+      "proposal_id": 2801,
+      "run_id": 41,
+      "decision": "red",
+      "reasons": [
+        "target_not_seed",
+        "generic_type"
+      ],
+      "reason_details": [
+        "target is not a public seed at the requested scope",
+        "public type is still generic"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 7876,
+      "qid": "Q15228",
+      "title": "The Lord of the Rings",
+      "type": "literary-work",
+      "year": 1954,
+      "date_text": "1954",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 149,
+      "seed_id": 14883,
+      "seed": "The Two Towers",
+      "seed_year": 1954
+    },
+    {
       "proposal_id": 3567,
       "run_id": 41,
       "decision": "amber",
@@ -33837,6 +34331,32 @@
       "seed_id": 7932,
       "seed": "西遊記",
       "seed_year": 1592
+    },
+    {
+      "proposal_id": 2646,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6947,
+      "qid": "Q863963",
+      "title": "The Adventures of Ichabod and Mr. Toad",
+      "type": "film",
+      "year": 1949,
+      "date_text": "1949-10-05",
+      "date_kind": "release",
+      "visibility": "public",
+      "sitelinks": 66,
+      "seed_id": 6536,
+      "seed": "The Wind in the Willows",
+      "seed_year": 1908
     },
     {
       "proposal_id": 2614,
@@ -34064,6 +34584,30 @@
       "seed_id": 6238,
       "seed": "The Wizard of Oz",
       "seed_year": 1939
+    },
+    {
+      "proposal_id": 2618,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [],
+      "work_id": 6238,
+      "qid": "Q193695",
+      "title": "The Wizard of Oz",
+      "type": "film",
+      "year": 1939,
+      "date_text": "1939-08-25",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 67,
+      "seed_id": 6013,
+      "seed": "The Wonderful Wizard of Oz",
+      "seed_year": 1900
     },
     {
       "proposal_id": 4356,
@@ -35041,6 +35585,32 @@
       "seed_id": 8352,
       "seed": "Totem und Tabu",
       "seed_year": 1910
+    },
+    {
+      "proposal_id": 2713,
+      "run_id": 37,
+      "decision": "red",
+      "reasons": [
+        "entity_mismatch"
+      ],
+      "reason_details": [
+        "P144 entity does not match the adaptation QID"
+      ],
+      "warnings": [
+        "no_image"
+      ],
+      "work_id": 6322,
+      "qid": "Q392530",
+      "title": "Treasure Planet",
+      "type": "film",
+      "year": 2002,
+      "date_text": "2002-11-27",
+      "date_kind": "publication",
+      "visibility": "public",
+      "sitelinks": 63,
+      "seed_id": 6015,
+      "seed": "Treasure Island",
+      "seed_year": 1883
     },
     {
       "proposal_id": 2109,
@@ -39588,6 +40158,122 @@
       "seed_id": 12077,
       "seed": "時をかける少女",
       "seed_year": 1965
+    },
+    {
+      "proposal_id": 2172,
+      "run_id": 37,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 14888,
+      "qid": "Q7213376",
+      "title": "红楼梦",
+      "type": "creative-work",
+      "year": 1988,
+      "date_text": "1988",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 7885,
+      "seed": "紅樓夢",
+      "seed_year": 1792
+    },
+    {
+      "proposal_id": 2715,
+      "run_id": 39,
+      "decision": "amber",
+      "reasons": [
+        "generic_type",
+        "duplicate_pending"
+      ],
+      "reason_details": [
+        "public type is still generic",
+        "another pending proposal covers the same edge"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 14888,
+      "qid": "Q7213376",
+      "title": "红楼梦",
+      "type": "creative-work",
+      "year": 1988,
+      "date_text": "1988",
+      "date_kind": "publication",
+      "visibility": "draft",
+      "sitelinks": 5,
+      "seed_id": 7885,
+      "seed": "紅樓夢",
+      "seed_year": 1792
+    },
+    {
+      "proposal_id": 2177,
+      "run_id": 37,
+      "decision": "amber",
+      "reasons": [
+        "duplicate_pending",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "another pending proposal covers the same edge",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 10134,
+      "qid": "Q110878850",
+      "title": "红楼梦第一部",
+      "type": "film",
+      "year": 1988,
+      "date_text": "1988",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 7885,
+      "seed": "紅樓夢",
+      "seed_year": 1792
+    },
+    {
+      "proposal_id": 2716,
+      "run_id": 39,
+      "decision": "amber",
+      "reasons": [
+        "duplicate_pending",
+        "no_sitelink"
+      ],
+      "reason_details": [
+        "another pending proposal covers the same edge",
+        "adaptation has no Wikipedia sitelink"
+      ],
+      "warnings": [
+        "no_image",
+        "eponymous_title"
+      ],
+      "work_id": 10134,
+      "qid": "Q110878850",
+      "title": "红楼梦第一部",
+      "type": "film",
+      "year": 1988,
+      "date_text": "1988",
+      "date_kind": "release",
+      "visibility": "draft",
+      "sitelinks": 0,
+      "seed_id": 7885,
+      "seed": "紅樓夢",
+      "seed_year": 1792
     },
     {
       "proposal_id": 2179,
