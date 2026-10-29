@@ -8,8 +8,10 @@ import json
 import tempfile
 from pathlib import Path
 
+from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.test import TestCase
+from django.urls import reverse
 from django.utils import timezone
 
 from .management.commands.triage_proposals import evaluate_proposal
@@ -24,6 +26,7 @@ from .models import (
     Source,
     SourceRecord,
     Work,
+    WorkRelationship,
     WorkType,
 )
 from .publication import blocking_reasons, is_seed, publication_warnings
@@ -657,7 +660,10 @@ class OrphanReportTests(TestCase):
         claimed = self.work("Has Unresolved Claim", slug="unresolved")
         SourceRecord.objects.create(
             source=self.source, external_key="Q1", matched_work=claimed,
-            raw_payload={"id": "Q1", "claims": {"P629": [{"mainsnak": {"datavalue": {"value": {"id": "Q9"}}}}]}},
+            raw_payload={"id": "Q1", "claims": {"P629": [{
+                "id": "Q1$edition", "rank": "normal",
+                "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": "Q9"}}},
+            }]}},
             payload_hash="Q1", retrieved_at=timezone.now(),
         )
 
@@ -686,3 +692,124 @@ class BookSliceRunnerTests(TestCase):
             with self.assertRaises(CommandError):
                 call_command("discover_wikidata_books", limit=100, scan=50,
                              manifest=Path(folder) / "m.json")
+
+
+class DiagnosticsTests(TestCase):
+    def setUp(self):
+        self.source = Source.objects.create(title="Wikidata", url="https://www.wikidata.org/")
+        self.book = WorkType.objects.create(code="book", label="Book", medium="text")
+        self.reltype = RelationshipType.objects.create(
+            code="follows", label="Follows", inverse_label="Preceded by", category="reference",
+        )
+
+    def work(self, title, slug, **kwargs):
+        defaults = {"work_type": self.book, "visibility": Work.Visibility.PUBLIC,
+                    "depth": "index", "first_publication_year": 1900}
+        defaults.update(kwargs)
+        return Work.objects.create(title=title, slug=slug, **defaults)
+
+    def record(self, work, qid, claims):
+        self.qid = getattr(self, "qid", 0) + 1
+        SourceRecord.objects.create(
+            source=self.source, external_key=qid, matched_work=work,
+            raw_payload={"id": qid, "claims": claims},
+            payload_hash=f"{qid}-{self.qid}", retrieved_at=timezone.now(),
+        )
+
+    def claim(self, qid, statement, prop):
+        return {prop: [{
+            "id": statement, "rank": "normal",
+            "mainsnak": {"datavalue": {"value": {"entity-type": "item", "id": qid}}},
+            "qualifiers": {}, "references": [],
+        }]}
+
+    def test_states_separate_claims_from_proposals_and_edges(self):
+        from catalog import diagnostics
+
+        connected = self.work("Connected", "connected")
+        ExternalIdentifier.objects.create(work=connected, scheme="wikidata", value="Q10")
+        self.record(connected, "Q10", self.claim("Q11", "Q10$s1", "P155"))
+        other = self.work("Other", "other")
+        ExternalIdentifier.objects.create(work=other, scheme="wikidata", value="Q11")
+        WorkRelationship.objects.create(
+            from_work=connected, to_work=other, relationship_type=self.reltype,
+            source=self.source, review_status="accepted",
+            evidence={"statement_id": "Q10$s1"},
+        )
+
+        pending = self.work("Pending", "pending")
+        ExternalIdentifier.objects.create(work=pending, scheme="wikidata", value="Q20")
+        self.record(pending, "Q20", self.claim("Q21", "Q20$s1", "P155"))
+        ImportRelationshipProposal.objects.create(
+            run=ImportRun.objects.create(source=self.source), statement_id="Q20$s1",
+            from_work=pending, to_work=other, relationship_type=self.reltype,
+            source=self.source, evidence={"statement_id": "Q20$s1"},
+        )
+
+        unresolved = self.work("Unresolved", "unresolved")
+        ExternalIdentifier.objects.create(work=unresolved, scheme="wikidata", value="Q30")
+        self.record(unresolved, "Q30", self.claim("Q31", "Q30$s1", "P155"))
+
+        bare = self.work("Bare", "bare")
+        self.record(bare, "Q40", {})
+
+        index = diagnostics.build_index(force=True)
+        states = {work_id: state for work_id, state in index["states"].items()}
+        self.assertEqual(states[connected.pk], diagnostics.STATE_CONNECTED)
+        self.assertEqual(states[pending.pk], diagnostics.STATE_PROPOSAL_PENDING)
+        self.assertEqual(states[unresolved.pk], diagnostics.STATE_CLAIMS_UNRESOLVED)
+        self.assertEqual(states[bare.pk], diagnostics.STATE_NO_CLAIMS)
+
+        claim = index["claims"][unresolved.pk][0]
+        self.assertEqual(claim.outcome, "target_missing")
+        self.assertEqual(claim.statement_id, "Q30$s1")
+
+    def test_funnel_and_state_counts_agree_with_states(self):
+        from catalog import diagnostics
+
+        work = self.work("Alone", "alone")
+        ExternalIdentifier.objects.create(work=work, scheme="wikidata", value="Q50")
+        self.record(work, "Q50", self.claim("Q51", "Q50$s1", "P144"))
+
+        index = diagnostics.build_index(force=True)
+        stages = {stage["key"]: stage["count"] for stage in diagnostics.funnel(index)}
+        self.assertEqual(stages["imported"], 1)
+        self.assertEqual(stages["claims"], 1)
+        self.assertEqual(stages["proposals"], 0)
+        self.assertEqual(stages["accepted"], 0)
+        self.assertEqual(sum(state["count"] for state in diagnostics.state_counts(index)),
+                         len(index["states"]))
+
+    def test_unresolved_seed_manifest_selects_backlog_works(self):
+        from catalog import diagnostics
+
+        backlog = self.work("Backlog", "backlog")
+        ExternalIdentifier.objects.create(work=backlog, scheme="wikidata", value="Q60")
+        self.record(backlog, "Q60", self.claim("Q61", "Q60$s1", "P155"))
+        settled = self.work("Settled", "settled")
+        ExternalIdentifier.objects.create(work=settled, scheme="wikidata", value="Q70")
+        self.record(settled, "Q70", {})
+
+        diagnostics.build_index(force=True)
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / "seeds.json"
+            call_command("build_seed_manifest", source="unresolved-claims", limit=10, output=output)
+            manifest = json.loads(output.read_text())
+        self.assertEqual([row["qid"] for row in manifest["seeds"]], ["Q60"])
+
+    def test_diagnostics_page_is_staff_only(self):
+        from django.test import Client
+
+        User = get_user_model()
+        self.work("Page Work", "page-work")
+        url = reverse("admin:catalog_importrelationshipproposal_diagnostics")
+
+        anonymous = Client().get(url)
+        self.assertEqual(anonymous.status_code, 302)
+
+        staff = User.objects.create_user("diag-staff", password="x", is_staff=True)
+        client = Client()
+        client.force_login(staff)
+        response = client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Relationship pipeline diagnostics")

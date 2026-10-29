@@ -22,6 +22,7 @@
   <a class="secondary" href="{% url 'admin:catalog_work_changelist' %}?has_image=no">Missing images</a>
   <a class="secondary" href="{% url 'admin:catalog_work_changelist' %}?visibility=draft">Draft works</a>
   <a class="secondary" href="{% url 'admin:catalog_importrelationshipproposal_changelist' %}?status=pending">All pending proposals</a>
+  <a class="secondary" href="{% url 'admin:catalog_importrelationshipproposal_diagnostics' %}">Pipeline diagnostics</a>
   <a class="secondary" href="{% url 'admin:catalog_importrun_changelist' %}">Import runs</a>
   <a class="secondary" href="{% url 'admin:catalog_sourcerecord_changelist' %}">Source records</a>
   {% if golden_list %}<a class="secondary" href="{{ golden_list.get_absolute_url }}">Public “Golden 20”</a>{% endif %}

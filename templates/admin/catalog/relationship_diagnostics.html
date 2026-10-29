@@ -1,0 +1,216 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+  .diag h2 { margin: 26px 0 8px; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; }
+  .diag h2 small { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--body-quiet-color, #666); }
+  .diag .note { color: var(--body-quiet-color, #666); font-size: 12px; margin: 6px 0 0; max-width: 90ch; }
+  .diag table { width: 100%; border-collapse: collapse; }
+  .diag th, .diag td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--hairline-color, #e2e2e2); vertical-align: top; font-size: 13px; }
+  .diag th { font-weight: 600; color: var(--body-quiet-color, #666); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .diag td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .diag .drop { color: #a33; white-space: nowrap; }
+  .diag .funnel td.bar { width: 42%; }
+  .diag .bar span { display: block; height: 12px; background: var(--primary, #417690); border-radius: 2px; }
+  .diag .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .diag .card { border: 1px solid var(--hairline-color, #ddd); border-radius: 4px; padding: 10px 12px; background: var(--body-bg, #fff); }
+  .diag .card h3 { margin: 0 0 2px; font-size: 14px; }
+  .diag .card .kind { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border-radius: 8px; margin-bottom: 6px; }
+  .diag .kind.Successful { background: #d8f0d8; color: #1e5620; }
+  .diag .kind.Ambiguous { background: #fdf0d0; color: #725400; }
+  .diag .kind.Failed { background: #fadcdc; color: #7a1c1c; }
+  .diag .card dl { margin: 6px 0 0; font-size: 12px; }
+  .diag .card dt { font-weight: 600; color: var(--body-quiet-color, #666); margin-top: 6px; }
+  .diag .card dd { margin: 1px 0 0; }
+  .diag code, .diag .mono { font-family: var(--monospace-font, ui-monospace, monospace); font-size: 11.5px; }
+  .diag .flag { display: inline-block; font-size: 10.5px; background: #eee; color: #444; border-radius: 8px; padding: 1px 6px; margin: 1px 2px 1px 0; }
+  .diag .filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; margin: 8px 0 12px; }
+  .diag .filters label { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--body-quiet-color, #666); display: block; }
+  .diag .filters input, .diag .filters select { padding: 3px 5px; min-width: 130px; }
+  .diag .outcome { font-size: 11.5px; white-space: nowrap; }
+  .diag .outcome.accepted, .diag .outcome.proposal_approved { color: #1e5620; }
+  .diag .outcome.proposal_pending { color: #725400; }
+  .diag .outcome.proposal_rejected, .diag .outcome.target_missing, .diag .outcome.self_link, .diag .outcome.no_proposal { color: #7a1c1c; }
+  .diag .pager { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 12px; }
+  .diag .state-links a { display: inline-block; margin: 0 10px 6px 0; font-size: 12px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main" class="diag">
+
+  <p class="note">
+    Read-only workbench for one question: where did an imported work's relationship claims go?
+    Nothing here writes to the catalog. Counts cover every work in the database;
+    <strong>imported works</strong> means the subset with a cached Wikidata payload.
+  </p>
+
+  <h2>Funnel <small>imported → claimed → proposed → accepted</small></h2>
+  <table class="funnel">
+    <thead>
+      <tr><th>Stage</th><th class="num">Works</th><th class="num">Lost here</th><th class="bar"></th><th>Definition</th></tr>
+    </thead>
+    <tbody>
+      {% for stage in funnel %}
+      <tr>
+        <td><strong>{{ stage.label }}</strong></td>
+        <td class="num">{{ stage.count }}</td>
+        <td class="num">{% if stage.drop %}<span class="drop">−{{ stage.drop }}</span>{% else %}—{% endif %}</td>
+        <td class="bar"><span style="width: {% widthratio stage.count totals.imported_works 100 %}%"></span></td>
+        <td>{{ stage.definition }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="note">
+    {{ totals.claims_total }} usable claims in total, {{ totals.proposals }} proposals
+    ({{ totals.proposals_pending }} pending), {{ totals.accepted_relationships }} accepted relationships.
+    A work can hold many claims, so claim counts exceed work counts at every stage.
+  </p>
+
+  <h2>Work states <small>click a count to filter the table</small></h2>
+  <table>
+    <thead><tr><th>State</th><th class="num">Works</th><th>Definition</th></tr></thead>
+    <tbody>
+      {% for state in states %}
+      <tr>
+        <td><a href="?state={{ state.key }}">{{ state.label }}</a></td>
+        <td class="num"><a href="?state={{ state.key }}">{{ state.count }}</a></td>
+        <td>{{ state.definition }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Works <small>{{ result_count }} match{% if result_count != 1 %}es{% endif %}</small></h2>
+  <form class="filters" method="get">
+    <div><label for="f-q">Title or identifier</label><input id="f-q" name="q" value="{{ filters.q }}" placeholder="Anna Karenina, Q147787"></div>
+    <div><label for="f-state">State</label>
+      <select id="f-state" name="state">
+        <option value="">Any state</option>
+        {% for key, label in state_choices %}
+        <option value="{{ key }}" {% if filters.state == key %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div><label for="f-type">Type</label>
+      <select id="f-type" name="type">
+        <option value="">Any type</option>
+        {% for code, label in type_choices %}
+        <option value="{{ code }}" {% if filters.type == code %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div><label for="f-depth">Depth</label>
+      <select id="f-depth" name="depth">
+        <option value="">Any depth</option>
+        {% for value in depth_choices %}
+        <option value="{{ value }}" {% if filters.depth == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div><button class="button" type="submit">Filter</button></div>
+    {% if filters.q or filters.state or filters.type or filters.depth %}
+    <div><a href="{% url 'admin:catalog_importrelationshipproposal_diagnostics' %}">Reset</a></div>
+    {% endif %}
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Work</th><th>Type</th><th class="num">Year</th><th>Depth</th>
+        <th class="num">Claims</th><th>Outcomes</th><th>State</th><th>Records</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>
+          <a href="{% url 'admin:catalog_work_change' row.work.pk %}">{{ row.work.title }}</a>
+          <div class="mono">{{ row.work.visibility }} · id {{ row.work.pk }}</div>
+        </td>
+        <td>{{ row.work.work_type.label }}</td>
+        <td class="num">{{ row.work.first_publication_year|default:"—" }}</td>
+        <td>{{ row.work.depth }}</td>
+        <td class="num">{{ row.claim_count }}</td>
+        <td>
+          {% for outcome, count in row.outcomes.items %}
+          <span class="outcome {{ outcome }}">{{ outcome }} {{ count }}</span>{% if not forloop.last %} · {% endif %}
+          {% empty %}—{% endfor %}
+        </td>
+        <td>{{ row.state_label }}</td>
+        <td>
+          <a href="{% url 'admin:catalog_sourcerecord_changelist' %}?q={{ row.work.title|urlencode }}">source</a>
+          {% if row.proposals %}· <a href="{% url 'admin:catalog_importrelationshipproposal_change' row.proposals.0 %}">proposal</a>{% endif %}
+          {% if row.relationships %}· <a href="{% url 'admin:catalog_workrelationship_change' row.relationships.0 %}">edge</a>{% endif %}
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="8">No works match these filters.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="pager">
+    {% if page_obj.has_previous %}<a href="?{% if querystring %}{{ querystring }}&{% endif %}page={{ page_obj.previous_page_number }}">← previous</a>{% endif %}
+    <span>page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a href="?{% if querystring %}{{ querystring }}&{% endif %}page={{ page_obj.next_page_number }}">next →</a>{% endif %}
+  </div>
+
+  <h2>Evidence sample <small>one deliberate case per outcome</small></h2>
+  <p class="note">
+    Each card shows the cached claim, its locator, the endpoint it points at, and the
+    outcome. Use these to judge whether the pipeline reads the source correctly
+    without opening six other pages.
+  </p>
+  <div class="cards">
+    {% for case in samples %}
+    <div class="card">
+      <span class="kind {{ case.kind }}">{{ case.kind }}</span>
+      <h3><a href="{% url 'admin:catalog_work_change' case.work.pk %}">{{ case.work.title }}</a></h3>
+      <div class="mono">
+        {% for qid in case.diagnosis.qids %}{{ qid }}{% if not forloop.last %}, {% endif %}{% empty %}no Wikidata ID{% endfor %}
+      </div>
+      <div class="note">{{ case.work.work_type.label }}{% if case.work.first_publication_year %} · {{ case.work.first_publication_year }}{% endif %} · {{ case.work.visibility }}/{{ case.work.depth }}</div>
+
+      <dl>
+        <dt>Claim and locator</dt>
+        {% for claim in case.highlight %}
+        <dd>
+          <code>{{ claim.property_id }}</code> → {{ claim.code }}<br>
+          target <a href="{% url 'admin:catalog_work_change' claim.target_work_id %}">{{ claim.target_qid }}</a>
+          {% if not claim.target_work_id %}<span class="mono">{{ claim.target_qid }}</span> <em>(not in catalog)</em>{% endif %}<br>
+          <span class="mono">statement {{ claim.statement_id }}</span><br>
+          rank {{ claim.rank }} · {{ claim.references }} reference{{ claim.references|pluralize }}
+          {% if claim.relationship_id %}· <a href="{% url 'admin:catalog_workrelationship_change' claim.relationship_id %}">accepted edge</a>{% endif %}
+          {% if claim.proposal_id %}· <a href="{% url 'admin:catalog_importrelationshipproposal_change' claim.proposal_id %}">proposal</a>{% endif %}
+        </dd>
+        {% endfor %}
+        {% if case.hidden %}<dd class="note">+ {{ case.hidden }} more claim{{ case.hidden|pluralize }} with this outcome</dd>{% endif %}
+
+        <dt>Outcome</dt>
+        <dd class="outcome {% for claim in case.highlight %}{{ claim.outcome }}{% endfor %}">
+          {% for claim in case.highlight %}{{ claim.outcome_label }}{% if not forloop.last %}; {% endif %}{% endfor %}
+          <div class="note">{{ case.note }}</div>
+        </dd>
+
+        <dt>Quality flags</dt>
+        <dd>
+          {% for flag in case.diagnosis.warnings %}<span class="flag">{{ flag }}</span>{% empty %}<span class="note">none</span>{% endfor %}
+        </dd>
+
+        <dt>Records</dt>
+        <dd>
+          <a href="{% url 'admin:catalog_work_change' case.work.pk %}">work {{ case.work.pk }}</a>
+          · <a href="{% url 'admin:catalog_importrelationshipproposal_changelist' %}?q={{ case.work.title|urlencode }}">proposals</a>
+          · <a href="{% url 'admin:catalog_sourcerecord_changelist' %}?q={{ case.work.title|urlencode }}">source records</a>
+        </dd>
+      </dl>
+    </div>
+    {% empty %}
+    <p>No sample cases available.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

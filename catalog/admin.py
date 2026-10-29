@@ -398,6 +398,67 @@ class ImportRelationshipProposalAdmin(admin.ModelAdmin):
     def has_add_permission(self, request): return False
     def has_delete_permission(self, request, obj=None): return False
 
+    # -- staff diagnostics page ------------------------------------------------
+    # Deliberately kept out of the admin index: the dashboard is already dense,
+    # and this page is a workbench for one question, not a status board.
+
+    def get_urls(self):
+        from django.urls import path
+
+        extra = [
+            path(
+                "diagnostics/",
+                self.admin_site.admin_view(self.diagnostics_view),
+                name="catalog_importrelationshipproposal_diagnostics",
+            )
+        ]
+        return extra + super().get_urls()
+
+    def diagnostics_view(self, request):
+        from django.core.paginator import Paginator
+        from django.shortcuts import render
+
+        from catalog import diagnostics
+        from catalog.models import WorkType
+
+        index = diagnostics.build_index()
+        query = request.GET.get("q", "").strip()
+        state = request.GET.get("state", "").strip()
+        type_code = request.GET.get("type", "").strip()
+        depth = request.GET.get("depth", "").strip()
+        if state and state not in diagnostics.STATE_LABELS:
+            state = ""
+
+        rows, total = diagnostics.work_rows(
+            index, state=state, query=query, type_code=type_code, depth=depth,
+            limit=0, offset=0,
+        )
+        paginator = Paginator(range(total), 25)
+        page_obj = paginator.get_page(request.GET.get("page"))
+        rows, _total = diagnostics.work_rows(
+            index, state=state, query=query, type_code=type_code, depth=depth,
+            limit=25, offset=(page_obj.number - 1) * 25,
+        )
+
+        context = {
+            **self.admin_site.each_context(request),
+            "title": "Relationship pipeline diagnostics",
+            "opts": self.model._meta,
+            "funnel": diagnostics.funnel(index),
+            "states": diagnostics.state_counts(index),
+            "totals": index["totals"],
+            "samples": diagnostics.sample_cases(index),
+            "page_obj": page_obj,
+            "rows": rows,
+            "result_count": total,
+            "filters": {"q": query, "state": state, "type": type_code, "depth": depth},
+            "state_choices": [(key, diagnostics.STATE_LABELS[key]) for key in diagnostics.STATE_ORDER],
+            "type_choices": list(WorkType.objects.order_by("label").values_list("code", "label")),
+            "depth_choices": ["editorial", "index", "ambient"],
+            "querystring": request.GET.urlencode(),
+        }
+        return render(request, "admin/catalog/relationship_diagnostics.html", context)
+
 
 @admin.register(SourceRecord)
 class SourceRecordAdmin(admin.ModelAdmin):

@@ -2,25 +2,24 @@
 
 An orphan is not automatically a defect: many works genuinely carry no
 relationship claims. The useful question is *why* a record is alone, so this
-report separates four states:
+report separates the same states the diagnostics page shows:
 
-* ``no_claims`` — no supported relationship property exists in the cached payload
-* ``claims_unresolved`` — claims exist but no proposal was ever created
+* ``no_claims`` — no supported relationship property in the cached payload
+* ``claims_unresolved`` — claims exist but no proposal references them
 * ``proposal_pending`` — a proposal exists but is still pending
-* ``proposal_rejected`` — every proposal for the work was rejected
+* ``proposal_rejected`` — proposals exist but none was accepted
 
-It is read-only.
+Definitions live in :mod:`catalog.diagnostics`, so this report and the staff
+diagnostics page cannot disagree. It is read-only.
 """
 import json
-from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
 from django.core.management.base import BaseCommand
 
-from catalog.models import ImportRelationshipProposal, SourceRecord, Work, WorkRelationship
-
-RELATIONSHIP_PROPERTIES = ("P144", "P155", "P156", "P179", "P629", "P941", "P737", "P4969")
+from catalog import diagnostics
+from catalog.models import Work
 
 
 class Command(BaseCommand):
@@ -32,47 +31,18 @@ class Command(BaseCommand):
         parser.add_argument("--output", type=Path, default=Path("docs/orphans-latest.json"))
 
     def handle(self, *args, **options):
+        index = diagnostics.build_index()
         works = Work.objects.filter(visibility=Work.Visibility.PUBLIC, is_demo=False)
         if options["depth"]:
             works = works.filter(depth=options["depth"])
-        works = works.prefetch_related("source_records").order_by("pk")
+        works = works.order_by("pk")
 
-        connected = set(
-            WorkRelationship.objects.filter(review_status="accepted").values_list("from_work_id", flat=True)
-        ) | set(
-            WorkRelationship.objects.filter(review_status="accepted").values_list("to_work_id", flat=True)
-        )
-        candidates = [work for work in works if work.pk not in connected]
-        if options["limit"]:
-            candidates = candidates[: options["limit"]]
-
-        pending = set(
-            ImportRelationshipProposal.objects.filter(
-                status=ImportRelationshipProposal.Status.PENDING
-            ).values_list("from_work_id", flat=True)
-        ) | set(
-            ImportRelationshipProposal.objects.filter(
-                status=ImportRelationshipProposal.Status.PENDING
-            ).values_list("to_work_id", flat=True)
-        )
-        rejected = set(
-            ImportRelationshipProposal.objects.filter(
-                status=ImportRelationshipProposal.Status.REJECTED
-            ).values_list("from_work_id", flat=True)
-        ) | set(
-            ImportRelationshipProposal.objects.filter(
-                status=ImportRelationshipProposal.Status.REJECTED
-            ).values_list("to_work_id", flat=True)
-        )
-        proposed = set(
-            ImportRelationshipProposal.objects.values_list("from_work_id", flat=True)
-        ) | set(ImportRelationshipProposal.objects.values_list("to_work_id", flat=True))
-
-        counts = Counter()
         rows = []
-        for work in candidates:
-            state = self._state(work, pending, rejected, proposed)
-            counts[state] += 1
+        for work in works.only("id", "title", "depth", "work_type_id", "first_publication_year"):
+            state = index["states"].get(work.pk, diagnostics.STATE_NO_CLAIMS)
+            if state == diagnostics.STATE_CONNECTED:
+                continue
+            claims = index["claims"].get(work.pk, [])
             rows.append({
                 "work": work.pk,
                 "title": work.title,
@@ -80,40 +50,28 @@ class Command(BaseCommand):
                 "type": work.work_type_id,
                 "year": work.first_publication_year,
                 "state": state,
+                "claims": len(claims),
+                "outcomes": {
+                    outcome: sum(1 for claim in claims if claim.outcome == outcome)
+                    for outcome in sorted({claim.outcome for claim in claims})
+                },
             })
+        if options["limit"]:
+            rows = rows[: options["limit"]]
 
+        summary = {}
+        for row in rows:
+            summary[row["state"]] = summary.get(row["state"], 0) + 1
         report = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "depth": options["depth"] or "all",
             "orphans": len(rows),
-            "summary": dict(counts),
-            "states": {
-                "no_claims": "no supported relationship property in the cached payload",
-                "claims_unresolved": "claims exist but no proposal was created",
-                "proposal_pending": "a proposal exists but is still pending",
-                "proposal_rejected": "every proposal for this work was rejected",
-            },
+            "summary": summary,
+            "states": diagnostics.STATE_DEFINITIONS,
             "rows": rows,
         }
         options["output"].parent.mkdir(parents=True, exist_ok=True)
         options["output"].write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
         self.stdout.write(f"orphans={len(rows)} report={options['output']}")
-        for state, count in counts.most_common():
+        for state, count in sorted(summary.items(), key=lambda item: -item[1]):
             self.stdout.write(f"  {state}: {count}")
-
-    def _state(self, work, pending, rejected, proposed):
-        if work.pk in pending:
-            return "proposal_pending"
-        if self._has_claims(work):
-            return "claims_unresolved" if work.pk not in proposed else "proposal_rejected"
-        return "no_claims" if work.pk not in rejected else "proposal_rejected"
-
-    def _has_claims(self, work):
-        for record in work.source_records.all():
-            payload = record.raw_payload
-            if not isinstance(payload, dict):
-                continue
-            claims = payload.get("claims", {})
-            if isinstance(claims, dict) and any(claims.get(prop) for prop in RELATIONSHIP_PROPERTIES):
-                return True
-        return False

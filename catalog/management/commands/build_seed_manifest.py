@@ -25,6 +25,11 @@ class Command(BaseCommand):
         parser.add_argument("--require-date", action="store_true")
         parser.add_argument("--require-creator", action="store_true")
         parser.add_argument("--limit", type=int, default=200)
+        parser.add_argument(
+            "--from", dest="source", choices=("catalog", "unresolved-claims"), default="catalog",
+            help="catalog: filter the public catalog; unresolved-claims: works whose cached "
+                 "claims never produced a proposal.",
+        )
 
     def handle(self, *args, **options):
         if not 1 <= options["limit"] <= 500:
@@ -40,6 +45,15 @@ class Command(BaseCommand):
             works = works.filter(first_publication_year__isnull=False)
         if options["require_creator"]:
             works = works.filter(credits__isnull=False).distinct()
+        if options["source"] == "unresolved-claims":
+            from catalog import diagnostics
+
+            index = diagnostics.build_index()
+            backlog = set(diagnostics.unresolved_claim_work_ids(index))
+            works = works.filter(pk__in=backlog)
+            claim_counts = {work_id: len(index["claims"].get(work_id, [])) for work_id in backlog}
+        else:
+            claim_counts = {}
 
         rows = []
         for work in works:
@@ -54,6 +68,9 @@ class Command(BaseCommand):
             rows.append({"qid": qid, "label": work.title, "work": work.pk, "sitelinks": sitelinks})
 
         rows.sort(key=lambda row: (-row["sitelinks"], row["qid"]))
+        if options["source"] == "unresolved-claims":
+            # Backlog first: the point is to drain claims nobody has resolved yet.
+            rows.sort(key=lambda row: (-claim_counts.get(row["work"], 0), -row["sitelinks"], row["qid"]))
         rows = rows[: options["limit"]]
         if not rows:
             raise CommandError("no works matched the selection")
@@ -62,6 +79,7 @@ class Command(BaseCommand):
             "version": "2026-10-28-catalog-seeds",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "selection": {
+                "source": options["source"],
                 "depth": options["depth"],
                 "work_type": options["work_type"],
                 "min_sitelinks": options["min_sitelinks"],

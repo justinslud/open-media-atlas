@@ -1,0 +1,195 @@
+{
+  "generated_at": "2026-10-29T15:07:05.283738+00:00",
+  "pass": {
+    "command": "resolve_wikidata_relationships --manifest /tmp/opencode/unresolved-seeds.json --seed-limit 200 --limit 800 --seed-scope public --max-runtime 1200",
+    "run_id": 43,
+    "seed_manifest": "unresolved-claims selection (build_seed_manifest --from unresolved-claims)",
+    "seeds": 200,
+    "limit": 800,
+    "cap_reached": true,
+    "overlap_check": "no running import runs, no lock file, no other resolver process"
+  },
+  "result": {
+    "proposals_created": 800,
+    "already_proposed": 13,
+    "skipped_statements": 4,
+    "new_endpoint_works_staged": 309,
+    "matched_entities": 1155,
+    "network_requests": 1,
+    "failures": 0,
+    "elapsed_seconds": 35.36
+  },
+  "verification": {
+    "checked": 800,
+    "statement_and_target_match_cached_payload": 800,
+    "method": "re-read the cached Wikidata payload for the subject entity and compared statement id and target QID",
+    "subject_payload_missing": 0
+  },
+  "seed_claims_by_outcome_after_pass": {
+    "proposal_pending": 804,
+    "accepted": 22,
+    "no_proposal": 600,
+    "self_link": 4,
+    "target_missing": 1
+  },
+  "unresolved_after_pass": {
+    "no_proposal": 600,
+    "self_link": 4,
+    "target_missing": 1,
+    "why": "The 800-proposal cap was reached, so later claims on the same seeds kept their staged targets but never got a proposal."
+  },
+  "funnel_after": [
+    {
+      "key": "imported",
+      "label": "Imported works",
+      "count": 8361,
+      "definition": "Works with at least one cached Wikidata payload. Supplier records stay intact; this is not a publication state.",
+      "drop": 0
+    },
+    {
+      "key": "claims",
+      "label": "Works with a usable relationship claim",
+      "count": 6478,
+      "definition": "The payload holds a supported property (P144, P155, P156, P179, P629, P941, P737, P4969) at normal rank, pointing at another item.",
+      "drop": 1883
+    },
+    {
+      "key": "proposals",
+      "label": "Works touched by a proposal",
+      "count": 4111,
+      "definition": "At least one ImportRelationshipProposal names the work as an endpoint, in any status.",
+      "drop": 2367
+    },
+    {
+      "key": "accepted",
+      "label": "Works in the accepted graph",
+      "count": 2730,
+      "definition": "At least one accepted WorkRelationship names the work as an endpoint. Only these appear on public connection views.",
+      "drop": 1381
+    }
+  ],
+  "states_after": [
+    {
+      "key": "connected",
+      "label": "In the accepted graph",
+      "definition": "The work is an endpoint of at least one accepted relationship.",
+      "count": 2730
+    },
+    {
+      "key": "proposal_pending",
+      "label": "Proposal pending review",
+      "definition": "At least one supplier claim became a pending proposal; nothing accepted yet.",
+      "count": 150
+    },
+    {
+      "key": "proposal_rejected",
+      "label": "Proposal was rejected",
+      "definition": "Proposals exist but none was accepted; the work is still unconnected.",
+      "count": 1234
+    },
+    {
+      "key": "claims_unresolved",
+      "label": "Claims exist, never resolved",
+      "definition": "The cached payload holds a supported claim, but no proposal references it.",
+      "count": 2531
+    },
+    {
+      "key": "no_claims",
+      "label": "No supported relationship claim",
+      "definition": "The cached payload holds no supported relationship property pointing elsewhere.",
+      "count": 7219
+    }
+  ],
+  "examples": [
+    {
+      "proposal": 4055,
+      "code": "derivative-work",
+      "property": "P4969",
+      "statement_id": "Q316894$ecf2844d-4e42-6dd8-66a7-527ff6798daf",
+      "rank": "normal",
+      "source_qid": null,
+      "source": "Maks i Moric",
+      "source_year": 1992,
+      "target_qid": "Q108169937",
+      "target": "Max und Moritz",
+      "target_year": 1865,
+      "target_visibility": "public",
+      "target_type": "literary-work",
+      "wikidata_revision": 1783336095,
+      "retrieved_at": "2026-10-29T15:06:02.511286+00:00",
+      "source_url": "https://www.wikidata.org/wiki/None"
+    },
+    {
+      "proposal": 4058,
+      "code": "derivative-work",
+      "property": "P4969",
+      "statement_id": "Q316894$c7b46b9f-47f1-7b91-cd64-874c67d6ac43",
+      "rank": "normal",
+      "source_qid": null,
+      "source": "Max un Moritz",
+      "source_year": 1974,
+      "target_qid": "Q108170480",
+      "target": "Max und Moritz",
+      "target_year": 1865,
+      "target_visibility": "public",
+      "target_type": "literary-work",
+      "wikidata_revision": 1783336355,
+      "retrieved_at": "2026-10-29T15:06:02.521831+00:00",
+      "source_url": "https://www.wikidata.org/wiki/None"
+    },
+    {
+      "proposal": 4059,
+      "code": "derivative-work",
+      "property": "P4969",
+      "statement_id": "Q316894$cf6402f9-49d7-bda2-fe62-7b352bb77547",
+      "rank": "normal",
+      "source_qid": null,
+      "source": "Max un Moritz",
+      "source_year": 1964,
+      "target_qid": "Q108170543",
+      "target": "Max und Moritz",
+      "target_year": 1865,
+      "target_visibility": "public",
+      "target_type": "literary-work",
+      "wikidata_revision": 1783336404,
+      "retrieved_at": "2026-10-29T15:06:02.525829+00:00",
+      "source_url": "https://www.wikidata.org/wiki/None"
+    },
+    {
+      "proposal": 4062,
+      "code": "derivative-work",
+      "property": "P4969",
+      "statement_id": "Q316894$c60bc4e1-4f42-5b85-3008-f8e6b5c1b62c",
+      "rank": "normal",
+      "source_qid": null,
+      "source": "Spuk mit Max und Moritz",
+      "source_year": 1951,
+      "target_qid": "Q108170666",
+      "target": "Max und Moritz",
+      "target_year": 1865,
+      "target_visibility": "public",
+      "target_type": "literary-work",
+      "wikidata_revision": 2332523183,
+      "retrieved_at": "2026-10-29T15:06:02.537003+00:00",
+      "source_url": "https://www.wikidata.org/wiki/None"
+    },
+    {
+      "proposal": 4064,
+      "code": "derivative-work",
+      "property": "P4969",
+      "statement_id": "Q316894$2a0b4cef-4d5e-5508-b9f1-dc28beb9ad8a",
+      "rank": "normal",
+      "source_qid": null,
+      "source": "Max und Moritz Reloaded",
+      "source_year": 2005,
+      "target_qid": "Q1913681",
+      "target": "Max und Moritz",
+      "target_year": 1865,
+      "target_visibility": "public",
+      "target_type": "literary-work",
+      "wikidata_revision": 2538654155,
+      "retrieved_at": "2026-10-29T15:06:02.544530+00:00",
+      "source_url": "https://www.wikidata.org/wiki/None"
+    }
+  ]
+}
