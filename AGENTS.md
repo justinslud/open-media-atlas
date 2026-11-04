@@ -28,6 +28,12 @@
 - Keep stable database IDs canonical, external identifiers separate, relationships record-to-record, and fixtures idempotent. Public queries must explicitly filter visibility and relationship review status.
 - Versions stay embedded by default; standalone presentation never changes version identity. Never infer rights ownership from credits or representation claims.
 - Do not add bulk ingestion, AI enrichment, transactions/licensing, comments, recommendations, public editing, or new infrastructure without a scoped milestone.
+- Bulk ingestion is scoped by [docs/ingest-campaign-run1.md](docs/ingest-campaign-run1.md) only: that campaign, those sources. It authorizes nothing else on the deferred list.
 - Never commit secrets or portray fictional fixture facts as real.
 - Never run network imports during a web request, build, migration, or startup. Always use explicit IDs and a bounded `--limit`.
 
+
+
+## Factory task workflow
+
+For managed project work, read `~/factory/AGENTS.md` and `~/factory/OPERATING.md`. Use central Beads for the backlog and `python3 ~/factory/bin/concierge.py` for context, guarded claims, isolated runs and curation. Discuss proposals or choose only within the scope the user authorized. Review-only requests stay read-only. After interruption, reconcile existing runs before starting another. Preserve current VM permission settings.
