@@ -74,3 +74,7 @@ To load real data, use the bounded Open Library import (`python manage.py import
 Tests: `DJANGO_DEBUG=true python manage.py test`
 
 **More detail:** deployment (Render), email configuration, the contribution-review setup and import operations are in [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+
+## License
+
+[MIT](LICENSE)
