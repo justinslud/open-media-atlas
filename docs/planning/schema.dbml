@@ -765,3 +765,9 @@ TableGroup Community {
 // OL author.latest_revision -> raw_payload; source upstream revision, not local counter
 // OL author.created -> raw_payload for upstream timestamps; local catalog_records.created_at
 // OL author.last_modified -> source_records.upstream_updated_at; local updated_at separate
+
+// Revision note — 2026-11-04
+// This 37-table v0.1 is a discussion vocabulary, not a target schema. 30 Django models are
+// implemented; 0 revision/term/rights-claim rows exist. See docs/decision-register.md DR-28
+// and docs/planning/knowledge-model-2026-11.md §8 for which tables are justified now,
+// premature, or missing. Adopt a table only when a milestone names the query it serves.

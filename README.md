@@ -57,13 +57,25 @@ procedure are documented in [Trustworthy catalog labels and discovery](docs/trus
 
 ## Milestone scope
 
+The original milestone scope was:
+
 - Title search and media-type filtering, including HTMX partial result updates.
 - Public-only work pages with compact facts, creators, fictional source references, inverse-aware relationship labels, and inline versions/releases.
 - Idempotent fictional fixtures: one novel, two independent film adaptations, and an embedded translation with two editions.
 - Admin CRUD for every milestone entity.
 - Signup, login/logout, email verification, password reset, and a compact account page, with database-backed abuse limits that work across web workers.
 
-Bulk ingestion, community editing, terms workflows, claims, rights conclusions, comments, recommendations, and licensing are deliberately deferred. The next recommended milestone is a sourced proposal/review flow with revision history, followed by controlled vocabulary suggestions.
+**Bulk ingestion is no longer deferred.** It is authorised only by
+[docs/ingest-campaign-run1.md](docs/ingest-campaign-run1.md), which scopes one bounded campaign
+to named sources (Wikidata, Open Library, Gutenberg, TVmaze, with IMDb as an internal
+crosswalk only). That document authorises nothing else. Community editing, terms workflows,
+rights conclusions, comments, recommendations, licensing transactions and public write APIs
+remain deferred, and each needs its own scoped milestone.
+
+The current product plan is [docs/planning/oma-strategy-2026-11.md](docs/planning/oma-strategy-2026-11.md);
+decisions and their status live in [docs/decision-register.md](docs/decision-register.md).
+The next recommended work package is P0 in the strategy: make the adaptation graph
+(vocabulary, category and duplicate claims) mean what the product says before adding to it.
 
 ## Hosted staging on Render
 

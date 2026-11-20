@@ -113,3 +113,21 @@ Needed additions: term aliases, term proposal/review records, and canonical term
 An ordinary member cannot approve their own correction, change another user's list, read private evidence through a guessed ID, create a canonical genre by submitting free text, or use an API call to bypass the queue. A verified producer cannot erase unfavorable discussion or overwrite community credits. An importer cannot overwrite a protected human field or mark its own uncertain match verified. A community moderator cannot inspect rights documents unless separately granted that scope.
 
 Audit records for term changes, moderation and role grants, plus scoped service credentials, remain implementation work. This matrix defines intended behavior rather than claiming the current schema or app already enforces it.
+
+---
+
+## Revision note — 2026-11-04
+
+This v0.1 draft is historical context, not current policy. It was not rewritten.
+
+- Current product direction: [oma-strategy-2026-11.md](oma-strategy-2026-11.md).
+- Decisions and their status: [../decision-register.md](../decision-register.md).
+- Newer evidence: [knowledge-model-2026-11.md](knowledge-model-2026-11.md),
+  [source-landscape-2026-11.md](source-landscape-2026-11.md),
+  [agent-contribution-and-api-2026-11.md](agent-contribution-and-api-2026-11.md),
+  [oma-worked-examples-2026-11.md](oma-worked-examples-2026-11.md).
+
+Where this draft conflicts with the register, the register wins. Two known conflicts worth
+naming: this draft sequences a read API before any agent write path (see DR-02, now staged
+rather than deferred), and it assumes version/edition data exists (see the strategy §3.2: one
+editorial work has an edition).

@@ -4,7 +4,7 @@ Checked the two OMA vault project notes and the repository's September data-sour
 
 ## Gutenberg: downloaded, but historical
 
-Saved `/home/justin/data/oma/gutenberg/gutenberg-metadata.json` outside Git: 75,131,164 bytes, 68,502 ID-keyed records. JSON parsing passed; SHA-256 and retrieval provenance are in the adjacent `manifest.json`. Pinned repository commit `b8256490234fe44e226a9a2c8fd69b90ca2dfa31`.
+Saved `~/data/oma/gutenberg/gutenberg-metadata.json` outside Git: 75,131,164 bytes, 68,502 ID-keyed records. JSON parsing passed; SHA-256 and retrieval provenance are in the adjacent `manifest.json`. Pinned repository commit `b8256490234fe44e226a9a2c8fd69b90ca2dfa31`.
 
 Important discovery: repository maintenance is recent, but the JSON's last commit is **2022-07-11**, `9134ddd47e78d7f85cbdff5d6b9d82ec43d2cc1c`. It is a historical sample, not today's complete catalog. Fields include author, title, language, subjects, rights statements, and file URLs. No import or automatic book matching performed.
 
@@ -37,13 +37,13 @@ Finish Open Library pilot; obtain fresh Gutenberg metadata; test how reliably an
 
 ### Authorized downloads — October 21
 
-Implemented `scripts/download_catalogs.py` with `tvmaze` and `imdb` commands. Data lives outside the repo under `/home/justin/data/oma/{source}/2026-10-21/`. Both were launched; check each `status.json` and `download.log` for actual completion. Codex sessions: TVmaze 6755, IMDb 83677. These are foreground session jobs, not installed services; keep Codex/WSL running.
+Implemented `scripts/download_catalogs.py` with `tvmaze` and `imdb` commands. Data lives outside the repo under `~/data/oma/{source}/2026-10-21/`. Both were launched; check each `status.json` and `download.log` for actual completion. Codex sessions: TVmaze 6755, IMDb 83677. These are foreground session jobs, not installed services; keep Codex/WSL running.
 
 Resume from repository:
 
 ```
-python3 -u scripts/download_catalogs.py tvmaze --output /home/justin/data/oma/tvmaze/2026-10-21
-python3 -u scripts/download_catalogs.py imdb --output /home/justin/data/oma/imdb/2026-10-21
+python3 -u scripts/download_catalogs.py tvmaze --output ~/data/oma/tvmaze/2026-10-21
+python3 -u scripts/download_catalogs.py imdb --output ~/data/oma/imdb/2026-10-21
 ```
 
 TVmaze caches each page, requests new pages at one-second intervals plus latency, retries throttling/server/network errors, checks ID ranges/duplicates, and produces combined `shows.jsonl` only after reaching the terminal 404. Fetch is a snapshot across time, not atomic. IMDb pins size/ETag/last-modified before downloading, sends If-Match to prevent resuming across a changed daily file, checks size/gzip CRC/header and records SHA-256. If upstream rotates, a 412 requires a new dated output folder; do not concatenate snapshots. Both commands use exclusive locks. No Django import/publication. Four focused tests passed: cache resume, terminal vs error response, rate-limit retry, truncated gzip rejection.

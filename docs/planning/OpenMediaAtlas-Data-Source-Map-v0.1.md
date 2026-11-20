@@ -90,3 +90,21 @@ Do not build a universal fact engine prematurely. Begin with field-state trackin
 For each import: source/version, progress, records matched/new/ambiguous/rejected, failed batches, fields proposed/accepted/protected, and last successful run. One click should explain why a record did not publish or why a candidate lost to another value. AI can suggest a match or summarize evidence; source citations and reviewer decisions remain inspectable.
 
 Acceptance examples: repeat the same batch without duplicates; import corrected upstream data without erasing a protected field; distinguish a French edition from a new French work; quarantine a reused identifier; omit restricted material from an open export; keep withdrawn supplier data as an auditable source change rather than silently destroying local history.
+
+---
+
+## Revision note — 2026-11-04
+
+This v0.1 draft is historical context, not current policy. It was not rewritten.
+
+- Current product direction: [oma-strategy-2026-11.md](oma-strategy-2026-11.md).
+- Decisions and their status: [../decision-register.md](../decision-register.md).
+- Newer evidence: [knowledge-model-2026-11.md](knowledge-model-2026-11.md),
+  [source-landscape-2026-11.md](source-landscape-2026-11.md),
+  [agent-contribution-and-api-2026-11.md](agent-contribution-and-api-2026-11.md),
+  [oma-worked-examples-2026-11.md](oma-worked-examples-2026-11.md).
+
+Where this draft conflicts with the register, the register wins. Two known conflicts worth
+naming: this draft sequences a read API before any agent write path (see DR-02, now staged
+rather than deferred), and it assumes version/edition data exists (see the strategy §3.2: one
+editorial work has an edition).
