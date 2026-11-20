@@ -1,170 +1,76 @@
 # Open Media Atlas
 
-Open Media Atlas (OMA) is a compact, cross-media reference catalog for discovering works and following adaptations and other creative relationships. Public browsing needs no account; visitors may also create an unprivileged account with a public username and private, verified email address.
+**Find a work. Follow its connections.** Open Media Atlas (OMA) is an open, cross-media catalog of creative works (books, plays, films, TV and games) and the relationships between them: what adapts what, which titles are really the same work, and the source behind every link.
 
-## Setup and preview
+> **Status: in active development, and looking for someone to take it further.** The core catalog, the import pipeline and the review workflow all work locally against a real ~14k-work dataset. It isn't deployed publicly yet. If you want to pick it up, fork it or open an issue. The design docs are written so that someone new can take it over.
 
-Requires Python 3.12+ and PostgreSQL 16+ for a production-like environment. SQLite is the zero-configuration local development fallback.
+![Home page](docs/media/01-home-light.png)
+
+## Why
+
+Ask "what has *Frankenstein* been adapted into?" and the answer is spread across Wikipedia lists, IMDb trivia, library catalogs and fan wikis. None of them separate a real adaptation from something that was only loosely inspired by the original, and none show where the claim came from. OMA treats relationships between works as the main data. Each link is typed, has a direction and a date, and points back to the source statement behind it.
+
+## What it does today
+
+| | |
+|---|---|
+| ![Work page](docs/media/03-work-frankenstein-light.png) | ![Hamlet](docs/media/04-work-hamlet-light.png) |
+| **Work pages** list access links (e.g. Project Gutenberg), a timeline of adaptations, typed connections, credits and the sources for each field ("Why this value?"). | **Connection timelines** show how a work moved across media, e.g. *Hamlet* → *Haider* (2014) and *Strange Brew* (1983). |
+| ![Discover](docs/media/02-discover-light.png) | ![Collection](docs/media/05-list-light.png) |
+| **Discover** lets you browse and filter by media type, with HTMX partial updates. | **Public collections** are annotated, ordered lists of works that members can curate. |
+
+- **Catalog:** about 13.9k works, 5.6k work-to-work relationships, 19.6k credits and 14k source records in the local snapshot. The data comes from Wikidata, Open Library, Project Gutenberg and TVmaze.
+- **Provenance:** imported source snapshots are kept separate from accepted catalog values, and a manual editorial override survives reimports.
+- **Community review:** verified members can propose corrections and new relationships. Nothing goes public until a reviewer approves it.
+- **Accounts:** signup, email verification, password reset, a private library and lists, with abuse limits stored in the database.
+
+## How it works
+
+```mermaid
+flowchart LR
+  subgraph Sources
+    WD[Wikidata]
+    OL[Open Library]
+    PG[Gutenberg]
+    TV[TVmaze]
+  end
+  Sources -->|bounded, explicit-ID imports| SR[(Source records<br/>raw snapshots)]
+  SR -->|triage: green / amber / red| P[Proposals]
+  M[Members] -->|suggest correction<br/>or relationship| P
+  P -->|human review| C[(Catalog<br/>works · versions · credits<br/>typed relationships)]
+  C --> W[Public site<br/>Django + HTMX]
+```
+
+- **Stack:** Django monolith, server-rendered templates with HTMX, PostgreSQL in production (SQLite locally), WhiteNoise for static files, and a Render blueprint for staging.
+- **Rules the code enforces:** stable internal IDs, external identifiers stored separately, public queries filter on visibility and review status, and no network imports run during a request, build or migration.
+
+## Where it's going
+
+The [strategy doc](docs/planning/oma-strategy-2026-11.md) sets out eight questions OMA should answer better than anywhere else. Next up:
+
+1. **Make the graph mean what it says.** Tighten the relationship vocabulary ("adaptation of" vs. "inspired by"), and fix direction and duplicate-identity problems.
+2. **Creator pages and series grouping.** Credits already exist; there are no pages for people or series yet.
+3. **A read API** with machine-readable provenance and uncertainty, so other tools can build on the catalog.
+4. **Agent contributions** through the same proposal-and-review path humans use ([design](docs/planning/agent-contribution-and-api-2026-11.md)).
+
+Decisions and their reasoning are in the [decision register](docs/decision-register.md).
+
+## Run it locally
+
+Requires Python 3.12+.
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env               # export values manually or with: set -a; . ./.env; set +a
+cp .env.example .env
 export DJANGO_DEBUG=true
 python manage.py migrate
-python manage.py load_demo_catalog
-python manage.py runserver 0.0.0.0:8000
+python manage.py load_demo_catalog          # small fictional demo dataset
+python manage.py runserver 127.0.0.1:8000
 ```
 
-After setup, the single startup command is `DJANGO_DEBUG=true python manage.py runserver 0.0.0.0:8000`. Preview at <http://127.0.0.1:8000/>. Create an admin login with `python manage.py createsuperuser`, then use <http://127.0.0.1:8000/admin/>.
+To load real data, use the bounded Open Library import (`python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24`). The full ingestion campaign is documented in [docs/ingest-campaign-run1.md](docs/ingest-campaign-run1.md).
 
-For PostgreSQL, set `DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DBNAME`. In production, set a strong `DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS`, and HTTPS origins in `DJANGO_CSRF_TRUSTED_ORIGINS`; leave `DJANGO_DEBUG` false.
+Tests: `DJANGO_DEBUG=true python manage.py test`
 
-### Account email configuration
-
-Local development uses Django's console email backend by default, so verification
-and reset links appear in the developer terminal. Automated tests explicitly use
-the in-memory test backend. Production uses SMTP and defaults to `localhost` when
-an SMTP host has not been configured. This keeps build and administrative commands
-usable before optional mail credentials are supplied; delivery attempts fail
-honestly in the account UI until a reachable SMTP provider is configured.
-
-Configure an SMTP provider with credentials obtained from that provider (OMA does
-not provision or require a paid service):
-
-| Variable | Required production value |
-| --- | --- |
-| `EMAIL_HOST` | SMTP hostname; defaults to `localhost` |
-| `EMAIL_PORT` | SMTP port; defaults to `587` |
-| `EMAIL_HOST_USER` | SMTP username, if the provider requires one |
-| `EMAIL_HOST_PASSWORD` | SMTP password or API credential, stored as a secret |
-| `EMAIL_USE_TLS` | `true` for STARTTLS (default) |
-| `EMAIL_USE_SSL` | `true` only for implicit TLS; do not enable with STARTTLS |
-| `DEFAULT_FROM_EMAIL` | Verified sender, for example `Open Media Atlas <accounts@example.org>` |
-| `EMAIL_VERIFICATION_TIMEOUT_HOURS` | Verification-link lifetime; defaults to `24` |
-| `EMAIL_BACKEND` | Optional backend override; leave SMTP in production |
-
-After deployment, create a normal test account, confirm receipt and sender
-authentication, verify it, request a password reset, confirm the old links cannot
-be reused, and check that an ordinary account has neither staff status nor access
-to `/admin/`. Also confirm `/`, `/discover/`, and public work pages remain usable
-while logged out. Delivery failures are reported honestly in the UI and can be
-retried; links are never rendered into public pages or production logs.
-
-Catalog date semantics, discovery ordering, validation and the scoped data-correction
-procedure are documented in [Trustworthy catalog labels and discovery](docs/trustworthy-catalog-discovery.md).
-
-## Milestone scope
-
-The original milestone scope was:
-
-- Title search and media-type filtering, including HTMX partial result updates.
-- Public-only work pages with compact facts, creators, fictional source references, inverse-aware relationship labels, and inline versions/releases.
-- Idempotent fictional fixtures: one novel, two independent film adaptations, and an embedded translation with two editions.
-- Admin CRUD for every milestone entity.
-- Signup, login/logout, email verification, password reset, and a compact account page, with database-backed abuse limits that work across web workers.
-
-**Bulk ingestion is no longer deferred.** It is authorised only by
-[docs/ingest-campaign-run1.md](docs/ingest-campaign-run1.md), which scopes one bounded campaign
-to named sources (Wikidata, Open Library, Gutenberg, TVmaze, with IMDb as an internal
-crosswalk only). That document authorises nothing else. Community editing, terms workflows,
-rights conclusions, comments, recommendations, licensing transactions and public write APIs
-remain deferred, and each needs its own scoped milestone.
-
-The current product plan is [docs/planning/oma-strategy-2026-11.md](docs/planning/oma-strategy-2026-11.md);
-decisions and their status live in [docs/decision-register.md](docs/decision-register.md).
-The next recommended work package is P0 in the strategy: make the adaptation graph
-(vocabulary, category and duplicate claims) mean what the product says before adding to it.
-
-## Hosted staging on Render
-
-This repository includes a Render Blueprint for one Django web service and one
-PostgreSQL database. It uses paid staging-sized plans deliberately: Render's
-free PostgreSQL databases expire, making them unsuitable for a stable review
-URL. Applying the Blueprint provisions paid resources, so stop before the final
-confirmation unless the listed charges are approved.
-
-1. Push this branch to a GitHub repository you control.
-2. Create or sign in to a Render account at <https://dashboard.render.com/> and
-   connect GitHub when prompted. Grant access only to the OMA repository.
-3. Choose **New → Blueprint**, select the repository and branch, and confirm
-   that Render detects `render.yaml`.
-4. Review the two resources and their displayed monthly prices. The committed
-   configuration requests a Starter web service and Basic-256mb PostgreSQL.
-   Their currently expected base prices are **US$7/month + US$6/month =
-   US$13/month**, before applicable tax and any usage overages. Pricing could
-   change, so treat the exact total shown by Render before creation as
-   authoritative. Add a payment method only after approving that total, then
-   apply.
-5. When the deployment is healthy, open the generated
-   `https://open-media-atlas-….onrender.com/` URL. Render injects the database
-   URL and a generated secret; debug mode remains off.
-
-Each deploy runs `build.sh`, which installs pinned packages, collects compressed
-static files, applies migrations, and idempotently refreshes demonstration data.
-WhiteNoise serves versioned static assets from the Django service. The service
-health check is `/health/`.
-
-No default administrator is created. To add one later, use the Render service's
-Shell tab and run `python manage.py createsuperuser`; enter a unique password in
-that private prompt. Never place admin credentials in Blueprint variables.
-
-### Load the real starter catalog
-
-Imports are deliberately **not** part of `build.sh`: a deploy never makes
-third-party requests or changes catalog content unexpectedly. After the new
-migration has deployed, open the web service's **Shell** tab and run:
-
-```bash
-python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24 --dry-run
-python manage.py import_openlibrary --file data/openlibrary-curated.txt --limit 24
-python manage.py load_curated_relationships
-```
-
-The first command validates the bounded selection without writing. The second
-imports 24 selected Open Library works and records an inspectable import run;
-the third adds three reviewed film relationships and the initial editable
-homepage selection. Both writing commands are safe to repeat. Once any real
-public record exists, demonstration records remain in admin but are omitted
-from public pages.
-
-For an ad hoc bounded import, pass explicit IDs instead:
-
-```bash
-python manage.py import_openlibrary OL872932W OL39745868W --limit 2
-```
-
-Inspect runs and per-item created/updated/skipped/failed results under **Import
-runs** in Django admin. Imported source snapshots remain distinct from accepted
-catalog fields; reimports update an unchanged imported value but preserve a
-manual editorial override. No rights status or generated description is added.
-To retry only failures from a run, use
-`python manage.py import_openlibrary --retry-run RUN_ID --limit 24`.
-
-To avoid charges, do not apply the Blueprint. If staging is no longer needed,
-delete both the web service and database in Render; suspending only the web
-service does not necessarily stop database billing. Render displays the exact
-prorated charges before creation and in the Billing page.
-
-## Community contribution review
-
-Verified members can propose sourced corrections and work-to-work relationships from a
-public work page, then track their private submissions under **My contributions**.
-Proposals do not alter the public catalog until an authorized reviewer approves them in
-Django admin. To grant that narrowly scoped capability, assign a staff user the
-`catalog | contribution proposal | Can approve or reject contribution proposals`
-permission (codename `catalog.review_contributionproposal`) through the admin user or
-group permission editor. Do not grant ordinary members staff status or this permission.
-
-After deployment:
-
-1. Run `python manage.py migrate`.
-2. Grant the review permission to the intended staff group/users and confirm a user
-   without it cannot open the contribution proposal admin.
-3. Submit and approve one non-production test correction, confirm the public work and
-   contribution status update, then remove the test data if appropriate.
-4. Confirm email verification and outbound email configuration, and monitor contribution
-   rate-limit and admin logs during rollout.
-5. Run one bounded reimport for an approved imported record and confirm the editorial
-   value remains in place.
+**More detail:** deployment (Render), email configuration, the contribution-review setup and import operations are in [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
